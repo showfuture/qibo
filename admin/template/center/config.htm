@@ -1,0 +1,509 @@
+<!--
+<?php
+$_max_upload=$max_upload*1024;
+$mob_goto_3g[intval($webdb[mob_goto_3g])] = ' checked ';
+print <<<EOT
+--> 
+ 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color='#FFFFFF'>网站核心设置</font> </b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站名称:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' name='webdbs[webname]' size='50' value='$webdb[webname]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站SEO标题:<span help="1">(填写与你网站相关的热门词语,每个用空格隔开,主要是方便搜索引擎收录你的网站.此项内容可以留空)</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' name='webdbs[SeoTitle]' size='50' value='$webdb[SeoTitle]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站SEO热点关键词:<span help="1">(填写与你网站相关的热门词语,每个用空格隔开,主要是方便搜索引擎收录你的网站.此项内容可以留空)</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' name='webdbs[metakeywords]' size='50' value='$webdb[metakeywords]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站SEO描述:<span help="1">(填写与你网站相关的热门词语,每个用空格隔开,主要是方便搜索引擎收录你的网站.此项内容可以留空)</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' name='webdbs[description]' size='50' value='$webdb[description]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">管理员邮箱:<span help="1">不是太重要,可留空</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' name='webdbs[webmail]' size='50' value='$webdb[webmail]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站使用的积分类型:<span help="1">如果你没有整合论坛,那只能是选择整站积分,如果整合了论坛,你可以选择论坛积分或者是整站积分,推荐是选择论坛积分,这样可以跟论坛的积分同步,一旦选择后,就不要轻易的改更,否则容易造成混乱!选择论坛积分后,整站的积分将会停用,无效.</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input type="radio" name="webdbs[UseMoneyType]" value="cms" $UseMoneyType[cms]>
+        整站积分 
+        <!--
+EOT;
+if( eregi("^pwbbs",$webdb[passport_type])||eregi("^dzbbs",$webdb[passport_type]) ){print <<<EOT
+-->
+        <input type="radio" name="webdbs[UseMoneyType]" value="bbs" $UseMoneyType[bbs]>
+        论坛积分 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>用户购买每M兆空间容量需要积分:</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input type="text" name="webdbs[BuySpacesizeMoney]" size="5" value="$webdb[BuySpacesizeMoney]">
+        点,默认100点</td>
+    </tr>
+    <!--
+EOT;
+if( eregi("^pwbbs",$webdb[passport_type])||eregi("^dzbbs",$webdb[passport_type]) ){print <<<EOT
+-->
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>论坛用户登录整站,激活帐号后是否自动通过审核:</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input type="radio" name="webdbs[BbsUserAutoPass]" value="1" $BbsUserAutoPass[1]>
+        自动通过审核 
+        <input type="radio" name="webdbs[BbsUserAutoPass]" value="0" $BbsUserAutoPass[0]>
+        管理员手工审核</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>是否开通邮箱自动审核帐号功能:<span help="1"> 当设置注册不自动通过审核的时候或者论坛用户激活帐号后但处于未审核状态时,你可以在这里设置开通邮箱自动审核帐号功能.否则只能管理员手工审核帐号. 
+        </span></td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input type="radio" name="webdbs[UserEmailAutoPass]" value="1" $UserEmailAutoPass[1]>
+        开通 
+        <input type="radio" name="webdbs[UserEmailAutoPass]" value="0" $UserEmailAutoPass[0]>
+        不开通</td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>积分名称：<span help="1">如果上面选择了论坛积分的话,最好跟论坛的保持一致,而让会员不易觉得混乱.</span></td>
+      <td   bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[MoneyName]" value="$webdb[MoneyName]">
+        <font color="#999999">(如：积分、整站币、论坛币、论坛积分) </font></td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>积分单位：<span help="1">如果上面选择了论坛积分的话,最好跟论坛的保持一致,而让会员不易觉得混乱.</span></td>
+      <td   bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[MoneyDW]" size="5" value="$webdb[MoneyDW]">
+        <font color="#666666">(如：点、个、只)</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='16%'> 
+        <div align="left">网站打开还是关闭:<span help="1">如果选择关闭的话,前台将禁止所有人访问,但管理员还是可以访问后台的</span></div>
+      </td>
+      <td width="84%"> 
+        <input type="radio" name="webdbs[web_open]" value="1" $web_open1>
+        开放 
+        <input type="radio" name="webdbs[web_open]" value="0" $web_open0>
+        关闭</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='16%'> 
+        <div align="left">关闭原因:</div>
+      </td>
+      <td width="84%"> 
+        <textarea cols='50' name='webdbs[close_why]' rows='8'>$webdb[close_why]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">网站默认风格:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%">{$select_style} <font color="#666666">如果栏目设置了风格,将以栏目的为标准</font></td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">会员中心风格:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%">{$select_member_style} </td>
+    </tr>
+ 
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF' rowspan="2">系统访问网址:</td>
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp"> 
+        <input type="text" name="webdbs[www_url]" value="$webdb[www_url]" size="50">
+        (非常重要,请正确填写) </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp">比如http://www.qibosoft.com 
+        结尾不要留有<b><font color="#FF0000">/</font></b> <b><font color="#FF0000"><br>
+        </font></b>请必须正确填写,否则会造成图片不能显示及链接路径有错<br>
+        提示:系统检测到你的地址是<font color="#0000FF"><b>{$truepath}</b></font>,如果你认为没错的话,请在上面表单输入<font color="#0000FF"><b>{$truepath}</b></font><br>
+        重要提示:如果你的是单位网站,需要内网IP与外网域名同时能访问的话(网站必须要装在根目录,并且不能设置COOKIE域名),请输入<font color="#FF0000"><b>/.</b></font></td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>后台访问网址:<span help=1>如果你的后台目录名被修改过,不是admin的话,这里要对应的作以修改,否则不能设置标签!</span></td>
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp"> 
+        <input type="text" name="webdbs[admin_url]" value="$webdb[admin_url]" size="50">
+        (不能留空,如果你把后台目录admin改名后.这里也要跟着修改,否则标签不能设置) </td>
+    </tr>
+     
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF' rowspan="2"> 
+        <div align="left">时间误差:<span help=1>一般留空,因为一般情况,服务器时间是正常的</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp"> 
+        <input    type='text' size='10' value='$webdb[time]' name='webdbs[time]'>
+        单位(分钟)</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp">如果服务器时间太慢写正数，如果时间太快写负数，单位为(分钟)</td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">会员默认可使用多大空间:<span help=1>注意:这里是初始空间大小,会员的总空间由三部分叠加而成,分别是这里的初始空间(在这里修改)、会员组空间(在会员组那里修改)、会员独立空间(会员资料那里修改)</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' class="tdhelp"> 
+        <input    type='text' size='10' value='$webdb[totalSpace]' name='webdbs[totalSpace]'>
+        M (留空或为0则不能上传文件)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='16%' rowspan="2"> 
+        <div align="left">会员上传单个文件不能超过多大:</div>
+      </td>
+      <td width="84%" class="tdhelp"> 
+        <input    type='text' size='10' value='$webdb[upfileMaxSize]' name='webdbs[upfileMaxSize]'>
+        K (留空或为0则不做限制)</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp">注意:你的服务器最大仅允许<b><font color="#FF0000">$max_upload</font></b>,上面表单数值不能超过{$_max_upload}(K),超过不生效</td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF' rowspan="2"> 
+        <div align="left">允许会员上传文件的类型</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp"> 
+        <input    type='text' size='50' value='$webdb[upfileType]' name='webdbs[upfileType]'>
+        (每个用英文空格隔开,表单留空则不能上传文件)</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp">推荐是<font color="#0000FF">.rar 
+        .txt .jpg .gif .zip .mp3 .wma .mpeg .mpg .rm .ram .htm .doc .swf .avi 
+        .flv .sql</font></td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">附件目录:<span help=1>一般情况建议不要修改,如果要修改的话,请手工同时把整站目录下的目录/{$webdb[updir]}/同时一起修改</span></div>
+      </td>
+      <td bgcolor='#FFFFFF'> 
+        <input    type='text' value='$webdb[updir]' name='webdbs[updir]' size='40'>
+        <font color="#FF0000">(建议不要修改)</font> <font color="#FF0000"> </font></td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF' rowspan="2"> 
+        <div align="left">远程附件目录:<span help=1>一般留空,如果设置后,当本地找不到相应的附件,就会调用远程的文件</span></div>
+      </td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='text' size='40' value='$webdb[mirror]' name='webdbs[mirror]'>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="84%" class="tdhelp">如果有附件放在其他空间,请把附件目录网址写进来,否则请留空</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' width="16%"> 
+        <div align="left">是否显示系统错误报告:<span help=1>网站正常运行情况下,请选择关闭系统错误报告,只有当网站运行不正常时,才把“打开系统详细错误报告<font color="#0000FF"></font>”选中,然后把错误信息发表到www.qibosoft.com以方便追踪错误信息.官方论坛会帮你分析,并给出修正方法。网站运行正常时，如果打开错误报告的话，一些不影响正常运行的微小错误信息会在页面的顶部显示，影响美观。</span></div>
+      </td>
+      <td bgcolor='#FFFFFF'> 
+        <p> 
+          <input type="radio" name="webdbs[forbid_show_bug]" value="1" $forbid_show_bug1>
+          关闭系统错误报告 <b> 
+          <input type="radio" name="webdbs[forbid_show_bug]" value="0" $forbid_show_bug0>
+          </b>打开系统详细错误报告<font color="#0000FF">(网站运行正常,请选择“关闭系统错误报告”)</font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'> 
+        <div align="left">COOKIE有效域名:<span help=1>要么留空，要么输入你访问网站的国际域名，如<font color="#FF0000">qibosoft.com</font>,前面不能加<b><font color="#0000FF">www.</font></b>如果你使用IP访问整站的话，必须要留空，或者是输入IP进去。如果你的网站更换了国际域名。这里必须跟着修改，否则前台会员将不能登录。如果整合论坛后，发现跟论坛不能同步登录的话，你必须在这里设置国际域名，如qibosoft.com，论坛也同样的要设置国际域名。DISCUZ论坛的设置方法是：修改文件/bbs/config.inc.php查找cookiedomain把他右边的值设置为你的国际域名.PHPWIND论坛的设置方法是：登录后台，在核心设置那里查找“COOKIE有效域名”然后填入你的国际域名即可，而“COOKIE有效目录”那一项，只能是输入斜杠/<br>
+          <font color="#FF0000">注意：</font>http://qibosoft.com与http://www.qibosoft.com属于不同的COOKIE作用域名，如果你右边留空的话，在这个网址http://qibosoft.com登录的话，再用http://www.qibosoft.com这个网址访问，是显示没登录的。所以此时也必须要设置COOKIE的国际域名。当然http://www.qibosoft.com与http://***.qibosoft.com这类的二级域名也是属于不同的COOKIE作用域，此时也必须要在右边设置qibosoft.com作为国际域名。而不能留空了。<br>
+          </span> </div>
+      </td>
+      <td bgcolor='#FFFFFF'> 
+        <input type='text' value='$webdb[cookieDomain]' name='webdbs[cookieDomain]' size='30'>
+        (如果会员登录不正常，请点击左边图标，查看帮助) </td>
+    </tr>
+     <tr>
+      <td width='28%' bgcolor='#FFFFFF'  > COOKIE前缀: </td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="10" name="webdbs[cookiePre]" value="$webdb[cookiePre]">
+        一般留空,当你安装多个齐博软件时,才设置,只能是纯字母或字母+数字</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'  > 
+        <div align="left">网站备案号:<span help=1>如果你还没备案或忘记备案号,<a href="http://www.miibeian.gov.cn" target="_blank">请点击这里</a></span></div>
+      </td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="30" name="webdbs[miibeian_gov_cn]" value="$webdb[miibeian_gov_cn]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>网页底部版权信息:</td>
+      <td bgcolor='#FFFFFF'> 
+        <textarea cols='60' name='webdbs[copyright]' rows='5'>$webdb[copyright]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>密钥(加密混淆字符串,请随意输入任意字符串即可):</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" size="60" name="webdbs[mymd5]" value="$webdb[mymd5]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>公司行业分类:</td>
+      <td bgcolor='#FFFFFF'> 
+        <textarea cols='60' name='webdbs[companyTrade]' rows='5'>$webdb[companyTrade]</textarea>
+      </td>
+    </tr>
+	
+	
+
+	
+	
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>会员中心公告消息:</td>
+      <td bgcolor='#FFFFFF'> 
+        <textarea cols='60' name='webdbs[memberNotice]' rows='5'>$webdb[memberNotice]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>会员上传头像是否自动裁剪:<span help=1>一般用户上传的头像尺寸都比较大,建议选择自动裁剪</span></td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[AutoCutFace]" value="1" $AutoCutFace[1]>
+        自动裁剪 
+        <input type="radio" name="webdbs[AutoCutFace]" value="0" $AutoCutFace[0]>
+        不裁剪</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>管理员后台登录是否使用验证码:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[yzImgAdminLogin]" value="1" $yzImgAdminLogin[1]>
+        使用 
+        <input type="radio" name="webdbs[yzImgAdminLogin]" value="0" $yzImgAdminLogin[0]>
+        不使用</td>
+    </tr>
+    <!--
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>下载文件是隐藏真实地址:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[DownLoad_readfile]" value="0" $DownLoad_readfile[0]>
+        不隐藏 
+        <input type="radio" name="webdbs[DownLoad_readfile]" value="1" $DownLoad_readfile[1]>
+        隐藏 (推荐隐藏,但如果隐藏导致无法正常下载,就取消隐藏,因为有少数服务器不支持隐藏)</td>
+    </tr>
+    -->
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>标签缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[label_cache_time]" size="5" value="$webdb[label_cache_time]">
+        分钟 (留空或为0则默认为3分钟,建议10分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+ 
+
+
+<tr bgcolor="#FFFFFF"> 
+      <td width='26%'> 
+        <div align="left">是否允许游客使用搜索功能:</div>
+      </td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_allowGuesSearch]" value="1" $Info_allowGuesSearch[1]>
+        允许 
+        <input type="radio" name="webdbs[Info_allowGuesSearch]" value="0" $Info_allowGuesSearch[0]>
+        禁止</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发表一条信息奖励{$webdb[MoneyName]}:<br>
+        (只有通过审核的,才有奖励) </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[PostInfoMoney]" size="7" value="$webdb[PostInfoMoney]">
+        $webdb[MoneyDW]</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>会员收藏夹最多只能收藏几条信息:<br>
+        留空则为50条</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[CollectArticleNum]" size="4" value="$webdb[CollectArticleNum]">
+        条</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>是否强制设置信息有效日期:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_UseEndTime]" value="1" $Info_UseEndTime[1]>
+        强制设置有效日期 
+        <input type="radio" name="webdbs[Info_UseEndTime]" value="0" $Info_UseEndTime[0]>
+        可不选择有效日期 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>是否自动删除过期信息:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_DelEndtime]" value="1" $Info_DelEndtime[1]>
+        自动删除(推荐) 
+        <input type="radio" name="webdbs[Info_DelEndtime]" value="0" $Info_DelEndtime[0]>
+        不删除</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>是否显示所有信息:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_ShowNoYz]" value="1" $Info_ShowNoYz[1]>
+        显示所有信息 
+        <input type="radio" name="webdbs[Info_ShowNoYz]" value="0" $Info_ShowNoYz[0]>
+        只显示已审核信息</td>
+    </tr>
+    <!--
+EOT;
+if( count($city_DB[name])>1 ){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>用户首次访问,选择城市方式:</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_MemberChooseCity]" value="1" $Info_MemberChooseCity[1]>
+        用户手动选择城市 
+        <input type="radio" name="webdbs[Info_MemberChooseCity]" value="0" $Info_MemberChooseCity[0]>
+        系统自动跳转到对应的城市
+        <input type="radio" name="webdbs[Info_MemberChooseCity]" value="2" $Info_MemberChooseCity[2]>
+        默认第一个城市 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>选择城市,展示方式:(某些风格不受控制)</td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[Info_allcityType]" value="1" $Info_allcityType[1]>
+        按字母排列 
+        <input type="radio" name="webdbs[Info_allcityType]" value="0" $Info_allcityType[0]>
+        按省份排列</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发布信息,有效天数:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_showday]" size="50" value="$webdb[Info_showday]">
+        每个参数用斜线/隔开,如:90/60/30</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>刷新信息的时间间隔:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[UpdatePostTime]" size="4" value="$webdb[UpdatePostTime]">
+        小时(留空,则默认为1小时)</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>联系方式:(仅供某些风格使用)</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[Info_contact]" cols="50" rows="6">$webdb[Info_contact]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>举报信息的性质类型</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[Info_ReportDB]" cols="50" rows="6">$webdb[Info_ReportDB]</textarea>
+        每个换一行</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>伪静态的形式:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[Info_htmlType]" value="0" $Info_htmlType[0]>
+        动态 
+        <input type="radio" name="webdbs[Info_htmlType]" value="1" $Info_htmlType[1]>
+        普通伪静态 
+        <!--
+EOT;
+if( count($city_DB[name])>1 ){print <<<EOT
+-->
+        <input type="radio" name="webdbs[Info_htmlType]" value="2" $Info_htmlType[2]>
+        高级伪静态(类似58同城与赶集网那样的形式) 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>伪静态文件名:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_htmlname]" size="8" value="$webdb[Info_htmlname]">
+        一般是“html”,“htm”,默认是“html”</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>首页缓存时间:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_index_cache]" value="$webdb[Info_index_cache]" size="5">
+        分钟,不想使用缓存的话,写0,数据大的时候,推荐60分钟以上</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>列表页缓存时间:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_list_cache]" value="$webdb[Info_list_cache]" size="5">
+        分钟,不想使用缓存的话,写0,数据大的时候,推荐600分钟以上</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>允许上传本地组图的用户组:(管理员默认有权限,游客强制没权限,不选择则都有权限)</td>
+      <td bgcolor='#FFFFFF' width="74%">$group_UpPhoto</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发布信息允许上传本地图片的用户组:(管理员默认有权限,不选择则都有权限)</td>
+      <td bgcolor='#FFFFFF' width="74%">$Post_group_UpPhoto</td>
+    </tr>
+     
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>防信息群发机<br>
+        随机字符串生成时间间隔:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[rand_num_mktime]" size="8" value="$webdb[rand_num_mktime]">
+        小时 （留空或为0时，将不启用。原理是：每隔一段时间生成一个随机字符串，发布信息时，表单页将得到随机生成的字符串，而注册机将无法同步获取对应的字符串）</td>
+    </tr>
+	
+ <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>使用的地图类型:<span help=1>51地图仅中国地区可用,而谷歌地图全世界的地区都可以使用</span></td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[if_GGmap]" value="1" $if_GGmap[1]>
+        谷歌地图 
+        <input type="radio" name="webdbs[if_GGmap]" value="0" $if_GGmap[0]>
+        51地图</td>
+    </tr>
+	  <tr bgcolor="#FFFFFF"> 
+      <td width='26%'>手机访问主页时是否自动跳转到3G频道:<span help=1>为了确保其它功能不受影响,访问其它页面不会跳转</span></td>
+      <td width="74%"> 
+        <input type="radio" name="webdbs[mob_goto_3g]" value="1" $mob_goto_3g[1]>
+        自动跳转 
+        <input type="radio" name="webdbs[mob_goto_3g]" value="0" $mob_goto_3g[0]>
+        不跳转</td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

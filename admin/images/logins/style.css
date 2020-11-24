@@ -1,0 +1,112 @@
+/*
+*初始化样式
+*/
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size:12px;
+	background:url(bg.gif) center top repeat-y;
+	text-align:center;
+}
+li,ul{
+	list-style: none;
+} 
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+} 
+input,textarea{
+	border:1px solid #ccc;
+}
+a {
+	color:#333;
+}
+a:link {
+	color:#333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+/*
+*
+*/
+.container{
+	width:490px;
+	margin:150px auto 10px auto;	
+	position:relative;
+}
+.container .head{
+	height:60px;
+	background:url(contbg.gif) center top no-repeat;
+}
+.container .cont{
+	padding:20px 0 40px 0;
+	background:url(contbg.gif) center bottom no-repeat;
+	text-align:left;
+}
+.container .cont dl{
+	height:45px;
+	overflow:hidden;
+}
+.container .cont dl dt{
+	width:140px;
+	padding-right:5px;
+	text-align:right;
+	line-height:40px;
+	float:left;
+	color:#126CC1;
+	font-size:14px;
+	font-weight:bold;
+}
+.container .cont dl dd{
+	height:30px;
+	float:left;
+	padding-top:5px;
+}
+.container .cont dl dd span{
+	display:block;
+	float:left;
+	padding-right:5px;
+}
+.container .cont dl dd .input{
+	border:0;
+	width:250px;
+	height:30px;
+	line-height:30px;
+	background:url(input.gif) no-repeat;
+	padding-left:2px;
+}
+.container .cont dl dd .yz{
+	width:80px;
+	height:25px;
+	line-height:25px;
+}
+.container .cont dl dd .Submit{
+	border:0;
+}
+.container .cont dl dd .reset{
+	border:0;
+	width:102px;
+	height:32px;
+	background:url(reset.gif) no-repeat;
+}
+.container .key{
+	width:110px;
+	height:176px;
+	position:absolute;
+	background:url(key.gif) no-repeat;
+	left:-35px;
+	bottom:-55px;
+	z-index:100;
+}

@@ -1,0 +1,55 @@
+#nav .nav_zone {
+	BACKGROUND-POSITION: 0px 0px
+}
+#nav .nav_zone LI A {
+	BACKGROUND-POSITION: right 0px
+}
+#nav .nav_zone LI.current {
+	BACKGROUND-POSITION: center 0px
+}
+#picinfo .head{
+	background:url(head4.gif) center bottom no-repeat;
+}
+.MainTable .dragTable .head {
+	background:url(head4.gif) left bottom no-repeat;
+}
+#wydianping .a{
+	background:url(head4.gif) left top no-repeat;
+}
+#wydianping .b{
+	background:#E6E6E6;
+	line-height:20px;
+}
+.maindiv .sidecenter .centbox .head .l{	
+	background:#EA0E00;
+}
+
+#mainbigsort .bigsortleft .contbox{
+	border:#F23002 solid 1px;
+	border-top:#F23002 solid 2px;
+}	
+#mainbigsort .bigsortleft .contbox .head{
+	border-bottom:#F23002 dotted 1px;
+	color:#F23002;
+}
+#mainbigsort .bigsortleft .leftadpic{
+	border:#F23002 solid 1px;
+}
+.bigsortright .rconbox{
+	border:#F23002 solid 1px;
+	border-top:#F23002 solid 2px;
+}
+.bigsortright .rconbox .head{
+	border-bottom:#F23002 dotted 1px;
+	color:#F23002;
+}	
+.base_table{
+	border:#E6E6E6 solid 1px;
+}	
+.base_table .h{
+	background:#DBDBDB;
+	line-height:25px;
+}
+.base_table .m{
+	background:#efefef;
+}

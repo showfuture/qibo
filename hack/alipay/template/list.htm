@@ -1,0 +1,69 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&">
+    <tr align="center" class="head"> 
+      <td width="5%">ID</td>
+      <td width="21%">支付序号</td>
+      <td width="7%">金额(元)</td>
+      <td width="12%"> 支付与否</td>
+      <td width="25%">支付日期</td>
+      <td width="12%">用户</td>
+      <td width="18%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="21%"> 
+        <input type="checkbox" name="listdb[{$rs[id]}]" value="{$rs[id]}">
+        $rs[numcode]</td>
+      <td align="center" width="7%">$rs[money]</td>
+      <td align="center" width="12%"> $rs[ifpay]</td>
+      <td width="25%" align="center">$rs[posttime]</td>
+      <td align="center" width="12%"><A HREF="../member/homepage.php?uid=$rs[uid]" target=_blank>$rs[username]</A></td>
+      <td align="center" width="18%"><a href="?lfj=$lfj&action=delete&id=$rs[id]">删除</a> 
+        $rs[setpay]</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"> <a href="#" onClick="CheckAll('all')">全选</a> / <a href="#" onClick='CheckAll()'>反选</a> 
+        {$showpage} 
+        <input type="button" name="Submit" value="删除" onclick="postdo('delete')">
+         
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+function postdo(d){
+	document.form_work.action.value=d;
+	document.form_work.submit();
+}
+//-->
+</SCRIPT>
+        <input type="hidden" name="action">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

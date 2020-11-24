@@ -1,0 +1,273 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style type="text/css">
+.FormTable td.tdL{
+	width:200px;
+	font-weight:bold;
+}
+</style>
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="setindex_left_right();">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+  <tr>
+    <td class="tdL">整体风格:</td>
+    <td class="tdR">
+    	<select name="conf[style]" size="10" id="conf_style"  style="float:left;" onchange="change_mystyle(this);">
+<!--
+EOT;
+foreach($homepage_tpl as $key=>$val){
+$ck=$conf[style]==$key?" selected":"";
+print <<<EOT
+-->
+              <option   value="$key" $ck >$val</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+         </select>
+         <img src="$Murl/images/homepage_style/$conf[style]/icon.jpg"  width="200" height="150" style="float:left;margin-left:5px;" id="shoostyleicon"/> 
+<script language="javascript">
+function change_mystyle(my){
+	var style_key=my.options[my.selectedIndex].value;
+	array1 = '$style_level[useHomepageStyle]'.split(',');
+	for(var i=0;i<array1.length;i++){
+		if(style_key==array1[i] && "$groupdb[useHomepageStyle]"!="1"){
+			if(confirm('这是VIP风格，你所在用户组无权使用！\\r\\n 推荐您购买更高的会员等级，是否现在购买？')){
+				window.location='$webdb[www_url]/member/buygroup.php?job=list';
+			}else{
+				my.selectedIndex=0;
+				return false;
+			}
+		}
+	}
+
+	array1 = '$style_level[useHomepage2Style]'.split(',');
+	for(var i=0;i<array1.length;i++){
+		if(style_key==array1[i] && "$groupdb[useHomepage2Style]"!="1"){
+			if(confirm('这是钻石风格，你所在用户组无权使用！\\r\\n 推荐您购买更高的会员等级，是否现在购买？')){
+				window.location='$webdb[www_url]/member/buygroup.php?job=list';
+			}else{
+				my.selectedIndex=0;
+				return false;
+			}
+		}
+	}
+ 
+	document.getElementById('shoostyleicon').src='$Murl/images/homepage_style/'+style_key+'/icon.jpg';
+}        
+</script>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">
+    	<div>头部导航设置:</div>
+        <ul>
+        <li>格式：</li>
+        <li>1.本站的：homepage.php?m=selllist</li>
+        <li>2.外链的要加上 "http://", 如：http://www.qibosoft.com </li>
+        <li>3.要删除某条链接,请把标题,链接地址同时清空,再提交保存一下即可</li>
+        </ul>
+    </td>
+    <td class="tdR">
+    	<ul class="lists Hlists">
+        	<li class="li1">标题</li>
+            <li class="li2">链接地址</li>
+            <li class="li3">排序</li>
+            <li class="li4">显示</li>
+        </ul>
+<!--
+EOT;
+foreach($h_menu as $key =>$rs){
+print<<<EOT
+-->
+		<ul class="lists">
+        	<li class="li1"><input type="text" name="conf[h_title][$key]" value="$rs[title]"/></li>
+            <li class="li2"><input type="text" name="conf[h_url][$key]" value="$rs[url]" /></li>
+            <li class="li3"><input type="text" name="conf[h_order][$key]" value="$rs[order]" /></li>
+            <li class="li4"><input name="conf[h_ifshow][$key]" value="1"  type="checkbox" {$rs[ifshow]}/></li>
+        </ul>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+		<ul class="lists">
+        	<li class="li1"><input type="text" name="conf[h_title][$timestamp]" /></li>
+            <li class="li2"><input type="text" name="conf[h_url][$timestamp]"/></li>
+            <li class="li3"><input type="text" name="conf[h_order][$timestamp]"/></li>
+            <li class="li4"><input name="conf[h_ifshow][$timestamp]" value="1" type="checkbox" /></li>
+            <li class="li4">新增</li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">
+    	<div>网页窄部分设置:</div>
+        <div><img src="$Murl/images/default/index_left_show.jpg" /></div>
+    </td>
+    <td class="tdR">
+    	<ul class="lists2">
+        	<li class="li1">
+            	<div>候选模块</div>
+            	<select name="index_left_hx" size="8" id="index_left_hx" style="width:100px">
+                  $index_left_hx         
+          		</select>
+            </li>
+            <li class="li2">
+            	<div><input type="button" name="button2" id="button2" value="→添加" onclick="action_mod('left','add')" /></div>
+                <div><input type="button" name="button3" id="button3" value="←移除"  onclick="action_mod('left','del')"/></div>
+                <div><input type="button" name="button4" id="button4" value="↑上移"  onclick="action_mod('left','up')" /></div>
+                <div><input type="button" name="button5" id="button5" value="↓下移"  onclick="action_mod('left','down')"/></div>
+            </li>
+            <li class="li3">
+            	<div class="red">已经显示模块</div>
+                <select name="conf[index_left][]" size="8" multiple id="index_left" style="width:100px">
+            		$index_left
+            	</select>
+            </li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">
+    	<div>网页宽部分设置:</div>
+        <div><img src="$Murl/images/default/index_right_show.jpg" /></div>
+    </td>
+    <td class="tdR">
+    	<ul class="lists2">
+        	<li class="li1">
+            	<div>候选模块</div>
+            	<select name="index_right_hx" size="8" id="index_right_hx" style="width:100px">
+                  $index_right_hx       
+          		</select>
+            </li>
+            <li class="li2">
+            	<div><input type="button" name="button6" id="button6" value="→添加" onclick="action_mod('right','add')"/></div>
+                <div><input type="button" name="button6" id="button7" value="←移除" onclick="action_mod('right','del')"/></div>
+                <div><input type="button" name="button6" id="button8" value="↑上移" onclick="action_mod('right','up')"/></div>
+                <div><input type="button" name="button6" id="button9" value="↓下移" onclick="action_mod('right','down')"/></div>
+            </li>
+            <li class="li3">
+            	<div class="red">已经显示模块</div>
+                <select name="conf[index_right][]" size="8" multiple  id="index_right" style="width:100px">
+            		$index_right
+            	</select>
+            </li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">主页显示设置:</td>
+    <td class="tdR">
+    	<div>留 言 本 <input name="conf[listnum][guestbook]" type="text" size="3" value="{$conf[listnum][guestbook]}" /> 条</div>
+        <div>访客足迹 <input name="conf[listnum][visitor]" type="text" size="3" value="{$conf[listnum][visitor]}" /> 位</div>
+        <div>新闻动态 <input name="conf[listnum][newslist]" type="text" size="3" value="{$conf[listnum][newslist]}" /> 条</div>
+        <div>友情链接 <input name="conf[listnum][friendlink]" type="text" size="3" value="{$conf[listnum][friendlink]}" /> 个</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">列表页显示设置:</td>
+    <td class="tdR">
+    	<div>留 言 本 <input name="conf[listnum][Mguestbook]" type="text" size="3" value="{$conf[listnum][Mguestbook]}" /> 条</div>
+        <div>访客足迹 <input name="conf[listnum][Mvisitor]" type="text" size="3" value="{$conf[listnum][Mvisitor]}" /> 位</div>
+        <div>新闻动态 <input name="conf[listnum][Mnewslist]" type="text" size="3" value="{$conf[listnum][Mnewslist]}" /> 条</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><br/></td>
+    <td class="tdR">
+    	<input type="submit" name="button" id="button" value="保 存" />
+        <input name="atn" type="hidden" id="atn" value="$atn" />
+        <input name="step" type="hidden" id="step" value="1" />
+        <input name="uid" type="hidden" id="uid" value="$uid" />
+        <input name="conf[hid]" type="hidden" id="conf[hid]" value="$conf[hid]" />
+        <input name="conf[rid]" type="hidden" id="conf[rid]" value="$conf[rid]" />
+    </td>
+  </tr>
+</table>
+</form>
+<script language="javascript">
+function action_mod(modname,action){
+	var mod   =document.getElementById("index_"+modname);
+	var mod_hx=document.getElementById("index_"+modname+"_hx");
+	if(action=='add'){ //添加模块
+	   var val=	mod_hx.value;
+	   if(val==''){
+		 alert("请先选择一个模块再进行添加。");return false;
+	   }
+	   for( var i=0;i<mod.options.length;i++){
+			if(mod.options[i].value==val){
+				alert("此模块已经存在.");return false;
+			}
+	   }
+		var opt=new Option(mod_hx.options[mod_hx.selectedIndex].text,val);
+		mod.options[mod.options.length]=opt;
+		mod_hx.remove(mod_hx.selectedIndex);
+				
+	}else if(action=='del'){
+		var val = mod.value;
+		
+
+		if(mod.options.length<2) {
+		   alert("必须保留至少一个模块"); return false;
+		}
+		if(val==''){
+			alert("请先选择一个模块"); return false;
+		}
+
+		var opt=new Option(mod.options[mod.selectedIndex].text,val);
+		mod_hx.options[mod_hx.options.length]=opt;
+
+		mod.remove(mod.selectedIndex);
+	}else if(action=='up'){
+		
+		if(mod.value==''){
+			alert("请先选择一个模块"); return false;
+		}
+		if(mod.selectedIndex<1){
+			alert("已经到顶了"); 
+		}
+		var index=mod.selectedIndex;
+		var upp_text =mod.options[index-1].text;
+		var upp_value=mod.options[index-1].value;
+		var me_text  =mod.options[index].text;
+		var me_value =mod.options[index].value;
+		mod.options[index-1]=new Option(me_text,me_value);
+		mod.options[index]=new Option(upp_text,upp_value);
+		mod.selectedIndex=index-1;
+	}else if(action=='down'){
+		
+		if(mod.value==''){
+			alert("请先选择一个模块"); return false;
+		}
+		if(mod.selectedIndex == (mod.options.length-1) ){
+			alert("已经是最后了"); 
+		}
+		var index=mod.selectedIndex;
+		var down_text =mod.options[index+1].text;
+		var down_value=mod.options[index+1].value;
+		var me_text  =mod.options[index].text;
+		var me_value =mod.options[index].value;
+		mod.options[index+1]=new Option(me_text,me_value);
+		mod.options[index]=new Option(down_text,down_value);
+		mod.selectedIndex=index+1;
+	}
+}
+function setindex_left_right()
+{
+	var mod_left    =document.getElementById("index_left");
+	var mod_right   =document.getElementById("index_right");
+	 for( var i=0;i<mod_left.options.length;i++){
+	 	mod_left.options[i].selected=" selected";
+	 }
+	 for( var j=0;j<mod_right.options.length;j++){
+	 	mod_right.options[j].selected=" selected";
+	 }
+}
+</script>
+<!--
+EOT;
+?>
+-->

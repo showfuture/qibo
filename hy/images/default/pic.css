@@ -1,0 +1,138 @@
+.maincont1{
+	border:#DDD solid 1px;
+}
+.maincont1 .head{
+	height:31px;
+	overflow:hidden;
+	border:#FFF solid 1px;
+	background:#EFEFEF;
+	border-bottom:#DDD solid 1px;
+}
+.maincont1 .head .tag{
+	float:left;
+	padding:3px 0 0 15px;
+	line-height:28px;
+	font-weight:bold;
+}
+.maincont1 .head .more{
+	float:right;
+	padding:3px 10px 0 0;
+	line-height:28px;
+}
+.maincont1 .head .more span{
+	color:green;
+	padding-right:3px;
+	font-weight:bold;
+}
+.maincont1 .cont{
+	padding:10px;
+}
+/*
+*/
+.Listphoto1{
+	width:174px;
+	height:150px;
+	padding-top:17px;
+	overflow:hidden;
+	float:left;
+	background:url(pbg.gif) center 10px no-repeat;
+}
+.Listphoto1 .img{
+	width:100px;
+	height:100px;
+	overflow:hidden;
+	margin:0 auto 15px auto;
+}
+.Listphoto1 .t{
+	width:110px;
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	margin:auto;
+}
+.photoSelect{
+	clear:both;
+	padding:5px 0 15px 0;
+	text-align:center;
+}
+.showMainPic{
+	position:relative;
+	width:700px;
+	overflow:hidden;
+}
+.showMainPic .img{
+	text-align:center;
+}
+.showMainPic .t{
+	padding:8px 0 15px 0;
+	text-align:center;
+}
+.showMainPic li{
+	width:200px;
+	position:absolute;
+	top:0;
+	z-index:1000;
+	cursor:pointer;
+}
+.showMainPic li table{
+	height:100px;
+	width:200px;	
+}
+.showMainPic li table img{
+	display:none;
+}
+.showMainPic li table td{
+	text-align:center;
+	vertical-align:middle;
+}
+.showMainPic li.up{
+	left:0;
+}
+.showMainPic li.down{
+	right:0;
+}
+.showMainPic li.over table img{
+	display:inline;
+}
+.listPhoto2{
+	width:116px;
+	height:135px;
+	overflow:hidden;
+	float:left;
+}
+.listPhoto2 div{
+	width:100px;
+	margin:auto;
+	text-align:center;
+	line-height:20px;
+	overflow:hidden;
+}
+.listPhoto2 div.img{
+	border:#DDD solid 1px;
+	padding:1px;
+	margin-bottom:3px;
+}
+.listPhoto2 div.ck{
+	border:#f00 solid 1px;
+}
+.pic_act{
+	height:30px;
+	overflow:hidden;
+}
+.pic_act dt,.pic_act dd{
+	width:50%;
+	height:30px;
+	float:left;
+	line-height:30px;
+	text-align:center;
+}
+.Shoppage{
+	padding:8px 0 15px 0;
+	text-align:center;
+	clear:both;
+}
+.Shoppage a{
+	border:#DDD solid 1px;
+	color:#888;
+	padding:3px 5px 2px 5px;
+}

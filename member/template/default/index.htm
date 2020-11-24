@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员中心 </title>
+<link rel="stylesheet" type="text/css" href="images/default/css.css">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<div id="TopDiv">
+<ul>
+	<li><a href="$webdb[www_url]/">网站主页</a></li>
+	<li><a href="$webdb[www_url]/hy/">黄页</a></li>
+<!--
+EOT;
+$Fid_db = include(ROOT_PATH."data/all_fid.php");
+$i=0;
+foreach($Fid_db[0] AS $key=>$name){
+$i++;if($i>6)break;
+print <<<EOT
+-->
+	<li><a href="$webdb[www_url]/list.php?fid=$key">$name</a></li> 
+<!--
+EOT;
+}print <<<EOT
+-->	
+    <li><a href="$webdb[www_url]/post.php" style="color:red;">免费发布</a></li>
+    
+</ul>
+</div>
+<div class="Header">
+	<div class="Logo"><a href="index.php?SystemId=$SystemId"><img src="images/default/logo.gif"></a></div>
+    <div class="welcome">
+    	您好,$lfjid 
+        <a HREF="homepage.php?uid=$lfjuid" target="_blank">个人信息</a> 
+        <a href="$webdb[www_url]/do/login.php?action=quit">安全退出</a>
+    </div>
+</div>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="MainCont">
+  <tr>
+    <td class="Menus">
+    	<h3>会员功能菜单</h3>
+        <p>
+			<span class="showall">全部展开</span>
+        	<span class="hideall">全部收缩</span>
+        </p>
+<!--
+EOT;
+foreach($menudb AS $SortName=>$array){
+print<<<EOT
+-->
+        <dl> 
+           <dt>$SortName</dt>
+           <dd>
+<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if($array2[target]){
+$target=$array2[target];
+}elseif(ereg("^../",$array2[link])){
+$target='_blank';
+}else{
+$target='win';
+}
+print<<<EOT
+-->
+          <div><a href='$array2[link]' target='$target'>$MenuName</a></div>
+<!--
+EOT;
+}print<<<EOT
+-->			</dd>
+        </dl>
+<!--
+EOT;
+}print<<<EOT
+--> 
+    </td>
+    <td class="Iframe"><iframe width="100%" height="600" id="win" name="win" frameborder="0" scrolling="no" src="$MainUrl"></iframe></td>
+  </tr>
+</table>
+<div class="CopyRight">
+<!--
+EOT;
+$webdb[copyright] = $webdb[copyright] ? "<div>$webdb[copyright]</div>":"";
+print<<<EOT
+--> <center>
+</center>
+</div>
+<SCRIPT language=javascript>
+<!--
+$(function(){
+	$(".Menus dl dt").click(function(){
+		$(this).parent("dl").toggleClass("hidden");
+	});
+	$(".showall").click(function(){
+		$(".Menus dl").removeClass("hidden");
+	});
+	$(".hideall").click(function(){
+		$(".Menus dl").addClass("hidden");
+	});
+});
+//-->
+</script>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

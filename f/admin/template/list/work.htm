@@ -1,0 +1,199 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&action=work">
+    <tr align="center" class="head"> 
+      <td width="3%">ID</td>
+      <td><font color="#FFFFFF">标 题 </font></td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $id=>$title){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="3%" align="center">$id</td>
+      <td> 
+        <input type="checkbox" name="listdb[{$id}]" value="$id" checked>
+        $title</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="2"> <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+        <!--
+EOT;
+if($jobs=="yz"){
+print <<<EOT
+-->
+        <input type="button" name="Submit2" value="通过审核" onclick="postdo('yz')">
+		<input type="button" name="Submit2" value="取消审核" onclick="postdo('unyz')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="com"){
+print <<<EOT
+-->
+        <select name="levels">
+          <option value="1" selected>一星级</option>
+
+  </select>
+        <input type="button" name="Submit42223" value="推荐精华" onclick="postdo('com')">
+		 <input type="button" name="Submit42223" value="取消推荐" onclick="postdo('uncom')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="top"){
+print <<<EOT
+-->
+        <select name="toptime">
+    <option value="94608000" selected>置顶三年</option>
+    <option value="86400">置顶一天</option>
+    <option value="172800">置顶二天</option>
+    <option value="259200">置顶三天</option>
+    <option value="604812">置顶一周</option>
+    <option value="2592000">置顶一月</option>
+    <option value="31536000">置顶一年</option>
+  </select><input type="button" name="Submit4" value="置顶操作" onclick="postdo('top')">
+		<input type="button" name="Submit4" value="取消置顶" onclick="postdo('untop')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="front"){
+print <<<EOT
+-->比指定ID稍前(留空将默认最前) 
+  <input type="text" name="topid" size="8">
+        <input type="button" name="Submit422" value="确认提前" onclick="postdo('front')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="punish"){
+print <<<EOT
+-->
+        扣分类型: 
+        <input type="radio" name="Type" value="1">
+        分类选择错误(扣{$webdb[ErrSortMoney]}分) 
+        <input type="radio" name="Type" value="2" checked>
+        发布违规/违法信息(扣{$webdb[illInfoMoney]}分) 
+        <input type="button" name="Submit422" value="确认" onclick="postdo('front')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="color"){
+print <<<EOT
+-->
+        <select  name="color">
+                      <option value='' style='background-color:skyblue;color:black'  selected>标题颜色</option>
+                      <option value='black' style='background-color:skyblue;color:black'>黑色</option>
+                      <option value='skyblue' style='color:skyblue'>天蓝</option>
+                      <option value='royalblue' style='color:royalblue'>品蓝</option>
+                      <option value='blue' style='color:blue'>蓝</option>
+                      <option value='darkblue' style='color:darkblue'>暗蓝</option>
+                      <option value='orange' style='color:orange'>橙</option>
+                      <option value='orangered' style='color:orangered'>桔红</option>
+                      <option value='crimson' style='color:crimson'>深红</option>
+                      <option value='red' style='color:red'>红</option>
+                      <option value='firebrick' style='color:firebrick'>棕</option>
+                      <option value='darkred' style='color:darkred'>暗红</option>
+                      <option value='green' style='color:green'>绿色</option>
+                      <option value='limegreen' style='color:limegreen'>灰绿</option>
+                      <option value='seagreen' style='color:seagreen'>海绿</option>
+                      <option value='deeppink' style='color:deeppink'>粉</option>
+                      <option value='tomato' style='color:tomato'>西红柿色</option>
+                      <option value='coral' style='color:coral'>珊瑚色</option>
+                      <option value='purple' style='color:purple'>紫色</option>
+                      <option value='indigo' style='color:indigo'>靛青</option>
+                      <option value='burlywood' style='color:burlywood'>棕木</option>
+                      <option value='sandybrown' style='color:sandybrown'>沙褐</option>
+                      <option value='sienna' style='color:sienna'>土黄</option>
+                      <option value='chocolate' style='color:chocolate'>巧克力色</option>
+                      <option value='teal' style='color:teal'>土绿</option>
+                      <option value='silver' style='color:silver'>银</option>
+                    </select><input type="button" name="Submit42" value="标题彩色" onclick="postdo('color')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="bottom"){
+print <<<EOT
+-->比指定ID稍后(留空将默认最后) 
+  <input type="text" name="bottomid" size="8">
+        <input type="button" name="Submit4222" value="确认沉底" onclick="postdo('bottom')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="move"){
+print <<<EOT
+-->
+       移到所属栏目,$sort_fid<input type="button" name="Submit42222" value="移动" onclick="postdo('move')"><br>
+	   注意:只有同属模块的才能被移进来,不同属模块,比如求职与房产是不能互转移栏目,因为栏目的功能字段不一样
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <!--
+EOT;
+if($jobs=="delete"){
+print <<<EOT
+-->
+        <input type="radio" name="forcedel" value="1" checked>
+        彻底删除 
+        <input type="button" name="Submit3" value="确认删除" onclick="postdo('delete')">
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <input type="hidden" name="jobs" value="$jobs">
+      <input type="button" name="Submit" value="放弃本次操作，点击返回" onClick='javascript:history.go(-1);' style="background:#FFDFDF;">
+        <input type="hidden" name="fromurl" value="$FROMURL">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

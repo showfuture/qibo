@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">短消息管理</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="8%">id</th>
+            <th width="45%">标题</th>
+            <th width="12%">发件人</th>
+            <th width="15%">时间</th>
+            <th width="10%">状态</th>
+            <th width="10%">删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr>
+            <td>{$rs[mid]}</td>
+            <td class="tL"><a href="?job=read&mid=$rs[mid]" title="$rs[full_title]">$rs[title]</a></td>
+            <td><a href="userinfo.php?uid=$rs[fromuid]" target="_blank">$rs[username]</a></td>
+            <td>$rs[mdate]</td>
+            <td>$rs[state]</td>
+            <td><a href="?job=del&mid=$rs[mid]">删除</a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

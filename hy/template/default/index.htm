@@ -1,0 +1,191 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Mdomain/images/hy/index.css">
+<script type="text/javascript" src="$Mdomain/images/hy/sliding.js"></script>
+<div class="MainContainer1">
+	<div class="SideL">
+    	<div class="ActionCont">
+        	<a href="$webdb[www_url]/home/?uid=$lfjuid" target="_blank"><img src="$Mdomain/images/hy/butter1.gif"/></a>
+        	<a href="$webdb[www_url]/member/?main=$Murl/member/post_company.php" target="_blank"><img src="$Mdomain/images/hy/butter2.gif"/></a>
+        </div>
+        <div class="sidecont">
+        	<div class="head"><span class="tag">商家资讯</span></div>
+            <div class="newscont">
+            	<div class="cc1">{$label[hy_indext1]}</div>
+                <div class="cc2">{$label[hy_indext2]}</div>
+            </div>
+        </div>
+    </div>
+    <div class="SideC">
+    	<div class="slidescont">
+        	{$label[hy_indext3]}
+        </div>
+    </div>
+    <div class="SideR">
+    	<div class="sidecont">
+        	<div class="head"><span class="tag">最新信息</span></div>
+            <div class="couponcont">
+            	{$label[hy_indext4]}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="MainContainer2">
+	<div class="MainL">
+    	<div class="ShowCommpany">
+        	<div class="head">
+            	<span class="tag">商家动态</span>
+                <div onmouseover="ShowTab(1,1,4)" id="Span1">推荐商家</div>
+                <div onmouseover="ShowTab(2,1,4)" id="Span2">最新商家</div>
+                <div onmouseover="ShowTab(3,1,4)" id="Span3">热门商家</div>
+                <span class="more"><a href="listall.php">更多商家</a></span>
+            </div>
+            <div class="cont" id="Tab1">
+            	{$label[hy_indext5]}
+            </div>
+            <div class="cont" id="Tab2">
+            	{$label[hy_indext6]}
+            </div>
+            <div class="cont" id="Tab3">
+            	{$label[hy_indext7]}
+            </div>
+        </div>
+        <SCRIPT LANGUAGE="JavaScript">ShowTab(1,1,4);</SCRIPT>
+        <div class="ShowSort mt10">
+        	<div class="head">
+            	<span class="tag">商家分类</span>
+                <span class="more"><a href="$webdb[www_url]/member/?main=$Murl/member/post_company.php" target="_blank"><img src="$Mdomain/images/hy/butter3.gif"/></a></span>
+            </div>
+            <div class="cont">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" id="ShowSortTable" onmouseout="HiddenTdBg()">
+<!--
+EOT;
+$trnum=0;
+$j=0;
+foreach($Fid_db[0] as $key=>$value){
+$j++;
+$trbg = $j%2 == 0 ? "class = 'havebg'" : "";
+if($trnum==0){
+print <<<EOT
+-->
+                  <tr $trbg>
+<!--
+EOT;
+}$trnum++;print <<<EOT
+-->
+                    <td onmouseover="ShowTdBg(this)">
+                    	<dl>
+                        	<dt><a href="list.php?fid=$key">{$value}</a></dt>
+                            <dd>
+<!--
+EOT;
+foreach($Fid_db[$key] as $keys=>$rs){
+print <<<EOT
+-->
+								<a href="list.php?fid=$keys">{$rs}</a> |
+<!--
+EOT;
+}
+print <<<EOT
+-->
+								<a href="list.php?fid=$key" class="m">更多&gt;&gt;</a>
+                            </dd>
+                        </dl>
+                    </td>
+<!--
+EOT;
+if($trnum==3){
+$trnum=0;print <<<EOT
+-->
+                  </tr>
+<!--
+EOT;
+}}if($trnum && $trnum<3){
+for($i=$trnum;$i<3;$i++){print <<<EOT
+-->
+			<td onmouseover="ShowTdBg(this)">&nbsp;</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+		</tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+                </table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var objtd=document.getElementById("ShowSortTable").getElementsByTagName("td");
+function ShowTdBg(TheTd){
+	for(var i=0;i< objtd.length;i++ ){
+		objtd[i].className='';
+	}
+	TheTd.className='choose';
+}
+function HiddenTdBg(){
+	for(var i=0;i< objtd.length;i++ ){
+		objtd[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+            </div>
+        </div>
+        <div class="TzInfo mt10">
+        	<div class="head"><span class="tag">推荐商家产品</span></div>
+            <div class="cont">
+            	<div onclick="showup()" id="showup"><br/></div>
+        			<ul id="ShowList">
+            			{$label[hy_indext8]}
+                    </ul>
+                <div onclick="showdown()" id="showdown"><br/></div>
+<script type="text/javascript" src="$Mdomain/images/hy/showmore.js"></script>
+            </div>
+        </div>
+    </div>
+    <div class="SideR">
+    	<div class="sidecont">
+        	<div class="head"><span class="tag">最新会员点评</span></div>
+            <div class="dianpingcong">
+<!--
+EOT;
+$array = get_dianping(3,70);
+foreach($array AS $rs){print <<<EOT
+-->	
+				<div class="listdianpin">
+                	<div><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank" class="m">$rs[username]</a>在{$rs[posttime]}点评了</div>
+                    <div><a href="$webdb[www_url]/home/?uid=$rs[id]" target="_blank" class="b">$rs[title]</a></div>
+                    <div class="dp">$rs[fen]</div>
+                    <div class="c">$rs[content]</div>
+                </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+        <div class="sidecont mt10">
+        	<div class="head"><span class="tag">推荐商家</span></div>
+            <div class="tzcommany">
+            	{$label[hy_indext10]}
+            </div>
+        </div>
+        <div class="sidecont mt10">
+            <div class="cont1">
+            	{$label[hy_indext11]}
+            </div>
+            <div class="cont2">
+            	{$label[hy_indext12]}
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<div class="MainBanner">{$label[hy_indext15]}</div>
+<!--
+EOT;
+?>
+-->

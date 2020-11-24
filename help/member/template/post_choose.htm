@@ -1,0 +1,50 @@
+<!--
+<?php 
+print <<<EOT
+-->
+<SCRIPT type=text/javascript>
+function showmore(fup,list,obj){
+	var pardt=obj.parent();
+	pardt.children().removeClass("ck");
+	obj.addClass("ck");
+	$.get("?job=showlist&nojump=1&fup="+fup+"&list="+list+"&"+Math.random(),function(d){
+		for(var i=list;i<5;i++){
+			$(".ShowSortTable .listshorts:eq("+i+")").html("<br/>");
+		}
+		$(".ShowSortTable .listshorts:eq("+list+")").html(d);		
+	});	
+}
+</SCRIPT>
+<div class="MainCont">
+	<div class="head"><div class="tag">请选择发表文章的栏目</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowSortTable">
+          <tr>
+            <td>
+            	<div class="listshorts">
+                	$listsorts0
+                </div>
+            </td>
+            <td>
+            	<div class="listshorts">
+                	<br/>
+                </div>
+            </td>
+            <td>
+            	<div class="listshorts">
+                	<br/>
+                </div>
+            </td>
+            <td>
+            	<div class="listshorts">
+                	<br/>
+                </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,47 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+<form action="?" method="post" name="form1" id="form1">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable mtop10">
+    <tr> 
+      <td class="tdR" colspan="2"> 
+         注意:独立页默认没有启用,你要启用的话,请改导航设置添加它为导航链接. [<a href="$webdb[www_url]/home/?uid=$uid&m=page" target="_blank">查看效果</a>] 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdL" width="21%">标题:</td>
+      <td class="tdR" width="79%"> 
+        
+          
+        <input type="text" name="page_title" size="60" value="$conf[page_title]">
+         
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdL" width="21%">内容:</td>
+      <td class="tdR" width="79%"> 
+        <textarea name="page_content" id="myEditor" style="width:550px;">$conf[page_content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:300});
+editor_a.render( 'myEditor' );
+</script>
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdL" width="21%"><br/>
+      </td>
+      <td class="tdR" width="79%"> 
+        <input type="submit" name="button7" id="button11" value="提交" onclick="setindex_left_right()" />
+        <input name="atn" type="hidden" id="atn3" value="$atn" />
+        <input name="step" type="hidden" id="step3" value="1" />
+        <input name="uid" type="hidden" id="uid3" value="$uid" />
+      </td>
+    </tr>
+  </table>
+</form>
+<!--
+EOT;
+?>
+-->

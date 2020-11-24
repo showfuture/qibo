@@ -1,0 +1,125 @@
+<!--
+<?php
+$Mpath=ROOT_PATH;
+$IF_Private_tpl[intval($webdb[IF_Private_tpl])]=' checked ';
+$HyRewrite[intval($webdb[HyRewrite])]=' checked ';
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">模块核心设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">模块名称:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[Info_webname]' size='30' value='$webdb[Info_webname]'>
+      </td>
+    </tr>
+   <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>本系统开放与否:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[module_close]" value="1" $module_close[1]>
+         关闭
+        <input type="radio" name="webdbs[module_close]" value="0" $module_close[0]>
+        开放</td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'> 
+        <div align="left">首页大分类下显示栏目最多数:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input    type='text' name='webdbs[Index_listsortnum]' size='5' value='$webdb[Index_listsortnum]'>个
+      </td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>当前使用的数据表前缀:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="text" name="webdbs[module_pre]" value="$webdb[module_pre]" readonly size="8">
+        (不可修改,仅供查看) </td>
+    </tr>
+    
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>创建商铺需要$webdb[MoneyName]</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[creat_home_money]" size="8" value="$webdb[creat_home_money]">
+        $webdb[MoneyDW] </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>商铺二级域名</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[vipselfdomain]" size="50" value="$webdb[vipselfdomain]">
+        如填abc.com,产生的用户二级域名是123.abc.com,而填home.abc.com产生的用户二级域名是123.home.abc.com,对于第一种情况,需要把域名*.abc.com泛解释到本服务器,而第二种情况需要把域名*.home.abc.com泛解释到此服务器<br>
+        域名泛解释后,对于IIS服务器,需要新添加一个站点,域名为空,绑定到目录{$Mpath}home<br>
+        而对于apache需要新添加如下代码到httpd.conf配置文件最后一行<br>
+        &lt;VirtualHost *:80&gt;<br>
+        DocumentRoot {$Mpath}home<br>
+        ServerName test.abc.com<br>
+        ServerAlias *.abc.com #把abc.com换成上面填写的域名<br>
+        &lt;/VirtualHost&gt; <br>
+        另外：如果城市用了二级域名，那么商铺就不能用二级域名，否则容易出现重复的域名，建议商铺就用三级域名。否则就在下面那里禁止一些名称 </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>禁止申请的二级域名前缀:<br>
+        (如:admin bbs 等,每个换一行 )</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[vipselfdomaincannot]" cols="50" rows="6">$webdb[vipselfdomaincannot]</textarea>
+      </td>
+    </tr><tr>
+      <td bgcolor='#FFFFFF' height="8">本频道是否独立头部与尾部模板:<br>
+        <font color="#0000FF">注意：</font>头部与尾部模板，请放在本频道的template目录下，右边的输入框输入类似如下路径<br>
+        /template/***/head.htm 星号换成你实际的目录名,如果留空，就使用统一的风格</td>
+      <td bgcolor='#FFFFFF' height="8"> 
+        <input type="radio" name="webdbs[IF_Private_tpl]" value="1" $IF_Private_tpl[1]>
+        首页独立 
+        <input type="radio" name="webdbs[IF_Private_tpl]" value="2" $IF_Private_tpl[2]>
+        首页、列表页独立 
+          
+        <input type="radio" name="webdbs[IF_Private_tpl]" value="0" $IF_Private_tpl[0]>
+        不独立头部与尾部模板 <br>
+        头部模板路径: 
+        <input type="text" size="50" name="webdbs[Private_tpl_head]" value="$webdb[Private_tpl_head]">
+        <br>
+        底部模板路径: 
+        <input type="text" size="50" name="webdbs[Private_tpl_foot]" value="$webdb[Private_tpl_foot]">
+      </td>
+    </tr>
+	<tr> 
+      <td width='26%' bgcolor='#FFFFFF'>商铺是否启用伪静态:<span help=1> 若启用伪静态的话,需要在主域名{$webdb[www_url]}下配置如下伪静态规则:<br>
+        apache服务器的伪静态如下:<br>
+        <font color="#FF0000">&lt;IfModule mod_rewrite.c&gt;<br>
+        RewriteEngine On<br>
+        RewriteRule ^(.*)-htm-(.*)$ $1\.php\?Rurl=$2<br>
+        &lt;/IfModule&gt;</font> <br>
+        <br>
+IIS的伪静态,请<a href="http://down.qibosoft.com/simple_Rewrite.rar" target="_blank"><font color="#FF0000">点击下载</font></a></span></td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[HyRewrite]" value="0" $HyRewrite[0]>
+        不启用
+        <input type="radio" name="webdbs[HyRewrite]" value="1" $HyRewrite[1]>
+        启用</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <tr > 
+    <td class="head">说明:</td>
+  </tr>
+  <tr> 
+    <td>1.要使用商铺二级域名的话,必须要先设置服务器,否则会出错。</td>
+  </tr>
+</table>

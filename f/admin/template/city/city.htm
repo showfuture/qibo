@@ -1,0 +1,112 @@
+<!--
+<?php
+if(in_array('fenlei',$BIZ_MODULEDB)){
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">创建城市</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF>       
+      
+      <form action="$admin_path&action=addcity" method="POST">
+       
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="8%">名称</td>
+            <td width="92%">
+              <textarea name="name" cols="40" rows="5"></textarea>
+              注:如要同时添加多个城市,每个城市名换一行.</td>
+          </tr>
+          <tr>
+            <td width="8%">归属</td>
+            <td width="92%">{$sort_fup}</td>
+          </tr>
+          <tr>
+            <td width="8%">&nbsp;</td>
+            <td width="92%">
+              <input type="submit" value="创 建" name="submit">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist_city">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">城市列表</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">排序的规则是,数值大的排在前面</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center"> 
+            <td width="7%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">FID</td>
+            <td  style="background:#449AE8;color:#fff;border-right:1px solid #fff;" width="23%">名称</td>
+            <td  style="background:#449AE8;color:#fff;border-right:1px solid #fff;" width="11%">管理</td>
+            <td width="10%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">排序值</td>
+            <td width="8%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">信息量</td>
+            <td width="15%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">城市辖区管理</td>
+            <td width="9%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">标签</td>
+            <td width="8%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">设置</td>
+            <td width="9%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+$num=intval($infodb[$rs[fid]]);
+print <<<EOT
+-->
+          <tr onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="7%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" width="23%" style="border-bottom:1px dotted #ccc;"> 
+              $rs[icon]【<a href="$webdb[www_url]/index.php?choose_cityID=$rs[fid]" target="_blank">{$rs[name]}</a>】</td>
+            <td bgcolor="#FFFFFF" width="11%" style="border-bottom:1px dotted #ccc;" align="center">
+<!--
+EOT;
+if( count($city_DB[name])>1 ){print <<<EOT
+-->
+			<a href="$webdb[www_url]/city_admin/?admin_city=$rs[fid]" target="_blank">分城市管理</a>
+<!--
+EOT;
+}else{print <<<EOT
+-->&nbsp;
+<!--
+EOT;
+}print <<<EOT
+-->
+			
+			</td>
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="8%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">$num</td>
+            <td width="15%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <a href="$admin_path&job=zone&fup=$rs[fid]">创建及管理市辖区</a> &nbsp;</td>
+            <td width="9%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$webdb[www_url]/index.php?choose_cityID=$rs[fid]&jobs=show" target="_blank">标签</a></td>
+            <td width="8%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href='$admin_path&job=edit_city&fid=$rs[fid]'><font color=red>修改</font></a>]</td>
+            <td width="9%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href="$admin_path&action=delete_city&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a>]</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <input type="submit" name="Submit2" value="修改以上设置" onclick="postlist('list')">
+           
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,99 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path">
+    <tr align="center" class="head"> 
+      <td width="5%">PID</td>
+      <td width="20%">图片名称</td>
+      <td width="17%">缩略图</td>
+      <td width="24%">商家名称</td>      
+      <td width="10%">发布时间</td>
+      <td width="7%">审核</td>
+      <td width="7%">推荐</td>
+      <td width="10%">删除</td>
+    </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=tempdir($rs[url]);
+print <<<EOT
+-->
+    <tr> 
+      <td align="center">$rs[pid]</td>
+      <td> 
+        <input type="checkbox" name="listdb[{$rs[pid]}]" value="$rs[title]">
+        <a href="$Murl/homepage.php?uid=$rs[uid]&m=pics&psid=$rs[psid]&pid=$rs[pid]" target='_blank'>$rs[title]</a>
+      </td>
+      <td align="center"><a href="$Murl/homepage.php?uid=$rs[uid]&m=pics&psid=$rs[psid]&pid=$rs[pid]" target='_blank'><img src="$rs[url].gif" width="60" height="60" style="border:#DDD solid 1px;"></a></td>
+      <td> &nbsp;<a href="$Murl/homepage.php?uid=$rs[uid]" target="_blank">{$rs[company]}</a><a href="list.php?job=list&fid=$rs[fid]"></a></td>      
+      <td align="center">$rs[posttime]</td>
+      <td align="center">$rs[ischeck]</td>
+      <td align="center">$rs[iscom]</td>
+      <td align="center"><a href="$webdb[www_url]/member/?main=$Murl/member/homepage_ctrl.php?atn=piclist&uid=$rs[uid]&psid=$rs[psid]" target=_blank>修改</a>/<a onclick="return confirm('你确认要删除吗?');" href="$admin_path&action=work&jobs=del&pid=$rs[pid]">删除</a></td>
+    </tr>
+<!--
+EOT;
+}if($showpage){print <<<EOT
+-->
+    <tr> 
+      <td colspan="8" align="center">{$showpage} </td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td colspan="8" align="center">
+      	<a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a>
+        <input type="button" name="Submit1" value="批量审核" onclick="postdo('yz')">
+        <input type="button" name="Submit2" value="批量推荐" onclick="postdo('com')">
+        <input type="button" name="Submit3" value="批量删除" onclick="postdo('del')">
+        <input type="hidden" name="jobs" value="0">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&job=$job">
+    <tr class="head"> 
+      <td><font color="#FFFFFF">搜索</font></td>
+    </tr>
+    <tr> 
+      <td align="center"> 关键字 
+        <input type="text" name="keyword">
+        <select name="type">
+          <option value="title">标题</option>
+          <option value="id">ID</option>
+          <option value="username">登记者</option>
+        </select>
+        <input type="submit" name="Submit7" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

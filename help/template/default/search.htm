@@ -1,0 +1,112 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/v7/wn/common.css">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td   height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="guide">
+        <tr> 
+          <td>{$GuideFid[$fid]}</td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG"><a >TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable">
+              <form name="form1" method="post" action="">
+                <tr align="center"> 
+                  <td colspan="2">站 内 搜 索</td>
+                </tr>
+                <tr align="left"> 
+                  <td colspan="2">搜索频道类型:[<a href="?" style="color:{$colordb[0]}">全站搜索</a>] 
+<!--
+EOT;
+foreach($module_db AS $key=>$value){
+print <<<EOT
+-->
+				  [<a href="?mid=$key" style="color:{$colordb[$key]}">$value</a>]
+<!--
+EOT;
+}print <<<EOT
+-->
+				  </td>
+                </tr>
+                <tr> 
+                  <td width="21%">关键字:</td>
+                  <td width="79%"> 
+                    <input type="text" name="keyword" value="$keyword">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="21%" height="23">查找字段类型:</td>
+                  <td width="79%" height="23"> 
+                    <input type="radio" name="type" value="title" $typedb[title]>
+                    标题 
+                    <input type="radio" name="type" value="username" $typedb[username]>
+                    发布者 $TempLate1</td>
+                </tr>
+                $TempLate2 
+                <tr> 
+                  <td width="21%">&nbsp;</td>
+                  <td width="79%"> 
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="action" value="search">
+                  </td>
+                </tr>
+              </form>
+            </table>
+            <br>
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable" style="display:$style_list;">
+              <tr align="center" bgcolor="#E7E7E7"> 
+                <td width="6%"><font color="#FF0000">ID</font></td>
+                <td width="62%"><font color="#FF0000">标题</font></td>
+                <td width="19%"><font color="#FF0000">发布者</font></td>
+                <td width="13%"><font color="#FF0000">发布日期</font></td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+              <tr> 
+                <td width="6%" align="center">$rs[id]</td>
+                <td width="62%"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a></td>
+                <td width="19%" align="center">$rs[username]</td>
+                <td width="13%" align="center">$rs[posttime]</td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+ 
+    </td>
+    
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,220 @@
+/*
+*css reset
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+	padding: 0; 
+	margin: 0; 
+} 
+table{ 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+} 
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul { 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+	font-weight: normal;
+	font-size: 100%; 
+} 
+q:before,q:after { 
+	content:¡±; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+body{
+	font-size:12px;
+}
+td{
+	vertical-align:top;
+}
+a,a:link,a:visited{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+/*
+*Toper
+*/
+.Toper{
+	height:27px;
+	overflow:hidden;
+	background:url(toper.gif) repeat-x;
+}
+.Toper .Infos{
+	width:980px;
+	margin:auto;
+	line-height:27px;
+}
+/*
+*Navers
+*/
+.Navers{
+	width:980px;
+	height:50px;
+	margin:auto;
+	position:relative;
+	z-index:100000;
+}
+.Navers .Logo{
+	float:left;
+	padding-top:2px;		
+}
+.Navers .Search{
+	width:471px;
+	height:36px;
+	float:right;
+	padding-top:10px;
+	background:url(sbg.gif) right 10px no-repeat;
+}
+.Navers .Search .keyword{	
+	padding:5px 0 0 5px;
+	float:left;
+}
+.Navers .Search .keyword input{
+	width:375px;
+	height:25px;
+	border:0;
+	line-height:25px;
+	background:none;
+	font-size:16px;
+	color:#888;
+}
+.Navers .Search .sub{
+	float:left;
+	width:90px;
+	text-align:center;
+	padding-top:10px;
+}
+.Navers .Search .sub input{
+	border:0;
+	background:none;
+	font-size:14px;
+	font-weight:bold;
+	cursor:pointer;
+}
+/*
+*MainMenu
+*/
+.MainMenu{
+	height:32px;
+	width:980px;
+	background:url(menu.gif) left 30px repeat-x;
+	overflow:hidden;
+	margin:5px auto 10px auto;
+}
+.MainMenu li{
+	float:left;
+	padding-left:15px;
+	background:url(mbg.gif) left 2px no-repeat;
+	margin-right:3px;
+}
+.MainMenu li span{
+	display:block;
+	padding:5px 15px 0 0;
+	background:url(mbg.gif) right 2px no-repeat;
+	line-height:27px;
+}
+.MainMenu li span a{
+	font-size:14px;
+	color:#666;
+}
+.MainMenu li.ck{
+	background:url(mck.gif) no-repeat;
+}
+.MainMenu li.ck span{
+	background:url(mck.gif) right top no-repeat;
+}
+.MainMenu li.ck span a{
+	color:#FFF;
+}
+/*
+*MainContainer
+*/
+.MainCont{
+	width:980px;
+	margin:auto;
+}
+.MainCont .Menus{
+	width:155px;
+	border:#3E88CD solid 2px;
+	border-right:#B8BFC7 solid 1px;
+	border-bottom:#B8BFC7 solid 1px;
+	background:url(menus.gif) repeat-y;
+}
+.MainCont .Menus p{
+	height:30px;
+	text-align:center;
+	word-spacing:15px;
+	background:url(ch.gif) center bottom no-repeat;
+	line-height:30px;
+	padding-top:5px;
+}
+.MainCont .Menus p span{
+	cursor:pointer;
+}
+.MainCont .Menus dl{
+	margin-top:5px;
+}
+.MainCont .Menus dl dt{
+	height:30px;
+	line-height:30px;
+	padding-left:25px;
+	background:url(icon.gif) 10px -21px no-repeat;
+	font-weight:bold;
+	color:#4581A9;
+	cursor:pointer;
+}
+.MainCont .Menus dl.hidden dt{
+	background:url(icon.gif) 10px 9px no-repeat;
+}
+.MainCont .Menus dl dd{
+	padding-bottom:5px;
+}
+.MainCont .Menus dl.hidden dd{
+	display:none;
+}
+.MainCont .Menus dl dd div{
+	height:25px;
+	line-height:25px;
+	padding-left:35px;
+	background:url(title.gif) 20px 8px no-repeat;
+}
+.MainCont .Menus dl dd div a{
+	color:#666;
+}
+.MainCont .Iframe{
+	padding-left:10px;
+}
+.memberinfo{
+	border-bottom:#E3E3E3 solid 1px;
+	height:70px;
+	overflow:hidden;
+}
+/*
+*CopyRight
+*/
+.CopyRight{
+	width:990px;
+	margin:10px auto;
+	border-top:#DDD solid 1px;
+	padding:10px 0 20px 0;
+	text-align:center;
+	line-height:20px;
+	color:#666;
+}
+.CopyRight a{
+	color:#325E7F;
+}

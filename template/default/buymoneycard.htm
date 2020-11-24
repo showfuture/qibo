@@ -1,0 +1,211 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="393" valign="top" class="Main"><!--
+EOT;
+if($paytype=='yeepay'){print <<<EOT
+--> <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">欢迎使用易宝支付在线充值系统</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="?banktype=yeepay">
+            <td class="middle" align="center"> <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td align="left"><b><font color="#0000FF">支付方式:</font></b> [<a href="?paytype=yeepay">易宝支付</a>] 
+                    [<a href="?paytype=tenpay">财付通</a>] [<a href="?paytype=alipay">支付宝</a>] 
+                    [<a href="?paytype=chinabank">网银在线</a>] [<a href="?paytype=card">点卡</a>]</td>
+                </tr>
+              </table>
+             
+              <a href="http://www.yeepay.com/" target="_blank"><img src="$webdb[www_url]/images/default/yeepay_logo.gif" border="0"></a><br>
+              你目前已有{$webdb[MoneyName]}数是<b><font color="#FF0000">{$lfjdb[money]}</font></b>,请输入你要充值金额 
+              <input type="text" name="atc_moeny" size="6">
+              元（RMB） 
+              <input type="submit" name="Submit" value="充值">
+              <br>
+              <br>
+              注意：每支付<b><font color="#FF0000">1</font></b>元，将可获得<b><font color="#FF0000">{$webdb[alipay_scale]}</font></b>{$webdb[MoneyDW]}{$webdb[MoneyName]}，充值金额只能是整数<br>充值促销优惠,每充值10块钱赠送<font color="#FF0000">{$webdb[alipay_give_scale]}</font>{$webdb[MoneyDW]}{$webdb[MoneyName]},以此类推</td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+     <!--
+EOT;
+}elseif($paytype=='tenpay'){print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">欢迎使用财付通在线充值系统</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="?banktype=tenpay">
+            <td class="middle" align="center"> <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td align="left"><b><font color="#0000FF">支付方式:</font></b> [<a href="?paytype=yeepay">易宝支付</a>] 
+                    [<a href="?paytype=tenpay">财付通</a>] [<a href="?paytype=alipay">支付宝</a>] 
+                    [<a href="?paytype=chinabank">网银在线</a>] [<a href="?paytype=card">点卡</a>]</td>
+                </tr>
+              </table>
+             
+              <img src="$webdb[www_url]/images/default/tenpay_logo.gif"><br>
+              你目前已有{$webdb[MoneyName]}数是<b><font color="#FF0000">{$lfjdb[money]}</font></b>,请输入你要充值金额 
+              <input type="text" name="atc_moeny" size="6">
+              元（RMB） 
+              <input type="submit" name="Submit" value="充值">
+              <br>
+              <br>
+              注意：每支付<b><font color="#FF0000">1</font></b>元，将可获得<b><font color="#FF0000">{$webdb[alipay_scale]}</font></b>{$webdb[MoneyDW]}{$webdb[MoneyName]}，充值金额只能是整数<br>充值促销优惠,每充值10块钱赠送<font color="#FF0000">{$webdb[alipay_give_scale]}</font>{$webdb[MoneyDW]}{$webdb[MoneyName]},以此类推</td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+	       <!--
+EOT;
+}elseif($paytype=='chinabank'){print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">欢迎使用网银在线充值系统</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="?banktype=chinabank">
+            <td class="middle" align="center"> <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td align="left"><b><font color="#0000FF">支付方式:</font></b> [<a href="?paytype=yeepay">易宝支付</a>] 
+                    [<a href="?paytype=tenpay">财付通</a>] [<a href="?paytype=alipay">支付宝</a>] 
+                    [<a href="?paytype=chinabank">网银在线</a>] [<a href="?paytype=card">点卡</a>]</td>
+                </tr>
+              </table>
+             
+              <img src="$webdb[www_url]/images/default/chinabank_logo.gif"><br>
+              你目前已有{$webdb[MoneyName]}数是<b><font color="#FF0000">{$lfjdb[money]}</font></b>,请输入你要充值金额 
+              <input type="text" name="atc_moeny" size="6">
+              元（RMB） 
+              <input type="submit" name="Submit" value="充值">
+              <br>
+              <br>
+              注意：每支付<b><font color="#FF0000">1</font></b>元，将可获得<b><font color="#FF0000">{$webdb[alipay_scale]}</font></b>{$webdb[MoneyDW]}{$webdb[MoneyName]}，充值金额只能是整数<br>充值促销优惠,每充值10块钱赠送<font color="#FF0000">{$webdb[alipay_give_scale]}</font>{$webdb[MoneyDW]}{$webdb[MoneyName]},以此类推</td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+     <!--
+EOT;
+}elseif($paytype=='card'){print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">欢迎使用点卡在线充值系统</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="moneycard.php?action=get">
+            <td class="middle" align="center"> 
+              <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td align="left"><b><font color="#0000FF">支付方式:</font></b> [<a href="?paytype=yeepay">易宝支付</a>] 
+                    [<a href="?paytype=tenpay">财付通</a>] [<a href="?paytype=alipay">支付宝</a>] 
+                    [<a href="?paytype=chinabank">网银在线</a>] [<a href="?paytype=card">点卡</a>]</td>
+                </tr>
+              </table>
+             
+              <img src="$webdb[www_url]/images/default/diangcard.gif"><br>
+              你目前已有{$webdb[MoneyName]}数是<b><font color="#FF0000">{$lfjdb[money]}</font></b>,请输入充值卡密码 
+              <input type="text" name="atc_passwd"> 
+              <input type="submit" name="Submit" value="充值">
+              <br>
+              <br></td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic" >
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">欢迎使用支付宝在线充值系统</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <form name="form1" method="post" action="?banktype=alipay">
+            <td class="middle" align="center"> <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                <tr>
+                  <td align="left"><b><font color="#0000FF">支付方式:</font></b> [<a href="?paytype=yeepay">易宝支付</a>] 
+                    [<a href="?paytype=tenpay">财付通</a>] [<a href="?paytype=alipay">支付宝</a>] 
+                    [<a href="?paytype=chinabank">网银在线</a>] [<a href="?paytype=card">点卡</a>]</td>
+                </tr>
+              </table>
+             
+              <img src="$webdb[www_url]/images/default/alipay_logo.gif"><br>
+              你目前已有{$webdb[MoneyName]}数是<b><font color="#FF0000">{$lfjdb[money]}</font></b>,请输入你要充值金额 
+              <input type="text" name="atc_moeny" size="6">
+              元（RMB） 
+              <input type="submit" name="Submit" value="充值">
+              <br>
+              <br>
+              注意：每支付<b><font color="#FF0000">1</font></b>元，将可获得<b><font color="#FF0000">{$webdb[alipay_scale]}</font></b>{$webdb[MoneyDW]}{$webdb[MoneyName]}，充值金额只能是整数<br>充值促销优惠,每充值10块钱赠送<font color="#FF0000">{$webdb[alipay_give_scale]}</font>{$webdb[MoneyDW]}{$webdb[MoneyName]},以此类推
+            </td>
+          </form>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+<!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

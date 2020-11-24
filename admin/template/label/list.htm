@@ -1,0 +1,178 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="">
+    <tr class="head"> 
+      <td>请选择 
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td height="22" style="padding-left:2em;"> 
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="sub('code')">
+        html源代码 
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="sub('pic')">
+        单张图片 
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="sub('swf')">
+       单个FLASH 
+        
+
+<!--
+EOT;
+if($chtype!=99){
+print <<<EOT
+-->
+		<input type="radio" name="radiobutton" value="radiobutton" onclick="sub('rollpic')">
+        幻灯片
+		
+<!--
+EOT;
+if(is_file(ROOT_PATH.'cms_menu.php')){
+print <<<EOT
+-->
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="sub('article')">
+        <font color="#FF0000">文章系统内容(主栏目)</font>  
+		 <input type="radio" name="radiobutton" value="radiobutton" onclick="sub('fu_article')">
+         文章系统辅栏目  
+		<input type="radio" name="radiobutton" value="radiobutton" onclick="sub('special')">
+        <font color="#FF0000">专题内容</font> 
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('specialsort')">
+        专题列表 
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('comment')">
+        文章评论 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('member')">
+        会员数据 
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('mysql')">
+        Mysql万能标签
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		
+<!--
+EOT;
+if($chtype!=99&&ereg("^pwbbs",$webdb[passport_type])){
+print <<<EOT
+-->
+		<input type="radio" name="radiobutton" value="radiobutton" onClick="sub('pwbbs')">
+        PW论坛贴子
+<!--
+EOT;
+}
+if($chtype!=99&&$webdb[dzbbs_pre]){
+print <<<EOT
+-->	
+		
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('dzbbs')">
+        DZ论坛贴子
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		
+		<br>
+   
+<!--
+EOT;
+if($chtype!=99){
+foreach($ModuleDB AS $key=>$rs){
+if($rs[type]||$rs[ifclose])continue;
+print <<<EOT
+-->
+		<input type="radio" name="radiobutton" value="radiobutton" onClick="sub('$key')">
+        $rs[name] 
+ 
+<!--
+EOT;
+}
+}
+print <<<EOT
+-->	 
+
+
+		<br>
+<!--
+EOT;
+if($chtype!=99&&$ModuleDB[blog_]){
+print <<<EOT
+-->	
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('blog_log')">
+        博客日志数据
+		<input type="radio" name="radiobutton" value="radiobutton" onClick="sub('blog_photo')">
+        博客图片数据 <br>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<!--
+EOT;
+if(!$ch_ifjs){
+print <<<EOT
+-->	
+<br><br>
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('hack_loginform')">
+        用户登录框 [<a href="index.php?lfj=hack&hack=login&job=list">修改</a>]<br>
+        <input type="radio" name="radiobutton" value="radiobutton" onClick="sub('hack_rollnews')">
+        滚动公告<br>
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+       
+        
+<!--
+EOT;
+if($chtype!=99&&$ModuleDB){
+print <<<EOT
+-->	<br>
+        <hr>
+
+        <!--
+EOT;
+
+foreach($ModuleDB AS $key=>$rs){
+if(!$rs[type]||$rs[ifclose])continue;
+print <<<EOT
+-->
+<input type="radio" name="radiobutton" value="radiobutton" onClick="sub('Info_$key')">
+        $rs[name]<br>
+<!--
+EOT;
+}}
+print <<<EOT
+-->
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function sub(va){
+	document.form1.action="index.php?lfj=$lfj&&job=mod&ch=$ch&chtype=$chtype&tag=$tag&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&hand_choose=1&inc="+va;
+	document.form1.submit();
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td height="23" style="padding-left:2em;">
+        <input style="color:red;" type="button" name="Submit" value="清空此标签的旧数据" onclick="window.location.href='index.php?lfj=$lfj&action=DeleteTag&ch=$ch&tag=$tag&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&mystyle=$mystyle&'">
+      </td>
+    </tr>
+  </form>
+</table>
+
+<!--
+EOT;
+?>
+-->

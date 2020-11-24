@@ -1,0 +1,87 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr>
+    <td><a href="$admin_path&job=listsort">顶级分类</a>$gudie</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr>
+    <td class="head">模块编辑</td>
+  </tr>
+  <tr><form name="form2" method="post" action="$admin_path&action=copyfield&fid=$fid">
+      <td> [<a href="$admin_path&job=addfield&fid=$fid"><font color="#FF0000"><b>添加字段</b></font></a>]<br>
+        <br>
+        字段复制,你可以把以下字段信息复制到其他栏目,但是其他栏目如果有的话.就会被替换掉<br>
+        请输入复制到那个栏目的FID,多个用<font color="#FF0000">,</font>号隔开 
+        <input type="text" name="ofid" size="40">
+        <input type="submit" name="Submit2" value="复制并替换原来的">
+      </td>
+    </form>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=editorder&fid=$fid">
+    <tr class="head" align="center"> 
+      <td width="40%">字段名称</td>
+      <td width="29%">字段ID</td>
+      <td width="17%">排序</td>
+      <td width="7%">修改</td>
+      <td width="7%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr> 
+      <td width="40%">$rs[title]</td>
+      <td width="29%">$rs[field_name]</td>
+      <td width="17%" align="center"> 
+        <input type="text" name="postdb[{$rs[field_name]}]" size="6" value="$rs[orderlist]">
+      </td>
+      <td width="7%" align="center"> 
+        <p><a href='$admin_path&job=editfield&fid=$fid&field_name=$rs[field_name]'>管理</a></p>
+      </td>
+      <td width="7%" align="center"><a href="$admin_path&action=delfield&fid=$fid&field_name=$rs[field_name]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="5"> 
+        <input type="submit" name="Submit" value="修改排序">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="5">注意:<font color="#FF0000">数值大的排在前面<br>
+        </font>前台调用方式: <font color="#FF0000">{\$CV[字段ID]}</font></td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

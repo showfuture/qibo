@@ -1,0 +1,77 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="5%" align="center">ID </td>
+      <td width="18%" align="center">名称</td>
+      <td width="9%" align="center">首页显示</td>
+      <td width="8%" align="center">排序</td>
+      <td width="15%" align="center">LOGO</td>
+      <td width="17%" align="center">状态</td>
+      <td width="11%" align="center">分类</td>
+      <td width="7%" align="center">审核</td>
+      <td width="10%" align="center">修改/删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td width='5%' align="center">$rs[id]</td>
+      <td width="18%"> 
+        <input type="checkbox" name="iddb[{$rs[id]}]" value="$rs[id]">
+        <a href="$rs[url]" target="_blank">$rs[name]</a> </td>
+      <td width="9%" align="center">$rs[ifshow]</td>
+      <td width="8%" align="center"> 
+        <input type="text" name="listdb[{$rs[id]}]" size="3" value="$rs[list]">
+      </td>
+      <td width="15%" align="center"> 
+        <!--
+EOT;
+if(!$rs[iswordlink]&&$rs[logo]){
+print <<<EOT
+-->
+        <a href="$rs[url]" target="_blank">$rs[logo]</a> 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+      <td width="17%" align="center">$rs[state]</td>
+      <td width="11%" align="center"><a href="index.php?lfj=friendlink&job=list&fid=$rs[fid]">$rs[fname]</a></td>
+      <td width="7%" align="center">$rs[yz]</td>
+      <td width="10%" align="center"><a href="index.php?lfj=friendlink&job=mod&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a>&nbsp;&nbsp;<a href="index.php?lfj=friendlink&action=delete&id=$rs[id]" onClick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan="9" align="center"> $showpage</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan="9" align="center"> 
+        <input type="submit" name="Submit" value="提交处理排序">
+      </td>
+    </tr>
+  </form>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+     <tr class="head">  
+      <td>说明:</td>
+    </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">系统可以允许你手工在网页模板添加调用只显示哪个分类的友情链接<br>
+      如果首页已按分类调用显示友情链接的话,那么就有可能与默认首页显示的有重复现象,此时就建议设置首页不显示,以免造成重复显示的情况.</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->
+
+

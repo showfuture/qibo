@@ -1,0 +1,381 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<div style="display:none;"> <iframe width=1 height=1 src='' id="iframe_zone" name="iframe_zone"></iframe> 
+  <iframe width=1 height=1 src='' id="iframe_street" name="iframe_street"></iframe> 
+  <form name="form1" method="post" action="" target="iframe_zone" id="form_zone">
+  </form>
+</div>
+<div class="MainCont">
+	<div class="head"><div class="tag blue">
+    	企业资料
+<!--
+EOT;
+if($do_type=='edit'){
+print <<<EOT
+-->
+            <a href="?job=view&uid=$lfjuid"><span class="red">预览企业资料</span></a> 
+<!--
+EOT;
+}print <<<EOT
+--> <!--
+EOT;
+if(($web_admin||$lfjuid==$rsdb[uid])&&$job=='view'){
+print <<<EOT
+-->
+            <a href="?uid=$uid"><span class="red">修改企业资料</span></a> 
+<!--
+EOT;
+}print <<<EOT
+-->
+    </div></div>
+    <div class="cont">
+<!--
+EOT;
+if($action=='ok'){
+print <<<EOT
+-->	
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <td class="tdL">
+            	<img src="$Murl/images/default/gougou.gif"/>
+            </td>
+            <td class="tdR">
+            	<div>$msg</div>
+<!--
+EOT;
+foreach($do as $key=>$val){
+print <<<EOT
+-->
+        		<div><img src="$webdb[www_url]/images/default/article_elite.gif"/><a href="{$val[link]}" $val[target]>{$val[text]}</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+}elseif($job=='view'){
+print <<<EOT
+-->
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <th colspan="2">基本资料</th>
+          </tr>
+          <tr>
+            <td class="tdL">公司全称:</td>
+            <td class="tdR">$rsdb[title] <img src="$rsdb[picurl]" width="150" onError="this.src='$webdb[www_url]/images/default/nopic.jpg';"/></td>
+          </tr>
+          <tr>
+            <td class="tdL">主营分类:</td>
+            <td class="tdR">$rsdb[fname]</td>
+          </tr>
+          <tr>
+            <th colspan="2">详细资料</th>
+          </tr>
+          <tr>
+            <td class="tdL">所属行业:</td>
+            <td class="tdR">$rsdb[my_trade]</td>
+          </tr>
+          <tr>
+            <td class="tdL">企业类型:</td>
+            <td class="tdR">$rsdb[qy_cate]</td>
+          </tr>
+          <tr>
+            <td class="tdL">注册资本:</td>
+            <td class="tdR">$rsdb[qy_regmoney] <span class="red">万</span>人民币</td>
+          </tr>
+          <tr>
+            <td class="tdL">经营模式:</td>
+            <td class="tdR">$rsdb[qy_saletype]</td>
+          </tr>
+          <tr>
+            <td class="tdL">成立时间:</td>
+            <td class="tdR">$rsdb[qy_createtime] </td>
+          </tr>
+          <tr>
+            <td class="tdL">主营产品或服务:</td>
+            <td class="tdR">$rsdb[qy_pro_ser]</td>
+          </tr>
+          <tr>
+            <td class="tdL">主要采购产品:</td>
+            <td class="tdR">$rsdb[my_buy]</td>
+          </tr>
+          <tr>
+            <td class="tdL">注册地址:</td>
+            <td class="tdR">$rsdb[qy_regplace]</td>
+          </tr>
+          <tr>
+            <td class="tdL">详细商家介绍:</td>
+            <td class="tdR">$rsdb[content]</td>
+          </tr>
+          <tr>
+            <th colspan="2">联系方式</th>
+          </tr>
+          <tr>
+            <td class="tdL">单位详细地址:</td>
+            <td class="tdR">$rsdb[qy_address]</td>
+          </tr>
+          <tr>
+            <td class="tdL">邮政编码:</td>
+            <td class="tdR">$rsdb[qy_postnum]</td>
+          </tr>
+          <tr>
+            <td class="tdL">指定联系人:</td>
+            <td class="tdR">$rsdb[qy_contact]</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人职位:</td>
+            <td class="tdR">$rsdb[qy_contact_zhiwei]</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人电话:</td>
+            <td class="tdR">$rsdb[qy_contact_tel]</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人传真:</td>
+            <td class="tdR">$rsdb[qy_contact_fax]</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人手机:</td>
+            <td class="tdR">$rsdb[qy_contact_mobile]</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人电子邮箱:</td>
+            <td class="tdR">$rsdb[qy_contact_email]</td>
+          </tr>
+          <tr>
+            <td class="tdL">单位网址:</td>
+            <td class="tdR">$rsdb[qy_website]</td>
+          </tr>
+        </table>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<div style="display:none;"> <iframe width=1 height=1 src='' id="iframe_city" name="iframe_city"></iframe> 
+<form name="form1" method="post" action="" target="iframe_city" id="form_city"></form>
+</div><script src="$webdb[www_url]/images/default/setday.js"></script>
+		<form action="?" enctype="multipart/form-data" method="post"  name="postdata" target="post_company">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <th colspan="2">基本资料</th>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>公司全称:</td>
+            <td class="tdR"><input type="text" name="postdb[title]" id="atc_title" size="40" value="$rsdb[title]" /></td>
+          </tr>
+          <tr>
+            <td class="tdL">公司LOGO:</td>
+            <td class="tdR"><input type="file" name="postfile" id="pic_url" /> (图片只能是,jpg,gif,png,推荐尺寸为120*120,文件最大</td>
+          </tr>
+          <tr>
+            <td class="tdL">主营分类:</td>
+            <td class="tdR">
+<!--include
+EOT;
+require(dirname(__FILE__)."/morechosefid.htm");
+print<<<EOT
+include-->
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">详细资料</th>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>所属行业:</td>
+            <td class="tdR">
+				<select name='postdb[my_trade]' id='atc_my_trade'>
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[companyTrade]);
+foreach($detail AS $key=>$value){
+print <<<EOT
+-->
+                      <option value="$value" {$rsdb[_my_trade][$value]}>$value</option>
+<!--
+EOT;
+}print <<<EOT
+-->
+                 </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>企业类型:</td>
+            <td class="tdR">
+            	 <select name='postdb[qy_cate]' id='atc_qy_cate'>
+                  <option value='个体经营' {$rsdb[_qy_cate]['个体经营']}>个体经营</option>
+                  <option value='个人独资企业' {$rsdb[_qy_cate]['个人独资企业']}>个人独资企业</option>
+                  <option value='私营合伙企业' {$rsdb[_qy_cate]['私营合伙企业']}>私营合伙企业</option>
+                  <option value='私营有限责任公司' {$rsdb[_qy_cate]['私营有限责任公司']}>私营有限责任公司</option>
+                  <option value='私营股份有限公司' {$rsdb[_qy_cate]['私营股份有限公司']}>私营股份有限公司</option>
+                  <option value='国有企业' {$rsdb[_qy_cate]['国有企业']}>国有企业</option>
+                  <option value='集体企业' {$rsdb[_qy_cate]['集体企业']}>集体企业</option>
+                  <option value='股份合作企业' {$rsdb[_qy_cate]['股份合作企业']}>股份合作企业</option>
+                  <option value='联营企业有限责任公司(国有独资)' {$rsdb[_qy_cate]['联营企业有限责任公司(国有独资)']}>联营企业有限责任公司(国有独资)</option>
+                  <option value='其他有限责任公司' {$rsdb[_qy_cate]['其他有限责任公司']}>其他有限责任公司</option>
+                  <option value='股份有限公司' {$rsdb[_qy_cate]['股份有限公司']}>股份有限公司</option>
+                  <option value='其他内资企业' {$rsdb[_qy_cate]['其他内资企业']}>其他内资企业</option>
+                  <option value='三来一补' {$rsdb[_qy_cate]['三来一补']}>三来一补</option>
+                  <option value='分支机构' {$rsdb[_qy_cate]['分支机构']}>分支机构</option>
+                  <option value='合资经营企业(港或澳、台资)' {$rsdb[_qy_cate]['合资经营企业(港或澳、台资)']}>合资经营企业(港或澳、台资)</option>
+                  <option value='合作经营企业(港或澳、台资)' {$rsdb[_qy_cate]['合作经营企业(港或澳、台资)']}>合作经营企业(港或澳、台资)</option>
+                  <option value='港、澳、台商独资经营企业' {$rsdb[_qy_cate]['港、澳、台商独资经营企业']}>港、澳、台商独资经营企业</option>
+                  <option value='港、澳、台商投资股份有限公司' {$rsdb[_qy_cate]['港、澳、台商投资股份有限公司']}>港、澳、台商投资股份有限公司</option>
+                  <option value='中外合资经营企业' {$rsdb[_qy_cate]['中外合资经营企业']}>中外合资经营企业</option>
+                  <option value='中外合作经营企业' {$rsdb[_qy_cate]['中外合作经营企业']}>中外合作经营企业</option>
+                  <option value='外资企业' {$rsdb[_qy_cate]['外资企业']}>外资企业</option>
+                  <option value='外商投资股份有限公司' {$rsdb[_qy_cate]['外商投资股份有限公司']}>外商投资股份有限公司</option>
+                  <option value='政府机构' {$rsdb[_qy_cate]['政府机构']}>政府机构</option>
+                  <option value='非盈利组织' {$rsdb[_qy_cate]['非盈利组织']}>非盈利组织</option>
+                  <option value='其他有限责任公司' {$rsdb[_qy_cate]['其他有限责任公司']}>其他有限责任公司</option>
+                  <option value='有限责任公司（国内合资）' {$rsdb[_qy_cate]['有限责任公司（国内合资）']}>有限责任公司（国内合资）</option>
+                  <option value='一人有限责任公司' {$rsdb[_qy_cate]['一人有限责任公司']}>一人有限责任公司</option>
+                  <option value='私营独资企业' {$rsdb[_qy_cate]['私营独资企业']}>私营独资企业</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>注册资本:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_regmoney]' id='atc_qy_regmoney' size='10' value='$rsdb[qy_regmoney]' />
+                    <span class="b red">万</span>人民币(注册资本以<span class="red">万</span>为单位)</td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>经营模式:</td>
+            <td class="tdR">
+            	<select name='postdb[qy_saletype]' id='atc_qy_saletype'>
+                  <option value='生产型' {$rsdb[_qy_saletype]['生产型']}>生产型</option>
+                  <option value='贸易型' {$rsdb[_qy_saletype]['贸易型']}>贸易型</option>
+                  <option value='服务型' {$rsdb[_qy_saletype]['服务型']}>服务型</option>
+                  <option value='政府或其他机构' {$rsdb[_qy_saletype]['政府或其他机构']}>政府或其他机构</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="tdL">成立时间:</td>
+            <td class="tdR"><input  onclick="setday(this,1)" type='text' name='postdb[qy_createtime]' id='atc_qy_createtime' size='20' value='$rsdb[qy_createtime]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL">主营产品或服务:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_pro_ser]' id='atc_qy_pro_ser' size='30' value='$rsdb[qy_pro_ser]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL">主要采购产品:</td>
+            <td class="tdR"><input type='text' name='postdb[my_buy]' id='atc_my_buy' size='30' value='$rsdb[my_buy]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL">注册地址:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_regplace]' id='atc_qy_regplace' size='30' value='$rsdb[qy_regplace]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>详细商家介绍:</td>
+            <td class="tdR">
+            	<iframe id='eWebEditor1' src='$webdb[www_url]/ewebeditor/ewebeditor.php?id=atc_content&style=standard&etype=simple' frameborder='0' scrolling='no' width='85%' height='350'></iframe> 
+                <input name='postdb[content]' id='atc_content' type='hidden' value='$rsdb[content]'>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">联系方式</th>
+          </tr>
+          <tr>
+            <td class="tdL">单位详细地址:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_address]' id='atc_qy_address' size='30' value='$rsdb[qy_address]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL">邮政编码:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_postnum]' id='atc_qy_postnum' size='30' value='$rsdb[qy_postnum]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>指定联系人:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact]' id='atc_qy_contact' size='30' value='$rsdb[qy_contact]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人职位:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact_zhiwei]' id='atc_qy_contact_zhiwei' size='30' value='$rsdb[qy_contact_zhiwei]' /></td>
+          </tr><tr>
+            <td class="tdL"><span class="red">*</span>联系人电话:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact_tel]' id='atc_qy_contact_tel' size='30' value='$rsdb[qy_contact_tel]' /> 区号-号码-分机</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人传真:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact_fax]' id='atc_qy_contact_fax' size='30' value='$rsdb[qy_contact_fax]' /> 区号-传真号</td>
+          </tr>
+          <tr>
+            <td class="tdL">联系人手机:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact_mobile]' id='atc_qy_contact_mobile' size='30' value='$rsdb[qy_contact_mobile]' /></td>
+          </tr>
+          <tr>
+            <td class="tdL"><span class="red">*</span>联系人电子邮箱:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_contact_email]' id='atc_qy_contact_email' size='30' value='$rsdb[qy_contact_email]' />
+                    此项很重要，方便商家之间相互联系,请填写正确的常用邮箱地址。</td>
+          </tr>
+          <tr>
+            <td class="tdL">单位网址:</td>
+            <td class="tdR"><input type='text' name='postdb[qy_website]' id='atc_qy_website' size='30' value='$rsdb[qy_website]' /> 必须以http://开头,比如:http://www.qibosoft.c</td>
+          </tr>
+<!--
+EOT;
+$city_fid=select_where("{$pre}city","'postdb[city_id]'  onChange=\"choose_where('getzone',this.options[this.selectedIndex].value,'','1','')\"",$rsdb[city_id]);
+print <<<EOT
+--> 
+          <tr>
+            <td class="tdL">所在城市区域:</td>
+            <td class="tdR">
+            	{$city_fid}<span id="showzone"></span><span id="showstreet"></span>  
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_where(t,fup,fid,delstreet,typeid){
+	if(t=='getzone'){
+		url="$webdb[www_url]/f/job.php?job=getzone&typeid="+typeid+"&fup="+fup+"&fid="+fid+"&delstreet="+delstreet;
+		target='iframe_zone';
+	}else{
+		url="$webdb[www_url]/f/job.php?job=getstreet&typeid="+typeid+"&fup="+fup+"&fid="+fid;
+		target='iframe_street';
+	}
+	document.getElementById("form_zone").action=url;
+	document.getElementById("form_zone").target=target;
+	document.getElementById("form_zone").submit();
+}
+choose_where("getzone","$rsdb[city_id]","$rsdb[zone_id]",'','');
+choose_where("getstreet","$rsdb[zone_id]","$rsdb[street_id]",'','');
+//-->
+</SCRIPT>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">申请主页</th>
+          </tr>
+          <tr>
+            <td class="tdL">是否申请商铺:</td>
+            <td class="tdR">
+            	<input type="checkbox" name="postdb[if_homepage]" value="1" $if_homepage>
+                 申请商铺需要{$webdb[MoneyName]}<span class="b red">{$webdb[creat_home_money]}</span>{$webdb[MoneyDW]},而你当前具有{$webdb[MoneyName]}<span class="b blue">{$lfjdb[money]}</span>{$webdb[MoneyDW]}
+            </td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+            	<input type="submit" name="Submit" value="填写完成,提交"/>
+                <input name="uid" type="hidden" id="fid" value="$uid" />
+                <input name="action" type="hidden" id="hiddenField" value="$do_type" />
+                <input name="job" type="hidden"  value="$job" />
+            </td>
+          </tr>
+        </table>
+        </form>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

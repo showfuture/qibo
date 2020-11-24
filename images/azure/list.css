@@ -1,0 +1,225 @@
+.ShowSearch #Showzone{
+	height:31px;
+	background:url(head1.gif) repeat-x;
+	overflow:hidden;
+	line-height:38px;
+	padding-left:10px;
+}
+.ShowSearch #Showzone span{
+	display:block;
+	padding-left:10px;
+	float:left;
+	margin-right:5px;
+	background:url(out1.gif) left 5px no-repeat;
+}
+.ShowSearch #Showzone span a{
+	display:block;
+	padding-right:10px;
+	color:#2244DD;
+	background:url(out1.gif) right 5px no-repeat;
+}
+.ShowSearch #Showzone span.choose{
+	background:url(over1.gif) left 4px no-repeat;
+}
+.ShowSearch #Showzone span.choose a{
+	background:url(over1.gif) right 4px no-repeat;
+	color:#333;
+}
+.ShowSearch .cont{
+	border:#E7E7E7 solid 1px;
+	border-top:0;
+	padding:10px;
+}
+#Showstreet,.ShowSearch .other{
+	line-height:20px;
+	word-spacing:5px;
+}
+#Showstreet a,.ShowSearch .other a{
+	color:#2244DD;
+}
+#Showstreet .choose{
+	color:red;
+}
+.ShowSearch .search{
+	padding-top:5px;
+	height:30px;
+	overflow:hidden;
+}
+.ShowSearch .search .keyword,.ShowSearch .search .sub input{
+	border:#6A8FDA solid 1px;
+}
+.ShowSearch .search .sub input{
+	background:#E5EBF9;
+}
+.ShowSearch .search .rad input{
+	border:0;
+}
+.MainContainer{
+	margin-top:15px;
+}
+.MainContainer .Main{
+	width:780px;
+	float:left;
+}
+.MainContainer .Side{
+	width:210px;
+	float:right;
+}
+.MainContainer .cleardiv{
+	clear:both;
+}
+.ShowList .head{
+	height:30px;
+	overflow:hidden;
+	background:url(head2.gif) repeat-x;
+	line-height:35px;
+	padding-left:10px;
+}
+.ShowList .head span{
+	display:block;
+	padding-left:10px;
+	float:left;
+	background:url(out2.gif) no-repeat;
+	margin-right:5px;
+}
+.ShowList .head span a{
+	display:block;
+	padding-right:10px;
+	background:url(out2.gif) right top no-repeat;
+	color:#2244DD;
+}
+.ShowList .head span.ck{
+	background:url(over2.gif) no-repeat;
+}
+.ShowList .head span.ck a{
+	background:url(over2.gif) right top no-repeat;
+	color:#FFF;
+	font-weight:bold;
+}
+.ShowList .cont{
+	padding:10px 10px 0 5px;
+}
+.ShowList .cont ul{
+	height:35px;
+	overflow:hidden;
+	border-bottom:#EEE solid 1px;
+	line-height:38px;
+	color:#666;
+}
+.ShowList .cont ul .li1{
+	width:550px;
+	height:35px;
+	float:left;
+}
+.ShowList .cont ul .li1 a{
+	float:left;
+	color:#2244DD;
+	font-size:14px;
+}
+.ShowList .cont ul .li1 span{
+	float:left;
+	padding:10px 5px 0 5px;
+}
+.ShowList .cont ul .li1 em{
+	float:left;
+	font-style:normal;
+}
+.ShowList .cont ul .li2{
+	width:50px;
+	height:35px;
+	float:left;
+}
+.ShowList .cont ul .li3{
+	width:70px;
+	height:35px;
+	float:left;
+}
+.ShowList .cont ul .li3 span{
+	font-weight:bold;
+	color:#F01D23;
+}
+.ShowList .cont ul .li4{
+	width:50px;
+	height:35px;
+	float:right;
+}
+.ShowList .cont .showpage{
+	padding-top:5px;
+	line-height:25px;
+	text-align:center;
+}
+.ShowList .cont .showpage a{
+	border:#EEE solid 1px;
+	padding:3px 5px 2px 5px;
+}
+.sidecont{
+	border:#CBCBCB solid 1px;
+	margin-bottom:10px;
+}
+.sidecont .head{
+	line-height:30px;
+	padding:5px 0 0 15px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+.sidecont .cont{
+	padding:0 10px  10px 10px;
+	line-height:20px;
+	color:#888;
+}
+.sidecont .cont .title{
+	padding-left:5px;
+	line-height:18px;
+}
+.sidecont .cont .post{
+	padding:10px 0 5px 0;
+	text-align:center;
+}
+.sidecont .cont div.tel{
+	background:url(qq.gif) 3px 3px no-repeat;
+	padding:3px 0 2px 25px;
+	color:#555;
+}
+.sidecont .cont div.email{
+	background:url(qq.gif) 3px -20px no-repeat;
+	padding:3px 0 2px 25px;
+	color:#555;
+}
+.sidecont .cont div.msn{
+	background:url(qq.gif) 3px -43px no-repeat;
+	padding:3px 0 2px 25px;
+	color:#555;
+}
+.sidecont .cont div.qq{
+	background:url(qq.gif) 3px -65px no-repeat;
+	padding:3px 0 2px 25px;
+	color:#555;
+}
+.sidecont .cont a{
+	color:#555;
+}
+
+.OtherContainer{
+	margin-top:10px;
+	border-top:#cbcbcb solid 1px;
+}
+.OtherContainer dt{
+	padding-top:5px;
+	height:25px;
+	line-height:25px;
+	padding-left:20px;
+	background:url(icon8.gif) left 10px no-repeat;
+	color:#666;
+}
+.OtherContainer dd{
+	padding:5px 5px 5px 20px;
+	line-height:20px;
+	word-spacing:10px;
+}
+.OtherContainer dd a:link,.OtherContainer dd a:visited,.OtherContainer dd a:hover{
+	color:#888;
+}
+.OtherContainer dd.bottom{
+	border-bottom:#cbcbcb solid 1px;
+}

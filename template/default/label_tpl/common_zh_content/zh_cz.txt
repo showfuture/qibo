@@ -1,0 +1,8 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:5px 0px 5px 0px;">
+  <tr>
+          <td style="background:#F6F6F6 url({$webdb[www_url]}/images/default/pot_blue.gif) no-repeat 8px 12px;padding:8px 10px 5px 21px;font-weight:bold;"><a href="$url" style="color:#275C91;font-size:14px;" target="_blank">$title</a></td>
+  </tr>
+  <tr>
+    <td style="line-height:180%;color:#8C8C8C;text-indent:2em;background: url({$webdb[www_url]}/images/default/line_bg.gif) repeat-x bottom;padding-top:5px;">$content</td>
+  </tr>
+</table>

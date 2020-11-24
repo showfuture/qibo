@@ -1,0 +1,317 @@
+/*
+*样式初始化
+*/
+*{ 
+	padding: 0; 
+	margin: 0; 
+} 
+body{
+	font-size:12px;
+	background:url(top.gif) repeat-x;
+}
+table{ 
+	/*border-collapse: collapse; */
+	border-spacing: 0; 
+}
+td{
+	VERTICAL-ALIGN: top;
+}
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul,li{ 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+a{
+	font-size: 12px;
+}
+a:link{
+	color: #333333;
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+	color: #333333;
+}
+a:hover{
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active{
+	text-decoration: none;
+}
+
+.wrap{
+	width:990px;
+	margin:auto;
+}
+.mt10{
+	margin-top:10px;
+}
+.mb10{
+	margin-bottom:10px;
+}
+.cleardiv{
+	clear:both;
+}
+.FL{
+	float:left;
+}
+.FR{
+	float:right
+}
+.F14{
+	font-size:14px;
+}
+.FB{
+	font-weight:bold;
+}
+.normal{
+	font-style:normal;
+	font-size:12px;
+	font-weight:normal;
+	color:#333;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+/**************
+*****************************网站头部**********************
+**************/
+/*
+*顶部信息
+*/
+.TopContainer{
+	width:990px;
+	height:35px;
+	overflow:hidden;
+	margin:auto;
+	line-height:35px;
+	color:#555;
+}
+.TopContainer #showtime{
+	float:left;
+}
+.TopContainer .siter{
+	float:right;
+	color:#CCC;
+}
+/*
+*头部信息
+*/
+.Header{
+	height:50px;
+	width:990px;
+	overflow:hidden;
+	margin:10px auto;
+}
+.Header .logo{
+	width:260px;
+	border-right:#DDD solid 1px;
+	float:left;
+}
+.Header .cityname{
+	width:90px;
+	float:left;
+}
+.Header .cityname div{
+	text-align:center;
+	line-height:20px;
+}
+.Header .cityname div.title{
+	padding-top:5px;
+	font-size:16px;
+	font-weight:bold;
+}
+.Header .cityname div.chage,.Header .cityname div.chage a{
+	color:#999;
+}
+.Header .login{
+	float:right;
+	height:40px;
+	padding:5px 0 0 15px;
+	background:url(loginbg.gif) left 5px no-repeat;
+}
+.Header .login #head_loginer{
+	height:40px;
+	background:url(loginbg.gif) right top no-repeat;
+	float:left;
+	padding-right:10px;
+}
+.Header .login #head_loginer td{
+	height:40px;
+	vertical-align:middle;
+	background:url(loginbg.gif) center top no-repeat;
+}
+.Header .login #head_loginer em{
+	padding-right:10px;
+	color:#F60;
+}
+.Header .login #head_loginer a{
+	padding-right:10px;
+	color:#3F6D25;
+}
+.Header .login #head_loginer a.quit{
+	color:red;
+}
+.Header .login #head_loginer .input,.Header .login #head_loginer .sub{
+	padding-right:10px;
+}
+.Header .login #head_loginer .input input{
+	width:90px;
+	height:18px;
+	border:#DDD solid 1px;
+}
+/*
+*大导航
+*/
+.Mainmenu{
+	width:990px;
+	height:35px;
+	overflow:hidden;
+	margin:5px auto 0 auto;
+}
+.Mainmenu li{
+	float:left;
+	margin-right:8px;
+	line-height:40px;
+	padding-left:15px;
+	background:url(mbg.gif) no-repeat;
+}
+.Mainmenu li div{
+	padding-right:15px;
+	background:url(mbg.gif) right top no-repeat;
+}
+.Mainmenu a{
+	font-size:14px;
+	font-weight:bold;
+}
+.Mainmenu li.w{
+	background:url(mck.gif) no-repeat;
+}
+.Mainmenu li.w div{
+	background:url(mck.gif) right top no-repeat;
+}
+.Mainmenu li.w a{
+	color:#FFF;
+}
+.Mainmenu li.m{
+	float:right;
+	margin:0 0 0 8px;
+}
+/*
+*头部搜索
+*/
+.HeadSearch{
+	width:1010px;
+	height:53px;
+	overflow:hidden;
+	margin:auto;
+	background:url(menuc.gif) repeat-x;
+}
+.HeadSearch dt{
+	float:left;
+	height:53px;
+	padding-left:10px;
+	background:url(menul.gif) no-repeat;
+}
+.HeadSearch dd{
+	float:right;
+	height:53px;
+	padding-right:10px;
+	background:url(menur.gif) right top no-repeat;
+}
+.HeadSearch .search{
+	height:40px;
+	padding:7px 0 0 310px;
+	background:url(key.gif) 265px 5px no-repeat;
+	float:left;
+}
+.HeadSearch .search .keyword{
+	height:30px;
+	width:300px;
+	float:left;
+	background:url(sbg.gif) no-repeat;
+}
+.HeadSearch .search .keyword input{
+	width:285px;
+	height:30px;
+	border:0;
+	background:none;
+	line-height:30px;
+	padding-left:2px;
+}
+.HeadSearch .search .sub{
+	height:30px;
+	width:90px;
+	float:left;
+	background:url(sbg.gif) right top no-repeat;
+	text-align:center;
+	padding-top:3px;
+}
+.HeadSearch .hotline{
+	width:185px;
+	height:30px;
+	text-align:center;
+	padding-top:7px;
+	background:url(hotline.gif) center 7px no-repeat;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+	color:#3F6D25;
+}
+/*
+*网站地图
+*/
+.nav_guide{
+	height:20px;
+	position:relative;
+	margin-bottom:10px;
+}
+.nav_guide div{
+	height:28px;
+	border:#D5D5D5 solid 1px;
+	background:url(guide.gif) repeat-x;
+	line-height:28px;
+	padding-left:10px;
+	width:978px;
+	position:absolute;
+	left:0;
+	top:-8px;
+	z-index:1000;
+}
+.Spacingdiv{
+	position:relative;
+	height:1px;	
+}
+.Spacingdiv div{
+	width:990px;
+	height:10px;
+	position:absolute;
+	z-index:100;
+	left:0;
+	top:-10px;
+	background:url(guide.gif) repeat-x;
+}
+/*
+*网页底部
+*/
+.CopyRight{
+	text-align:center;
+	padding:10px 0 10px 0;
+	line-height:20px;
+	color:#888;
+}

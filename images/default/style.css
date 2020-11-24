@@ -1,0 +1,1356 @@
+/*****************************************************************
+******************************************************************
+以下为所有风格通用样式
+margin: 0;padding: 0;设置外边距,内边距空隙都为0
+font-size: 12px;为字体大小.一般表格内的,不受他控制
+li,ul设置list-style: none;主要是取消默认的小圆点.不太好看
+******************************************************************
+*****************************************************************/
+
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+li,ul{
+	list-style: none;
+}
+
+/******************************************
+TD中的color: #333333;为没有超级链接的字体颜色
+VERTICAL-ALIGN: top;表格里的内容居顶
+text-align:left;表格里的内容居左
+*******************************************/
+
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+}
+
+/******************************************
+border:1px solid #ccc; 表单边框为1个像素的实线,
+要为虚线改solid为dotted,要换颜色改#ccc
+可以自定义背景颜色
+background:#eee;
+*******************************************/
+
+input,textarea{
+	border:1px solid #ccc;
+}
+
+/******************************************
+网页整体宽度
+******************************************/
+.wrap{
+	width:990px;
+	margin:auto;
+}
+
+/******************************************
+font-size: 12px;超级链接字体大小
+color:字体颜色
+text-decoration: none;没有下画线.要有下画线.改none为underline
+a 为统一超级链接,
+a:link没有点击过的超级链接样式
+a:visited 被点击过的超级链接样式
+a:hover 鼠标指向时的超级链接样式
+a:active 被用户激活(在鼠标点击与释放之间发生的事件)时的样式.少用
+*******************************************/
+
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+
+#header{
+	width:990px;
+}
+
+/************************************************************************************
+网页最顶部登录框与日历相关
+**************************************************************************************/
+#header_top{
+	width:990px;
+	background:url(head_top_2.gif);
+}
+#header_top .L{
+	width:9px;
+	height:30px;
+	background:url(head_top_1.gif);
+}
+#header_top .R{
+	width:7px;
+	height:30px;
+	background:url(head_top_3.gif);
+}
+#header_top .login{
+	width:500px;
+	float:left;
+	margin-top:4px;
+}
+#header_top .Time{
+	width:300px;
+	float:right;
+	text-align:right;
+	padding-top:6px;
+	padding-right:5px;
+	margin-top:2px;
+}
+#header_top .login input.login_name,#header_top .login  input.login_pwd{
+	width:90px;
+	height:15px;
+}
+#header_top .login_sub{
+	color:#fff;
+	background:url(login_button.gif);
+	padding-top:1px;
+	border:1px solid #ccc;
+	height:19px;
+}
+/******************************************************************************************
+网站LOGO与小图片菜单
+******************************************************************************************/
+#header{
+	clear:both;
+	width:990px;
+	margin:auto;	
+	margin-top:7px;
+}
+#header .logo{
+	float:left;
+	padding-top:5px;
+	padding-bottom:7px;
+}
+#header .ico_guide{
+	float:right;
+	width:75px;
+	border-right:1px dotted #ccc;
+	margin-right:4px;
+	margin-top:10px;
+}
+#header .ico_guide a{
+	width:75px;
+	text-align:center;
+	padding-top:34px;
+	display:block;
+}
+#header .ico_guide a{
+	font-weight:bold;
+}
+#header .bbs{
+	background:url(headico/bbs.gif) no-repeat top center;
+}
+#header .post{
+	background:url(headico/post.gif) no-repeat top center;
+}
+#header .jf{
+	background:url(headico/jf.gif) no-repeat top center;
+}
+#header .user{
+	background:url(headico/user.gif) no-repeat top center;
+}
+#header .search{
+	background:url(headico/search.gif) no-repeat top center;
+}
+#header .book{
+	background:url(headico/book.gif) no-repeat top center;
+}
+#header .digg{
+	background:url(headico/digg.gif) no-repeat top center;
+}
+#header .sell{
+	background:url(headico/sell.gif) no-repeat top center;
+}
+
+
+/******************************************************************************************
+网站头部菜单
+******************************************************************************************/
+#guide{
+	width:990px;
+	clear:both;
+	margin:auto;
+	margin-top:0px;
+	height:31px;
+	background: url(cate_nav_bg.gif) repeat-x;
+}
+#guide .L{
+	height:31px;
+	width:10px;
+	background:url(cate_nav_bg1.gif);
+	float:left;
+}
+#guide .C span a{
+	font-size:14px;
+	color:#FAFAFA;
+	font-weight:bold;
+	letter-spacing:1px;
+}
+#guide .C span{
+	float:left;
+	height:22px;
+	padding:9px 15px 0px 10px;
+	background:url(cate_nav_bg_3.gif) no-repeat right;
+}
+#guide .R{
+	float:right;
+	height:23px;
+	text-align:right;
+	padding-right:15px;
+	padding-top:8px;
+	background: url(cate_nav_bg2.gif) right no-repeat;
+}
+#guide .R a{
+	background:url(flea_dot.gif) no-repeat 0px 0px;
+	padding-left:19px;
+	font-size:14px;
+	color:#fff;
+	margin-right:5px;
+}
+
+/*****栏目导航****/
+.nav_guide{
+	width:978px;
+	border:1px solid #84A6DC;
+	margin:auto;
+	margin-bottom:2px;	
+	margin-top:5px;
+	padding:5px;
+	background:#F1F6FC;
+}
+/******************************************
+.MainTable .guide样式导航表格样式
+margin-top:5px;与上方表格的距离
+border:1px #A7CAFA solid;边框样式,solid可更换成dotted虚线
+height:20px;表格高度
+background:#F5FAFE;表格背景颜色
+
+.MainTable .guide td{ padding:5px; 表格内的文字距离四周的间距
+可改成 padding:5px 0 0 0;指上右下左
+*******************************************/
+
+.MainTable .guide{
+	margin-top:5px;
+	border:1px #A7CAFA solid;
+	height:20px;
+	background:#F5FAFE url(head2.gif);
+}
+.MainTable .guide td{
+	padding:5px;
+}
+
+
+/*****************************************************************
+******************************************************************
+内容大表格模块样式
+width:100%;占满整个空间宽度
+margin-top:5px;与上一个表格间距为5个像素
+overflow:hide;内容超过时,将隐藏.不过上面用百分比,一般这里设置无效.
+只有上面用具体像素,这里才生效
+border:1px #A7CAFA solid;边框样式,1个像素,可以改solid为虚线dotted,要取消边框改1px为0px
+******************************************************************
+******************************************************************/
+
+.dragTable{
+	width:100%;
+	margin-top:5px;
+	overflow:hide;
+	border:0px #9ACAD6 solid;
+	
+}
+
+/******************************************
+内容表格模块头部样式
+background:#D2E4FC;背景颜色
+height:20px;高度
+padding-left:1em;字体与左边距离
+padding-top:7px;字体与上方距离
+border:1px #FFF solid;内边框样式,一般设置为0px较多,即不要内边框居多
+******************************************/
+
+.dragTable .head{
+	background:#ccc url(head_bg.gif) no-repeat right;
+	height:30px;
+	padding-top:0px;
+	border:0px #FFF solid;
+	border-bottom:0px #C6EBEE solid;
+}
+
+.dragTable .head .L{
+	background:url(hd_a1.gif);
+	width:30px;
+	height:30px;
+	margin-left:0px;
+	float:left;
+}
+
+/******************************************
+模块主题文字,与点击查看更多
+float:left;居左,
+可以设置为粗体 font-weight:bold;颜色为color:#000;
+******************************************/
+
+.dragTable .TAG{
+	float:left;
+	color:#247384;
+	font-weight:bold;
+	padding:9px 5px 0 0px;
+	height:21px;
+	font-size:13px;
+}
+.dragTable .TAG a{
+	color:#247384;
+	font-size:13px;
+}
+.dragTable .morelink{
+	float:left;
+	padding-top:8px;
+	padding-left:10px;
+}
+.dragTable .morelink a{
+	margin-left:10px;
+	text-decoration: underline;
+}
+.dragTable .more{
+	float:right;
+	padding-right:1em;
+	padding-top:8px;
+}
+.dragTable .more a{
+	color:#666;
+}
+/******************************************
+整体大表格之间的间隙
+******************************************/
+.MainTable{
+	margin-top:0px;
+}
+/******************************************
+右边窄表格模块样式
+******************************************/
+
+.MainTable .Side .dragTable{
+	width:98%;
+}
+
+.MainTable .Side .dragTable .middle{
+	line-height:17px;
+}
+
+/*************DIV布局的大表格结构,这里可以控制左右列表的调转*******************/
+.MainDivTable .Main{
+	width:70%;
+	float:left;
+}
+.MainDivTable .Side{
+	width:30%;
+	text-align:right;
+	float:right;
+}
+.MainDivTable .Side .dragTable{
+	float:right;
+}
+/******************************************
+内容模块主体部分
+padding:8px;距离四周距离为8个像素,
+可以改成更具体些的padding:8px 0 0 0;即上右下左的距离
+line-height:20px;行高,即是使用<br>换行符时的文字行高
+******************************************/
+
+.dragTable .middle{
+	padding:6px 1px 4px 7px;
+	height:50px;
+	line-height:20px;
+	border:1px solid #D0D0D0;
+	border-top:0px solid #D0D0D0;
+}
+
+/******************************************
+右边窄表格最新,最热的内容样式.
+	width:210px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+通过设定固定宽度,使控制自动隐藏超出边界的内容自动隐藏,用省略号表示
+只对<ul><li>有效
+******************************************/
+
+.MainTable .Side .dragTable .middle ul li{
+	width:210px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+
+/********************************************************/
+#AutoRows .dragTable .middle{
+	padding-top:0px;
+	padding-bottom:0px;
+	height:100px;
+}
+
+/****************************图片样式******************/
+
+.listpic{
+	width:120px;
+	padding:3px 7px 3px 5px;
+	float:left;
+}
+.listpic .title{
+	width:120px;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.listpic img{
+	border:1px #FFF solid;
+	width:120px;
+	height:90px;
+}
+.listpic .img a{
+	width:120px;
+	height:90px;
+	display:block;
+	text-align :center;
+	border:1px #ccc solid;
+	margin-bottom:5px;
+}
+
+/**********************************分页******************************************/
+
+.page{
+	text-align:center;
+	padding:8px;
+}
+
+
+/*****************************************************************
+******************************************************************
+文章内容页
+.content_word,.content_word p多种格式的控制内容的样式,字号为15像素
+******************************************************************
+******************************************************************/
+.content_word,.content_word p{
+	font-size:15px;
+}
+
+
+
+/************************************评论样式***************************/
+
+#comment .content,#comment_show .content{
+	width:99%;
+	border:dotted 1px #ddd;
+	margin-bottom:10px;
+}
+#comment .content .word,#comment_show .content .word{
+	border-bottom:solid 1px #eee;
+	padding-left:5px;
+	height:50px;
+}
+#comment .content .img,#comment_show .content .img{
+	border-right:dotted 1px #ddd;
+	padding:1em;
+}
+#comment .content .info,#comment_show .content .info{
+	padding:2px 0 0 5px;
+}
+
+
+
+/***********************网页底部************************************/
+
+#footer{
+	border-top:#CBCBCB solid 1px;
+	margin-top:4px;
+}
+#footer td{
+	padding:1em 0 1em 0;
+}
+
+
+/*********************************************************************
+**********************************************************************
+AJAX在线编辑DIV容器
+这个会员看不到.只是版主管理员才可以看到.这是后台风格
+一般不必修改了.修改了会员也看不到
+**********************************************************************
+*********************************************************************/
+#AjaxEditTable{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+#AjaxEditTable .head{
+	height: 21px;
+	background: #DBEAFF;
+	border-bottom:1px solid #BEDDFF;
+	padding:3px 5px 0 7px;
+}
+#AjaxEditTable .head a{
+	color:#FFF;
+}
+#AjaxEditTable .head span{
+	DISPLAY: block; 
+	FLOAT: right;
+}
+#AjaxEditTable .middle{
+	background:#FFF;
+	line-height:18px;
+	padding:5px;
+}
+#AjaxEditTable .middle input,#AjaxEditTable .middle textarea{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+
+/*********************************留言本***********************************************/
+
+.guestbook{
+	margin-bottom:4px;
+	border:1px dotted #ccc;
+	width:99%;
+}
+.guestbook .Ftd{
+	padding:4px;
+	border-right:1px dotted #ccc;
+}
+.guestbook .Atd{
+	border-top:1px solid #eee;
+	padding-left:4px;
+}
+.guestbook .Ctd{
+	padding:4px;
+}
+
+
+/******************下拉菜单的背景颜色与透明度设置*************/
+#menuTable{
+	background:#F5FCFE;
+	border:1px solid #A7CAFA;
+	filter:Alpha(Opacity=80);
+}
+#menuTable td{
+	padding:3px 0px 3px 5px;
+	line-height:15px;
+}
+
+/******************评论页显示样式**********************/
+
+#comment_title{
+	height:92px;
+	background:url(../default/comment_title.gif);
+}
+#comment_title td{
+	padding-top:18px;
+}
+
+
+/******************顶客页digg.php显示样式**********************/
+.list_sortTCP{
+	margin-bottom:12px;
+	width:99%;
+}
+.list_sortTCP .pic{
+	padding-right:1em;
+}
+.list_sortTCP .content{
+	border-bottom:1px dotted #ccc;
+	text-indent:2em;
+	color:#646464;
+}
+.list_sortTCP .title a{
+	color:#555555;
+}
+.list_sortTC{
+	margin-bottom:5px;
+	width:99%;
+	border-bottom:1px dotted #ccc;
+}
+.list_sortTC .title a{
+	color:#555555;
+}
+.list_sortTC .content{
+	text-indent:2em;
+	color:#646464;
+}
+
+
+
+/*******************************顶客**************************************/
+.Digg{
+	background:url(../default/digg_center.gif) center;
+}
+.Digg .left{
+	background:url(../default/digg_left.gif) left;
+	width:5px;
+}
+.Digg .right{
+	background:url(../default/digg_right.gif) right;
+	width:5px;
+}
+.Digg .number{
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+	padding-top:14px;
+	color:#2B4399;
+}
+.Digg .title{
+	font-size:13px;
+	text-align:center;
+	padding-top:18px;
+}
+.Digg .title a{
+	color:#990000;
+}
+
+.small_digg{
+	width:38px;
+	height:24px;
+	background:url(../default/bg_digg.gif);
+	text-align:center;
+	padding-top:7px;;
+	font-size:16px;
+	margin-bottom:8px;
+	margin-right:4px;
+}
+
+
+
+
+/*******************************提交按钮*************************************/
+.button{
+	color:#333;
+	background:url(../default/bt_bg.gif);
+	height:21px;
+	border:1px solid #555;
+	letter-spacing:2px;
+}
+
+
+/***************************专题列表页*****************************************/
+#listsp{
+	width:99%;
+}
+#listsp .sptd{
+	border-bottom:1px dotted #ccc;
+	padding-top:5px;
+}
+#listsp .pic{
+	padding:3px 1em 0.5em 5px;
+}
+#listsp .title{
+	padding-bottom:0.2em;
+}
+#listsp .title a{
+	color:#990000;
+}
+#listsp .pic img{
+	border:1px solid #333;
+}
+#spshow .about{
+	color:#990000;
+}
+
+
+/****************************积分介绍页*************************************/
+.jfsort{
+	margin-bottom:10px;
+}
+.jfsort .jfname{
+	background:url(article_elite.gif) no-repeat 10px 0px  ;
+	text-indent:25px;
+	color:red;
+	font-weight:bold;
+}
+.jfsort .title{
+	background:url(arrow.gif) no-repeat 25px 0px;
+	text-indent:35px;
+}
+
+.jfsort .about{
+	text-indent:45px;
+}
+
+ 
+/*********下载*********/
+.viewcontent .middle{
+	padding:0px;	
+}
+#viewdownload .middle td{
+	padding-left:8px;
+	padding-top:3px;
+}
+#viewdownload .middle .a1{
+	font-weight:bold;
+}
+#viewdownload .middle .b1{
+	background:#fff;
+}
+/***************视频*****************/
+#viewmv .middle td{
+	padding-left:8px;
+	padding-top:3px;
+}
+#viewmv .middle .a1{
+	font-weight:bold;
+}
+#viewmv .middle .b1{
+	background:#fff;
+}
+/********************商城****************************/
+.sortshop{
+	width:180px;float:left;
+	border-right:solid 1px #ccc dotted;
+	border-bottom:solid 1px #ccc dotted;
+}
+.sortshop.about{
+	padding-left:5px;
+}
+.sortshop a{
+	font-weight:bold;
+}
+
+.sorttitle{
+	width:98%;
+}
+.sorttitle td{
+	padding-top:3px;
+	background:url(iicon3.gif) repeat-x bottom;
+}
+.sorttitle a{
+	display:block;
+	background:url(iicon1.gif) no-repeat left;
+	text-indent:1.2em;
+	background-position: 0 40%;
+}
+
+
+.sortshop .title a{
+	display:block;
+	background:url(items.gif) no-repeat 5px 0px;
+	width:170px;
+	text-indent:2em;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+/**********图片大分类页**************/
+.BigsortImg .v0{
+	width:120px;
+	padding:5px 0px 5px 18px;
+}
+.BigsortImg .v0 .p1 img{
+	width:120px;
+	height:90px;
+	border:1px solid #fff;
+}
+.BigsortImg .v0 .p1 a{
+	width:120px;
+	height:90px;
+	display:block;
+	border:1px solid #ccc;
+}
+.BigsortImg .v0 .p2{
+	text-align:center;
+	padding-top:5px;
+	width:120px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/**********图片内容列表页**************/
+.list_sortpic .listpic{
+	margin-left:6px;
+}
+/********************/
+.BigsortTile .a2{
+	padding-right:10px;
+}
+
+/*********图片主题************/
+#ListShowPic .listpic{
+	margin-left:6px;
+}
+
+
+#content_vote{
+	margin:10px;
+}
+
+
+
+/**********Flash大分类页**************/
+.FlashBigsortImg .v0 .p2{
+	text-align:left;
+}
+/**********商城大分类页**************/
+.ShopBigsortImg .v0 .p2{
+	text-align:left;
+}
+/**********商城大分类页**************/
+.MvBigsortImg .v0 .p2{
+	text-align:left;
+}
+
+/****************************************************/
+#IndexMainNews .L{
+	height:70px;
+	width:4px;
+	background:url(topnews_a1.gif) no-repeat top;
+}
+
+#IndexMainNews .C{
+	background:url(topnews_a2.gif) repeat-x top;
+	line-height:150%;
+}
+
+#IndexMainNews .R{
+	width:4px;
+	background:url(topnews_a3.gif) no-repeat top;
+}
+
+#IndexMainNews{
+	border-bottom:1px solid #E3E3E3;
+}
+/**********************************首页推荐栏目************************************/
+.AutoRows .list_title{
+	background:url(ico_block.gif) no-repeat 0px 6px ;
+	text-indent:15px;
+	padding-top:2px;
+	padding-right:9px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+
+}
+.AutoRows .list_title a{
+	font-size:13px;
+}
+/*********************************首页滑动门特效标题样式*******************************/
+.bmenu{
+	width:140px;
+	height:19px;
+	background:url(blog_mu.gif);
+	margin-right:5px;
+	text-align:left;
+	padding-top:11px;
+}
+.bmenu span{
+	font-size:13px;
+	color:#707070;
+	font-weight:bold;
+	cursor:hand;
+}
+.bmenu .a1{
+	margin-left:10px;
+	color:#990000;
+}
+.bmenu .a2{
+	margin-left:5px;
+}
+.rmenu{
+	margin-right:5px;
+}
+.rmenu .LL{
+	background:url(m_l.gif);
+	width:5px;
+	height:30px;
+}
+.rmenu .RR{
+	background:url(m_r.gif);
+	width:5px;
+}
+.rmenu .CC{
+	background:url(m_c.gif);	
+	font-size:13px;
+	font-weight:bold;
+	color:#707070;
+}
+.rmenu .CC div{
+	height:20px;
+	padding-top:10px;
+	padding-left:0px;
+	padding-right:7px;
+	margin-right:4px;
+	margin-left:2px;
+	float:left;
+	letter-spacing:2px;
+	background:url(m_ch.gif) no-repeat right;
+	cursor:hand;
+}
+.rmenu .CC div.f{
+	background:url();
+	letter-spacing:0px;
+	margin-right:0px;
+}
+
+.rmenu .CC div.ch{
+	color:#990000;
+}
+
+
+/*********************************友情链接.更多.申请*******************************/
+.linkmenu{
+	width:140px;
+	height:19px;
+	background:url(blog_mu.gif);
+	margin-right:5px;
+	text-align:left;
+	padding-top:11px;
+}
+.linkmenu span a{
+	font-size:13px;
+	color:#707070;
+	cursor:hand;
+}
+.linkmenu span a:visited {
+	color:#707070;
+}
+.linkmenu .a1{
+	margin-left:10px;
+	color:#056FC8;
+}
+.linkmenu .a2{
+	margin-left:11px;
+}
+
+/******************************内容页*************************************/
+#view_article .head{
+	display:none;
+}
+#view_article .middle{
+	border-top:1px solid #D0D0D0;
+	background:#FDFEFF;				/**内容页背景颜色**/
+}
+#view_article .main_title{
+	margin-top:33px;
+	margin-bottom:15px;
+	font-size:20px;
+	color:#000;
+	font-weight:bold;
+	text-align:center;
+}
+#view_article .fit_title{
+	line-height:40px;
+	font-size:15px;
+	color:#000;
+	text-align:center;
+}
+#view_article .top_about{
+	text-align:center;
+	color:#666;
+	padding-bottom:10px;
+	border-bottom:1px solid #eee;
+	width:96%;	
+	margin:auto;
+	margin-bottom:15px;
+}
+#view_article .top_about a{
+	color:#666;
+}
+#view_article .top_about #commnetsnum{
+	color:red;
+}
+#view_article .content{
+	width:96%;
+}
+.content_word,.content_word td,.content_word p,.content_word div,.content_word span,.content_word a{
+	font-size:15px;
+	line-height:200%;
+}
+#view_article .tag_username{
+	border:#ccc dotted 1px;
+}
+#view_article .tag_username .Tags a{
+	font-weight:bold;
+}
+#view_article .tag_username td{
+	padding:3px 9px 1px 9px;
+	background:#fff;
+}
+#view_article .nextpage td{
+	font-size:14px;
+	line-height:80px;
+}
+#view_article .nextpage td a{
+	font-size:14px;
+}
+/****************************************列表页*****************************************/
+#list_article .head{
+	display:none;
+}
+#list_article .middle{
+	border-top:1px solid #D0D0D0;
+	background:#FDFEFF;				/**列表页背景颜色**/
+}
+
+/**自定义表单**/
+.formlist_head td{
+	line-height:24px;
+	color:red;
+	background:#eee;
+}
+.formlist_tr td{
+	line-height:26px;
+}
+.formlist_table{
+	background:#eee;
+}
+
+
+/*把相关相目的TAG隐藏掉*/
+#sonSortName .head{
+	display:none;
+}
+#sonSortName .middle{
+	border-top:1px solid #D0D0D0;
+	
+	padding:0px;
+}
+
+/************************************首页搜索***********************************************/
+#Index_Search{
+	margin-top:1px;
+}
+#Index_Search .dragTable .middle{
+	border-top:#D0D0D0 1px solid;
+
+}
+#Index_Search .Main .dragTable .middle{
+	background:url(search_logo.gif) no-repeat 20px 5px;
+	padding-left:80px;
+}
+#Index_Search .Main .dragTable .middle .input{
+	width:330px;
+	height:17px;
+	border:1px solid #7C9FBD;
+	margin-left:10px;
+}
+#Index_Search .Main .dragTable .middle .s_bt{
+	display:block;
+	background:url(search_img.gif);
+	width:65px;
+	height:24px;
+	float:left;
+	text-indent:-1000px;
+	margin-left:10px;
+}
+#Index_Search .Main .dragTable .middle .right{
+	float:left;
+	padding-top:4px;
+	padding-left:15px;
+}
+#Index_Search .Main .dragTable .middle .right a{
+	font-size:13px;
+	color:#0F42A6;
+	text-decoration: underline;
+}
+#Index_Search .Main .dragTable .middle .right a:hover{
+	text-decoration:none;
+}
+#Index_Search .Main .dragTable .middle .top{
+	height:30px;
+}
+#Index_Search .Main .dragTable .middle .hotkey a{
+	margin-left:5px;
+}
+
+#Index_Search .Side .dragTable .middle #num_info div{
+	float:left;
+	display:block;
+	padding-left:4px;
+	width:48%;
+	line-height:25px;
+}
+
+/*把首页普通文字链接隐藏掉,为避免重复显示*/
+.wordfriendlink{
+	display:none;
+}
+
+/*为了首页的后台更新标签好看些*/
+.label_head_guides{
+	width:660px;
+}
+
+
+
+
+
+
+
+
+/*黄页*/
+#hy_sort{
+	padding:1px 1px 1px 2px;
+}
+#hy_sort .tb{
+	height:85px;
+	width:368px;
+	float:left;	
+}
+#hy_sort .tb .td1{
+	width:20px;
+	background:#EBE9E9;
+	Writing-mode:tb-rl;
+	font-weight:bold;
+	text-align:center;
+	letter-spacing:3px;
+}
+#hy_sort .tb .td2{
+	background:#F7F7F7;
+	padding:5px 8px 0 8px;
+	line-height:200%;
+}
+
+#hy_sort .tb2{
+	border-top:2px solid #fff;
+	border-bottom:2px solid #fff;
+}
+#hy_sort .tb2 .td2{
+	background:#FFFFFF;
+}
+
+#list_hy .middle .title a{
+	font-size:13px;
+	font-weight:bold;
+	color:#077AC7;
+}
+#list_hy .middle .time,#list_hy .middle .view{
+	VERTICAL-ALIGN: middle;
+}
+#list_hy .middle .about{
+	color:#ADADAD;
+}
+#list_hy .middle .about span{
+	color:#333;
+}
+#list_hy .middle .tt{
+	line-height:200%;
+}
+#list_hy .middle .im img{
+	margin:0px 5px 0 8px;
+}
+
+#sonSortName #hySortName a{
+	margin-right:5px;
+}
+#sonSortName #hySortName{
+	line-height:200%;
+	padding:8px 8px 8px 8px;
+}
+
+
+/******************************************
+BLOG
+******************************************/
+.listpic{
+	width:127px;padding:3px 0 3px 4px;float:left;
+	
+	
+}
+.listpic .title{
+	width:127px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+	
+	
+	
+	
+}
+
+.listpic img{
+	border:1px #FFF solid;
+	width:120px;
+	height:90px;
+}
+
+
+
+.listpic .img a{
+	width:120px;
+	height:90px;
+	display:block;
+	text-align :center;
+	border:1px #ccc solid;
+	margin-bottom:5px;
+}
+
+.listarticle td{
+	padding:7px 5px 0 5px;
+	border-bottom:1px dashed #ccc;
+}
+.listarticle span{
+	display:block;
+	float:left;
+}
+
+
+.listarticle span.title{
+	text-indent: 0.6em;
+	background:url(title_icon3.gif) no-repeat left;
+	background-position: 0em 40%;
+}
+.listarticle span.time{
+	float:right;
+}
+
+.content_word,.content_word p{
+	font-size:15px;
+}
+
+
+.ListPhoto ul{
+	display:block;
+	width:96%;
+	margin:8px 8px 0 10px;
+	height:100px;
+	overflow:hide;
+	border-bottom:1px #ccc dotted;
+}
+
+
+.ListPhoto ul li{
+	display:block;
+	float:left;
+}
+
+
+
+.ListPhoto ul li.img{
+	width:130px;
+	border-right:1px #ccc dotted;
+}
+
+
+
+.ListPhoto ul li.img img{
+	border:1px solid #ccc;
+}
+
+
+.ListPhoto ul li.img a{
+	display:block;
+	width:120px;
+	height:90px;
+	text-align :center;
+	background:#eee;
+	border:1px solid #333;
+}
+
+
+
+.ListPhoto ul li.word{
+	margin-left:1em;
+}
+
+
+
+.ListPhoto ul li.word span{
+	display:block;
+	overflow:hide;
+}
+
+
+
+.ListPhoto ul li.word span.title a{
+	font-weight:bold;
+}
+
+#sortmenu{
+	width:99%;
+	border:#C3CECD 1px dotted;
+	margin:0px 0 9px 0;
+}
+#sortmenu td{
+	padding:3px 3px 1px 3px;
+}
+#sortmenu td a{
+	text-decoration: underline;
+}
+#sortmenu td a:hover{
+	text-decoration: none;
+}
+
+
+
+.list_word{
+	width:99%;
+}
+.list_word .list_title{
+	background:#F9FBFA url(title_icon3.gif) no-repeat 0px 9px;
+	height:20px;
+	padding-top:3px;
+	padding-left:5px;
+	border-top:1px dotted #C3CECD;
+	margin-bottom:5px;
+}
+.list_word .list_title a{
+	color:#555;
+	font-weight:bold;
+}
+.list_word .list_content{
+	text-indent:2em;
+	line-height:18px;
+	color:#777;
+	margin-bottom:2px;
+}
+.list_word .list_about{
+	background:#FCFCFC;
+	margin-bottom:8px;
+	color:#888;
+	text-align:right;
+	border-bottom:1px solid #EFEFEF;
+}
+
+#toptable1 table{
+	width:49%;
+	float:left;
+}
+#toptable1 .name{
+	padding-right:10px;
+}
+#toptable1 td a{
+	text-decoration: underline;
+}
+.dragTable #toptable2{
+	height:10px;
+}
+
+#Isearch{
+	border-top:1px solid #D0D0D0;
+	margin-bottom:10px;
+}
+
+#comblog table{
+	width:49%;
+	float:left;
+	margin-bottom:4px;
+}
+#comblog table img{
+	width:70px;
+	height:70px;
+	border:1px solid #FFF;
+}
+#comblog table .img a{
+	display:block;
+	width:70px;
+	height:70px;
+	border:1px solid #ccc;
+}

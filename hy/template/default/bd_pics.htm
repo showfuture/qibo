@@ -1,0 +1,113 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div id="bd_pics">
+<!--
+EOT;
+$webdb[info_bd_picnum]=$webdb[info_bd_picnum]?$webdb[info_bd_picnum]:6;
+if($rsdb[bd_pics]){
+	$query=$db->query("SELECT * FROM {$_pre}pic WHERE pid IN ($rsdb[bd_pics])");
+    $j=1;
+    while($rs=$db->fetch_array($query)){
+    	$bdpics[$j]=$rs;
+        $j++;
+    }
+}
+for($i=1;$i<=$webdb[info_bd_picnum];$i++){
+print <<<EOT
+-->
+	<li style="width:90px; height:90px; border:1px #cccccc solid; background-color:#f5f5f5; float:left; list-style:none;  margin-bottom:5px;margin-right:2px; text-align:center; cursor:hand; padding:5px;"  id="bd_pics_$i" onclick="choooooooose_pic($i)">
+<!--
+EOT;
+if($bdpics[$i]){
+$bdpics[$i][url]=tempdir($bdpics[$i][url]);
+print <<<EOT
+-->
+	<img src='{$bdpics[$i][url]}.gif'   width='90' height='90'  alt='{$bdpics[$i][title]}' title='{$bdpics[$i][title]}'/><input type='hidden' name='bd_pics_list[$i]' value='{$bdpics[$i][pid]}'>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+    点击选择图片
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                  </div>
+                   <script language="javascript">
+				  var index;
+				  var showmypics_iframe_open=false;
+                  function choooooooose_pic(ind){	
+				  	index=ind;		
+				  	try{
+						var myParent=document.getElementById('bd_pics');
+						var myParentli=myParent.getElementsByTagName('li'); 
+						
+						for(var j=0;j<myParentli.length;j++){
+							myParentli[j].style.border="1px #cccccc solid";
+						} 
+					}catch(e){
+					
+					}
+				  	var my=document.getElementById("bd_pics_"+String(index));
+					my.style.border="1px red solid";
+					document.getElementById("showmypics").style.display='block';
+				  	document.getElementById("showmypics_what").innerHTML=index;
+					var showmypics_iframe=document.getElementById("showmypics_iframe");	
+					
+					if(!showmypics_iframe_open){
+						showmypics_iframe.src="$Murl/choose_pic.php";
+						showmypics_iframe_open=true;
+					}
+					parent.SetCwinHeight();
+					
+				  }
+				  
+				  function set_choooooooooooosed(pid,url,title){
+				  
+				  	document.getElementById("bd_pics_"+String(index)).innerHTML="<img src='"+url+"'   width='90' height='90'  alt='"+title+"' title='"+title+"'/><input type='hidden' name='bd_pics_list["+index+"]' value='"+pid+"'>";
+					//cancel_chooooooooose();
+				  }	
+				  			 
+				  function del_choooooose(){
+				  	document.getElementById("bd_pics_"+String(index)).innerHTML="双击选择图片";
+					 //cancel_chooooooooose();
+				  }
+				  
+				  function cancel_chooooooooose(){
+				  	document.getElementById("showmypics").style.display='none';
+						var my=document.getElementById("bd_pics_"+String(index));
+							my.style.border="1px #cccccc solid";
+				  }
+                  </script>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="showmypics" style=" clear:both;display:none;width:610px; margin-top:5px;  border:1px #cccccc solid; background-color:#f5f5f5; line-height:20px;">
+  <tr>
+    <td> &nbsp;<strong>操作对象：第 <span id="showmypics_what"></span> 张图片</strong>  [<a href="javascript:del_choooooose();" id="showmypics_del"><strong>删除图片</strong></a>] 
+	[<a href="javascript:cancel_chooooooooose();" id="showmypics_del"><strong>取消本次操作</strong></a>]
+	  </td>
+  </tr>
+  <tr>
+    <td>	
+	<iframe name="showmypics_iframe" onload="parent.SetCwinHeight();"  id="showmypics_iframe" width="596" scrolling="no" height="310" frameborder="0" src=""></iframe>
+</td>
+  </tr>
+</table>
+                 
+           
+                  
+
+<!--
+EOT;
+?>-->

@@ -1,0 +1,103 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold>分类</span></td>
+  </tr>
+  <tr> <form action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=addsort" method="POST">
+      <td bgcolor=#FFFFFF> <span class=bold>创建新分类--</span>&nbsp;名称 
+        <textarea name="name" cols="25" rows="5"></textarea>
+        归属
+        <select name="fid">
+          
+          <option value="0">顶级栏目</option>{$fup_select}
+        </select>
+        <input type="hidden" name="Type" value="1">
+        <input type=submit value="创 建" name="submit">
+        <br>
+        <font color="#FF0000">注意:</font>只适合两级分类,可以同时创建多个分类,每个分类换一行即可.</td>
+    </form>
+  </tr>
+     
+</table>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑分类</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">分类排序的规则是,数值大的排在前面,只能是同一级的进行排序</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td width="6%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="58%">分类名称</td>
+            <td width="14%" style="border-right:1px solid #fff;">排序</td>
+            <td width="13%" style="border-right:1px solid #fff;">设置</td>
+            <td width="9%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="6%" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td width="58%" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="fiddb[{$rs[fid]}]" value="$rs[name]" style="border:0px;">
+              {$rs[icon]}【<a href='../$dirname/list.php?fid=$rs[fid]' target="_blank" style="color:$rs[color]">{$rs[name]}</a>】</td>
+            <td width="14%" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="13%"  align="center" style="border-bottom:1px dotted #ccc;"><a href='index.php?lfj=$lfj&dirname=$dirname&file=$file&job=editsort&fid=$rs[fid]'><font color=red>修改</font></a></td>
+            <td width="9%"  align="center" style="border-bottom:1px dotted #ccc;"><a href="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=delete&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"> 
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a>
+          <input type="button" name="Submit22" value="删除分类" onClick="postlist('del')">
+          <input type="button" name="Submit2" value="修改分类排序" onclick="postlist('list')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=editlist";
+		
+	}else if(t=='del'){
+		r=confirm('你确认要删除栏目吗?不可恢复');
+		if(r==true){
+			document.formlist.action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=delete";			
+		}else{
+			return false;
+		}
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

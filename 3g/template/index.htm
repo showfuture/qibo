@@ -1,0 +1,60 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="IndexCont">
+	<h3>信息分类</h3> 
+<!--
+EOT;
+$sortname=$Fid_db[name];
+foreach($Fid_db[0] AS $key=>$rs){
+$fupt=get_word($sortname[$key],8);
+print <<<EOT
+-->
+	<dl>
+    	<dt><a href="list.php?fid=$key" title="$sortname[$key]">{$fupt}</a></dt>
+        <dd>
+<!--
+EOT;
+$i=0;
+foreach($Fid_db[$key] AS $keys=>$rss){
+$i++;
+if($i>4)break;
+$color=$Fid_db[ifcolor][$keys]?"style=\"color:red;\"":'';
+$sorts=get_word($sortname[$keys],8);
+print <<<EOT
+-->
+			<a href="list.php?fid=$keys" title="$sortname[$keys]" $color>{$sorts}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			<a href="list.php?fid=$key" class="more">&gt;&gt;</a>        
+		</dd>
+    </dl>	
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+	<h3>最新信息</h3>
+    <ul>
+<!--
+EOT;
+$listnews=GetInfos("id","",$city_id,10);
+foreach($listnews AS $key=>$rs){
+$listtitle=get_word($rs[title],40);
+print <<<EOT
+-->
+			<li><a href="list.php?fid=$rs[fid]" class="f">[{$rs[fname]}]</a><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]" title="$rs[title]">{$listtitle}</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </ul>     
+</div>
+<!--
+EOT;
+?>
+-->

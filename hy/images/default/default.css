@@ -1,0 +1,1908 @@
+/*****************************************************************
+******************************************************************
+以下为所有风格通用样式
+margin: 0;padding: 0;设置外边距,内边距空隙都为0
+font-size: 12px;为字体大小.一般表格内的,不受他控制
+li,ul设置list-style: none;主要是取消默认的小圆点.不太好看
+******************************************************************
+*****************************************************************/
+
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+li,ul{
+	list-style: none;
+}
+img{
+	border:0;
+}
+/******************************************
+TD中的color: #333333;为没有超级链接的字体颜色
+VERTICAL-ALIGN: top;表格里的内容居顶
+text-align:left;表格里的内容居左
+*******************************************/
+
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+}
+
+/******************************************
+border:1px solid #ccc; 表单边框为1个像素的实线,
+要为虚线改solid为dotted,要换颜色改#ccc
+可以自定义背景颜色
+background:#eee;
+*******************************************/
+
+
+
+/******************************************
+网页整体宽度
+******************************************/
+.wrap{
+	width:990px;
+	margin:auto;
+}
+
+/******************************************
+font-size: 12px;超级链接字体大小
+color:字体颜色
+text-decoration: none;没有下画线.要有下画线.改none为underline
+a 为统一超级链接,
+a:link没有点击过的超级链接样式
+a:visited 被点击过的超级链接样式
+a:hover 鼠标指向时的超级链接样式
+a:active 被用户激活(在鼠标点击与释放之间发生的事件)时的样式.少用
+*******************************************/
+
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+
+#header{
+	width:990px;
+}
+
+.IndexLeft{
+	width:770px;
+	float:left;
+}
+.IndexRight{
+	width:215px;
+	float:right;
+}
+/******************************************
+#toplogin input.login_name用户名表单,
+#toplogin input.login_pwd密码表单,写在一行,用,号分开共用样式
+width:90px;表单宽
+height:15px;表单高
+*******************************************/
+
+#header_top .login{
+	margin-top:2px;
+	margin-bottom:2px;
+	
+}
+ 
+#header_top .login input.login_name,#header_top .login  input.login_pwd{
+	width:90px;
+	height:15px;
+}
+
+/******************************************
+#toplogin input.login_sub提交按钮表单,
+width:90px;表单宽
+height:15px;表单高
+background:#D2E4FC;	背景颜色
+*******************************************/
+
+#toplogin input.login_sub{
+	width:40px;
+	height:19px;
+	background:#D2E4FC;
+}
+
+/******************************************
+#header div 头部LOGO与广告图的容器,
+float:left;靠左排列
+
+#header div.ad广告容器,样式指定了靠右
+*******************************************/
+
+#header div{
+	float:left;
+}
+#header div.ad{
+	float:right;
+}
+
+/******************************************
+#header头部大表格
+margin-bottom:10px;与下面的表格距离10像素
+border-top:#ccc 1px solid;表格上方一个像素的实线,颜色为#ccc,
+可以把solid改成虚线dotted
+#header td 大表格内的TD
+padding-top:8px;上方留空8个像素
+*******************************************/
+
+#header{
+	margin-bottom:7px;
+	margin-top:7px;
+}
+#header .logo{
+	margin-top:5px;
+}
+#header .cityname{
+	float:left;
+	width:140px;
+	border-left:1px #ccc solid;
+	height:30px;
+	padding-top:10px;
+	margin-top:15px;
+	padding-left:8px;
+}
+#header .cityname .title{
+	font-size:18px;
+	font-weight:bold;
+}
+#header .cityname .change a{
+	color:blue;
+}
+/******************************************
+#guide头部网站导航表格编号
+margin-top:5px;与上方表格距离5像素
+border:1px #6B92D6 solid;边框样式solid改为dotted则为虚线
+height:28px;高度
+background:#D2E4FC;背景颜色
+#guide td导航表格内部TD容器
+border:1px solid #FFF;内边框样式
+padding:6px 3px 4px 3px;导航文字与上右下左的距离
+*******************************************/
+
+#guide{
+	width:990px;
+	margin-top:0px;
+	height:30px;
+	background: url(cate_nav_bg.gif) left top no-repeat;
+}
+#guide .L{
+	float:left;
+	width:650px;
+	padding-left:10px;
+}
+#guide .L table,#guide .RR table{
+	float:left;
+	height:30px;
+	margin-right:1px;
+}
+#guide .L table .a1,#guide .RR table .a1{
+	padding:8px 5px 0 13px;
+}
+#guide .L table .a1 a,#guide .RR table .a1 a{
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+}
+#guide .L table .a2,#guide .RR table .a2{
+	width:9px;
+	background:url(cate_nav_bg_3.gif) no-repeat bottom right;
+}
+
+
+#guide .L table.ck,#guide .RR table.ck{
+	background:url(cate_nav_bg_1.gif) no-repeat bottom left;
+}
+#guide .L table.ck .a1,#guide .RR table.ck .a1{
+	padding:10px 5px 0 13px;
+}
+#guide .L table.ck .a1 a,#guide .RR table.ck .a1 a{
+	font-weight:bold;
+	color:#000;
+}
+#guide .L table.ck .a2,#guide .RR table.ck .a2{
+	background:url(cate_nav_bg_2.gif) no-repeat bottom right;
+}
+
+#guide .R{
+	float:right;
+	width:150px;
+	height:22px;
+	text-align:right;
+	padding-right:15px;
+	padding-top:8px;
+	
+}
+#guide .R a{
+	font-size:14px;
+	color:#fff;
+	margin-right:5px;
+}
+#guide .RR{
+	width:100px;
+	float:right;
+	background:url(cate_nav_bg2.gif) right top no-repeat;
+}
+
+.nav_guide{
+	width:990px;
+	margin-top:6px;
+	border:1px solid #eee;
+}
+.nav_guide td{
+	padding:5px;
+}
+/******************************************
+.MainTable .guide样式导航表格样式
+margin-top:5px;与上方表格的距离
+border:1px #A7CAFA solid;边框样式,solid可更换成dotted虚线
+height:20px;表格高度
+background:#F5FAFE;表格背景颜色
+
+.MainTable .guide td{ padding:5px; 表格内的文字距离四周的间距
+可改成 padding:5px 0 0 0;指上右下左
+*******************************************/
+
+.MainTable .guide{
+	margin-top:5px;
+	border:1px #A7CAFA solid;
+	height:20px;
+	background:#F5FAFE url(head2.gif);
+}
+.MainTable .guide td{
+	padding:5px;
+}
+
+
+/*****************************************************************
+******************************************************************
+内容大表格模块样式
+width:100%;占满整个空间宽度
+margin-top:5px;与上一个表格间距为5个像素
+overflow:hide;内容超过时,将隐藏.不过上面用百分比,一般这里设置无效.
+只有上面用具体像素,这里才生效
+border:1px #A7CAFA solid;边框样式,1个像素,可以改solid为虚线dotted,要取消边框改1px为0px
+******************************************************************
+******************************************************************/
+
+.dragTable{
+	width:100%;
+	margin-top:5px;
+	overflow:hide;
+	border:1px #DCDCDC solid;
+	
+}
+
+/******************************************
+内容表格模块头部样式
+background:#D2E4FC;背景颜色
+height:20px;高度
+padding-left:1em;字体与左边距离
+padding-top:7px;字体与上方距离
+border:1px #FFF solid;内边框样式,一般设置为0px较多,即不要内边框居多
+******************************************/
+
+.dragTable .head{
+	background:#ccc url(head_bg.gif) repeat-x;
+	height:28px;
+	padding-top:0px;
+	border:1px #FFF solid;
+	border-bottom:1px #DCDCDC solid;
+}
+
+.dragTable .head .L{
+	background:url(head_bg1.gif);
+	width:5px;
+	height:28px;
+	margin-left:8px;
+	float:left;
+}
+.dragTable .head .R{
+	background:url(head_bg3.gif);
+	width:4px;
+	height:28px;
+	float:left;
+}
+/******************************************
+模块主题文字,与点击查看更多
+float:left;居左,
+可以设置为粗体 font-weight:bold;颜色为color:#000;
+******************************************/
+
+.dragTable .TAG{
+	float:left;
+	color:#333;
+	font-weight:bo ld;
+	background:url(head_bg2.gif) center;
+	padding:9px 5px 0 5px;
+	height:19px;
+}
+.dragTable .TAG a{
+	color:#333;
+}
+.dragTable .morelink{
+	float:left;
+	padding-top:8px;
+	padding-left:10px;
+}
+.dragTable .morelink a{
+	margin-left:10px;
+	text-decoration: underline;
+}
+.dragTable .more{
+	float:right;
+	padding-right:1em;
+	padding-top:8px;
+}
+.dragTable .more a{
+	color:#666;
+}
+/******************************************
+整体大表格之间的间隙
+******************************************/
+.MainTable{
+	margin-top:0px;
+}
+/******************************************
+右边窄表格模块样式
+width:98%;宽度
+line-height:17px;字体行高
+******************************************/
+
+.MainTable .Side .dragTable{
+	width:98%;
+}
+.MainTable .Side .dragTable .head{
+	background:#F6F6F6 url( ) repeat-x;
+	height:28px;
+	padding-top:0px;
+	border:1px #FFF solid;
+	border-bottom:0px #DCDCDC solid;
+}
+.MainTable .Side .dragTable .TAG{
+	background: ;
+	color:#666;
+	font-weight:bold;
+	padding:9px 5px 0 0px;
+}
+.MainTable .Side .dragTable .TAG a{
+	color:#FFF;
+}
+.MainTable .Side .dragTable .head .L{
+	width:0px;
+	margin-left:5px;
+	background:url( );
+}
+.MainTable .Side .dragTable .head .R{
+	background:url( );
+}
+
+.MainTable .Side .dragTable .middle{
+	line-height:17px;
+}
+
+/******************************************
+内容模块主体部分
+padding:8px;距离四周距离为8个像素,
+可以改成更具体些的padding:8px 0 0 0;即上右下左的距离
+line-height:20px;行高,即是使用<br>换行符时的文字行高
+******************************************/
+
+.dragTable .middle{
+	padding:6px 1px 4px 7px;
+	height:50px;
+	line-height:20px;
+}
+
+/******************************************
+右边窄表格最新,最热的内容样式.
+	width:210px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+通过设定固定宽度,使控制自动隐藏超出边界的内容自动隐藏,用省略号表示
+只对<ul><li>有效
+******************************************/
+
+.MainTable .Side .dragTable .middle ul li{
+	width:210px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+
+/******************************************
+列表页,包括首页,文章子栏目文章表格样式,表格高度
+******************************************/
+#AutoRows .dragTable .middle{
+	padding-top:0px;
+	padding-bottom:0px;
+	height:100px;
+}
+
+/******************************************
+文章中列表页中的图片主题,图片列表
+.listpic每张图的占位空间
+width:127px;占位宽度127像素
+padding:3px 0 3px 4px;内间隙距离上右下左
+float:left;居左排列
+.listpic .title图片底下的标题样式
+	width:127px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+固定了宽度,控制自动隐藏超出边界的文字
+******************************************/
+
+.listpic{
+	width:120px;
+	padding:3px 7px 3px 5px;
+	float:left;
+}
+.listpic .title{
+	width:120px;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+/******************************************
+文章中列表页中的图片主题,图片内边框样式
+border:1px #FFF solid;边框一个像素,为实线,可以改0px,即取消内边框
+改solid为dotted即是虚线
+******************************************/
+
+.listpic img{
+	border:1px #FFF solid;
+	width:120px;
+	height:90px;
+}
+
+/******************************************
+文章中列表页中的图片主题,图片外边框样式
+width:120px;	图片外边框宽 height:90px;	图片外边框高
+display:block;	定义链接为实体利于加效果
+text-align :center;	图片在边框内居中
+border:1px #ccc solid;图片外边框样式,要取消边框,可以把1改0,
+要加粗粗,把1改成更大的数,要用虚线,可以把solid改成dotted,要换颜色修改#ccc为其他的
+margin-bottom:5px;			与底部文字的距离
+******************************************/
+
+.listpic .img a{
+	width:120px;
+	height:90px;
+	display:block;
+	text-align :center;
+	border:1px #ccc solid;
+	margin-bottom:5px;
+}
+
+/******************************************
+文章列表
+padding:7px 5px 0 5px;内间隙,上右下左的距离
+border-bottom:1px dashed #ccc;底部虚线,也可改为实线solid 或其他颜色
+
+.listarticle span参数样式
+******************************************/
+
+.listarticle td{
+	padding:7px 5px 0 5px;
+	border-bottom:1px dashed #ccc;
+}
+.listarticle span{
+	display:block;
+	float:left;
+}
+
+/******************************************
+文章列表
+文章标题样式
+text-indent: 0.6em;与小图标的距离
+background:url(title_icon3.gif) no-repeat left;小图标,居左不平铺
+background-position: 0em 40%;小图标是背景,坐标位置
+
+.listarticle span.time{float:right;}时间靠右显示
+******************************************/
+
+.listarticle span.title{
+	text-indent: 0.6em;
+	background:url(../default/title_icon3.gif) no-repeat left;
+	background-position: 0em 40%;
+}
+.listarticle span.time{
+	float:right;
+}
+
+/******************************************
+分页
+******************************************/
+
+.page{
+	width:98%;
+	margin-top:1em;
+	clear:both;
+	text-align:center;
+}
+.page a{
+	font-size:14px;
+}
+
+/*****************************************************************
+******************************************************************
+文章内容页
+.content_word,.content_word p多种格式的控制内容的样式,字号为15像素
+******************************************************************
+******************************************************************/
+.content_word,.content_word p{
+	font-size:15px;
+}
+
+
+
+/*****************************************************************************************
+*****************************************************************************************
+**********评论
+******************************************************************************************
+******************************************************************************************/
+
+#comment .content{
+	width:100%;
+	border-bottom:dotted 1px #ddd;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+#comment .content .word{
+	padding-left:5px;
+	height:50px;
+}
+#comment .content .img{
+	padding:0 1em 3px 0;
+	
+}
+#comment .content .info{
+	padding:2px 0 0 5px;
+	text-align:right;
+}
+#comment .img .p img{
+	width:50px;
+	height:50px;
+	padding:3px;
+}
+#comment .img .p{
+	display:block;
+	width:58px;
+	height:58px;
+	background:url(icobg.gif);
+}
+ 
+
+/*****************************************************************************************
+*****************************************************************************************
+网页底部
+******************************************************************************************
+******************************************************************************************/
+
+#footer{
+	border-top:#CBCBCB solid 1px;
+	margin-top:4px;
+}
+#footer td{
+	padding:1em 0 1em 0;
+}
+
+
+
+
+
+/*********************************************************************
+**********************************************************************
+AJAX在线编辑DIV容器
+这个会员看不到.只是版主管理员才可以看到.这是后台风格
+一般不必修改了.修改了会员也看不到
+**********************************************************************
+*********************************************************************/
+#AjaxEditTable{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+#AjaxEditTable .head{
+	height: 21px;
+	background: #DBEAFF;
+	border-bottom:1px solid #BEDDFF;
+	padding:3px 5px 0 7px;
+}
+#AjaxEditTable .head a{
+	color:#FFF;
+}
+#AjaxEditTable .head span{
+	DISPLAY: block; 
+	FLOAT: right;
+}
+#AjaxEditTable .middle{
+	background:#FFF;
+	line-height:18px;
+	padding:5px;
+}
+#AjaxEditTable .middle input,#AjaxEditTable .middle textarea{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+
+
+
+/******************************************************
+******************************************************
+**列表页小分类页
+******************************************************
+******************************************************/
+
+/*标题+内容*/
+#sort_list .list_sortTC{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+	margin-bottom:10px;
+}
+#sort_list .list_sortTC .content{
+	text-indent:2em;
+}
+/*标题+内容+图片*/
+#sort_list .list_sortTCP{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+	margin-bottom:10px;
+}
+#sort_list .list_sortTCP .pic{
+	padding-bottom:5px;
+	padding-right:8px;
+}
+#sort_list .list_sortTCP .content{
+	text-indent:1em;
+}
+
+/******************************************************
+******************************************************
+****主页布局设置
+******************************************************
+******************************************************/
+
+.IndexL{
+	padding-right:2px;
+}
+.IndexR{
+	padding-left:2px;
+}
+
+.btable .list_title_tb div{
+	width:47%;
+	line-height:150%;
+	float:left;
+	padding-left:2px;
+}
+
+.btable .toptable{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+}
+.btable .toptable .img{
+	padding-bottom:5px;
+}
+.btable .toptable .bigword{
+	font-weight:bold;
+}
+
+/*****************************************************************************************
+*****************************************************************************************
+************留言本
+*****************************************************************************************
+*****************************************************************************************/
+
+.guestbook{
+	margin-bottom:4px;
+	border:1px dotted #A7CAFA;
+	width:99%;
+}
+.guestbook .Ftd{
+	padding:4px;
+	border-right:1px dotted #A7CAFA;
+}
+.guestbook .Atd{
+	border-top:1px solid #D2E4FC;
+	padding-left:4px;
+}
+.guestbook .Ctd{
+	padding:4px;
+}
+
+/******************************************************
+******************************************************
+****其它
+******************************************************
+******************************************************/
+#showcontent,#showcontent p{
+	font-size:16px;
+	line-height:25px;
+}
+
+
+/*列表栏目名称*/
+.showsortname{
+	background:url(../default/article_elite.gif) no-repeat 0.3em 0;
+	padding-left:0.3em;
+	text-indent:1.5em;
+	font-weight:bold;
+	float:left;
+}
+
+/*下拉菜单的背景颜色与透明度设置*/
+#menuTable{
+	background:#F5FCFE;
+	border:1px solid #A7CAFA;
+	filter:Alpha(Opacity=80);
+}
+#menuTable td{
+	padding:3px 0px 3px 5px;
+	line-height:15px;
+}
+
+.HD .head{
+	background:#D2E4FC url(head_bg.gif);
+	height:33px;
+	padding-left:0em;
+	padding-top:0px;
+	border:0px #FFF solid;
+}
+
+.HD .head span{
+	float:left;
+	width:86px;
+	padding-top:6px;
+	height:23px;
+	display:block;
+	text-align:center;
+	cursor: hand;
+}
+
+.HD .head .hd2{
+	background:url(hd20.gif);
+	height:27px;
+	font-weight:bold;
+	color:#fff;
+}
+
+.quotecomment_div{
+	margin:5px;
+	border:1px dotted #A7CAFA;
+	border-left:2px solid #A7CAFA;
+	color:#ccc;
+}
+
+#comment_title{
+	height:92px;
+	background:url(../default/comment_title.gif);
+}
+#comment_title td{
+	padding-top:18px;
+}
+
+/*列表页,标题+图片+内容的显示样式*/
+.list_sortTCP{
+	margin-bottom:12px;
+	width:99%;
+}
+.list_sortTCP .pic{
+	padding-right:1em;
+}
+.list_sortTCP .content{
+	border-bottom:1px dotted #ccc;
+	text-indent:2em;
+	color:#646464;
+}
+.list_sortTCP .title a{
+	color:#555555;
+}
+/*列表页,标题+内容的显示样式*/
+.list_sortTC{
+	margin-bottom:5px;
+	width:99%;
+	border-bottom:1px dotted #ccc;
+}
+.list_sortTC .title a{
+	color:#555555;
+}
+.list_sortTC .content{
+	text-indent:2em;
+	color:#646464;
+}
+
+/*************顶客********************/
+.Digg{
+	background:url(../default/digg_center.gif) center;
+}
+.Digg .left{
+	background:url(../default/digg_left.gif) left;
+	width:5px;
+}
+.Digg .right{
+	background:url(../default/digg_right.gif) right;
+	width:5px;
+}
+.Digg .number{
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+	padding-top:14px;
+	color:#2B4399;
+}
+.Digg .title{
+	font-size:13px;
+	text-align:center;
+	padding-top:18px;
+}
+.Digg .title a{
+	color:#990000;
+}
+
+.small_digg{
+	width:38px;
+	height:24px;
+	background:url(../default/bg_digg.gif);
+	text-align:center;
+	padding-top:7px;;
+	font-size:16px;
+	margin-bottom:8px;
+	margin-right:4px;
+}
+
+.module_table{
+	border:1px dotted #ccc;
+}
+.module_tr td{
+	background:#eee;
+	color:red;
+	padding:3px;
+}
+
+#comment_title{
+	height:92px;
+	background:url(../default/comment_title.gif);
+}
+#comment_title td{
+	padding-top:18px;
+}
+
+.button{
+	color:#333;
+	background:url(../default/bt_bg.gif);
+	height:21px;
+	border:1px solid #555;
+	letter-spacing:2px;
+}
+/***************************************************************************************/
+/************************************************/
+/********************************************************************/
+#listsp{
+	width:99%;
+}
+#listsp .sptd{
+	border-bottom:1px dotted #ccc;
+	padding-top:5px;
+}
+#listsp .pic{
+	padding:3px 1em 0.5em 5px;
+}
+#listsp .title{
+	padding-bottom:0.2em;
+}
+#listsp .title a{
+	color:#990000;
+}
+#listsp .pic img{
+	border:1px solid #333;
+}
+#spshow .about{
+	color:#990000;
+}
+/********************************************************************/
+#header_top .login{
+	width:500px;
+	float:left;
+	padding-top:1px;
+}
+#header_top .Time{
+	width:300px;
+	float:right;
+	text-align:right;
+	padding-top:8px;
+	padding-right:5px;
+}
+#header_top{
+	width:990px;
+	background:url(head_top_2.gif);
+}
+#header_top .L{
+	width:9px;
+	height:30px;
+	background:url(head_top_1.gif);
+}
+#header_top .R{
+	width:7px;
+	height:30px;
+	background:url(head_top_3.gif);
+}
+
+#header .menubigtop{
+	width:752px;
+	height:32px;
+	background:#ccc url(header_gray.gif) no-repeat;
+	text-align:center;
+	padding-top:9px;
+	margin-left:10px;
+}
+#header .menubigtop a{
+	font-size:15px;
+	color:#FFF;
+	font-weight:bold;
+	margin-right:18px;
+}
+
+#header .menuSmalltop{
+	padding-left:25px;
+	line-height:200%;
+}
+#header .menuSmalltop a{
+	margin-right:4px;
+}
+
+#serach_ff{
+	margin-top:5px;
+	border:1px solid #DCDCDC;
+	width:500px;
+	float:right;
+}
+
+/***********************************************************************************************/
+/*小分类页*/
+#sort_list .t{
+	border-bottom:1px dotted #ccc;
+	width:99%;
+}
+#sort_list .title{
+	padding-top:5px;
+}
+#sort_list .about{
+	color:#666;
+}
+#sort_list .about a{
+	color:#666;
+}
+#sort_list .t2{
+	padding-bottom:5px;
+}
+#sort_list .t .pic{
+	width:80px;
+	float:left;
+	margin-right:5px;
+}
+#sort_list .t .about{
+	width:580px;
+	float:left;
+}
+#sort_list .t .pic img{
+	width:77px;
+	height:57px;
+	border:1px #fff solid;
+}
+#sort_list .t .pic a{
+	display:block;
+	width:77px;
+	height:57px;
+	border:1px #ccc solid;
+}
+ 
+ 
+#sort_list .title a{
+	color:blue;
+	font-weight:bold;
+	text-decoration: underline;
+}
+#sort_list .title a:hover{
+	text-decoration: none;
+	color:#FF5500;
+}
+/****************************************************************************/
+.Infosort{
+	border:1px solid #F7D1B5;
+	margin-top:8px;
+}
+.Infosort .middle{
+
+}
+.Infosort .head{
+	height:19px;
+	padding-top:5px;
+	font-weight:bold;
+	padding-left:10px;
+	background:url(iheadbg.gif);
+}
+.Infosort .c2{
+	background:#FDF7F1;
+}
+.indexlistsort .smallsort{
+	color:blue;
+	padding-bottom:25px;
+	padding-left:8px;
+}
+.indexlistsort .bigsort{
+	padding-left:8px;
+	background:url(icon_bluedian.gif) no-repeat 8px 0px;
+	text-indent:1em;
+	width:99%;
+	padding-bottom:2px;
+	margin-top:8px;
+}
+
+.indexlistsort .bigsort a{
+	font-weight:bold;
+	text-decoration: none;
+}
+.indexlistsort .smallsort a{
+	color:blue;
+	text-decoration: none;
+}
+.indexlistsort .smallsort a:hover{
+	text-decoration: underline;
+}
+.indexlistsort .smallsort span{
+	display:block;
+	width:160px;
+	float:left;
+	line-height:180%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.list_title td{
+	border-top:1px dotted #ccc;
+	padding-top:8px;
+	padding-bottom:3px;
+}
+.list_title .listtop{
+	border-top:0px;
+}
+
+/**********内容页**************/
+#baseinfo{
+	color:#666;
+}
+.moreinfo{
+	padding-top:5px;
+	line-height:130%;
+	border-top:#F7F7F7 5px solid;
+}
+
+#viewarticle .middle{
+	padding-left:15px;
+}
+
+#show_title{
+	height:30px;
+	padding-top:10px;
+}
+#show_title .L{
+	font-weight:bold;
+	font-size:16px;
+	color:#000;
+}
+#viewarticle a{
+	color:#2754BB;
+}
+
+
+#viewarticle #payprice{
+	text-indent:110px;
+	background:url(ts231.gif) no-repeat;
+}
+
+#viewarticle .showinfo{
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+	border-top:1px #F3F3F3 solid;
+}
+#viewarticle .baseinfo{
+	width:500px;
+	float:left;
+}
+#viewarticle .infopic{
+	width:170px;
+	float:left;
+}
+#viewarticle .infopic{
+	text-align:center;
+	padding-top:20px;
+	padding-left:20px;
+}
+#viewarticle .infopic .pic{
+	display:block;
+	border:10px solid #EFEFEF;
+	width:120px;
+	height:90px;
+}
+#viewarticle .infopic .pic img{
+	width:120px;
+}
+#viewarticle .imgbutton{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+#viewarticle .wyfood div{
+	font-size:13px;
+	font-weight:bold;
+	color:#000;
+}
+#viewarticle .wyfood{
+	clear:both;
+	margin-bottom:9px;
+	border-bottom:#EDEDED 1px solid;
+}
+
+#big_button{
+	background:#C6D5F2;
+	width:99%;
+	margin-top:2px;
+	margin-bottom:9px;
+}
+
+.button1{
+	background:#0066CB;
+	float:left;
+	border-right:2px solid #fff;
+}
+.button1 td{
+	letter-spacing:1px;
+	padding:3px 7px 2px 7px;
+	font-weight:bold;
+	color:#fff;
+	cursor: hand;
+}
+.button2{
+	background:#C6D5F2;
+	float:left;
+	border-right:2px solid #fff;
+}
+.button2 td{
+	letter-spacing:1px;
+	padding:3px 7px 2px 7px;
+	font-weight:bold;
+	color:#000;
+	cursor: hand;
+}
+.base_show{
+	margin-bottom:5px;
+}
+.base_show .pic{
+	border:1px solid #9DC9EC;
+	width:200px;
+	height:180px;
+	padding-top:2em;
+}
+
+.base_show .about span{
+	color:#0249A5;
+	font-weight:bold;
+	margin-left:1em;
+}
+.base_show .about span.title{
+	font-size:15px;
+}
+
+.base_table{
+	border:1px solid #FFDFB6;
+	background:#FFFBF5;
+	width:99%;
+	margin-bottom:10px;
+}
+.base_table .h{
+	background:#FFF3DD;
+	color:#000;
+	padding:2px 0px 2px 5px;
+	font-weight:bold;
+}
+.base_table .m{
+	padding:5px;
+}
+
+#wydianping{
+	width:99%;
+}
+#wydianping .a{
+	background:url(wangyoudianping.gif) no-repeat left;
+	height:22px;
+	padding-top:5px;
+	font-size:14px;
+	font-weight:bold;
+	color:#fff;
+	padding-left:8px;
+	border-bottom:1px solid #F39633;
+}
+#wydianping .b{
+	background:#FFF3E1;
+	padding:3px;
+	padding-left:8px;
+}
+
+.photolist{
+	width:130px;
+	height:95px;
+	float:left;
+	margin-bottom:15px;
+	margin-right:10px;
+	margin-left:7px;
+}
+.photolist img{
+	width:130px;
+	height:95px;
+	float:left;
+	border:1px solid #ccc;
+}
+#show_article td,#show_article td a{
+	font-size:14px;
+	color:#0F0CBF;
+}
+
+#bbs_title .tr2 td{
+	background:#eee;
+}
+
+.jfsort{
+	margin-bottom:10px;
+}
+.jfsort .jfname{
+	background:url(article_elite.gif) no-repeat 10px 0px  ;
+	text-indent:25px;
+	color:red;
+	font-weight:bold;
+}
+.jfsort .title{
+	background:url(arrow.gif) no-repeat 25px 0px;
+	text-indent:35px;
+}
+
+.jfsort .about{
+	text-indent:45px;
+}
+
+
+
+/**********************列表页地区**************************/
+#zone_street_menu .street{
+	height:4px;
+	background:#F1F1F1;
+	padding:5px;
+	padding-bottom:2px;
+}
+#zone_street_menu .street a{
+	color:blue;
+	text-decoration: none;
+}
+#zone_street_menu .street a:hover{
+	color:#DA0000;
+	text-decoration: underline;
+}
+#zone_street_menu .zone{
+	background:url(2line.gif) repeat-x bottom;
+}
+#zone_street_menu .zone span{
+	display:block;
+	float:left;
+	padding:3px 3px 3px 4px;
+	margin-left:7px;
+	margin-top:4px;
+}
+#zone_street_menu .zone span a{
+	text-decoration: none;
+}
+#zone_street_menu .zone .choose{
+	border:1px solid #999999;
+	border-bottom:0px solid #999999;
+	background:#F1F1F1;
+}
+#zone_street_menu .street .choose{
+	color:red;
+}
+/**********列表页*********/
+#list_search .sort .t2 span a{
+	color:blue;
+	text-decoration: underline;
+}
+#list_search .sort .t2 span a:hover{
+	text-decoration: none;
+	color:#FF5500;
+}
+#list_search .sort{
+	border-bottom:1px dotted #ccc;
+	padding-bottom:15px;
+	margin-bottom:8px;
+	padding-top:5px;
+	width:99%;
+}
+#list_search .sort .t1{
+	background:url(fenl2.jpg) no-repeat;
+	text-indent:20px;
+}
+#list_search .sort .t2{
+	margin:10px;
+}
+#list_search .sort .t2 span{
+	display:block;
+	float:left;
+	width:19%;
+	line-height:200%;
+}
+#list_search .sort .t2 span{
+}
+#list_search .condition{
+	margin-bottom:8px;
+}
+#list_search .listsearch{
+	margin-top:5px;
+	padding-bottom:5px;
+	padding-top:5px;
+	border-top:0px dotted #ccc;
+}
+
+#sort_list .order{
+	float:left;
+	padding-top:8px;
+	margin-left:15px;
+}
+/*******************/
+#headsearch{
+	padding-left:30px;
+}
+
+
+/**********内容发表页***************/
+
+#postshop .ct{
+	font-size:13px;
+	font-weight:bold;
+	border-bottom:1px solid #eee;
+	width:95%;
+	margin-left:30px;
+}
+
+
+/*********头部广告*********/
+#indextopad{
+	margin-top:5px;
+}
+
+/******************/
+#Ilabel{
+	border:1px solid #F7D1B5;
+	background:#FFF8F1;
+	height:200px;
+}
+#Ilabel .t1{
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:5px;
+	font-size:13px;
+	color:#000;
+	font-weight:bold;
+}
+#Ilabel .t2{
+	padding-left:10px;
+}
+#hotkeyword .t2{
+	line-height:170%;
+	padding-right:9px;
+}
+#hotkeyword span{
+	margin-right:4px;
+}
+#hotzone span{
+	width:50px;
+	display:block;
+	float:left;
+	padding-bottom:4px;
+}
+#Ilabel .t2 a{
+	color:#0044DD;
+}
+ 
+
+/*******************/
+.moresort .c0,.moresort .c2{
+	width:33%;
+}
+.moresort .c1{
+	width:34%;
+	padding:0 5px 0 5px;
+}
+
+/***************/
+#comshop .title{
+	padding-top:4px;
+}
+#comshop .title a{
+	color:#2754BB;
+}
+#comshop .about{
+	width:225px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	border-bottom:1px #ddd dotted;
+}
+
+/****************/
+#hotshop .middle span{
+	float:left;
+	display:block;
+}
+#hotshop .middle div{
+	clear:both;
+	margin-top:3px;
+	margin-left:3px;
+}
+#hotshop .middle .i{
+	background:url(ii.gif) no-repeat 0px 1px;
+	text-indent:5px;
+	width:25px;
+	color:#fff;
+}
+#newshop .middle{
+	line-height:160%;
+}
+
+/*************************/
+#searchNO{
+	color:red;
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+	padding:20px;
+	margin:10px;
+	border:1px dotted #ccc;
+}
+
+
+/****************/
+#ad_info{
+	margin-top:0;
+}
+#ad_info .middle{
+	height:128px;
+}
+
+/*****************************/
+
+
+#bigsortPage_listsort .Lsort{
+	float:left;
+	width:48%;
+	margin-left:5px;
+}
+
+#bigsortPage_listsort .Lsort .name a{
+	font-size:14px;
+	font-weight:bold;
+	text-decoration: underline;
+}
+#bigsortPage_listsort .Lsort .name{
+	padding:10px 0 5px 0;
+}
+#bigsortPage_listsort .Lsort .sortid a{
+	color:blue;
+	margin-left:5px;
+}
+
+#bigsortPage_listsort #showNewSort{
+	width:460px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/*****************************/
+.head .postbt{
+	margin-top:0px;padding-top:3px;
+}
+.head .postbt a{
+	display:block;
+	background:url(btn_post.gif);
+	width:101px;
+	height:21px;
+	text-indent:-999px;
+}
+#sortList .LT{
+	clear:both;
+	border-bottom:1px solid #F9F9F9;
+	width:99%;
+	padding-bottom:4px;
+	padding-top:4px;
+}
+#sortList .LT span.title,#sortList .LT span.pic{
+	float:left;
+	padding-right:4px;
+}
+#sortList .LT span.pic a{
+	display:block;
+	width:88px;
+	height:66px;
+	border:1px solid #eee;
+}
+#sortList .LT span.pic img{
+	border:1px solid #fff;
+}
+#sortList .LT span{
+	float:right;
+}
+#sortList .LT span.title{
+	float:left;
+}
+#sortList .LT span.title a{
+	color:blue;
+}
+#sortList .LT span.posttime{
+	margin-right:2px;
+	width:50px;
+	text-align:center;
+}
+#sortList .LT span.field{
+	width:70px;
+	text-align:center;
+	color:#C22121;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+#sortList .Ltop{
+	background:#FAFAFA;
+}
+#sortList .Ltop span.field{
+	color:#333;
+}
+#sortList .Ltop span{
+	letter-spacing:1px;
+	text-align:center;
+}
+
+/***************************************************/
+.listsearch{
+	margin-top:8px;
+	border-left:5px solid #eee;
+	padding:3px 0 3px 5px;
+	background:#FCFCFC;
+}
+.listsearch div{
+	margin-top:3px;
+}
+
+
+#indexTopTable{
+	border:1px solid #FFD983;
+	margin-top:5px;
+}
+#indexTopTable table{
+	width:35%;
+	float:left;
+	margin-top:5px;
+	margin-left:5px;
+}
+#indexTopTable table .tt{
+	padding:3px;
+	padding-bottom:6px;
+	font-size:13px;
+	font-weight:bold;
+	color:#000;
+}
+#indexTopTable table.t3{
+	width:25%;
+}
+#indexTopTable table.t3 .phone{
+	background:url(qq_msn_phone.gif) no-repeat 0px -19px;
+	text-indent:24px;
+	line-height:23px;
+}
+#indexTopTable table.t3 .email{
+	background:url(qq_msn_phone.gif) no-repeat 0px -65px;
+	text-indent:24px;
+	line-height:23px;
+}
+#indexTopTable table.t3 .msn{
+	background:url(qq_msn_phone.gif) no-repeat 0px 2px;
+	text-indent:24px;
+	line-height:23px;
+}
+#indexTopTable table.t3 .qq{
+	background:url(qq_msn_phone.gif) no-repeat 0px -20px;
+	text-indent:24px;
+	line-height:23px;
+}
+#indexTopTable table.t3 .post a{
+	display:block;
+	width:129px;
+	height:29px;
+	background:url(freefabu.gif);
+	text-indent:-999px;
+	margin-left:50px;
+	margin-bottom:10px;
+}
+#indexTopTable table.t2 div,#indexTopTable table.t1 div{
+	line-height:150%;
+}
+
+#indexTopTable table.t1 .help{
+	float:right;
+	width:40%;
+	font-weight:normal;
+	background:url(article_elite.gif) no-repeat 0px -4px;
+	text-indent:15px;
+}
+#indexTopTable table.t1 .help a{
+	color:#EC0000;
+}
+
+.allcity{
+	border:1px solid #eee;
+	margin-top:8px;
+}
+.allcity td{
+	padding:8px 8px 4px 8px;
+	font-size:13px;
+}
+.allcity td a{
+	font-size:13px;
+	margin-left:5px;
+}
+.allcity .L{
+	width:60px;
+	background:#eee;
+	border:1px solid #fff;
+	text-align:center;
+	font-weight:bold;
+}
+.hotcity{
+	margin-bottom:15px;
+}
+.hotcity td{
+	background:#eee;
+	padding:7px 0 4px 5px;
+	font-size:13px;
+}
+.hotcity td a{
+	font-size:13px;
+}
+
+#allcitytoptable table{
+	width:33%;
+	float:left;
+	height:100px;
+	margin-top:15px;
+	margin-bottom:10px;
+}
+#allcitytoptable table.t3 td{
+	background:url(freefei.gif) no-repeat right;
+}
+#allcitytoptable table.t2 td{
+	line-height:170%;
+}
+#allcitytoptable table.t1 td .goto a{
+	background:url(allcity_post.gif);
+	display:block;
+	width:167px;
+	height:45px;
+	padding-left:75px;
+	padding-top:15px;
+	font-size:15px;
+	color:#fff;
+	font-weight:bold;
+	margin-top:10px;
+}
+#allcitytoptable table.t1 td .ti{
+	margin-top:10px;
+}
+
+/****
+
+
+*****/
+.maincont1{
+	margin-bottom:10px;
+}
+.maincont1 .head{
+	height:31px;
+	overflow:hidden;
+	background:url(mhead.gif) repeat-x;
+}
+.maincont1 .head .tag{
+	float:left;
+	padding:3px 0 0 15px;
+	line-height:28px;
+	font-weight:bold;
+	background:url(mhead1.gif);
+}
+.maincont1 .head .more{
+	float:right;
+	padding:3px 10px 0 0;
+	line-height:28px;
+	background:url(mhead1.gif) right top no-repeat;
+}
+.maincont1 .head .more span{
+	color:green;
+	padding-right:3px;
+	font-weight:bold;
+}
+.maincont1 .cont{
+	border:#F6BC81 solid 1px;
+	border-top:0;
+	padding:10px;
+}
+.ShowPics{
+	height:190px;
+	position:relative;
+}
+.ShowPics .cont{
+	border:0;
+	padding:10px 0 0 0;
+}
+.ShowPics .cont .showLeft,.ShowPics .cont .showRight{
+	width:35px;
+	height:150px;
+	position:absolute;
+	top:40px;
+	background:url(cbg.gif);
+	cursor:pointer;
+}
+.ShowPics .cont .showLeft{
+	left:0;
+}
+.ShowPics .cont .showRight{
+	right:0;
+}
+.ShowPics .cont .showLeft span,.ShowPics .cont .showRight span{
+	width:35px;
+	height:150px;
+	display:block;
+}
+.ShowPics .cont .showLeft span{
+	background:url(left1.gif) center 60px no-repeat;
+}
+.ShowPics .cont .showRight span{
+	background:url(right1.gif) center 60px no-repeat;
+}
+.ShowPics .cont .showLeft span.no{
+	background:url(left0.gif) center 60px no-repeat;
+}
+.ShowPics .cont .showRight span.no{
+	background:url(right0.gif) center 60px no-repeat;
+}
+.ShowPics .cont ul{
+	height:150px;
+	width:630px;
+	overflow:hidden;
+	margin:auto;
+}
+.ShowPics .cont ul li{
+	width:210px;
+	height:150px;
+	float:left;
+}
+.ShowPics .cont ul li a{
+	display:block;
+	width:190px;
+	height:150px;
+	text-align:center;
+	background:#EFEFEF;
+	margin:auto;
+	overflow:hidden;
+}
+.listnews{
+	height:100px;
+	overflow:hidden;
+}
+.listnews li{
+	height:25px;
+	line-height:25px;
+	width:50%;
+	overflow:hidden;
+	float:left;
+}
+.listnews li a{
+	float:left;
+	padding-left:15px;
+	background:url(print.gif) 5px 10px no-repeat;
+}
+.maincont1 .head1 .tag{
+	padding:3px 0 0 0;
+	width:110px;
+	text-align:center;
+	background:url(mhead2.gif);
+	color:#FFF;
+}
+.maincont1 .head1 .more{
+	padding:0;
+	width:65px;
+	height:31px;
+	text-align:center;
+	background:url(mhead2.gif) right top no-repeat;
+	line-height:20px;
+}
+.maincont1 .head1 .more a{
+	color:#FFF;
+	text-decoration:none;
+}
+.liscoupons{
+	height:380px;
+	overflow:hidden;
+}
+.liscoupons li{
+	width:173px;
+	height:185px;
+	padding-top:5px;
+	overflow:hidden;
+	float:left;
+}
+.liscoupons li div{
+	width:150px;
+	margin:auto;
+}
+.liscoupons li div.img{
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.liscoupons li div.img a{
+	display:block;
+	width:150px;
+	height:120px;
+	text-align:center;
+	background:#EFEFEF;
+	overflow:hidden;
+}
+.liscoupons li div.t{
+	padding-top:5px;
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+}
+.liscoupons li div.t a{
+	color:#3366CC;
+}
+.liscoupons li div.p{
+	line-height:30px;
+	font-size:18px;
+	font-weight:bold;
+	color:#888;
+}
+.liscoupons li div.p span{
+	color:#f50;
+}
+
+.maincont1 .head2 .tag{
+	padding:3px 0 0 0;
+	width:110px;
+	text-align:center;
+	background:url(mhead3.gif);
+}

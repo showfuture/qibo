@@ -1,0 +1,61 @@
+body{
+	background:url(bg3.gif) center top repeat-y;
+}
+#nav .nav_zone {
+	BACKGROUND-POSITION: 0px -66px
+}
+#nav .nav_zone LI A {
+	BACKGROUND-POSITION: right -66px
+}
+#nav .nav_zone LI.current {
+	BACKGROUND-POSITION: center -66px
+}
+#picinfo .head{
+	background:url(head43.gif) center bottom no-repeat;
+}
+.MainTable .dragTable .head {
+	background:url(head43.gif) -1px bottom no-repeat;
+}
+#mainbencandy #viewarticle .head .TAG{
+	background:url(head43.gif) left top no-repeat;
+}
+#wydianping .a{
+	background:url(head43.gif) left top no-repeat;
+}
+#wydianping .b{
+	background:#E6D7F7;
+	line-height:20px;
+}
+.maindiv .sidecenter .centbox .head .l{	
+	background:#946EBB;
+}
+
+#mainbigsort .bigsortleft .contbox{
+	border:#9775BF solid 1px;
+	border-top:#9775BF solid 2px;
+}	
+#mainbigsort .bigsortleft .contbox .head{
+	border-bottom:#9775BF dotted 1px;
+	color:#9775BF;
+}
+#mainbigsort .bigsortleft .leftadpic{
+	border:#9775BF solid 1px;
+}
+.bigsortright .rconbox{
+	border:#9775BF solid 1px;
+	border-top:#9775BF solid 2px;
+}
+.bigsortright .rconbox .head{
+	border-bottom:#9775BF dotted 1px;
+	color:#9775BF;
+}
+.base_table{
+	border:#926EBA solid 1px;
+}	
+.base_table .h{
+	background:#E3D0F7;
+	line-height:25px;
+}
+.base_table .m{
+	background:#F2EDF8;
+}

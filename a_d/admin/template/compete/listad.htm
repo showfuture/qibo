@@ -1,0 +1,69 @@
+<!--
+<?php
+$Mdirname=Mdirname;
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+  <tr> 
+    <td align="left"> [<a href="$admin_path&job=listad">广告位管理</a>] [<a href="$admin_path&job=addplace">添加广告位</a>] 
+      [<a href="../member/index.php?main=../$dirname/member/compete.php?job=list" target="_blank">购买广告</a>] 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td width="16%">广告位名称</td>
+    <td width="15%">正在展示的个数</td>
+    <td width="14%">销售总个数</td>
+    <td width="14%">同时显示总个数</td>
+    <td width="10%">状态</td>
+    <td width="31%">预览 修改 购买 删除 代码</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td width="16%" align="center">{$rs[name]}</td>
+    <td width="15%" align="center">$rs[AdNum] </td>
+    <td width="14%" align="center">$rs[AllAdNum]</td>
+    <td width="14%" align="center">{$rs[adnum]}</td>
+    <td width="10%" align="center">$rs[isclose]</td>
+    <td width="31%" align="center"><a href="$rs[demourl]" title="点击浏览" target="_blank"><img src="../member/images/icon_view.gif" border="0"></a>&nbsp;&nbsp;<a href="$admin_path&job=editadplace&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+      &nbsp; <a href="../member/index.php?main=../$dirname/member/buy_sellad.php?job=buy&id=$rs[id]" target="_blank"><img src="../images/default/icon_order_button.gif" border="0"></a> 
+       &nbsp; <a href="$admin_path&id=$rs[id]&action=deleteadplace" onclick="return confirm('你确认要删除这个广告吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a>&nbsp; 
+      
+      <a href="#" onClick="$('#ja_$rs[id]').show();JM_cc('ja_$rs[id]');alert('代码复制成功，你可以粘贴在网页里需要显示的地方,即可显示广告！')"> 
+      <img alt='' src='../member/images/art_icon.gif' border=0></a><div><input type="text" style="width:100px;display:none;" value="<SCRIPT LANGUAGE='JavaScript' src='$webdb[www_url]/$dirname/a_d_s.php?job=sell&id=$rs[id]'></SCRIPT>" id="ja_$rs[id]"></div></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td align="left">说明</td>
+  </tr>
+   
+  <tr bgcolor="#FFFFFF"> 
+    <td>1.广告调用方法,点击以上每一个广告位对应的&quot;代码&quot;然后复制成功,把他粘贴到你的模板需要的地方即可调用显示<br>
+      2.特别注意的是,广告代码不仅仅可以放在整站系统,也可以放在论坛,或者是其它网站里边去.支持跨系统,跨网站</td>
+  </tr>
+   
+</table><SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

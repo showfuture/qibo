@@ -1,0 +1,133 @@
+<?php ob_end_clean();
+if($webdb[Info_allcityType]!=1){
+	$query = $db->query("SELECT * FROM {$_pre}city ORDER BY letter ASC,list DESC");
+	while($rs = $db->fetch_array($query)){
+		$listdb[$rs[letter]][]=$rs;
+	}
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$showtag = $city_id ? "<a href=\"{$city_DB[url][$city_id]}\">进入{$city_DB[name][$city_id]}站&gt;&gt;</a>" : "请选择一个城市&gt;&gt;";
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2){
+if(!$key2||++$i>15)break;
+$hotcity .= "<a href=\"{$city_DB[url][$key2]}\">$value2</a> ";
+}
+foreach($listdb AS $key=>$array){
+	$showpinyin .= "<a href=\"#$key\" onclick=\"setheight()\">$key</a> ";
+}
+print <<<EOT
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>$titleDB[title]   </title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/allcity.css" />
+<link rel="shortcut icon" type="image/ico" href="$webdb[www_url]/images/green/favicon.ico">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+</head>
+<body>
+<div class="HeadContainer">
+	<div class="HeadIn">
+        <div class="logo"><a href="$webdb[www_url]/"><img src="$webdb[www_url]/images/green/citylogo.gif" /></a></div>
+        <div class="note">
+           <p> 免费发布/查询 租房、二手房/招聘求职、二手车、宠物买卖、家政保洁、今日团购等本地生活信息。</p>
+        </div>
+    </div>
+</div>
+<div class="ActionContainer">
+	<div class="tagword">$showtag</div>
+    <div class="hotcity">
+    	热门城市：{$hotcity}
+    </div>
+</div>
+<div class="showpinyin">
+	按字母查找城市：$showpinyin
+</div>
+<div class="showarea">
+	<div>按省份查找城市：</div>
+    <div class="select">
+    	<select name="areaid" class="areaids">
+<!--
+EOT;
+foreach($area_DB[name] AS $keys=>$values){
+$selecteds = $areaids==$keys?"selected=\"selected\"":"";
+print <<<EOT
+-->
+		<option value="$keys" $selecteds>$values</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </select>
+    </div>
+    <div class="select">
+    	<select name="cityid" class="cityids">
+          <option value="0">请选择城市</option>
+        </select>
+    </div>
+    <div class="button">
+    	<input type="button" class="GotoCity" value="确定" />
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".areaids").change(function(){
+		var areaid = $(this).val();
+		List_citys(areaid,0);
+	});	
+	$(".GotoCity").click(function(){
+		var cityid = $(".cityids").val();
+		window.location = "?job=jump&choose_cityID="+cityid;
+	});	
+	List_citys($areaids,$city_id);
+});
+function List_citys(areaid,cityid){
+	$.get("?show=citys&areaid="+areaid+"&cityid="+cityid+"&"+Math.random(),function(d){
+		$(".cityids").html(d);
+	});
+}
+</script>
+<div class="showcity">
+<!--
+EOT;
+foreach($listdb AS $key=>$array){
+unset($showcity);
+foreach($array AS $key2=>$rs){
+	$redcolor = $rs[hits] ? " style=\"color:red;\"" : "";
+    $showcity .= "<a href=\"{$city_DB[url][$rs[fid]]}\"{$redcolor}>{$rs[name]}</a> ";
+}
+print <<<EOT
+-->
+	<dl>
+    	<dt><A name="$key">$key.</A></dt>
+        <dd>$showcity</dd>
+    </dl>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	<div style="clear:both;"></div>
+</div>
+<div class="CopyRight">
+
+</div>
+<!--
+EOT;
+?>
+-->
+<div id="bodyheight"><br/></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function setheight(){
+ document.getElementById("bodyheight").className="showheight";
+}
+//-->
+</SCRIPT>
+</body>
+</html>
+<?php exit; ?>

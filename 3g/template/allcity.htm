@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<!--
+<?php
+print <<<EOT
+-->
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Cache-control" content="max-age=1700">
+<meta name="viewport" content="user-scalable=no, width=device-width">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="qibosoft">
+<meta name="format-detection" content="telephone=no">
+<link href="$Murl/images/style.css" rel="stylesheet" type="text/css">
+<title>切换城市－$WebTitle</title>
+</head>
+<body>
+<div class="header">
+	<div class="logo"><a href="$Murl"><img src="$Murl/images/logo.gif"/></a></div>
+    <div class="city">当前城市<span style="color:red;">{$city_DB[name][$city_id]}</span></div>
+</div>
+<div class="AllCityCont">
+<!--
+EOT;
+$lettercity="";
+if($letter){
+$listLetters=ListLetters($letter);
+foreach($listLetters AS $key=>$rs){
+$cityurl=$key==0?"<a href=\"index.php?choose_cityID=$rs[fid]\">$rs[name]</a>":" - <a href=\"index.php?choose_cityID=$rs[fid]\">$rs[name]</a>";
+$lettercity .= $cityurl;
+}
+$lettercity=$lettercity?$lettercity:"<span style=\"color:red;\">暂时没有相应的城市</span>";
+print <<<EOT
+-->
+	<h3>以{$letter}开头的城市列表</h3> 
+    <p>$lettercity</p> 
+<!--
+EOT;
+}else{
+$hotcity="";
+$i=0;
+foreach($city_name AS $key=>$rs){
+if(!$key||++$i>30)break;
+$cityurl=$i==1?"<a href=\"index.php?choose_cityID=$key\">$rs</a>":" - <a href=\"index.php?choose_cityID=$key\">$rs</a>";
+$hotcity .= $cityurl;
+}
+print <<<EOT
+-->
+	<h3>热门城市列表</h3> 
+    <p>$hotcity</p> 
+<!--
+EOT;
+}
+$returns=$letter?"<a href=\"allcity.php\">返回上一级</a>":"<a href=\"index.php\">返回首页</a>";
+print <<<EOT
+--> 
+	<form method="post" action="?act=search">
+    <dl class="searchcity">
+        <dt><input type="text" name="cityname"></dt>
+        <dd><input type="submit" value="搜索城市"></dd>            
+    </dl>
+    </form>
+	<h3>选择您所在城市的首字母</h3> 
+    <p>
+    	<a href="?letter=A">A</a> -
+        <a href="?letter=B">B</a> -
+        <a href="?letter=C">C</a> -
+        <a href="?letter=D">D</a> -
+        <a href="?letter=E">E</a> -
+        <a href="?letter=F">F</a> -
+        <a href="?letter=G">G</a> -
+        <a href="?letter=H">H</a> -
+        <a href="?letter=I">I</a> -
+        <a href="?letter=J">J</a> -
+        <a href="?letter=K">K</a> -
+        <a href="?letter=L">L</a> -
+        <a href="?letter=M">M</a> -
+        <a href="?letter=N">N</a> -
+        <a href="?letter=O">O</a> -
+        <a href="?letter=P">P</a> -
+        <a href="?letter=Q">Q</a> -
+        <a href="?letter=R">R</a> -
+        <a href="?letter=S">S</a> -
+        <a href="?letter=T">T</a> -
+        <a href="?letter=U">U</a> -
+        <a href="?letter=V">V</a> -
+        <a href="?letter=W">W</a> -
+        <a href="?letter=X">X</a> -
+        <a href="?letter=Y">Y</a> -
+        <a href="?letter=Z">Z</a> 
+    </p> 
+    <div class="return">$returns</div>    
+</div>
+<!--
+EOT;
+?>
+-->

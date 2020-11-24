@@ -1,0 +1,57 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+   
+  <tr> 
+    <td align="center"> 　　 
+      <input type="button" name="Submit2" value="插件管理" onClick="window.location=('index.php?lfj=$lfj&job=list')">
+      　　 
+      <input type="button" name="Submit22" value="手工添加新插件" onClick="window.location=('index.php?lfj=$lfj&job=add')">
+      　　 
+      <input type="button" name="Submit222" value="自动安装新插件" onClick="window.location=('index.php?lfj=$lfj&job=autoadd')">
+    </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head"> 
+      
+    <td width="28%" align="center">关键字</td>
+      
+    <td width="40%" align="center">插件名称</td>
+    <td width="32%" align="center">安装<font color="#FFFFFF"></font></td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td width="28%">$rs[keywords]</td>
+    <td width="40%" align="center">$rs[name]</td>
+    <td width="32%" align="center"><a href="?lfj=$lfj&action=$job&hackdir=$rs[hackdir]">安装</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+ </table><br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td>帮助说明<font color="#FFFFFF"></font></td>
+  </tr>
+ 
+  <tr bgcolor="#FFFFFF"> 
+    <td>新增加一个插件,请把插件目录放在/hack/目录里,每个插件有一个必须的data.sql文件,这个文件包括了自动安装所需的SQL代码与插件所需要的数据库.<br>
+      插件里边可以增加一个install.php文件,里边可以放执行程序 <a href="?lfj=$lfj&action=$job&hackdir=$rs[hackdir]"></a></td>
+  </tr>
+ 
+</table>
+
+<!--
+EOT;
+?>
+-->

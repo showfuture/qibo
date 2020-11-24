@@ -1,0 +1,42 @@
+<!--
+<?php
+if($lfjid){
+$lfjdb[regdate] = date("Y-m-d",$lfjdb[regdate]);
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="lifeuser">
+              <tr>
+                <td class="img"><a href="$webdb[www_url]/member/?uid=$lfjuid" target="_blank"><img src="$lfjdb[icon]" onload="makesmallpic(this,50,50);" width="50" height="50" onerror="this.src='$webdb[www_url]/images/default/noface.gif'"/></a></td>
+                <td class="word">
+                	<div class="name">$lfjid <a href="$webdb[www_url]/do/login.php?action=quit" style="font-weight:normal;">安全退出</a></div>
+                    <div class="jb">级别:{$ltitle[$lfjdb[groupid]]}</div>
+                    <div class="day">
+                    	注册日期: $lfjdb[regdate] 
+                    </div>
+                </td>
+              </tr>
+</table> 
+<!--
+EOT;
+}else{print <<<EOT
+-->		<form id="form1aa" name="form1aaa" method="post" action="$webdb[www_url]/do/login.php">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lifeuser">
+          <tr>
+            <td class="input"><input name="username" type="text" /></td>
+            <td class="radio"><a href="$webdb[www_url]/do/sendpwd.php">忘记密码</a></td>
+          </tr>
+          <tr>
+            <td class="input"><input name="password" type="password" /></td>
+            <td class="submit">
+                <input name="" type="submit" value="登录" class="login" /> 
+                <input name="" type="button" value="注册"  onClick="window.location.href='$webdb[www_url]/do/reg.php';"/>
+            </td>
+          </tr>
+          <input type="hidden" name="step" value="2">
+          <input class="radio" type="hidden" name="cookietime" value="86400" >
+        </table>         
+        </form>
+<!--
+EOT;
+}?>
+-->

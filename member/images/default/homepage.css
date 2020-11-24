@@ -1,0 +1,330 @@
+/*
+*样式初始化开始
+*/
+*{ 
+	padding: 0; 
+	margin: 0; 
+} 
+table{ 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+} 
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul { 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+	font-weight: normal;
+	font-size: 100%; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+body{
+	font-size:12px;
+	background:#f2f2f2;
+}
+a,a:link,a:visited{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+.mt15{
+	margin-top:15px;
+}
+/*
+*样式初始化结束
+*/
+/*
+*顶部
+*/
+#TopDiv{
+	height:35px;
+	background:url(tophomepage.gif) left top repeat-x;
+}
+#TopDiv .toptable{
+	width:990px;
+	height:35px;
+	overflow:hidden;
+	margin:auto;
+	background:url(homepagespacing.gif) left top no-repeat;
+}
+#TopDiv .toptable .left{
+	padding-left:3px;
+}
+#TopDiv .toptable div{
+	float:left;	
+}
+#TopDiv .toptable div a{
+	display:block;
+	padding:5px 15px 0 15px;
+	line-height:30px;
+	color:#666;
+	font-size:14px;
+	background:url(homepagespacing.gif) right top no-repeat;	
+}
+#TopDiv .toptable div a:hover{
+	background:url(homeover.gif) right top no-repeat;	
+}
+#TopDiv .toptable .right{
+	text-align:right;
+	padding:5px 0 0 0;
+	line-height:30px;
+	color:#333;
+}
+#TopDiv .toptable .right a{
+	color:#333;
+}
+/*
+*头部
+*/
+#headDiv{
+	height:80px;
+	background:url(homepagebg.gif) center top no-repeat;
+}
+#headDiv span{
+	display:block;
+	width:990px;
+	line-height:80px;
+	margin:auto;
+	color:#0780A2;
+	font-size:32px;
+	font-weight:bold;
+}
+/*
+*内容
+*/
+.container{
+	width:990px;
+	margin:20px auto 20px auto;
+}
+.container td{
+	vertical-align:top;
+}
+.container .main{
+	width:690px;
+	padding-right:15px;
+}
+.container .side{
+	width:285px;
+}
+#comarticle{
+	background:#FFF;
+	border:#EEE solid 1px;
+	font-size:14px;
+	font-weight:bold;
+	line-height:30px;
+	padding-left:10px;
+}
+#comarticle a{
+	color:#333;
+	font-weight:normal;
+}
+
+.userinfo{
+	border:#eee solid 1px;
+	background:#FFF;
+}
+.userinfo .head{
+	height:33px;
+	background:url(head3.gif) left top repeat-x;
+}
+.userinfo .head span{
+	display:block;
+	padding:3px 10px 0 10px;
+	line-height:30px;
+	float:left;
+}
+.userinfo .head span.FL{
+	width:120px;
+	background:url(memberl.gif) left top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#F1F0F0;
+	padding-left:30px;
+}
+.userinfo .head span.FR{
+	float:right;
+	padding-left:20px;
+	background:url(icon_msg.gif) left 8px no-repeat;
+}
+.userinfo .head span.FR a{
+	color:#666;
+}
+.userinfo .cont{
+	padding:10px;
+}
+.imgword .img{
+	width:10%;
+	padding:5px 15px 15px 5px;
+}
+.imgword .img a{
+	display:block;
+	width:150px;
+	height:150px;
+	border:#DDD solid 1px;
+	overflow:hidden;
+}
+.imgword .word {
+	line-height:18px;
+}
+.imgword .word div {
+	margin-top:3px;
+}
+.imgword .word span{
+	color:blue;
+}
+.moreinfo{
+	border-top:#ccc dotted 1px;
+}
+.moreinfo td{
+	width:50%;
+	padding-left:10px;
+	line-height:20px;
+}
+.moreinfo td.left{
+	border-right:#ccc dotted 1px;
+}
+.moreinfo .h{
+	padding-top:8px;
+	font-weight:bold;
+}
+.moreinfo span{
+	color:#666;
+}
+.sidetable{
+	border:#eee solid 1px;
+	background:#FFF;
+	border-collapse:separate;
+}
+.sidetable .head{
+	height:32px;
+	background:url(head4.gif) left top repeat-x;
+	border-left:#FFF solid 2px;
+	border-right:#FFF solid 2px;
+}
+.sidetable .head span.FL{
+	float:left;
+	padding:2px 0 0 15px;
+	line-height:30px;
+	font-size:14px;
+}
+.sidetable .head span.FR{
+	float:right;
+	padding:2px 10px 0 0;
+	line-height:30px;
+}
+.sidetable .head span.FR a{
+	color:#004276;
+}
+.sidetable .cont{
+	padding:10px;
+}
+.sidetable .cont1{
+	line-height:25px;
+}
+.sidetable .myinfo{
+}
+.sidetable .myinfo td{
+	padding:5px 5px 5px 10px;
+	vertical-align:middle;
+}
+.sidetable .myinfo td span{
+	color:red;
+}
+.sidetable .cont .list{
+	height:22px;
+	line-height:22px;
+	padding:0 8px 0 15px;
+	overflow:hidden;
+	background:url(point.gif) 5px 9px no-repeat;
+}
+.sidetable .cont .list a{
+	float:left;
+	color:#555;
+}
+.sidetable .cont .list span{
+	float:right;
+	color:#999;
+}
+
+.drag{
+	border:#EEE solid 1px;
+	background:#FFF url(dragbg.gif) center 35px no-repeat;
+}
+.drag .head{
+	line-height:40px;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+}
+.drag .cont{
+	padding:10px;
+}
+.drag .cont .list{
+	height:22px;
+	line-height:22px;
+	padding-left:15px;
+	background:url(point.gif) 5px 9px no-repeat;
+	overflow:hidden;	
+}
+.drag a{
+	color:#666;	
+}
+.drag .cont .listpic{
+	width:130px;
+	height:135px;
+	overflow:hidden;
+	float:left;	
+}
+.drag .cont .listpic a{
+	display:block;	
+	width:100px;
+	margin:auto;	
+}
+.drag .cont .listpic a.img{
+	height:100px;
+	overflow:hidden;
+	border:#DDD solid 1px;
+	padding:1px;	
+}
+.drag .cont .listpic a.title{
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	text-align:center;
+	color:#004276;	
+}
+
+#FootDiv{
+	background:#FFF url(footbg.gif) left top repeat-x;
+	padding:20px 0 20px 0;
+}
+.foottable td{
+	width:50%;
+}
+.foottable td.logo{
+	text-align:right;
+	border-right:#AEAEAE solid 1px;
+}
+.foottable td.copyright{
+	padding-left:15px;
+	color:#666;
+	line-height:20px;
+}
+.foottable td.copyright a{
+	color:#666;
+}

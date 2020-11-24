@@ -1,0 +1,1 @@
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('message_send', '站内消息群发', 0, '', '', '', '', '', 'index.php?lfj=message&job=send', '', 'other', '消息/邮件群发', 3, '', 0);

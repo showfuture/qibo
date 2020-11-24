@@ -1,0 +1,75 @@
+<!--
+<?php
+if(!$action){
+print <<<EOT
+--> 
+<div class="MainCont">
+	<div class="head"><div class="tag"> 友情链接管理 [<A HREF="cankao.php?action=add">新创建一个友情链接</A>]</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="30%">网站名称</th>
+            <th width="50%">描述</th>
+            <th width="20%">操作</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr>
+            <td><a href="$rs[url]" target="_blank">$rs[title]</a></td>
+            <td class="tL">$rs[description]</td>
+            <td><a href="?action=add&amp;ck_id=$rs[ck_id]">编辑</a>/<a href="?action=del&amp;ck_id=$rs[ck_id]" onclick="return confirm('删除后不能恢复，确定要继续吗？')">删除</a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<!--
+EOT;
+}elseif($action=='add'){
+print <<<EOT
+-->
+<div class="MainCont">
+	<div class="head"><div class="tag">友情链接</div></div>
+    <div class="cont">
+    	<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+        <input name="action" type="hidden" id="action" value="save_add" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <td class="tdL">友情链接:</td>
+            <td class="tdR"><input name="title" type="text" value="$rsdb[title]" size="40" /> 比如：网站名称 (最多40个字符)</td>
+          </tr>
+          <tr>
+            <td class="tdL">网址:</td>
+            <td class="tdR"><input name="url" type="text" value="$rsdb[url]" size="40" /> http://开头</td>
+          </tr>
+          <tr>
+            <td class="tdL">描述:</td>
+            <td class="tdR"><textarea name="description" cols="40" rows="5">$rsdb[description]</textarea> 简单描述，最多400个字符</td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+            	<input type="submit" name="Submit" value="提交保存"/>
+                <input type="button" name="Submit2" value="放 弃"  onclick="window.location='?';"/>
+                <input name="action" type="hidden" id="action" value="save_add" />
+                <input name="ck_id" type="hidden" id="ck_id" value="$ck_id" />
+            </td>
+          </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<!--
+EOT;
+}
+?>
+-->

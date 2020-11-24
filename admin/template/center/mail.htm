@@ -1,0 +1,101 @@
+<!--
+<?php
+$MailTransfer[intval($webdb[MailTransfer])] = 'checked';
+print <<<EOT
+--> 
+
+
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" >
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr class="head"> 
+      <td colspan="2" align="center">邮箱资料配置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="21%">邮件发送模式:</td>
+      <td align="left" width="79%"> <a href="index.php?lfj=$lfj&action=delete_admin_logs&iddb[{$rs[id]}]=1"></a> 
+        <input type="radio" onClick="mail_type('smtp')"  name="webdbs[MailType]" value="smtp" $MailType[smtp]>
+        SMTP方式发送(常用) 
+        <input type="radio" onclick="mail_type('mail')" name="webdbs[MailType]" value="mail" $MailType[mail]>
+        mail 函数发送(极少用,绝大部分服务器都不支持) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tr1"> 
+      <td align="left" width="21%">SMTP 服务器: </td>
+      <td align="left" width="79%"> 
+        <input type="text" name="webdbs[MailServer]" value="$webdb[MailServer]">
+        如:smtp.qq.com 或是 smtp.163.com</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tr3"> 
+      <td align="left" width="21%">邮箱帐号:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="webdbs[MailId]" value="$webdb[MailId]">
+        如:test@qq.com</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tr4"> 
+      <td align="left" width="21%">邮箱密码:</td>
+      <td align="left" width="79%"> 
+        <input type="password" name="webdbs[MailPw]" value="$webdb[MailPw]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tr2"> 
+      <td align="left" width="21%">SMTP 端口:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="webdbs[MailPort]" size="4" value="$webdb[MailPort]">
+        绝大部份的邮件服务器都是25</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="tr5">
+      <td align="left" width="21%">是否借助齐博服务器转发:</td>
+      <td align="left" width="79%">
+        <input type="radio" name="webdbs[MailTransfer]" value="0" $MailTransfer[0]>
+        不需要 
+        <input type="radio" name="webdbs[MailTransfer]" value="1" $MailTransfer[1]>
+        需要 (如果你的服务器关闭了25端口不能发邮件的话,就选择需要,否则就选择不需要)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="21%">&nbsp;</td>
+      <td align="left" width="79%"> <a href="index.php?lfj=mail&job=test">[测试发邮件]</a> 
+        <input type="submit" name="Submit" value="保存设置">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function mail_type(t){
+	if(t=='mail'){
+		$("#tr1").hide();
+		$("#tr2").hide();
+		$("#tr3").hide();
+		$("#tr4").hide();
+		$("#tr5").hide();
+	}else if(t=='smtp'){
+		$("#tr1").show();
+		$("#tr2").show();
+		$("#tr3").show();
+		$("#tr4").show();
+		$("#tr5").show();
+	}
+}
+mail_type('$webdb[MailType]');
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+   
+    <tr class="head"> 
+      <td align="left">说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td align="left">1、一般情况下都是选择“SMTP 模块发送”。而“mail 函数发送”只有极少部分服务器才支持，windows服务器一般不支持。<br>
+      2、选择SMTP方式发送邮件,一般推荐使用QQ邮箱,而163邮箱只有2006年以前申请的才可以.关于QQ邮箱的设置,<a href="http://bbs.qibosoft.com/read-forum-tid-267122.htm" target="_blank"><font color="#FF0000">请点击查看帮助文档</font></a><br>
+      3、“是否借助齐博服务器转发:”这一项主要针对有些服务器25端口被禁用的情况下选择使用。<br>
+      4、关于检查25端口是否被关闭的方法，请把引号内的代码“&lt;?php print_r(fsockopen('smtp.qq.com', 25, 
+      \$errno, \$errstr, 5));?&gt;”另存为test.php文件放到网站根目录访问，如能看到&quot;Resource id 
+      #2&quot;这样的字眼，则25端口没关闭，否则就被关闭了。</td>
+    </tr>
+   
+</table>
+<!--
+EOT;
+?>
+-->

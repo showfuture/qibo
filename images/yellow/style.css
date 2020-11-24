@@ -1,0 +1,420 @@
+
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+li,ul{
+	list-style: none;
+}
+
+ 
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+}
+
+ 
+input,textarea{
+	border:1px solid #ccc;
+}
+
+a {
+	font-size: 12px;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+.wrap{
+	width:980px;
+	background:#fff;
+	margin:auto;
+	padding:10px 5px 5px 5px;
+}
+img{
+	border:0;
+}
+/*******************************************网站头部**********************************/
+/*
+*顶部信息
+*/
+#header_login{
+	height:25px;
+	line-height:25px;
+	background:url(topbg.gif) no-repeat;
+}
+#header_login #top_login{
+	float:left;
+	height:25px;
+	padding-left:35px;
+	background:url(head_login_ico.gif) 3px -1px no-repeat;
+}
+#header_login #top_login span{
+	display:block;
+	float:left;
+}
+#header_login #top_login span.input{
+	padding:2px 8px 0 0;
+}
+#header_login #top_login span.sub{
+	padding:2px 8px 0 0;
+}
+#header_login #top_login span.input input{
+	width:90px;
+	height:15px;
+}
+#header_login #top_login a{
+	color:blue;
+}
+#header_login #top_login em{
+	color:red;
+	font-style:normal;
+}
+#header_login #top_right{
+	float:right;
+	padding-right:10px;
+	word-spacing:8px;
+}
+#header_login #top_right span{
+	color:red;
+}
+/*
+*logo&搜索
+*/
+#header_logo{
+	height:80px;
+}
+#header_logo .logo{
+	float:left;
+	width:200px;
+	text-align:cdenter;
+	padding-top:10px;
+}
+#header_logo .changecity{
+	float:left;
+	width:100px;
+	height:60px;
+	text-align:center;
+	margin-top:10px;
+	border-left:#DDD solid 1px;
+}
+#header_logo .changecity span{
+	display:block;
+}
+#header_logo .changecity span.city{
+	font-size:14px;
+	font-weight:bold;
+	background:url(citybg.gif) center top no-repeat;
+	padding:6px 0 20px 0;
+}
+#header_logo .changecity a{
+	color:#555;
+}
+
+#topsearch{
+	width:490px;
+	height:60px;
+	overflow:hidden;
+	float:right;
+	margin-top:10px;
+	background:url(topsearchbg.gif) right 24px no-repeat;
+}
+#topsearch .searchtype{
+	height:25px;
+	padding-left:20px;
+}
+#topsearch .searchtype a{
+	display:block;
+	width:50px;
+	text-align:center;
+	padding:5px 0 0 0;
+	line-height:20px;
+	float:left;
+	text-decoration:none;
+}
+#topsearch .searchtype a.choose{
+	background:url(choosebg.gif) center bottom no-repeat;
+	color:#FF7000;
+	font-weight:bold;
+}
+#topsearch .searchform{
+	height:35px;
+	padding-left:15px;	
+}
+#topsearch .searchform span{
+	float:left;
+	padding-top:5px;
+}
+#topsearch .searchform span.input input{
+	width:380px;
+	height:23px;
+	line-height:23px;
+	background:none;
+	border:0;
+	color:#666;
+}
+#topsearch .searchform span.submit input{
+	height:23px;
+	line-height:23px;
+	width:90px !important;
+	width:80px;
+	background:none;
+	border:0;
+	text-align:right;
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+/*
+*
+*/
+#header_menu{
+	height:96px;
+	background:url(menubg1.gif) center top no-repeat;
+}
+#header_menu #mainmenu{
+	height:35px;
+	overflow:hidden;
+	padding-left:10px;
+}
+#header_menu #mainmenu div{
+	float:left;
+	background:url(menuspacing1.gif) right 11px no-repeat;
+}
+#header_menu #mainmenu div.nobg{
+	background:none;
+}
+#header_menu #mainmenu div a{
+	display:block;
+	padding-left:10px;
+}
+#header_menu #mainmenu div a.choose{
+	background:url(chooseover.gif) left bottom no-repeat;
+}
+#header_menu #mainmenu div span{
+	display:block;
+	padding:5px 12px 0 0;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFF;
+}
+#header_menu #mainmenu div a.choose span{
+	background:url(chooseover.gif) right bottom no-repeat;
+	color:#333;
+}
+#header_menu #mainmenu #TopPostInfo{
+	display:block;
+	width:150px;
+	float:right;
+	padding-top:7px;
+	text-align:center;
+}
+#header_menu #ChildrenMenu{
+	height:50px;
+	overflow:hidden;
+	padding-top:5px;
+}
+#header_menu #ChildrenMenu .listm{
+	height:25px;
+	width:89px;
+	overflow:hidden;
+	float:left;
+}
+#header_menu #ChildrenMenu .listm a{
+	display:block;
+	padding:5px 5px 0 5px;
+	line-height:20px;
+	text-align:center;
+}
+/*#header_menu a{
+	float:left;
+	display:block;
+	height:25px;
+	background:url(head_menu_bg2.gif)  no-repeat right;
+	font-weight:bold;
+	font-size:14px;
+	padding:10px 13px 0 13px;
+}
+
+#header_menu a.choose{
+	background:url(head_menu_bg.gif);
+	color:#fff;
+}*/
+
+
+#nav_guide{
+	border:1px solid #EAEAEA;
+	margin-bottom:8px;
+}
+#nav_guide div{
+	float:left;
+	height:20px;
+	padding-top:8px;
+	padding-left:6px;
+}
+#nav_guide .t1{
+	background:url(nav_guide.gif) no-repeat 5px 6px;
+	padding-left:24px;
+	color:#FF6A00;
+}
+
+
+/*
+*copyright样式
+*/
+#copyright{
+	clear:both;
+	margin:10px auto 0 auto;
+	text-align:center;
+	border-top:1px solid #ddd;
+	background:#F6F6F6;
+	width:990px;
+	line-height:20px;
+	padding:8px 0 15px 0;
+	color:#666;
+}
+
+/******************************************
+头部搜索栏样式开始
+*******************************************/
+#topsearchtb{
+	width:990px;
+	height:40px;
+	background:url(indexsearch/sbg.gif) center top no-repeat;
+}
+#topsearchtb .formleft,#topsearchtb .keyword,#topsearchtb .submit,#topsearchtb .brand,#topsearchtb .hotsearch{
+	float:left;
+}
+#topsearchtb .formleft{
+	margin:6px 0 0 30px;
+	width:444px;
+	height:30px;
+	background:url(indexsearch/inputbg.gif) no-repeat;
+	overflow:hidden;
+}
+#topsearchtb .keyword input{
+	width:320px;
+	height:25px;
+	line-height:25px;
+	border:0;
+	background:none;
+}
+#topsearchtb .submit,#topsearchtb .brand{
+	padding:6px 0 0 5px;
+}
+#topsearchtb .brand img{
+	border:0;
+}
+#topsearchtb .hotsearch{
+	padding:15px 0 0 15px;
+	color:#FFFFFF;
+}
+#topsearchtb .serchl{
+	padding:5px 0 0 30px;
+}
+#topsearchtb .serchr{
+	width:545px;
+}
+#topsearchtb .serchl table{
+	width:445px;height:30px;
+	background:url(indexsearch/inputbg.gif) no-repeat;
+}
+#topsearchtb .serchl table .select{
+	width:90px;
+}
+#topsearchtb .serchl table .select .unclick{
+	background:url(indexsearch/select.gif) no-repeat;
+	height:25px;
+	padding:3px 0 0 15px;
+	line-height:25px;
+}
+#topsearchtb .serchl table .select .onclick{
+	background:url(indexsearch/select1.gif) no-repeat;
+	height:25px;
+	padding:3px 0 0 15px;
+	line-height:25px;
+}
+#listselect{
+	position:absolute;
+	background:url(indexsearch/select.gif) left bottom no-repeat;
+	width:90px;
+	padding-bottom:3px;
+	z-index:10000;
+}
+#listselect a{
+	display:block;
+	background:url(indexsearch/select2.gif) left top repeat-y;
+	padding:3px 0 0 15px;
+	line-height:25px;
+	width:90px;
+}
+#listselect .ck{
+	background:url(indexsearch/select3.gif) left top repeat-y;
+	color:#FFFFFF;
+}
+#listselect a:hover{
+	background:url(indexsearch/select4.gif) left top repeat-y;
+	text-decoration:none;color:#FFFFFF;
+}
+#topsearchtb .serchr #subbtn{
+	width:90px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	background:url(indexsearch/sub.gif) center top no-repeat;
+	border:0;color:#B04A00;
+	font-size:14px;
+	font-weight:bold;
+}
+
+/******************************************
+头部搜索栏样式结束
+*******************************************/
+
+/*********************************************************************
+**********************************************************************
+AJAX在线编辑DIV容器
+这个会员看不到.只是版主管理员才可以看到.这是后台风格
+一般不必修改了.修改了会员也看不到
+**********************************************************************
+*********************************************************************/
+#AjaxEditTable{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+#AjaxEditTable .head{
+	height: 21px;
+	background: #DBEAFF;
+	border-bottom:1px solid #BEDDFF;
+	padding:3px 5px 0 7px;
+}
+#AjaxEditTable .head a{
+	color:#FFF;
+}
+#AjaxEditTable .head span{
+	DISPLAY: block; 
+	FLOAT: right;
+}
+#AjaxEditTable .middle{
+	background:#FFF;
+	line-height:18px;
+	padding:5px;
+}
+#AjaxEditTable .middle input,#AjaxEditTable .middle textarea{
+	border:1px solid #BEDDFF;
+	background:#FFF;
+}
+

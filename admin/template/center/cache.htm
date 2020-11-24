@@ -1,0 +1,106 @@
+<!--
+<?php
+$_max_upload=$max_upload*1024;
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">缓存设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>标签缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[label_cache_time]" size="5" value="$webdb[label_cache_time]">
+        分钟 (留空或为0则默认为3分钟,建议10分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>主页缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[index_cache_time]" size="5" value="$webdb[index_cache_time]">
+        分钟 (留空或为0则取消缓存,建议10分钟以上,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>列表页缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[list_cache_time]" size="5" value="$webdb[list_cache_time]">
+        分钟 (留空或为0则取消缓存,建议10分钟以上,大分类建议不要取消,因为比较占资源) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容页缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[bencandy_cache_time]" size="5" value="$webdb[bencandy_cache_time]">
+        分钟 (留空或为0则取消缓存,建议60分钟以上) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>专题页缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[showsp_cache_time]" size="5" value="$webdb[showsp_cache_time]">
+        分钟 (留空或为0则取消缓存,建议60分钟以上) </td>
+    </tr>
+    
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容列表最新主题缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[cache_time_new]" size="5" value="$webdb[cache_time_new]">
+        分钟 (留空或为0则默认为3分钟,建议10分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容列表最热主题缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[cache_time_hot]" size="5" value="$webdb[cache_time_hot]">
+        分钟 (留空或为0则默认为3分钟,建议10分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容列表推荐主题缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[cache_time_com]" size="5" value="$webdb[cache_time_com]">
+        分钟 (留空或为0则默认为3分钟,建议60分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容列表相关主题缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[cache_time_like]" size="5" value="$webdb[cache_time_like]">
+        分钟 (留空或为0则默认为3分钟,建议60分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>内容列表图片主题缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[cache_time_pic]" size="5" value="$webdb[cache_time_pic]">
+        分钟 (留空或为0则默认为3分钟,建议30分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr><tr>
+      <td width='28%' bgcolor='#FFFFFF'>JS插件缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'>
+        <input type="text" name="webdbs[cache_time_js]" size="5" value="$webdb[cache_time_js]">
+        分钟 (留空或为0则默认为3分钟,建议30分钟以上.要取消,请填“-1”,数据量大时,强烈推荐不要取消.) </td>
+    </tr><tr> 
+      <td width='28%' bgcolor='#FFFFFF'>辅栏目列表页缓存时间:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[fulist_cache_time]" size="5" value="$webdb[fulist_cache_time]">
+        分钟 (留空或为0则取消缓存,建议10分钟以上,大分类建议不要取消,因为比较占资源) </td>
+    </tr>
+    <tr> 
+      <td width='16%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="84%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr class="head"> 
+    <td align="left"> 帮助说明</td>
+  </tr>
+  <tr> 
+    <td colspan="2" bgcolor='#FFFFFF'>1.如果你的网站数据量比较大,我们强烈推荐你设置缓存时间.这样可以有效的加快网站访问速度与减轻服务器负载.<br>
+      2.缓存时间越大越好,但是,如果你的网站内容频繁的更新的话,就不能马上看到更新效果.<br>
+      3.启用缓存后,有时候删除或修改或新发表内容要延时才能看到效果.设置缓存时间多久.就会延时多久.<br>
+      4.要一键更新网站所有缓存,请点击 <a href="index.php?lfj=cache&job=cache"><font color="#FF0000">立即更新</font></a></td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

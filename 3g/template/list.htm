@@ -1,0 +1,76 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="ListSortCont">  
+	<h3><a href="index.php">Ê×Ò³</a>{$guides} > </h3>
+    <p>
+<!--
+EOT;
+$i=0;
+foreach($Fid_db[$thisfup] AS $key=>$value){
+$color=$Fid_db[ifcolor][$key]?"style=\"color:red;\"":'';
+$i++;
+$spacword=$i==1?"":"-";
+print <<<EOT
+-->
+            $spacword  <a href="list.php?fid=$key" $color>{$Fid_db[name][$key]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </p>  
+<!--
+EOT;
+if($fidDB[type]==1){
+foreach($Fid_db[$fid] AS $key=>$rs){
+$sorlists=GetInfos("id",$key,$city_id,10);
+if(!$sorlists)continue;
+print <<<EOT
+-->
+	<h3><a href="list.php?fid=$key">{$Fid_db[name][$key]}</a></h3>
+    <ul>
+<!--
+EOT;
+foreach($sorlists AS $keys=>$rss){
+$listtitle=get_word($rss[title],40);
+print <<<EOT
+-->
+			<li><a href="list.php?fid=$rss[fid]" class="f">[{$rss[fname]}]</a><a href="bencandy.php?fid=$rss[fid]&id=$rss[id]" title="$rss[title]">{$listtitle}</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </ul>
+<!--
+EOT;
+}}else{
+print <<<EOT
+-->
+	<h3><a href="list.php?fid=$fid">{$fidDB[name]}</a></h3>
+    <ul>
+<!--
+EOT;
+foreach($listdb AS $keys=>$rss){
+$listtitle=get_word($rss[title],42);
+print <<<EOT
+-->
+			<li><a href="bencandy.php?fid=$rss[fid]&id=$rss[id]" title="$rss[title]">{$listtitle}</a><span>($rss[posttime])</span></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </ul>
+$showpage
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</div>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]</title>
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/default.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/new.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/homepage_style/$homepage_style/default.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+</head>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<!--
+EOT;
+if($webdb[allNotice]){
+print <<<EOT
+-->
+<div style="  padding:5px; background-color:#FDE9EB; border-bottom:1px #CC0000 solid; color:#FF0000; font-size:12px; font-weight:bold; text-align:center;">
+$webdb[allNotice]
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<table width="990" border="0" cellspacing="0" cellpadding="0" align="center" class="toptable">
+<tr>
+	<td class="logo"><A HREF="$webdb[www_url]/"><img src="$Murl/images/homepage_style/$homepage_style/logo.gif" border=0></A></td>
+    <td class="minfo">
+    	<span class="inline">在线咨询 | 全国服务网络</span>
+        <span>全国7x24小时服务热线:</span>
+        <span class="hottel">$rsdb[qy_contact_tel]</span>
+    </td>
+</tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('<div class="wrap">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,66 @@
+<!--
+<?php
+$groupdb[refurbish_auto_fenlei_num] = intval($groupdb[refurbish_auto_fenlei_num]);
+print <<<EOT
+--> 
+<div class="MainCont">
+	<div class="head"><div class="tag">以下是你设置的定时刷新信息 (你所在用户组最多可设置 <span class="red">{$groupdb[refurbish_auto_fenlei_num]}</span> 条分类信息定时自动刷新)</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th>信息内容</th>
+            <th width="20%">最后更新时间</th>
+            <th width="8%">模型</th>
+            <th width="10%">刷新时刻</th>
+            <th width="10%">取消定时</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+$rs[title]=get_word($rs[title],40);
+$rs[fname]=get_word($rs[fname],16);
+print <<<EOT
+-->
+          <tr>
+            <td class="tL">
+            	<a href="$rs[url]" target="_blank">$rs[title]</a>
+                <a href="$rs[Lurl]" target="_blank"><span class="red">[{$rs[fname]}]</span></a>
+                <span style="color:#999;">({$city_DB[name][$rs[city_id]]})</span>
+            </td>
+            <td>$rs[posttime]</td>
+            <td>{$module_db[$rs[mid]]}</td>
+            <td>$rs[times]</td>
+            <td><a href="../job.php?job=autoupdate&type=del&fid=$rs[fid]&id=$rs[id]" title="取消定时刷新功能">取消定时</a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<div class="MainCont mtop10">
+	<div class="head">
+    	<div class="tag">帮助说明</div>
+    </div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1、刷新，即代表更新信息的发布日期为当前日期，刷新后会排在当前栏目的前面。</li> 
+			<li>2、有两种方式进行刷新：一种就是这里重点讲解的系统定时自动刷新，另一种是手工点击立即刷新。</li>
+			<li>3、系统定时自动刷新分类信息的时间可以自由设置刷新时刻，每天就会在这个时刻之后自动进行刷新一次。</li> 
+			<li>4、不同的用户组具有不同的刷新条数限制，你当前所在用户组最多可以设置 <span class="red">{$groupdb[refurbish_auto_fenlei_num]}</span> 条分类信息定时自动刷新。</li> 
+			<li>5、更改刷新时刻只能先取消定时后，再重新添加定时设置时间。</li> 
+			<li>6、超过系统上限后，只能先取消原来的，才能添加新的信息作为定时刷新。</li> 
+			<li>7、如何设置分类信息为定时刷新？进入“<a href="list.php">分类信息管理</a>”在相应信息的“操作”那一项菜单里可以选择“定时刷新”。</li> 
+        </ul>
+    </div>
+</div>
+
+ <!--
+EOT;
+?>
+-->

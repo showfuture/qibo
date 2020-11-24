@@ -1,0 +1,99 @@
+.MainContainers{
+	padding-top:5px;
+	color:#555;
+}
+.MainContainers a:link,.MainContainers a:hover,.MainContainers a:visited{
+	color:#265F8C;
+}
+.MainContainers .Mains{
+	width:640px;
+	float:left;
+}
+.MainContainers .Sides{
+	width:340px;
+	float:right;
+}
+.ClearDiv{
+	clear:both;
+}
+/*
+*
+*/
+.NewsMsg{
+	padding-bottom:5px;
+	background:url(contbg.gif) center bottom no-repeat;
+}
+.NewsMsg .head{
+	height:35px;
+	background:url(contbg.gif) center top no-repeat;
+}
+.NewsMsg .head .tag{
+	padding:5px 0 0 15px;
+	font-size:14px;
+	font-weight:bold;
+	line-height:30px;
+}
+.NewsMsg .cont{
+	padding:10px 10px 0 10px;
+	height:180px;
+	overflow:hidden;
+	border:#C8D2D1 solid 1px;
+	border-bottom:0;
+	background:#FAFBFD;	
+}
+.NewsMsg .cont .list{
+	height:25px;
+	overflow:hidden;
+	line-height:25px;
+	padding-left:15px;
+	background:url(array.gif) left 8px no-repeat;
+}
+/*
+*
+*/
+.ShowSorts,.HotMsg{
+	margin-top:10px;
+}
+.ShowSorts .head,.HotMsg .head{
+	height:35px;
+	border-bottom:#DEDFE1 solid 2px;
+}
+.ShowSorts .head .tag,.HotMsg .head .tag{
+	float:left;
+	padding:5px 0 0 10px;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+}
+.ShowSorts .head .more,.HotMsg .head .more{
+	float:right;
+	padding:15px 10px 0 0 ;
+}
+.ShowSorts .cont,.HotMsg .cont{
+	padding:10px;
+}
+.ShowSorts .cont dl{
+	clear:both;
+	padding:5px 5px 0 0;
+	line-height:20px;
+}
+.ShowSorts .cont dl dt{
+	float:left;
+	padding:0 15px 0 0;
+	background:url(spac.gif) right 3px no-repeat;
+}
+.ShowSorts .cont dl dt a:link,.ShowSorts .cont dl dt a:hover,.ShowSorts .cont dl dt a:visited{
+	color:#555;
+}
+.ShowSorts .cont dl dd{
+	float:left;
+	padding-left:15px;
+	word-spacing:10px;
+}
+.HotMsg .cont .list{
+	height:22px;
+	line-height:22px;
+	overflow:hidden;
+	padding-left:10px;
+	background:url(array1.gif) left 10px no-repeat;
+}

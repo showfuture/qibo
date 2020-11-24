@@ -1,0 +1,85 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">图片浏览</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"><a name="look"></a>
+             
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr> 
+                <td align="center"><a href="$infourl">$rsdb[title]</a></td>
+              </tr>
+              <tr>
+                <td align="center">(<a href="#look" onClick="showMorePic(-1)">上一张</a>) 
+                  【<span id="upfilePicNum">1/2</span>】(<a href="#look" onClick="showMorePic(1)">下一张</a>)</td>
+              </tr>
+              <tr> 
+                <td align="center"><a href="#"  id="upfilePicLink" target="_blank"><img onload="if(this.width>600)this.width=600" onmouseover="if(this.width>600)this.width=600" border="0" id="upfilePicUrl"></a></td>
+              </tr>
+              <tr> 
+                <td align="center"> 
+                  <div id="picname"></div>
+                </td>
+              </tr>
+               
+            </table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var upfilePicNumId=0;
+function showMorePic(todo){
+
+	var ImgLinks= new Array($urldb);
+	var ImgTitle= new Array($titledb);
+
+	if(todo==1){
+		upfilePicNumId++;
+	}else if(todo==-1){
+		upfilePicNumId--;
+	}
+	if(upfilePicNumId<0){
+		alert("已经是第一张了!");
+		upfilePicNumId=0;
+	}
+	if( upfilePicNumId>(ImgLinks.length-1) ){
+		alert("已经是最后一张了!");
+		upfilePicNumId=ImgLinks.length-1;
+	}
+	
+	document.getElementById("upfilePicNum").innerHTML="<font color=red>"+(upfilePicNumId+1)+"</font>/"+ImgLinks.length;
+	document.getElementById("upfilePicUrl").src=document.getElementById("upfilePicLink").href=ImgLinks[upfilePicNumId];
+	document.getElementById("upfilePicUrl").alt=ImgTitle[upfilePicNumId];
+	document.getElementById("picname").innerHTML=ImgTitle[upfilePicNumId];
+	//document.getElementById("upfilePicUrl").width=600;
+	//upfilePicUrl.height=450;
+}
+showMorePic()
+//-->
+</SCRIPT>
+</td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

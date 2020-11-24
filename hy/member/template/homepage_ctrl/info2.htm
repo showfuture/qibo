@@ -1,0 +1,35 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<div style="padding-bottom:15px;">
+<textarea name="content" id="myEditor" style="width:700px;">$content</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:300});
+editor_a.render( 'myEditor' );
+</script>
+</div>
+<ul class="aboutnote">
+	<li class="b">企业资质辅助说明</li>
+    <li>(比如：插入关于企业资质的图片,可以使用<span class="b green">荣誉证书，获奖证书，营业执照</span>等比较有说服力的证件照片或者扫描件,<a href="?atn=pic&amp;uid=$uid" class="b red">点击这里先上传</a>)</li>
+</ul>    
+<div>
+<!--include
+EOT;
+//导入绑定图片功能
+require(Mpath.'template/default/bd_pics.htm');    
+print <<<EOT
+include-->
+</div>
+<div style="clear:both;">
+ <input type="submit" name="button10" id="button10" value="提 交"/>
+ <input name="atn" type="hidden" id="atn" value="$atn" />
+<input name="step" type="hidden" id="step" value="1" />
+<input name="uid" type="hidden" id="uid" value="$uid" />
+</div>
+</form>
+<!--
+EOT;
+?>
+-->

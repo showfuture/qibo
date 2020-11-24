@@ -1,0 +1,5 @@
+<?php
+unset($styledb);
+		$styledb['name']='ÌìÀ¶·ç¸ñ';
+		$styledb['keywords']='azure_tpl';
+?>

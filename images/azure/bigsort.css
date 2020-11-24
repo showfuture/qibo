@@ -1,0 +1,97 @@
+.ShowSorts{
+	border:#D1DFF3 solid 2px;
+}
+.ShowSorts td{
+	width:25%;
+	padding-top:3px;
+}
+.ShowSorts td dl dt{
+	line-height:25px;
+	padding-left:15px;
+}
+.ShowSorts td dl dt a{
+	color:#0046CC;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.ShowSorts td dl dd{
+	padding:0 0 3px 15px;
+	line-height:20px;
+}
+.ShowSorts td dl dd a{
+	color:#0046CC;
+}
+.ShowMore .td1{
+	padding-right:8px;
+}
+.ShowMore .td2{
+	padding-left:8px;
+}
+.ShowMore dl dt{
+	padding-top:8px;
+	height:25px;
+	overflow:hidden;
+	line-height:25px;
+}
+.ShowMore dl dt a{
+	color:#0046CC;
+	font-size:14px;
+	font-weight:bold;
+	float:left;
+	padding-right:12px;
+	background:url(icon7.gif) right 7px no-repeat;
+}
+.ShowMore dl dd{
+	border:#DFDFDF solid 1px;
+	padding:10px 10px 0 10px;
+	height:200px;
+	overflow:hidden;
+}
+.ShowMore dl dd ul{
+	height:67px;
+	overflow:hidden;
+}	
+.ShowMore dl dd ul li{
+	float:left;
+}
+.ShowMore dl dd ul li.img{
+	width:70px;
+	height:45px;
+	overflow:hidden;
+}
+.ShowMore dl dd ul li.t{
+	width:360px;
+	height:50px;
+	padding-left:10px;
+	line-height:25px;
+	color:#888;
+}
+.ShowMore dl dd ul li.t a{
+	color:#0046CC;
+	font-size:14px;
+}
+
+.OtherContainer{
+	margin-top:10px;
+	border-top:#cbcbcb solid 1px;
+}
+.OtherContainer dt{
+	padding-top:5px;
+	height:25px;
+	line-height:25px;
+	padding-left:20px;
+	background:url(icon8.gif) left 10px no-repeat;
+	color:#666;
+}
+.OtherContainer dd{
+	padding:5px 5px 5px 20px;
+	line-height:20px;
+	word-spacing:10px;
+}
+.OtherContainer dd a:link,.OtherContainer dd a:visited,.OtherContainer dd a:hover{
+	color:#888;
+}
+.OtherContainer dd.bottom{
+	border-bottom:#cbcbcb solid 1px;
+}

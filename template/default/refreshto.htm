@@ -1,0 +1,38 @@
+<!--
+<?php print <<<EOT
+-->
+<html>
+<head>
+<title>$webdb[webname]                           powered by www.qibosoft.com</title>
+<meta http-equiv='Content-Type' content="text/html; charset=gb2312">
+<meta name='keywords' content='$webdb[metakeywords]'>
+<style type='text/css'>
+A { TEXT-DECORATION: none;}
+a:hover{ text-decoration: underline;}
+BODY {font-family:Verdana;FONT-SIZE: 12px;MARGIN: 0;color: #000000;background: #ffffff;}
+TD { BORDER-RIGHT: 1px; BORDER-TOP: 0px; FONT-SIZE: 9pt; COLOR: #000000;}
+.index_font{color: #3A4F6C;background-color:#EBEBEB; font-weight:bold;padding: 5px;}
+</style>
+</head>
+$uc_login_code
+<meta http-equiv='refresh' CONTENT='$time;URL=$url'>
+<body vlink='#333333' link='#333333'>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if(document.body.clientWidth<500){
+	window.resizeTo(950,600);
+}
+
+//-->
+</SCRIPT>
+<br>
+<table width='100%' border='0' cellspacing='0' cellpadding='0' height='90%' align='center'>
+<tr align='center' valign='middle'><td>
+<table border='0' cellspacing='1' cellpadding='10' bgcolor='#666666' width='600'>
+<tr><td class='index_font' align='center' bgcolor=#9999cc><p>
+</a> 网页正在跳转当中,请稍候...<br><br>
+$msg<br><br><a href='$url' class='index_font'>如果您的浏览器没有自动跳转,请点击这里</a></p>
+</td></tr></table></td></tr></table></body></html>
+<!--
+EOT;
+?>-->

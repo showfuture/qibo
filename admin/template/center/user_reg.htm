@@ -1,0 +1,207 @@
+<!--
+<?php
+$yzNumReg[intval($webdb[yzNumReg])]=" checked ";
+$YzImg_voice[intval($webdb[YzImg_voice])]=" checked ";
+$QQ_login[intval($webdb[QQ_login])]=" checked ";
+$RegPropagandizeMan[intval($webdb[RegPropagandizeMan])]=" checked ";
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color='#FFFFFF'>会员注册设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否禁止注册</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[forbidReg]" value="1" $forbidReg[1]>
+        禁止注册 
+        <input type="radio" name="webdbs[forbidReg]" value="0" $forbidReg[0]>
+        开放注册</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>注册时间间隔</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[limitRegTime]' name='webdbs[limitRegTime]'>
+        写0不限制，单位分钟，要大于此时间才可重新注册</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>注册是否使用验证码</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[yzImgReg]" value="1" $yzImgReg[1]>
+        使用 
+        <input type="radio" name="webdbs[yzImgReg]" value="0" $yzImgReg[0]>
+        不使用</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否开启验证码语音功能:<span help=1>开始后,必须把上面这一项的验证码功能也同时开启,否则不生效</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[YzImg_voice]" value="0" $YzImg_voice[0]>
+        否 
+        <input type="radio" name="webdbs[YzImg_voice]" value="1" $YzImg_voice[1]>
+        是</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否使用注册码才能注册<br>
+        （该功能可以非常有效的防止注册机注册，使用该功能前，必须要配置好相应的短信接口或邮箱接口，启用该功能后，上面那一项验证码就不要使用了。） </td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[yzNumReg]" value="0" $yzNumReg[0]>
+        不使用 
+        <input type="radio" name="webdbs[yzNumReg]" value="2" $yzNumReg[2]>
+        使用手机获取注册码 
+        <input type="radio" name="webdbs[yzNumReg]" value="1" $yzNumReg[1]>
+        使用邮箱获取注册码</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>禁止注册的IP（每个IP换一行）</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <textarea  cols='50' name='webdbs[forbidRegIp]' rows='6'>$webdb[forbidRegIp]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>禁止注册的用户名（每个用户名换一行）</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <textarea  cols='50' name='webdbs[forbidRegName]' rows='6'>$webdb[forbidRegName]</textarea>
+      </td>
+    </tr>
+	<tr>
+      <td width='28%' bgcolor='#FFFFFF'>禁止注册的时间段:<span help=1><br>
+        每个时间段用空隔隔开,比如23 24 1 2 3 4<br>
+        代表当时间为23点或24点或1点或2点或3点或4点的时候不能注册.不填则不限制</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'>
+        <input type="text" size="70" name="webdbs[forbidRegHour]" value="$webdb[forbidRegHour]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>新注册可得{$webdb[MoneyName]}</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[regmoney]' name='webdbs[regmoney]'>
+        $webdb[MoneyDW]</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>注册是否自动通过审核:<span help=1>如果设置不自动通过审核的话,请配置邮件服务器,以方便用户通过邮件验证进行审核</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[RegYz]" value="1" $RegYz[1]>
+        自动通过审核 
+        <input type="radio" name="webdbs[RegYz]" value="0" $RegYz[0]>
+        未审核状态(需要邮箱验证或管理员审核)</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否允许使用同一个邮箱注册多个帐号:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[emailOnly]" value="0" $emailOnly[0]>
+        同一个邮箱可以注册多个帐号 
+        <input type="radio" name="webdbs[emailOnly]" value="1" $emailOnly[1]>
+        同一个邮箱不可注册多个帐号 </td>
+    </tr>
+    <!--
+EOT;
+if(is_table("{$pre}hy_company")){print <<<EOT
+-->
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>注册时,是否让用户选择企业会员:<span help=1>注册成企业用户的提示语模板是/template/default/company_reg.htm</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[RegCompany]" value="1" $RegCompany[1]>
+        允许 
+        <input type="radio" name="webdbs[RegCompany]" value="0" $RegCompany[0]>
+        不允许 </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>注册时允许会员选择的用户组:<span help=1>注意:只能是系统组.管理组与升级积分大于0的用户组,都是禁止选择的,如果选择了其它,那么普通会员是必须要选择的</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'>$reg_group</td>
+    </tr>
+
+<tr> 
+      <td width='28%' bgcolor='#FFFFFF'>用户注册时是否启用推荐人功能:<span help=1>启用推荐人功能的话，对方将得到相应的积分奖励，具体奖励多少积分请查阅插件中心的<a href="index.php?lfj=propagandize&amp;job=set" target="_blank">推广赚取积分功能</a>. 为防止作弊，同一个IP在有效的时间内重复推荐无效</span></td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[RegPropagandizeMan]" value="0" $RegPropagandizeMan[0]>
+        不启用
+        <input type="radio" name="webdbs[RegPropagandizeMan]" value="1" $RegPropagandizeMan[1]>
+        启用</td>
+    </tr>
+
+
+    <tr>
+      <td width='28%' bgcolor='#FFFFFF'>是否启用QQ快速登录功能:<br>
+        <font color="#999999">(注意:使用QQ方式登录的话,必须要先申请API接口，QQ私有密匙申请门槛比较高,并且只能用在一级域名,不能用在其它二级域名,网站域名必须要先备案,不能使用在其它域名下面)</font></td>
+      <td colspan='2' bgcolor='#FFFFFF'>
+        <input type="radio" name="webdbs[QQ_login]" value="0" $QQ_login[0] onclick="choose_qq_type('0')">
+        不启用 
+        <input type="radio" name="webdbs[QQ_login]" value="1" $QQ_login[1] onclick="choose_qq_type('1')">
+        启用QQ私有密匙(<a href="http://connect.opensns.qq.com/apply" target="_blank"><font color="#0000FF">申请接口</font></a>) 
+      </td>
+    </tr>
+    <tr id="qq_1" style="display:none;"> 
+      <td width='28%' bgcolor='#FFFFFF'>QQ登录appid<span help=1>使用QQ方式登录的话,必须要先申请API接口</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[QQ_appid]' name='webdbs[QQ_appid]'>
+        <a href="http://connect.opensns.qq.com/apply" target="_blank">申请</a> </td>
+    </tr>
+    <tr id="qq_2" style="display:none;"> 
+      <td width='28%' bgcolor='#FFFFFF'>QQ登录appkey</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='50' value='$webdb[QQ_appkey]' name='webdbs[QQ_appkey]'>
+        <a href="http://connect.opensns.qq.com/apply" target="_blank">申请</a> </td>
+    </tr>
+	
+	
+	<tr id="qq_3" style="display:none;"> 
+      <td width='28%' bgcolor='#FFFFFF'>QQ登录齐博ID</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[QQ_QBappid]' name='webdbs[QQ_QBappid]'>
+          </td>
+    </tr>
+    <tr id="qq_4" style="display:none;"> 
+      <td width='28%' bgcolor='#FFFFFF'>QQ登录齐博密钥</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='50' value='$webdb[QQ_QBappkey]' name='webdbs[QQ_QBappkey]'>
+          </td>
+    </tr>
+	
+	<tr> 
+      <td width='28%' bgcolor='#FFFFFF'>QQ快速登录后，保留COOKIE有效时间为：</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='5' value='$webdb[QQ_logintime]' name='webdbs[QQ_logintime]'>
+        单位小时</td>
+    </tr>
+	
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3" bgcolor='#FFFFFF'>注意：如果你整合了论坛，以上部分功能设置会无效,因为论坛也有一个注册页面.但你可以把论坛的注册页面关闭或删除.</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_qq_type(t){	
+	for(var i=1;i<5 ;i++ ){
+		document.getElementById('qq_'+i).style.display='none'
+	}
+
+	if(t=='1'){
+		document.getElementById('qq_1').style.display=''
+		document.getElementById('qq_2').style.display=''
+	}
+	if(t=='2'){
+		document.getElementById('qq_3').style.display=''
+		document.getElementById('qq_4').style.display=''
+	}
+}choose_qq_type('$webdb[QQ_login]');
+//-->
+</SCRIPT>
+
+<!--
+EOT;
+?>
+-->

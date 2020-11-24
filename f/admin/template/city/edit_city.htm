@@ -1,0 +1,147 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="33%">名称:</td>
+      <td width="67%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr><tr bgcolor="#FFFFFF"> 
+      <td width="33%">上级地区:</td>
+      <td width="67%"> $sort_fup</td>
+    </tr>
+    <!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+-->
+ <tr bgcolor="#FFFFFF">
+      <td width="33%">城市管理员</td>
+      <td width="67%">
+        <input type="text" name="postdb[admin]" value="$rsdb[admin]" size="50">
+        多个用,逗号隔开,如 admin,小生</td>
+    </tr>
+
+	
+    <tr bgcolor="#FFFFFF"> 
+      <td width="33%">二级域名:(如无权修改服务器配置文件,就留空)</td>
+      <td width="67%"> 
+        <input type="text" name="postdb[domain]" value="$rsdb[domain]" size="50">
+        如: http://gz.qibosoft.com</td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+-->
+    
+
+    <tr bgcolor="#FFFFFF"> 
+      <td width="33%">文件所在目录名:(只能是数字或字母)</td>
+      <td width="67%"> 
+        <input type="text" name="postdb[dirname]" value="$rsdb[dirname]">
+        <input type="checkbox" name="createdir" value="1">
+        创建目录 </td>
+    </tr>
+ 
+    <tr bgcolor="#FFFFFF"> 
+      <td width="33%">城市模板</td>
+      <td width="67%"> 头部模板: 
+        <input type="text" name="postdb[head]" value="$head" size="40">
+        <br>
+        尾部模板: 
+        <input type="text" name="postdb[foot]" value="$foot" size="40">
+        <br>
+        主页模板: 
+        <input type="text" name="postdb[index]" value="$index" size="40">
+      </td>
+    </tr>
+
+	
+    <tr bgcolor="#FFFFFF"> 
+      <td width="33%">城市首页SEO优化设置</td>
+      <td width="67%"> 标题(title): 
+        <input type="text" name="postdb[descrip]" value="$rsdb[descrip]" size="50">
+        <br>
+        关键字(keywords): 
+        <input type="text" name="postdb[metakeywords]" value="$rsdb[metakeywords]" size="50">
+        <br>
+        描述(description): 
+        <input type="text" name="postdb[metadescription]" value="$rsdb[metadescription]" size="50">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="33%">是否为热门城市:</td>
+      <td width="67%">
+        <input type="checkbox" name="postdb[hits]" value="1" $hits[1]>(选中的话,将在城市选择页以红色字体显示,而单城市版,设置无效)
+      </td>
+    </tr><tr bgcolor="#FFFFFF"> 
+      <td width="33%">城市所在地图位置:<span help=1>
+一般留空即可,如果系统默认不能自动定位到该城市的话,就请在这里标注一下该城市的中心位置.然而乡镇或中国以外的城市,都需要先标注好地图位置.
+	  </span></td>
+      <td width="67%">
+        <input type="text" name="postdb[maps]" id="mapid" size="35" value="$rsdb[maps]" readonly  onclick="window.open('$webdb[www_url]/hy/job.php?job=ggmap_position&position=$rsdb[maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);">
+
+(<img src="$webdb[www_url]/images/default/icon_qi.gif"><a onclick="window.open('$webdb[www_url]/hy/job.php?job=ggmap_position&position=$rsdb[maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);" href="#" >点击标注地图位置</a> 
+
+<font color="#999999">标注后，店铺将定位到电子地图上</font>) (<A onclick="document.getElementById('mapid').value='';" HREF="#">清除</A>) 
+
+<input type="hidden" name="hiddenField" id="mapid_v" value="$rsdb[fid]">
+
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+     <tr > 
+      
+    <td class="head">重要说明!</td>
+    </tr>
+  <tr>
+    <td>
+
+	1.对于多个城市,每个城市要使用独立的二级域名的话,必须要先选择创建目录,目录创建好之后,就修改你的apache配置文件,在最后一行添加以下代码:<br>
+      <font color="#0000FF">Include $Adminpath</font><br>
+      2.对于多个城市,要使用二级域名的话,需要把你的域名泛解释到当前服务器所在IP <font color="#FF0000">{$_SERVER[SERVER_ADDR]}</font>.如：“*.qibosoft.com”，泛解释域名必须是*号开头的.一切设置好之后,需要重启一下apache服务才会生效.<br>
+      3.如果想使用高级伪静态,并且没条件使用城市二级域名的话,上面表单第二项,必须第一个字母是大写<br>
+      4.如果想使用高级伪静态,必须把&quot;创建目录&quot;这一项选中
+
+	  </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

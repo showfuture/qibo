@@ -1,0 +1,58 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="content">
+  <tr> 
+    <td rowspan="2" width="5%" class="img"><a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" class="p" target="_blank"><img onerror="this.src='$webdb[www_url]/images/default/nohead.gif'" src='$rs[icon]' border="0"></a> 
+      <a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a><br>
+      <!--
+EOT;
+if($rs[uid]){
+print <<<EOT
+-->
+	  <a href="$webdb[www_url]/member/?main=pm.php?job=send&username=$rs[username]" target="_blank"><img src="$webdb[www_url]/images/default/ww_offline.gif" border="0"></a>
+<!--
+EOT;
+}print <<<EOT
+-->
+	  </td>
+    <td width="95%" class="word" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word">
+        
+      <tr> 
+          <td><div class="c1">$rs[content]</div></td>
+      
+        </tr></table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="95%" class="info"> ÈÕÆÚ:$rs[posttime] 
+      <!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+      <A HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=del&fid=$fid&id=$id&cid=$rs[cid]')">É¾³ý</A> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+      <img src="$webdb[www_url]/images/default/flowers.gif"> <a HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=flowers&fid=$fid&id=$id&cid=$rs[cid]')">ÏÊ»¨</a>(<b><font color="#FF0000">{$rs[flowers]}</font></b>) 
+      <a HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=egg&fid=$fid&id=$id&cid=$rs[cid]')">¼¦µ°</a>(<b><font color="#0000FF">{$rs[egg]}</font></b>)</td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

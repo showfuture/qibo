@@ -1,0 +1,5 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><A HREF="$url" target="_blank" style="font-size:15px;font-weight:bold;color:#990000;text-decoration: underline;">$title</A></td>
+  </tr>
+</table>

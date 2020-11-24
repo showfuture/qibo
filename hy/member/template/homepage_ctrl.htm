@@ -1,0 +1,86 @@
+<!--
+<?php
+$ck[$atn]="class='ck'";
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/member/images/hy/hy.css">
+<!--
+EOT;
+if(!$companydb[picurl] || 
+   !$companydb[city_id] || 
+   !$companydb[my_trade] || 
+   !$companydb[qy_cate] || 
+   !$companydb[qy_saletype] || 
+   !$companydb[qy_createtime] || 
+   !$companydb[qy_pro_ser] ||
+   !$companydb[my_buy] ||
+   !$companydb[qy_regplace]){  //是否有公司资料完成提示
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">提示</div></div>
+    <div class="cont">
+    	<div style="text-align:center;line-height:40px;">
+        <img src="$webdb[www_url]/member/images/notice.jpg"/><br/>
+    	<a href="$Murl/member/homepage_ctrl.php?atn=info" class="b">您的公司资料尚未完善，建议您继续完善您的公司资料。</a>
+        </div>
+        <ul class="aboutnote">
+        	<li>提醒:公司资料越完善，客户对您的信任度越高。</li>
+            
+        </ul>
+    </div>
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">商铺设置</div></div>
+    <div class="cont">
+    	<ul class="cheaders">
+        	<li $ck[info]><a href="?atn=info&uid=$uid">公司资料</a></li>
+            <li $ck[info2]><a href="?atn=info2&uid=$uid">公司介绍</a></li>
+            <li $ck[contactus]><a href="?atn=contactus&uid=$uid">联系方式</a></li>
+            <li $ck[base]><a href="?atn=base&uid=$uid">模板设置</a></li>
+            <li $ck[banner]><a href="?atn=banner&uid=$uid">横幅设置</a></li>
+            <li $ck[pic] $ck[pic_upload] $ck[piclist] $ck[pic_edit]><a href="?atn=pic&uid=$uid">公司图库</a></li>
+            <li $ck[news]><a href="?atn=news&uid=$uid">新闻管理</a></li>
+            <li $ck[postnews]><a href="?atn=postnews&uid=$uid">发布新闻</a></li>  
+			<li $ck[seo]><a href="?atn=seo&uid=$uid">SEO设置</a></li>  
+<!--
+EOT;
+if($webdb[vipselfdomain]){
+print <<<EOT
+-->
+	       <li $ck[mydomain]><a href="?atn=mydomain&uid=$uid">二级域名</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </ul>
+        <div class="ccont">
+<!--include
+EOT;
+if($atn&&eregi("^([_a-z0-9]+)$",$atn)&&is_file(dirname(__FILE__)."/"."homepage_ctrl/$atn.htm")){
+	require(dirname(__FILE__)."/"."homepage_ctrl/$atn.htm");
+}
+print <<<EOT
+include-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+<!--
+function showcity(m){
+	var fup=m.options[m.selectedIndex].value;
+	document.getElementById('frame_city').src='$Murl/job.php?job=getcity2&fup='+fup+'&name=city_id&showspan=city_span';
+}
+//-->
+</script>
+<iframe id='frame_city' src='' style='height:1px; widht:1px; display:none' /></iframe>
+<!--
+EOT;
+?>
+-->

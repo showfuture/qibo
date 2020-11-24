@@ -1,0 +1,276 @@
+<!--
+<?php
+if( $webdb[UseMoneyType]=='bbs' )$none='none';
+print <<<EOT
+--><script src="images/setday.js"></script>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="FORM" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2">修改用户</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">用户UID</td>
+      <td width="76%">$uid</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">用户名:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[username]" value="$rsdb[username]" readonly size="30">
+        (不可修改,易出问题) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">旧密码:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[password]" value="$rsdb[password]" size="40" readonly>
+        (加密后的效果) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">更改新密码为:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[newpassword]" size="30">
+        (如果不更换密码,请留空) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">所属用户组(主):</td>
+      <td width="76%"> $select_group 如果是会员组的话,会根据积分多少而变化。级别设置再高,如积分不足,也会掉下去.</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">以上用户组有效期:<span help=1><br>
+        注:当设置为按积分自动升级后,仅针对系统组有效,会员组设置无效,失效后,自动降为普通会员组.过期后,需要用户登录才会生效,不登录的话.就不会生效.</span><br>
+      </td>
+      <td width="76%">截止日期: 
+        <input type="text" name="ConfigDB[endtime]" value="$ConfigDB[endtime]" size="22" onclick="setday(this)">
+        (格式如下:2007-02-21 12:23:12,系统组的话,这里留空,则不限制)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:none;"> 
+      <td width="24%">附加用户组:</td>
+      <td width="76%">$select_group2</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">邮箱:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[email]" value="$rsdb[email]" size="30">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">头像:</td>
+      <td width="76%"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="24%" rowspan="2"> 
+              <input type="text" name="postdb[icon]" value="$rsdb[icon]" size="30" id="picurl">
+            </td>
+            <td width="76%"><iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='upfile.php?fn=uppic&dir=face' width=310></iframe></td>
+          </tr>
+          <tr> 
+            <td width="76%"><a href="javascript:" class="style30"  onClick="javascript:cutimg();">[手工剪裁图片]</a> 
+              宽 
+              <input type="text" name="picWidth" value="150" size="3" maxlength="3">
+              高 
+              <input type="text" name="picHeight" value="150" size="3" maxlength="3">
+              注意:只能是本地上传的图片才能剪裁</td>
+          </tr>
+        </table>
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+ 
+function uppic(url,name,size,b){
+	get_obj('picurl').value=url;
+}
+function cutimg() 
+{
+	var img=get_obj("picurl").value;
+	var cw=document.FORM.picWidth.value;
+	var ch=document.FORM.picHeight.value;
+	if(cw==''){
+		document.FORM.picWidth.focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.FORM.picHeight.focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	//document.FORM.automakesmall.checked=false;
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	get_obj("picurl").focus();
+	alert('图片地址不存在');
+}
+}
+
+-->
+</script>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  > 
+      <td width="24%">{$webdb[MoneyName]}:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[money]" value="$rsdb[money]" size="10">
+        {$webdb[MoneyDW]}</td>
+    </tr>
+    
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">用户空间:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[totalspace]" value="$rsdb[totalspace]" size="10">
+        M (不能大于2046M,否则无效)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">在线时间:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[oltime]" value="$rsdb[oltime]" size="10">
+        秒 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">性别:</td>
+      <td width="76%"> 
+        <input type="radio" name="postdb[sex]" value="1" $sexdb[1]>
+        男 
+        <input type="radio" name="postdb[sex]" value="2" $sexdb[2]>
+        女 
+        <input type="radio" name="postdb[sex]" value="0" $sexdb[0]>
+        未知 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">验证与否:</td>
+      <td width="76%"> 
+        <input type="radio" name="postdb[yz]" value="1" $yzdb[1]>
+        已验证 
+        <input type="radio" name="postdb[yz]" value="0" $yzdb[0]>
+        未验证 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">自我介绍:</td>
+      <td width="76%"> 
+        <textarea name="postdb[introduce]" cols="60" rows="5">$rsdb[introduce]</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">oicq:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[oicq]" value="$rsdb[oicq]" size="30">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">msn</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[msn]" value="$rsdb[msn]" size="30">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">个人主页:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[homepage]" value="$rsdb[homepage]" size="30">
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">联系地址:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[address]" style="width:250px;" value="$rsdb[address]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">邮政编码:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[postalcode]" style="width:130px;" value="$rsdb[postalcode]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">联系电话:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[telephone]" style="width:130px;" value="$rsdb[telephone]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">联系手机:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[mobphone]" style="width:130px;" value="$rsdb[mobphone]" $ipunt_mob>
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">身份证号码:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[idcard]" style="width:250px;" value="$rsdb[idcard]" $ipunt_idcard>
+     <br>
+        <a href="$webdb[www_url]/$webdb[updir]/idcard/$rsdb[uid].jpg" target="_blank"><img src="$webdb[www_url]/$webdb[updir]/idcard/$rsdb[uid].jpg" onerror="this.style.display='none'" width="180" height="80" border="0"></a> </td>
+    </tr>
+    <tr> 
+      <td width="28%">真实姓名:</td>
+      <td width="72%"> 
+        <input type="text" name="postdb[truename]" style="width:130px;" value="$rsdb[truename]" $ipunt_idcard>
+      </td>
+    </tr>
+    <tr> 
+      <td width="28%">邮箱验证与否:</td>
+      <td width="72%"> 
+        <input type="radio" name="email_yz" value="1" $email_yz[1]>
+        已验证 
+        <input type="radio" name="email_yz" value="0" $email_yz[0]>
+        未验证 </td>
+    </tr>
+    <tr> 
+      <td width="28%">手机验证与否:</td>
+      <td width="72%"> 
+        <input type="radio" name="mob_yz" value="1" $mob_yz[1]>
+        已验证 
+        <input type="radio" name="mob_yz" value="0" $mob_yz[0]>
+        未验证 </td>
+    </tr>
+    <tr> 
+      <td width="28%">身份证审核与否: </td>
+      <td width="72%"> 
+        <input type="radio" name="idcard_yz" value="1" $idcard_yz[1]>
+        已审核 
+        <input type="radio" name="idcard_yz" value="0" $idcard_yz[0]>
+        未审核 
+        <input type="radio" name="idcard_yz" value="-1" {$idcard_yz['-1']}>
+        等待审核</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" style="background:#eee;">自定义字段</td>
+    </tr>
+    <tr> 
+      <td colspan="2">
+<SCRIPT LANGUAGE="JavaScript" src="../images/default/default.js"></SCRIPT><SCRIPT LANGUAGE="JavaScript">
+<!--
+var filed_id='';
+var filed_name='';
+function ckregdata(a,b){
+	filed_id=a;
+	filed_name=b;
+}
+function ckregdatapost(){
+	id_array=filed_id.split(',');
+	name_array=filed_name.split(',');
+	for(var i=0;i<id_array.length;i++){
+		if(id_array[i]!=''&&document.getElementById(id_array[i]).value==''){
+			alert("“"+name_array[i]+'”不能为空');
+			document.getElementById(id_array[i]).focus();
+			return false;
+		}
+	}
+} 
+/*如要为页面布局考虑的话，你可以把template\default\regfield.htm里边的内容复制过来，然后把以下两行删除即可*/
+document.write('<div id="showRegDiv"></div>');
+AJAX.get("showRegDiv","$webdb[www_url]/do/regfield.php?job=reg&uid=$uid");
+//-->
+</SCRIPT></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">&nbsp;</td>
+      <td width="76%"> 
+        <input type="submit" name="Submit" value="修 改">
+        <input type="hidden" name="uid" value="$rsdb[uid]">
+        <input type="hidden" name="postdb[hits]2" value="$rsdb[hits]">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

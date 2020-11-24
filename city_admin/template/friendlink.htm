@@ -1,0 +1,51 @@
+<!--
+<?php 
+print <<<EOT
+--> 
+<table width="794" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="100" valign="top" class="Main"> 
+       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="map_art">
+        <tr> 
+          <td class="top"><span class="L">友情链接管理</span> </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list $rs[cl]">
+              <tr> 
+                <td class="a1"><a href="$rs[url]" target="_blank">$rs[logo]</a> 
+                  <font color="#990000">名称:</font><a href="$rs[url]" target="_blank">$rs[name]</a> 
+                  <font color="#990000">描述:</font><font color="#666666">$rs[descrip] 
+                  </font></td>
+              </tr>
+              <tr> 
+                <td align="right" class="a2" style="padding-top:5px;"><span class="about"> 
+                  审核与否:[{$rs[yz]}] 申请日期:{$rs[posttime]} </span> <a href="$webdb[www_url]/post.php?job=edit&fid=$rs[fid]&id=$rs[id]" target="_blank"></a> 
+                  [<a href="?action=del&id=$rs[id]" onClick="return confirm('你确认要删除吗?不可恢复');">删除</a>]</td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td align="center" class="page">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

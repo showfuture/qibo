@@ -1,0 +1,185 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr align="center"> 
+      <td colspan="3" class="head">栏目修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="3"> 
+        <input type="checkbox" name="showmore" value="checkbox" id="showmore" onClick="show_more(0);" checked>
+        <font color="#FF0000">以下每个项目有一个多选框,如选中,则修改其属性,如不选中,则不做修改</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="26%">当前栏目:</td>
+      <td>&nbsp; </td>
+      <td> 
+        <!--
+EOT;
+foreach($fiddb AS $fid=>$name){
+print <<<EOT
+-->
+        <input type="hidden" name="fiddb[{$fid}]" value="$name">
+        $name, 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="26%">修改后属于哪个分类:</td>
+      <td width="3%"> 
+        <input type="checkbox" name="ifchang[fup]" value="1">
+      </td>
+      <td width="71%">$sort_fup</td>
+    </tr>
+   
+	<tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">设置为分类或栏目:</td>
+      <td> 
+        <input type="checkbox" name="ifchang[type]" value="1">
+      </td>
+      <td> 
+        <input type="radio" name="postdb[type]" value="0" $type[0]>
+        栏目 
+        <input type="radio" name="postdb[type]" value="1" $type[1]>
+        分类 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="26%">是否在首页显示本栏目软件(不包括子栏目软件):</td>
+      <td width="3%"> 
+        <input type="checkbox" name="ifchang[index_show]" value="1">
+      </td>
+      <td width="71%"> 
+        <input type="radio" name="postdb[index_show]" value="1" $index_showtitle[1]>
+        显示 
+        <input type="radio" name="postdb[index_show]" value="0" $index_showtitle[0]>
+        不显示 
+         
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" class="hidetr"> 
+      <td width="26%">下载附件的用户组,（不设置，则所有用户组有权限.然而超级管理员与栏目管理员默认有权限）:</td>
+      <td width="3%"> 
+        <input type="checkbox" name="ifchang[allowdownload]" value="1">
+      </td>
+      <td width="71%">$group_download</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">栏目版主,多个版主,请用英文逗号,隔开:</td>
+      <td width="3%"> 
+        <input type="checkbox" name="ifchang[admin]" value="1">
+      </td>
+      <td width="71%"> 
+        <input type="text" name="postdb[admin]" value="$rsdb[admin]" size="60">
+        <input type="hidden" name="old_admin" value="$rsdb[admin]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">是否禁止在父栏目显示本栏目的文章列表<br>
+        (当父栏目下有很多子栏目的时候,就没必要全部显示出来)</td>
+      <td> 
+        <input type="checkbox" name="ifchang[forbidshow]" value="1">
+      </td>
+      <td> 
+        <input type="radio" name="postdb[forbidshow]" value="0" $forbidshow[0]>
+        显示 
+        <input type="radio" name="postdb[forbidshow]" value="1" $forbidshow[1]>
+        不显示 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">列表页文章排序方式:</td>
+      <td> 
+        <input type="checkbox" name="ifchang[listorder]" value="1">
+      </td>
+      <td> 
+        <select name="postdb[listorder]">
+          <option value="0" $listorder[0]>默认</option>
+          <option value="1" $listorder[1]>发表时间降序</option>
+          <option value="2" $listorder[2]>发表时间升序</option>
+          <option value="3" $listorder[3]>点击率降序</option>
+          <option value="4" $listorder[4]>点击率升序</option>
+          <option value="5" $listorder[5]>最近浏览</option>
+          <option value="6" $listorder[6]>随机显示(数据大时，很影响速度)</option>
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">列表页每页显示多少篇文章</td>
+      <td> 
+        <input type="checkbox" name="ifchang[maxperpage]" value="1">
+      </td>
+      <td> 
+        <input type="text" name="postdb[maxperpage]" size="5" value="$rsdb[maxperpage]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">若有子栏目,每个子栏目显示多少篇文章:</td>
+      <td> 
+        <input type="checkbox" name="db_sonTitleRow" value="1">
+      </td>
+      <td> 
+        <input type="text" name="sonTitleRow" size="5" value="{$rsdb[config][sonTitleRow]}">
+        行 (留空则以默认为标准) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">若有子栏目,每篇文章显示多少个字节(一汉字相当于两个字节)</td>
+      <td> 
+        <input type="checkbox" name="db_sonTitleLeng" value="1">
+      </td>
+      <td> 
+        <input type="text" name="sonTitleLeng" size="5" value="{$rsdb[config][sonTitleLeng]}">
+        个 (留空则以默认为标准) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">栏目LOGO装饰图片:</td>
+      <td> 
+        <input type="checkbox" name="ifchang[logo]" value="1">
+      </td>
+      <td> 
+        <input type="text" name="postdb[logo]" value="$rsdb[logo]" size="60">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="26%">栏目描述(支持HTML):</td>
+      <td> 
+        <input type="checkbox" name="ifchang[descrip]" value="1">
+      </td>
+      <td> 
+        <textarea name="postdb[descrip]" cols="50" rows="7">$rsdb[descrip]</textarea>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="3" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

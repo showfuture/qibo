@@ -1,0 +1,11 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;">
+  <tr>
+    <td align="left" style="border-bottom:1px dotted #ccc;padding-bottom:3px;">
+      <div style="background:url($webdb[www_url]/images/default/sdigg.gif) no-repeat;width:44px;height:36px;float:left;"><div style="font-size:13px;text-align:center;height:14px;padding:0px;font-weight:bold;"  id="DiggNum_$id">$digg_num</div><div style="text-align:center;font-size:12px;color:#FFF;width:44px;height:20px;overflow:hidden;" id="DiggDo_$id"><a href="$webdb[www_url]/do/job.php?job=digg&type=vote&id=$id" target="DiggIframe_$id" style="font-size:12px;color:#FFF;">¶¥Ò»ÏÂ</a></div></div>
+	  <div style="margin-left:4px;float:left;">
+        <div><a href="$url" target="_blank" style="$fontcolor;$fontweight">$title</a></div>
+      </div>
+<div style="display:none;"><iframe src="$webdb[www_url]/do/job.php?job=digg&type=getnum&id=$id" width=0 height=0 name="DiggIframe_$id" id="DiggIframe_$id"></iframe></div>
+	  </td>
+  </tr>
+</table>

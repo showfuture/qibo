@@ -1,0 +1,516 @@
+<!--
+<?php
+$none=$tplpart_2?'':'none';
+$none2=$tplpart_2?'none':'';
+print <<<EOT
+-->
+ 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function post(form){
+	//if(get_obj('tplpart_2').value!=''&&get_obj('stype').value=='t'){
+	//	get_obj('stype').value='cp';
+	//}
+
+	//提醒用户是否选择那个预览模板
+	var ifck=0;
+	for(var i=0;i<ImgLinks.length;i++){
+		jpgpath=ImgLinks[i].split('/label_tpl');
+		if(get_obj("tplpath").value==jpgpath[1]){
+			if(upfile_PicNumId==i){
+				ifck=1;
+			}			
+		}
+	}
+	if(get_obj("tplpath").value!=''&&ifck==0){
+		var ck=confirm("你没有选中当前预览的模板,是否要选择?\\n\\n按确定,将返回选择!\\n按取消,则不选择,而立即提交!");
+	}
+	if(ck==true){
+		useThisTpl(ImgLinks[upfile_PicNumId]);
+		return false;
+	}
+
+	if(get_obj('stype').value!='r'&&get_obj('stype').value!='rollpic'&&form.tplpart_1.value==''){
+		alert("模板不能为空,否则不能正常显示内容");
+		form.tplpart_1.focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT><form name="form1" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=$inc&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&" onsubmit="return post(this);">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  
+    <tr class="head" align="center"> 
+      <td colspan="2">会员数据调用</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="2"> &nbsp; 
+        <!--
+EOT;
+if(!$ch_ifjs){
+print <<<EOT
+-->
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td class="mtop"><a href="#" onclick="choosetb(1)" class="cht" id="tbm1">基本设置</a> 
+              <a href="#" onclick="choosetb(2)" id="tbm2">风格样式</a> <a href="#" onclick="choosetb(3)" id="tbm3">其它设置</a></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;" id="tb1">
+          <tr bgcolor="#FFFFFF"> 
+      <td width="24%">显示类型:</td>
+      <td width="76%"> 
+        <input type="radio" name="yz" value="all" $yzdb[all] />
+        全部会员 
+        <input type="radio" name="yz" value="1" $yzdb[1] />
+        已审核的会员 
+        <input type="radio" name="yz" value=0 $yzdb[0] />
+        未审核会员</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">主用户组:</td>
+      <td width="76%">{$select_group} 不选择,则不做限制</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">辅助用户组:</td>
+      <td width="76%">{$select_group2} 不选择,则不做限制</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">排行选择:</td>
+      <td width="76%"> 
+        <select name="order">
+          <option value="regdate" $orderdb[regdate]>注册日期</option>
+          <option value="lastvist" $orderdb[lastvist]>最后登录日期</option>
+          <option value="oltime" $orderdb[oltime]>在线时间</option>
+          <option value="hits" $orderdb[hits]>blog浏览量</option>
+		  <option value="lastview" $orderdb[lastview]>最近被访问</option>
+        </select>
+        <input type="radio" name="asc" value="DESC" $ascdb[DESC]>
+        降序(常用) 
+        <input type="radio" name="asc" value="ASC" $ascdb[ASC]>
+        升序</td>
+    </tr><tr bgcolor="#FFFFFF">
+            <td width="24%">从第几条记录开始取数据<span help=1>一个页面有多个标签调用同样的规则,你可以设置不取前面2条的话,你可以设置3,即从第三条记录开始取数据</span></td>
+            <td width="76%">
+              <input type="text" name="start_num" size="5" value="$start_num">
+              一般为1 </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;display:none;" id="tb2">
+          <tr bgcolor="#FFFFFF" id="preview"> 
+            <td width="24%">请选择一种显示样式:</td>
+            <td width="76%"> 
+              <input type="hidden" name="tplpath" value="$tplpath" id="tplpath">
+              $getLabelTpl
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+var upfile_PicNumId=0;
+function show_MorePic(todo){
+	if(todo==1){
+		upfile_PicNumId++;
+	}else if(todo==-1){
+		upfile_PicNumId--;
+	}
+	if(upfile_PicNumId<0){
+		alert("已经是第一个了!");
+		upfile_PicNumId=0;
+	}
+	if( upfile_PicNumId>(ImgLinks.length-1) ){
+		alert("已经是最后一个了!");
+		upfile_PicNumId=ImgLinks.length-1;
+	}
+	
+	showTplDiv();
+	NUM=upfile_PicNumId+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+
+}
+show_MorePic()
+
+function selectTpl(selObj){
+	n=selObj.selectedIndex;
+	value=selObj.options[n].value
+	if(n==1){
+		makenew();
+	}
+	if(n<2){
+		return;
+	}
+	upfile_PicNumId=n-2;
+	showTplDiv();
+}
+
+function showTplDiv(){
+	document.getElementById("upfile_PicNum").innerHTML="<font color=red>"+(upfile_PicNumId+1)+"</font>/"+ImgLinks.length;
+	
+	document.getElementById("clickput").innerHTML='<input onclick=useThisTpl("'+ImgLinks[upfile_PicNumId]+'") type="button" name="Submit" value="使用此模板" style="border:1px solid #000;background:red;color:#fff;">';
+
+	ImgLinks[upfile_PicNumId]=ImgLinks[upfile_PicNumId];
+	upfile_PicUrl=document.getElementById("upfile_PicUrl");
+	jpgpath=ImgLinks[upfile_PicNumId].split('/label_tpl');
+	if(get_obj("tplpath").value==jpgpath[1]){
+		get_obj("showpicdiv").className='showpicdiv2';
+	}else{
+		get_obj("showpicdiv").className='showpicdiv';
+	}	
+	upfile_PicUrl.src=document.getElementById("showPicID").href=ImgLinks[upfile_PicNumId];
+	upfile_PicUrl.alt=ImgTitle[upfile_PicNumId];
+	
+	//让选中的模板红色显示
+	for(var i=0;i<ImgLinks.length;i++){
+		NUM=i+2;
+		jpgpath=ImgLinks[i].split('/label_tpl');
+		if(get_obj("tplpath").value==jpgpath[1]){			
+			document.getElementById("selectTyls").options[NUM].style.color = 'red';
+		}else{
+			document.getElementById("selectTyls").options[NUM].style.color = '#000';
+		}
+	}
+	re   = /\.jpg/g;
+	link_s = ImgLinks[upfile_PicNumId].replace(re, ".htm");
+	get_obj("MSG_say").innerHTML="当前模板文件:<A title='你可以创建更多的模板放在此目录即可' HREF='"+link_s+"' target=_blank>"+link_s.replace(/(.*)\/template\/default\//g,"/template/default/")+"</A>";
+}
+
+//-->
+</SCRIPT>
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="24%"><span id="rowstitle">显示几行:</span></td>
+            <td width="76%"> 
+              <input name="rowspan" type="text" id="rowspan" value="$rowspan" size="4" />
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" id="TRcolspan"> 
+            <td width="24%">显示几列:<span help='1'><br>
+              注意,当这里输入大于1的数字,就会自动套用Table那种多行多列的样式,如果你可以通过标签模板中的DIV中的样式float实现的话.这里其实不需要设置多列,也可以实现多列的样式,这样的话,代码就比较简洁.</span></td>
+            <td width="76%"> 
+              <input name="colspan" type="text" id="colspan" value="$colspan" size="4" />
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" id="TRpicsize" style="display:none;"> 
+            <td width="20%">&nbsp;</td>
+            <td width="80%">图片宽 
+              <input type="text" name="width" value="$width" size="4" id=width />
+              ,图片高    
+              <input type="text" name="height" value="$height" size="4" id=height />
+              ,<span id="defaultRoll">切换时间间隔 
+              <input type="text" name="rolltime" value="$rolltime" size="2">
+              秒,特效 
+              <select name="rolltype">
+                <option value="scrollLeft" $_rolltype[scrollLeft]>向左移动</option>
+                <option value="scrollRight" $_rolltype[scrollRight]>向右移动</option>
+                <option value="scrollUp" $_rolltype[scrollUp]>向上移动</option>
+                <option value="scrollDown" $_rolltype[scrollDown]>向下移动</option>
+                <option value="zoom" $_rolltype[zoom]>放大</option>
+                <option value="shuffle" $_rolltype[shuffle]>飘移</option>
+                <option value="curtainX" $_rolltype[curtainX]>左右伸缩</option>
+                <option value="curtainY" $_rolltype[curtainY]>上下伸缩</option>
+                <option value="fade" $_rolltype[fade]>无效果</option>
+              </select>
+              </span> 幻灯片种类: $rollpicStyle 
+              <script language="JavaScript">
+<!--
+function rollpictypes(selObj){
+  if (selObj.options[selObj.selectedIndex].value==''){
+  	get_obj('defaultRoll').style.display='';
+  }else{
+  	get_obj('defaultRoll').style.display='none';
+  }
+}
+function default_rollpic(t){
+	for(i=0;i<get_obj('RollStyleType').options.length;i++){
+		if(get_obj('RollStyleType').options[i].value==t){
+			get_obj('RollStyleType').options[i].selected = true;
+		}
+	}
+	if(t!=''){
+		get_obj('defaultRoll').style.display='none';
+	}
+}
+default_rollpic('$RollStyleType');
+//-->
+</script></td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="24%">用户名不能超过几个字节:</td>
+            <td width="76%"> 
+              <input name="titlenum" type="text" id="titlenum" value="$titlenum" size="4" />
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="24%">用户名超过字数是否用省略号表示:</td>
+            <td width="76%"> 
+              <input type="radio" name="titleflood" value="1" $titleflooddb[1]/>
+              是 
+              <input type="radio" name="titleflood" value="0" $titleflooddb[0]/>
+              否 </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" id="contentnum" style="display:none;"> 
+            <td width="24%">自我介绍显示多少字节:</td>
+            <td width="76%"> 
+              <input type="text" name="content_num" size="5" value="$content_num">
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" id="TRtpl_1"> 
+            <td width="24%">模板代码:
+<div style="display:none;">
+			<label id="showtpl2" style="display:$none2;">(<a href="javascript:" onclick="if(get_obj('FZtpl2').style.display==''){get_obj('FZtpl2').style.display='none'}else{get_obj('FZtpl2').style.display=''}"><font color="#0000FF">点击可增加一个辅助模板</font></a>,<A HREF="http://bbs.qibosoft.com/read-bbs-tid-191433-fpage-0-toread--page-1.html" target='_blank' style="color:red;">点击查看错综布局效果</A>)</label>
+</div>	
+			</td>
+            <td width="76%"> 
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="26%"> 
+                    <textarea name="tplpart_1" id="tplpart_1" cols="90" rows="8">$tplpart_1code</textarea>
+                    <input type="button" value="切换可视化编辑器" onclick="initEditor('tplpart_1','770px','200px');$(this).hide();" />
+                  </td>
+                  <td>[<a href="javascript:" onclick="window.open('index.php?lfj=$lfj&ch_module=$ch_module&job=make&tpl_id=tplpart_1','','width=700,height=600,scrollbars=yes,top=100,left=200')"><font color="#FF0000">点击创建一个模板</font></a>]</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF" id="FZtpl2" style="display:none;"> 
+            <td width="24%" style="display:none;">头部辅助模板:<label><br>
+              (<font color="#0000FF">为了实现错综布局的特效</font>)</label></td>
+            <td width="76%" style="display:none;"> 
+              <table width="87%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="26%"> 
+                    <textarea name="tplpart_2" id="tplpart_2" cols="90" rows="8">$tplpart_2code</textarea>
+                    
+                    <br>
+                    标题几个字符: 
+                    <input name="titlenum2" type="text" id="titlenum" value="$titlenum2" size="3" />
+                    ,介绍几个字符: 
+                    <input type="text" name="content_num2" size="3" value="$content_num2">
+                    <br>
+                  </td>
+                  <td>[<a href="javascript:" onClick="window.open('index.php?lfj=$lfj&ch_module=$ch_module&job=make&tpl_id=tplpart_2','','width=700,height=600,scrollbars=yes,top=100,left=200')"><font color="#FF0000">点击创建一个模板</font></a>]</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" style="background:#F5F5F5;display:none;" id="tb3">
+          <tr bgcolor="#FFFFFF" id="rollleftTr"> 
+            <td width="24%">是否滚动:</td>
+            <td width="76%"> 
+              <input type="radio" name="c_rolltype" value="0" $c_rolltypedb[0]>
+              不滚动 
+              <input type="radio" name="c_rolltype" value="left" $c_rolltypedb[left]>
+              向左 
+              <input type="radio" name="c_rolltype" value="right" $c_rolltypedb[right]>
+              向右 
+              <input type="radio" name="c_rolltype" value="up" $c_rolltypedb[up]>
+              向上 
+              <input type="radio" name="c_rolltype" value="down" $c_rolltypedb[down]>
+              向下 高度 
+              <input type="text" name="roll_height" value="$roll_height" size="4" id=height />
+            </td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="24%">标签内容显示与否:<span help="1"><br>
+              你可以设置暂时隐藏此标签的内容.但一般很少隐藏. </span></td>
+            <td width="76%"> 
+              <input type="radio" name="hide" value="1" $hidedb[1]/>
+              隐藏 
+              <input type="radio" name="hide" value="0" $hidedb[0]/>
+              显示</td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="24%">标签上方半透明层的详细设置:<span help="1"><br>
+              一般留空,不需要设置</span></td>
+            <td width="76%">透明层宽 
+              <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+              透明层高 
+              <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+              透明层的颜色 
+              <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+function foreColor_font(obj){
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+            </td>
+          </tr><!--
+EOT;
+if($rsdb[lid]){print <<<EOT
+-->
+          <tr bgcolor="#FFFFFF">
+            <td width="24%">当前标签的JS调用代码:</td>
+            <td width="76%">
+              <input type="text" name="textfield" size="80" value='<script src="$webdb[www_url]/do/js.php?id=$rsdb[lid]"></script>'>
+            </td>
+          </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td align="center"> 
+              <input type="submit" name="Submit" value="提 交"/>
+              <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choosetb(t){
+	for(var i=1;i<4 ;i++ ){
+		if(t==i){
+			document.getElementById("tb"+i).style.display='';
+			document.getElementById("tbm"+i).className='cht';
+		}else{
+			document.getElementById("tb"+i).style.display='none';
+			document.getElementById("tbm"+i).className='';
+		}
+	}
+}
+choosetb(2);
+//-->
+</SCRIPT>
+              <input type="hidden" name="stype" value="$style" id="stype">
+              <input type="hidden" name="timeformat" value="$timeformat">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  
+</table></form>
+<div style="display:none;"> 
+  <form name="form2" method="post" action="" target="phpframe">
+  </form>
+</div>
+<script language="JavaScript">
+
+//不同的类型,有些参数需要隐藏
+function settable(ty){
+	get_obj('stype').value=ty;
+	
+	get_obj('rollleftTr').style.display='';
+	get_obj('TRtpl_1').style.display='';
+	get_obj('TRcolspan').style.display='';
+	
+	 
+	get_obj('TRpicsize').style.display='none';
+	get_obj('FZtpl2').style.display='none';
+	get_obj('rowstitle').innerHTML='显示几行:';
+
+	if(ty=='r'||ty=='rollpic'){
+		 is_rollpic();
+	}else if(ty=='c'||ty=='cp'||ty=='5'){		
+		document.getElementById('contentnum').style.display='';
+		get_obj('rollleftTr').style.display='none';
+	}else{
+		document.getElementById('contentnum').style.display='none';
+	}
+	if(ty=='c'||ty=='p'||ty=='cp'){		
+		get_obj('showtpl2').style.display='none';
+	}else if(ty!='r'&&ty!='rollpic') {
+		get_obj('showtpl2').style.display='';
+	}
+	if(get_obj("tplpart_2").value!=''){
+		get_obj('FZtpl2').style.display='';
+		get_obj('rollleftTr').style.display='none';
+	}
+}
+
+//给子隐藏窗口提交数据
+function puthtmlcode(ty,code,code2){		
+	get_obj("tplpart_1").value=code;
+	
+	
+	get_obj("tplpart_2").value=code2;
+	if(code2!=''){		
+		get_obj('FZtpl2').style.display='';
+	}
+	settable(ty);
+	if(ty=='r'){
+		get_obj("rowspan").focus();
+	}else{
+		get_obj("tplpart_1").focus();
+	}
+}
+
+//幻灯片,很多参数不需要设置
+function is_rollpic(){
+	get_obj('rollleftTr').style.display='none';
+	get_obj('FZtpl2').style.display='none';
+	get_obj('TRtpl_1').style.display='none';
+	get_obj('TRcolspan').style.display='none';
+	
+	 
+	get_obj('TRpicsize').style.display='';
+	get_obj('rowstitle').innerHTML='轮流显示几张图:';
+	get_obj('colspan').value='1';
+}
+
+//自定义添加新模板
+function makenew(){
+	window.open('index.php?lfj=$lfj&ch_module=$ch_module&job=make&tpl_id=tplpart_1','','width=700,height=600,scrollbars=yes,top=100,left=200');
+}
+
+//获取指定模板的代码
+function useThisTpl(tpl){
+	arr=tpl.split('/label_tpl');
+	get_obj("tplpath").value=arr[1];
+	get_obj("showpicdiv").className='showpicdiv2';
+	window.open("index.php?lfj=$lfj&ch_module=$ch_module&inc=$inc&job=getTplcode&divid=tplpart_1&filepath="+tpl,target='phpframe');
+}
+
+//初始化显示哪些表格
+settable('$stype');
+
+
+//
+function loadtpl(){
+	for(var i=0;i<ImgLinks.length;i++){
+		jpgpath=ImgLinks[i].split('/label_tpl');
+		if(get_obj("tplpath").value==jpgpath[1]){
+			upfile_PicNumId=i;
+		}
+	}
+	NUM=upfile_PicNumId+2;
+	document.getElementById("selectTyls").options[NUM].selected = true;
+	showTplDiv();
+}
+loadtpl();
+</script>
+<iframe id="phpframe" name="phpframe" marginwidth="0" src="about:blank" frameborder="0" height="0" width="0"></iframe> 
+<!--
+EOT;
+?>
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td align="left" height="23">常用标签变量参数说明:</td>
+  </tr>
+  <tr> 
+    <td>{$webdb[www_url]} 指整站访问网址<br>
+      {$title} 指用户名<br>
+      {$url} 指超级链接地址 <br>
+      {$uid} 会员uid<br>
+      {$username} 会员帐号<br>
+      {$picurl} 会员头像地址<br>
+      {$i} 序号,如1,2,3,4...<br>
+      你可以自定义标题的样式如色彩与字号大小,请点击“<a href="javascript:" onClick="window.open('index.php?lfj=label&job=make&tpl_id=tplpart_1','','width=700,height=600,scrollbars=yes,top=100,left=200')"><font color="#FF0000">点击创建一个模板</font></a>”<br>
+      其他模块的参数与上面是差不多的 <br>
+      <br>
+      以上用到的$url是通用网址,你可以手工替换成有个性的,比如<br>
+      http://qibosoft.com/bencandy-$fid-$aid.shtml</td>
+  </tr>
+</table>

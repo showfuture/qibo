@@ -1,0 +1,30 @@
+<?php
+require("../../inc/header.php");
+
+/*
+		SoftName : EmpireBak Version 2010
+		Author   : wm_chief
+		Copyright: Powered by www.phome.net
+*/
+
+DoSetDbChar('gbk');
+E_D("DROP TABLE IF EXISTS `qb_template`;");
+E_C("CREATE TABLE `qb_template` (
+  `id` mediumint(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `type` smallint(4) NOT NULL DEFAULT '0',
+  `filepath` varchar(100) NOT NULL DEFAULT '',
+  `descrip` text NOT NULL,
+  `list` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=gbk");
+E_D("replace into `qb_template` values('5','Í·²¿°×°å','7','template/default/none.htm','','0');");
+E_D("replace into `qb_template` values('6','µ×²¿°×°å','8','template/default/none.htm','','0');");
+E_D("replace into `qb_template` values('23','ÎÄÕÂÁÐ±íÒ³(×ó¿íÓÒÕ­)','2','template/default/list.htm','','0');");
+E_D("replace into `qb_template` values('22','ÄÚÈÝÒ³(×ó¿íÓÒÕ­)','3','template/default/bencandy.htm','','0');");
+E_D("replace into `qb_template` values('24','Ö÷Ò³(×ó¿íÓÒÕ­)','1','template/default/index.htm','','0');");
+E_D("replace into `qb_template` values('20','ÄÚÈÝÒ³(ÉÏÏÂÐÍ)','3','template/default/bencandy_tpl_2.htm','','0');");
+E_D("replace into `qb_template` values('21','¶ÀÁ¢Ò³','9','template/default/alonepage.htm','','0');");
+
+require("../../inc/footer.php");
+?>

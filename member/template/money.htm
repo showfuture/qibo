@@ -1,0 +1,152 @@
+<!--
+<?php
+if($job=="record"){
+print <<<EOT
+--> 
+<div class="MainCont">
+	<div class="head"><div class="tag">付款记录</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="20%">付款订单号</th>
+            <th width="20%">付款日期</th>
+            <th width="20%">付款金额</th>
+            <th width="15%">是否支付成功</th>
+            <th width="15%">支付方式</th>
+            <th width="10%">删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr>
+            <td>$rs[numcode]</td>
+            <td>$rs[posttime]</td>
+            <td>$rs[money] 元</td>
+            <td>$rs[ifpay]</td>
+            <td>$rs[banktype]</td>
+            <td><a href="?job=$job&action=del_record&id=$rs[id]"><img alt='点击删除' src='./images/del_icon2.gif'/></a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+$(function(){
+	$(".pay_but").click(function(){
+		var val=$('input:radio[name="paytype"]:checked').val();
+		if(val==null){
+			alert("请选择充值的方式!");
+			return false;
+		}
+		else{
+			window.open("../do/buymoneycard.php?paytype="+val);
+		}
+	});
+});
+</SCRIPT>
+<style type="text/css">
+.showpays{
+	height:60px;
+	overflow:hidden;
+	padding-top:15px;
+}
+.showpays li{
+	width:19%;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+.paybut{
+	text-align:center;
+	word-spacing:20px;
+	padding-bottom:10px;
+}
+</style>
+<div class="MainCont">
+	<div class="head"><div class="tag">{$webdb[MoneyName]}充值</div></div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1.{$webdb[MoneyName]}不足,网站很多功能受限制,那怎么办呢?可以通过以下方式购买</li>
+            <li>2.你当前拥有{$webdb[MoneyName]}数为<img src="images/moneycard.gif"><span class="b red">{$lfjdb[money]}</span>{$webdb[MoneyDW]},每一块钱人民币可换取<span class="b blue">{$webdb[alipay_scale]}</span>{$webdb[MoneyDW]}{$webdb[MoneyName]},你可以选择以下方式在线即时购买{$webdb[MoneyName]}</li>
+<li>3.充值促销优惠:每充值10块钱赠送<span class="b blue">{$webdb[alipay_give_scale]}</span>{$webdb[MoneyDW]}{$webdb[MoneyName]},以此类推</li>
+        </ul>
+		<ul class="showpays">
+<!--
+EOT;
+if($webdb[yeepay_id]&&$webdb[yeepay_key]){print <<<EOT
+-->
+			<li>
+				<img src="../images/default/yeepay_logo.gif" width="96" height="37"/>
+				<input type="radio" name="paytype" value="yeepay"/>
+			</li>
+<!--
+EOT;
+}print <<<EOT
+-->
+<!--
+EOT;
+if($webdb[tenpay_id]&&$webdb[tenpay_key]){print <<<EOT
+-->
+			<li>
+				<img src="../images/default/tenpay_logo.gif" width="96" height="37"/>
+				<input type="radio" name="paytype" value="tenpay"/>
+			</li>
+<!--
+EOT;
+}print <<<EOT
+-->
+<!--
+EOT;
+if($webdb[alipay_id]&&$webdb[alipay_key]&&$webdb[alipay_partner]){print <<<EOT
+-->
+			<li>
+				<img src="../images/default/alipay_logo.gif" width="96" height="37"/> 
+				<input type="radio" name="paytype" value="alipay"/>
+			</li>
+<!--
+EOT;
+}print <<<EOT
+-->
+<!--
+EOT;
+if($webdb[chinabank_id]&&$webdb[chinabank_key]){print <<<EOT
+-->
+			<li>
+				<img src="../images/default/chinabank_logo.gif" width="96" height="37"/> 
+				<input type="radio" name="paytype" value="chinabank"/>
+			</li>
+<!--
+EOT;
+}print <<<EOT
+-->
+ 
+			<li>
+				<img src="../images/default/diangcard.gif" width="96" height="37"/>
+				<input type="radio" name="paytype" value="card"/>
+			</li>
+ 
+		</ul>
+		<div class="paybut">
+			<a href="money.php?job=record"><img src="images/button_czrecord.gif" /></a> 
+            <img src="images/button_cz.gif" class="pay_but"/>
+		</div>
+    </div>
+</div>
+<!--
+EOT;
+}
+?>
+-->

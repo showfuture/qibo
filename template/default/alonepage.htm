@@ -1,0 +1,38 @@
+<!--
+<?php
+print <<<EOT
+--><meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"><h3 class="L"></h3><span class="TAG">TOP</span><h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle"> $label[alonepage1]
+<!--
+EOT;
+if($rsdb[title]){print <<<EOT
+-->
+            <div class="title"><CENTER>$rsdb[title]</CENTER></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            <div class="content"> 
+              <table width="100%" cellspacing="5" cellpadding="5" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+                <tr> 
+                  <td align="left">$rsdb[content]</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+</table>
+<!--
+EOT;
+?>
+-->

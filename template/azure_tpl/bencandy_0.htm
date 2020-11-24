@@ -1,0 +1,316 @@
+<!--
+<?php
+$rsdb[price] || $rsdb[price]='';
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/azure/bencandy.css"> 
+<div class="TopCont">
+	<div class="t">$rsdb[title]</div>
+    <div class="m">
+    	发布时间:{$rsdb[posttime]} 
+        浏览{$rsdb[hits]}次
+        <a href="$city_url/post.php?job=edit&fid=$fid&id=$id">修改</a> | 
+        <a href="$city_url/post.php?action=del&fid=$fid&id=$id">删除</a> | 
+        <a href="$city_url/job.php?job=update&fid=$fid&id=$id" title="顶一下,可将信息排在所属栏目的列表页的前面!">顶一下</a>
+    </div>
+</div>
+<div class="MainContainer">
+	<div class="Main">
+    	<div class="showinfo">
+        	<div><span>地区：</span>{$rsdb[showarea]}</div>
+            <!--{template}--><div><span>{title}：</span>{value}</div><!--{/template}--> 
+            <div><span>标签：</span>$rsdb[keywords]</div>                
+        </div>
+        <div class="imgbutton">
+         	<div class="action">
+            	<a href="$city_url/job.php?job=collect&id=$id" target="_blank" class="clllect">加入收藏</a>
+                <a href="javascript:;" onclick="document.getElementById('sendmsg').style.display='';" class="send">推荐给好友</a>
+                <a href="$city_url/job.php?job=report&fid=$fid&id=$id" target="_blank" class="report">举报该信息</a>
+            </div>
+            <div id="sendmsg" style="display:none;">
+            	<p><!--
+EOT;
+if($lfjdb&&!$webdb[propagandize_close]){print <<<EOT
+-->
+您复制本条信息给它人访问,将有机会获得至少{$webdb[propagandize_Money]}{$webdb[MoneyDW]}{$webdb[MoneyName]}的奖励。
+<!--
+EOT;
+}else{print <<<EOT
+-->	
+下面是这条信息的访问地址，您可以拷贝通过MSN、QQ、电子邮件发送给您的朋友。
+<!--
+EOT;
+}print <<<EOT
+-->
+						</p>
+                        <input type="text" size="50" value="$city_url/bencandy.php?propagandize_uid=$lfjuid&city_id=$rsdb[city_id]&fid=$rsdb[fid]&id=$rsdb[id]" id="msgurl">
+                <input type="button" value="复制" onClick="JM_cc('msgurl');alert('网址成功，你可以通过QQ或MSN发给你的好友！')">
+            </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>   
+        </div>
+        <div class="content">
+        	<h3>附注：</h3>
+            <p>$rsdb[content]</p>
+        </div>
+        <div class="showpic">
+<!--
+EOT;
+$showpich = $rsdb[picnum]>0 ? "<span>有{$rsdb[picnum]}图</span><a href=\"$city_url/job.php?job=show_img&fid=$fid&id=$id\" target=\"_blank\">查看更多</a>" : "<span>暂无图片</span>";
+$showpicc = $rsdb[picnum]>0 ? "<a href=\"$city_url/job.php?job=show_img&fid=$fid&id=$id\" target=\"_blank\"><img src=\"$rsdb[picurl]\"/></a>" : "暂无图片";
+print <<<EOT
+-->
+        	<div class="h">$showpich</div>
+			<div class="c">$showpicc</div>
+        </div>
+<!--
+EOT;
+if($foods){
+print <<<EOT
+-->
+        <div class="wyfood">
+          <div>网友推荐:</div>
+          $foods 
+        </div>
+<!--
+EOT;
+}if($rsdb[maps]){
+print <<<EOT
+-->
+		<div class="showmaps">
+        	<div class="head">地图位置</div>
+            <div class="cont">
+<!--
+EOT;
+if($webdb[if_GGmap]){print <<<EOT
+-->
+            <iframe src="$webdb[www_url]/job.php?job=show_ggmaps&position=$rsdb[maps]&title=$rsdb[title]"  width="100%" height="400" scrolling="no" frameborder="0" ></iframe>
+<!--
+EOT;
+}else{
+$detail=explode(",",$rsdb[maps]);
+print <<<EOT
+-->
+            <script language="javascript" src="http://api.51ditu.com/js/maps.js"></script>
+            <div id="maps" style="position:relative; width:700px; height:400px; border:black solid 1px;"> 
+              <div align="center" style="margin:12px;"><a href="http://api.51ditu.com/docs/mapsapi/help.html" target="_blank" style="color:#D01E14;font-weight:bolder;font-size:12px;">看不到地图请点这里</a></div>
+            </div>
+            <script language="javascript">
+	var maps = new LTMaps( "maps" );
+	var c = new LTSmallMapControl();
+	maps.addControl(c);
+	var point = new LTPoint( $detail[0] , $detail[1] );
+	maps.centerAndZoom ( point , 2 );
+	var marker = new LTMarker( point );
+	maps.addOverLay( marker );
+	var text = new LTMapText( marker );
+	text.setLabel( "目标所在位置" ); 
+	maps.addOverLay( text ); 
+</script>
+<!--
+EOT;
+} 
+print <<<EOT
+-->
+            </div>
+        </div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		<div id="ShowComment">
+        	<div class="head"><span class="tag">网友留言</span><span class="more">已有<em>{$rsdb[comments]}</em>条评论</span></div>
+            <div id="comment"></div>
+        </div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word;' class="AddComment">
+              <tr> 
+                <td class="h">添加留言</td>
+              </tr>
+              <tr> 
+                <td class="m"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!--
+EOT;
+if($lfjid){$none='none';}
+print <<<EOT
+-->
+                    <tr style="display:$none;"> 
+                      <td class="tdL">称呼：</td>
+                      <td class="tdR"><input type="text" name="textfield2" id="comment_username" value="$lfjid"></td>
+                    </tr>
+<!--
+EOT;
+if($webdb[Info_GroupCommentYzImg]&&in_array($groupdb['gid'],explode(",",$webdb[Info_GroupCommentYzImg]))){
+$webdb[yzImgComment]=1;
+print <<<EOT
+-->
+                    <tr> 
+                      <td class="tdL">验证码：</td>
+                      <td class="tdR"> 
+                        <input id="yzImgNum" type="text" name="yzimg" size="8" onFocus="commentyzimg()">
+						<SCRIPT LANGUAGE="JavaScript">
+<!--
+function commentyzimg(){
+	if(/yzimg\.php/.test($("#yz_Img")[0].src)==false){
+		$("#yz_Img").show();
+		$("#yz_Img")[0].src='$webdb[www_url]/do/yzimg.php?'+Math.random();
+	}
+	
+}
+
+document.write('<img border="0" id="yz_Img" name="imageField" onclick="this.src=this.src+Math.random();" src="" style="display:none;">');
+//-->
+</SCRIPT>
+                      </td>
+                    </tr>
+                    <!--
+EOT;
+}
+print <<<EOT
+-->
+                    <tr> 
+                      <td class="tdL">内容：</td>
+                      <td class="tdR"><textarea name="textfield" cols="70" rows="8" id="comment_content" onKeyDown="quickpost(event)"></textarea></td>
+                    </tr>
+                    <tr> 
+                      <td class="tdL"> 
+<script language="JavaScript">
+<!--
+getcomment("$city_url/job.php?job=comment_ajax&fid=$fid&id=$id");
+cnt = 0;
+function quickpost(event)
+{
+	if((event.ctrlKey && event.keyCode == 13)||(event.altKey && event.keyCode == 83))
+	{
+		cnt++;
+		if (cnt==1){
+			post_comment();
+		}else{
+			alert('内容正在提交...');
+		}
+	}	
+}
+
+function post_comment(){
+	postcomment('$city_url/job.php?job=comment_ajax&action=post&fid=$fid&id=$id','$webdb[yzImgComment]');
+	if(document.getElementById("yz_Img")!=null){
+		//document.getElementById("yz_Img").src="$webdb[www_url]/do/yzimg.php?"+Math.random();;
+		$("#yz_Img")[0].src='';
+		$("#yz_Img").hide();
+	}
+}
+//-->
+</script>
+                      </td>
+                      <td class="tdR"><input type="button" id="comment_submit" name="Submit" value="提交" onClick="post_comment();"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+    </div>
+    <div class="Side">
+    	<div class="posterinfo">
+        	<div class="head">发布人信息</div>
+            <div class="cont">
+            	<dl>
+                	<dt>
+                    	<a href="$webdb[www_url]/member/homepage.php?uid=$rsdb[uid]" onclick="if($rsdb[uid]==0)return false;"><img src="$userdb[icon]" onerror="this.src='$webdb[www_url]/images/default/noface.gif'" width="80" height="80"/></a>
+                    </dt>
+                    <dd>
+                    	<div><a href="$city_url/job.php?job=userinfo&uid=$rsdb[uid]"  onclick="if($rsdb[uid]==0)return false;">$userdb[username]</a></div>
+                        <div>注册：$userdb[regdate]</div>
+                        <div>离线：$userdb[lastvist]</div>
+                        <div>级别：$userdb[level]</div>
+                    </dd>                    
+                </dl>
+                <div class="yzpic">
+<!--
+EOT;
+$companyyz = $userdb[grouptype]==1 ? "<img src=\"$webdb[www_url]/member/images/company_icon.gif\" alt=\"企业会员\">" : "";
+$idcard_yz = $userdb[idcard_yz]==1 ? "<img src=\"$webdb[www_url]/images/default/yz/idcard_1.gif\" alt=\"身份认证会员\">" : "<img src=\"$webdb[www_url]/images/default/yz/idcard_0.gif\" alt=\"身份还未认证\">";
+$email_yz = $userdb[email_yz]==1 ? "<img src=\"$webdb[www_url]/images/default/yz/email_1.gif\" alt=\"邮箱认证会员\">" : "<img src=\"$webdb[www_url]/images/default/yz/email_0.gif\" alt=\"邮箱还未认证\">";
+$mob_yz = $userdb[mob_yz]==1 ? "<img src=\"$webdb[www_url]/images/default/yz/mob_1.gif\" alt=\"手机认证会员\">" : "<img src=\"$webdb[www_url]/images/default/yz/mob_0.gif\" alt=\"手机还未认证\">";
+print <<<EOT
+--> 
+					用户认证：{$companyyz}{$idcard_yz}{$email_yz}{$mob_yz}
+                </div>
+                <div class="showm">
+                	<a href="$city_url/job.php?job=userinfo&uid=$rsdb[uid]" onclick="if($rsdb[uid]==0)return false;" target="_blank">查看该用户发布的所有信息</a>
+                </div>
+            </div>
+        </div>
+        <div class="conntect">
+        	联系人：{$rsdb[linkman]}
+<!--
+EOT;
+if($rsdb[uid]){
+print <<<EOT
+-->
+             <a href="$webdb[www_url]/member/?main=pm.php?job=send&username=$rsdb[linkman]" target="_blank"><img src="$webdb[www_url]/images/default/ww_offline.gif"/></a> 
+<!--
+EOT;
+}print <<<EOT
+-->
+			<br>
+                电话号码:$rsdb[telephone]<br>
+                手机号码:$rsdb[mobphone]<br>
+                QQ　号码:<a href="tencent://message/?uin=$rsdb[_oicq]&Site=$webdb[Info_webname]&Menu=yes">$rsdb[oicq]</a><br>
+                MSN 帐号:$rsdb[msn]<br>
+                邮箱帐号:$rsdb[email]<br>
+                IP归属地:{$rsdb[ipfrom]} <a href="$city_url/job.php?job=ip&ip=$rsdb[ipaddress]" target="_blank">查询更多</a>
+        </div>
+        <div class="sidecont">
+        	<div class="head">栏目焦点</div>
+            <div class="cont">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="side_adinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=adinfo&fid=$fid&rows=$webdb[AdInfoListRow]&leng=$webdb[InfoListLeng]&iframeID=side_adinfo" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+            </div>
+        </div>
+        <div class="sidecont">
+        	<div class="head">热门信息</div>
+            <div class="cont">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="side_hotinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=hotinfo&fid=$fid&rows=$webdb[AdInfoListRow]&leng=$webdb[InfoListLeng]&iframeID=side_hotinfo" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+            </div>
+        </div>
+        <div class="sidecont">
+        	<div class="head">推荐信息</div>
+            <div class="cont">
+<script language="JavaScript">
+<!--
+document.write('<span id="side_cominfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=cominfo&fid=$fid&rows=$webdb[AdInfoListRow]&leng=$webdb[InfoListLeng]&iframeID=side_cominfo" width=0 height=0></iframe></div>');
+//-->
+</script>
+            </div>
+        </div>
+        <div class="sidecont">
+        	<div class="head">信息发布</div>
+            <div class="cont">
+            	<div class="title"> 租售房子、求职招聘、找朋友、二手买卖就在本分类信息网！</div>
+            	<div class="post"><a href="$city_url/post.php?fid=$fid"><img src="$webdb[www_url]/images/azure/postinfo.gif"/></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="cleardiv"></div>
+</div>
+<!--
+EOT;
+?>
+-->

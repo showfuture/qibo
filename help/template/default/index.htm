@@ -1,0 +1,61 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/index.css">
+<div class="MainContainers">
+	<div class="Mains">
+		<div class="TheSlides">$label[help_index_slides]</div>
+        <div class="ShowSorts">
+        	<div class="head"><div class="tag">À¸Ä¿·ÖÀà</div>
+        	</div>
+            <div class="cont">
+<!--
+EOT;
+foreach($Fid_db[0] AS $key=>$rs){
+print <<<EOT
+-->
+				<dl>
+                	<dt><a href="list.php?fid=$key">$rs</a></dt>
+        			<dd>
+<!--
+EOT;
+foreach($Fid_db[$key] AS $keys=>$rss){
+print <<<EOT
+-->
+							<a href="list.php?fid=$keys">$rss</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+            	</dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+				<div class="ClearDiv"></div>
+            </div>
+        </div>
+    </div>
+    <div class="Sides">
+    	<div class="NewsMsg">
+        	<div class="head"><div class="tag">$label[help_index_h1]</div></div>
+            <div class="cont">
+            	$label[help_index_t1]
+            </div>
+        </div>
+        <div class="HotMsg">
+        	<div class="head"><div class="tag">$label[help_index_h2]</div></div>
+            <div class="cont">
+            	$label[help_index_t2]            	
+            </div>
+        </div>
+    </div>
+    <div class="ClearDiv"></div>
+</div>
+
+<!--
+EOT;
+?>
+-->

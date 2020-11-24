@@ -1,0 +1,110 @@
+<!--
+<?php
+if($lfjid){
+$lfjdb[money]=get_money($lfjdb[uid]);
+print <<<EOT
+--> 
+
+	            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin:10px;">
+              <form name="form1" method="post" action="$webdb[www_url]/do/login.php">
+                <tr> 
+                  <td><b><font  style="font-size:14px;color:#000000;">我的资料</font></b></td>
+                </tr>
+                <tr> 
+                  <td > 
+                    <hr style="color:#ccc;width:100%" size=1>
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="center"><a href="$webdb[www_url]/member/?uid=$lfjuid" target="_blank"><img src="$lfjdb[icon]" onload="makesmallpic(this,148,148);" width="148" height="148" border="0" onerror="this.src='$webdb[www_url]/images/default/noface.gif'"></a> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="center" height="20"><a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid" style="text-decoration: underline;" target="_blank">$lfjid</a></td>
+                </tr>
+                <tr> 
+                  <td align="right" > 
+                    <hr style="color:#ccc;width:100%" size=1>
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" height="32" style="line-height:170%;">级别: <b><font color="#FF0000">{$ltitle[$lfjdb[groupid]]}</font></b><br>
+                    {$webdb[MoneyName]}: <img src="$webdb[www_url]/images/default/money.gif"> <b><font color="#0000FF">$lfjdb[money]</font></b> 
+                        {$webdb[MoneyDW]}<br>
+                    
+                    注册日期: $lfjdb[_regdate]<br>[<a href="$webdb[www_url]/member/" target="_blank">会员中心</a>] [<a href="$webdb[www_url]/do/login.php?action=quit">安全退出</a>]</td>
+                </tr>
+              </form>
+            </table>
+            <!--
+EOT;
+}else{
+$lfjdb[icon]=tempdir($lfjdb[icon]);
+$lfjdb[regdate]=date("Y-m-d H:i",$lfjdb[regdate]);
+$lfjdb[money]=get_money($lfjdb[uid]);
+print <<<EOT
+-->
+            <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin:10px;">
+              <form name="form1" method="post" action="$webdb[www_url]/do/login.php">
+                <tr> 
+                  <td><b><font  style="font-size:14px;color:#000000;">登录通行证</font></b></td>
+                </tr>
+                <tr> 
+                  <td > 
+                    <hr style="color:#ccc;width:100%" size=1>
+                  </td>
+                </tr>
+                <tr> 
+                  <td><b><font  style="font-size:14px;color:#BC2931;">请输入帐号和密码</font></b></td>
+                </tr>
+                <tr> 
+                  <td height="32">帐 号: 
+                    <input type="text" name="username" size="15" class="input_bt" style="border:1px solid #7F9DB9;
+	width:130px;
+	height:16px;">
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="32">密 码: 
+                    <input type="password" name="password" size="15" class="input_bt" style="border:1px solid #7F9DB9;
+	width:130px;
+	height:16px;">
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="center"> 
+                    <input type="submit" name="Submit2" value="  登 录  "  class="post_bt" style="background:url($webdb[www_url]/images/default/post_bt.gif);
+	height:23px;
+	border:1px solid #1F3A87;
+	color:#1F3A87;"> 
+                  </td>
+                </tr><input type="hidden" name="step" value="2">
+      <input class="radio" type="hidden" name="cookietime" value="86400" >
+                <tr> 
+                  <td align="right" height="38"><a href="$webdb[www_url]/do/sendpwd.php" style="text-decoration: underline;">忘记密码,取回&gt;&gt;</a></td>
+                </tr>
+                <tr> 
+                  <td align="right" > 
+                    <hr style="color:#ccc;width:100%" size=1>
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" height="32" > <font  style="font-size:14px;color:#BC2931;">还没有通行证?</font></td>
+                </tr>
+                <tr> 
+                  <td align="center" > 
+                    <input type="button" name="Submit22" value="  注 册  " style="background:url($webdb[www_url]/images/default/post_bt.gif);
+	height:23px;
+	border:1px solid #1F3A87;
+	color:#1F3A87;" onClick="window.location.href='$webdb[www_url]/do/reg.php';">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" height="32" >拥有通行证,整个网站畅通无阻!</td>
+                </tr>
+              </form>
+            </table>
+<!--
+EOT;
+}?>
+-->

@@ -1,0 +1,175 @@
+<?php ob_end_clean();
+if($webdb[Info_allcityType]!=1){
+	$query = $db->query("SELECT * FROM {$_pre}city ORDER BY letter ASC,list DESC");
+	while($rs = $db->fetch_array($query)){
+		$listdb[$rs[letter]][]=$rs;
+	}
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>$titleDB[title]   </title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/blue/all_city.css" />
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+</head>
+
+<body>
+<div class="mainbox">
+    <div class="head"></div>
+    <div class="head-logodiv">
+        <div class="logoandimgdiv">
+            <div><a href="$webdb[www_url]/"><img src="$webdb[www_url]/images/blue/logo.png" alt="" /></a></div><div class="gotocity">
+<!--
+EOT;
+if($city_id){
+print <<<EOT
+-->
+			<a href="{$city_DB[url][$city_id]}">进入{$city_DB[name][$city_id]}分站</a>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+ <a>请选择一个城市</a> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			</div>
+        </div>
+        <div class="hrline"></div>
+        <div class="pbox pboxmt">
+           <h1>推荐城市:</h1> 
+            <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2){
+if(!$key2||++$i>7)break;
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}">$value2</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->        </div>
+    </div>
+    <div class="content">
+        <div class="citymap">
+          <div class="pbox">
+           <h1>快速选择:</h1>
+        <!--
+EOT;
+foreach($listdb AS $key=>$array){
+print <<<EOT
+-->
+        <a href="#$key" onclick="setheight('$key')" style="font-size:13px;font-weight:bold;font-family:WST_Ital;">$key</a> 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </div>
+      <div class="showarea">
+	<div>按省份查找城市：</div>
+    <div class="select">
+    	<select name="areaid" class="areaids">
+<!--
+EOT;
+foreach($area_DB[name] AS $keys=>$values){
+$selecteds = $areaids==$keys?"selected=\"selected\"":"";
+print <<<EOT
+-->
+		<option value="$keys" $selecteds>$values</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </select>
+    </div>
+    <div class="select">
+    	<select name="cityid" class="cityids">
+          <option value="0">请选择城市</option>
+        </select>
+    </div>
+    <div class="button">
+    	<input type="button" class="GotoCity" value="确定" /> 
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".areaids").change(function(){
+		var areaid = $(this).val();
+		List_citys(areaid,0);
+	});	
+	$(".GotoCity").click(function(){
+		var cityid = $(".cityids").val();
+		window.location = "?job=jump&choose_cityID="+cityid;
+	});	
+	List_citys($areaids,$city_id);
+});
+function List_citys(areaid,cityid){
+	$.get("?show=citys&areaid="+areaid+"&cityid="+cityid+"&"+Math.random(),function(d){
+		$(".cityids").html(d);
+	});
+}
+</script>
+          <div class="pbox" style="border:0;">
+            <h1>按字母选择城市:</h1>
+<!--
+EOT;
+foreach($listdb AS $key=>$array){
+print <<<EOT
+-->
+            <dl><A name="$key"></A>
+               <dt>$key</dt>
+               <dd>
+ <!--
+EOT;
+foreach($array AS $key2=>$rs){
+$color=$rs[hits]?'color:red;':'';
+print <<<EOT
+-->
+			   <a href="{$city_DB[url][$rs[fid]]}" style="$color">{$rs[name]}</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+			   
+			   </dd>
+            </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<!--
+EOT;
+?>
+--><div id="bodyheight"></div>
+ <SCRIPT LANGUAGE="JavaScript">
+ <!--
+ function setheight(t){
+	 re=/[A-J]/i
+	 if(re.test(t)==false){
+		document.getElementById("bodyheight").style.height=500;
+	 }else{
+	 	document.getElementById("bodyheight").style.height=0;
+	 }
+ }
+ //-->
+ </SCRIPT>
+</body>
+</html>
+<?php exit;?>

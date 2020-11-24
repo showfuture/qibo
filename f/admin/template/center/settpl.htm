@@ -1,0 +1,59 @@
+<!--
+<?php
+$Info_showsorttype[intval($webdb[Info_showsorttype])]=' checked ';
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=config">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">页面显示设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='31%' bgcolor='#FFFFFF'>首页焦点信息/最新信息显示设置</td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input type="text" name="webdbs[AdInfoIndexRow]" size="7" value="$webdb[AdInfoIndexRow]">
+        行,每行 
+        <input type="text" name="webdbs[AdInfoIndexLeng]" size="7" value="$webdb[AdInfoIndexLeng]">
+        字节,一个汉字等于两个字节</td>
+    </tr>
+    <tr> 
+      <td width='31%' bgcolor='#FFFFFF'>首页推荐栏目显示设置</td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input type="text" name="webdbs[InfoIndexCSRow]" size="7" value="$webdb[InfoIndexCSRow]">
+        行,每行 
+        <input type="text" name="webdbs[InfoIndexCSLeng]" size="7" value="$webdb[InfoIndexCSLeng]">
+        字节,一个汉字等于两个字节</td>
+    </tr>
+    <tr> 
+      <td width='31%' bgcolor='#FFFFFF'>首页每个分类下最多显示多少个栏目</td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input type="text" name="webdbs[Info_showsortnum]" size="7" value="$webdb[Info_showsortnum]">
+        个(留空或为0则全部显示) </td>
+    </tr><tr> 
+      <td width='31%' bgcolor='#FFFFFF'>栏目列表每页显示多少条信息</td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input type="text" name="webdbs[Info_ListNum]" size="7" value="$webdb[Info_ListNum]">
+        个(留空或为0则为30) </td>
+    </tr>
+    <tr> 
+      <td width='31%' bgcolor='#FFFFFF'>列表(内容)页显示焦点信息</td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input type="text" name="webdbs[AdInfoListRow]" size="7" value="$webdb[AdInfoListRow]">
+        行,每行 
+        <input type="text" name="webdbs[InfoListLeng]" size="7" value="$webdb[InfoListLeng]">
+        字节,一个汉字等于两个字节</td>
+    </tr>
+    <tr> 
+      <td width='31%' bgcolor='#FFFFFF'><font color="#0000FF">注:某些风格不受以上控制</font></td>
+      <td bgcolor='#FFFFFF' width="69%"> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

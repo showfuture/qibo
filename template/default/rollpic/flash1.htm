@@ -1,0 +1,34 @@
+<?php
+/*
+共使用了6个变量
+$webdb[www_url] 整站网址
+$width FLASH宽度
+$height FLASH高度
+$img 文章图片
+$url 文章网址
+$title 文章标题
+注意:你可以更换的只是下面的JS代码,其它不可删除
+*/
+$show=<<<EOT
+
+
+<SCRIPT LANGUAGE="JavaScript">
+var swf_width = $width;
+var swf_height = $height;
+var swf_config = "0x000000|3|0xFAFAFA|65|0xFFFFFF|0xFF8040||6|2|1|_blank";
+var files = "$img";
+var links = "$url";
+var texts = "$title";
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">'); 
+document.write('<param name="movie" value="$webdb[www_url]/template/default/rollpic/bcastr.swf"><param name="quality" value="high">'); 
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">'); 
+document.write('<param name="FlashVars" value="bcastr_file=' + files + '&bcastr_link=' + links + '&bcastr_title=' + texts + '&bcastr_config=' + swf_config + '">'); 
+document.write('<embed src="$webdb[www_url]/images/default/bcastr.swf" wmode="opaque" FlashVars="bcastr_file=' + files + '&bcastr_link=' + links + '&bcastr_title=' + texts + '&bcastr_config=' + swf_config + '" menu="false" quality="high" width="' + swf_width + '" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); 
+document.write('</object>'); 
+ </SCRIPT>
+
+
+
+
+EOT;
+?>

@@ -1,0 +1,112 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function kill_Err(){
+	return true;
+}
+window.onerror=kill_Err;
+function ckpost(){
+	if($("#psid").val()==''){
+		alert('请选择一个图集');
+		return false
+	}
+	if($("input[name='photoDB[name][]']").size()==0){
+		alert('请先上传图片');
+		return false
+	}
+}
+//-->
+</SCRIPT>
+<form name="form1" method="post" action="?atn=$atn&uid=$uid&step=2" onsubmit="return ckpost();">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="PicTable">
+  <tr> 
+      <td   class="RightTd" style="width:150px;">图片地址:<br>
+      <!--<a href='javascript:showinput_photourl()'>添加远程图片</a>--></td>
+    <td  class="RightTd"> 
+      <script type="text/javascript" src="$webdb[www_url]/images/default/swfobject.js"></script>
+      <div id="sapload"></div>
+<script type="text/javascript">
+	var so = new SWFObject("$webdb[www_url]/images/default/uploadmore.swf", "swf_id", "450", "30", "9", "#ffffff");
+	so.addParam('wmode','transparent');
+	so.addVariable('config','$webdb[www_url]/do/swfuploadxml.php?filetype=jpg,png,gif');
+	so.write("sapload");
+	var titledb = new Array();
+	var urldb = new Array();	
+	function showFiles(t){
+		totalnum=totalnum_photourl;
+		showinput_photourl();
+		arr=t.split('|');
+		urldb[totalnum]=arr[0];
+		arr2=arr[1].split('.');
+		titledb[totalnum]=arr2[0];
+		for(var i=0;i<=totalnum;i++){
+			if(document.getElementById("atc_photourl_url"+i)!=null){
+				if(urldb[i]!=undefined){
+					document.getElementById("atc_photourl_url"+i).value=urldb[i];
+					document.getElementById("atc_photourl_name"+i).value=titledb[i];
+				}
+			}
+		}
+	}
+</script>
+      <div id="input_photourl0"></div>
+<script LANGUAGE="JavaScript">
+totalnum_photourl=0;
+function delpic(t){
+	document.getElementById('atc_photourl_url'+t).value='';
+	document.getElementById('span'+t).style.display='none';
+}
+function showinput_photourl(){
+	var str='';
+	//var str=document.getElementById("input_photourl"+totalnum_photourl).innerHTML;
+	//if(parent.document.getElementById('win')!=null){
+	//parent.document.getElementById('win').height=parseInt(parent.document.getElementById('win').height)+18;
+	//}
+	str+='<span id=span'+totalnum_photourl+'>图片标题: &nbsp;<input type="text" name="photoDB[name][]" id="atc_photourl_name'+totalnum_photourl+'" size="12">  <div style="display:none;">地址: &nbsp;<input type="text" name="photoDB[url][]" id="atc_photourl_url'+totalnum_photourl+'" size="27" > [<a href=\'javascript:\' onClick=\'window.open("$webdb[www_url]/do/upfile.php?fn=upfile_photourl&label='+totalnum_photourl+'","","width=350,height=50,top=200,left=400")\'><font color="#FF0000">上传图片</font></a>]</div> [<a href="javascript:delpic(\''+totalnum_photourl+'\')">移除</a>]<br></span><div id="input_photourl'+(totalnum_photourl+1)+'"></div>';
+	document.getElementById("input_photourl"+totalnum_photourl).innerHTML=str;
+	totalnum_photourl++;
+}	
+	
+function upfile_photourl(url,name,size,label){	
+	document.getElementById("atc_photourl_url"+label).value=url;	
+	arr=name.split('.');	
+	document.getElementById("atc_photourl_name"+label).value=arr[0];	
+}	
+</SCRIPT>
+    </td>
+  </tr>
+  <tr> 
+    <td   class="RightTd">所属图集:</td>
+    <td  class="RightTd"><select name="psid" size="1" id="psid">
+	<option value="">请选择一个图集</option>
+<!--
+EOT;
+foreach($listdb as $rs){
+$ck=$rs[psid]==$psid?" selected":"";
+print <<<EOT
+-->
+                <option value="$rs[psid]" $ck>$rs[name]</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+              </select></td>
+  </tr>
+  <tr> 
+    <td   class="RightTd" >&nbsp;</td>
+    <td  class="RightTd">
+     
+        <input type="submit" name="Submit" value="提交">
+    
+    </td>
+  </tr>
+</table>      </form>
+ 
+ <!--
+EOT;
+?>
+-->

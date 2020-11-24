@@ -1,0 +1,197 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script language="JavaScript" src="images/scriptaculous/prototype.js"></script>
+<script language="JavaScript" src="images/scriptaculous/scriptaculous.js"></script>
+
+<style>
+	body, div {
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+	}
+	
+	div.section,div#createNew {
+		border: 1px solid #CCCCCC;
+		margin: 10px 5px;
+		padding: 0px 0px 10px 0px;
+		background-color: #EFEFEF;
+	}
+	
+	div#createNew {
+		padding-left: 5px;
+	}
+	
+	div.section h3 {
+		padding: 2px 5px;
+		margin: 0 0 10px 0;
+		background-color: #CCCCCC;
+		cursor: move;
+		display: block;
+	}
+	
+	div.lineitem {
+		margin: 8px 10px;
+		padding: 2px;
+		background-color: #FFFFFF;
+		cursor: move;
+		border:1px solid #ccc;
+	}
+	
+	h1 {
+		margin-bottom: 0;
+	}
+.dhead{
+	display:block;
+	background:#ccc;
+	line-height:25px;
+	font-weight:bold;
+	padding-left:10px;
+	
+}
+.dmiddle{
+	line-height:18px;
+	display:block;
+	padding-left:10px;
+}
+#group5{
+	width:200px;
+}
+.section{
+	height:500px;
+}
+</style>
+
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="sort_layout_form" id="sort_layout_form" method="post" action="$admin_path&action=settable">
+    <tr  class="head"> 
+      <td> 
+        <div align='center'><b><font color="#FFFFFF">主页布局设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'> 
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#CCCCCC">
+          <tr bgcolor="#FFFFFF"> 
+            <td width="33%" valign="top"> 
+              <div id="group1" class="section"> 
+                <h3 class="handle">第1列</h3>
+                <!--
+EOT;
+foreach($layout[0] AS $fup=>$rs ){print <<<EOT
+-->
+                <div id="item_$fup" class="lineitem"><span class="dhead">$rs[name]</span><span class="dmiddle"> 
+                  <!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                  $name<br>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  </span></div>
+                <!--
+EOT;
+}print <<<EOT
+-->
+              </div>
+            </td>
+            <td width="33%" valign="top"> 
+              <div id="group2" class="section"> 
+                <h3 class="handle">第2列</h3>
+                <!--
+EOT;
+foreach($layout[1] AS $fup=>$rs ){print <<<EOT
+-->
+                <div id="item_$fup" class="lineitem"><span class="dhead">$rs[name]</span><span class="dmiddle"> 
+                  <!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                  $name<br>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  </span></div>
+                <!--
+EOT;
+}print <<<EOT
+-->
+              </div>
+            </td>
+            <td width="33%" valign="top"> 
+              <div id="group3" class="section"> 
+                <h3 class="handle">第3列</h3>
+                <!--
+EOT;
+foreach($layout[2] AS $fup=>$rs ){print <<<EOT
+-->
+                <div id="item_$fup" class="lineitem"><span class="dhead">$rs[name]</span><span class="dmiddle"> 
+                  <!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                  $name<br>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                  </span></div>
+                <!--
+EOT;
+}print <<<EOT
+-->
+              </div>
+            </td>
+
+          </tr>
+        </table>
+        <script language="JavaScript">
+	sections = ['group1','group2','group3'];
+
+	Sortable.create('group1',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem',constraint:false});
+	Sortable.create('group2',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem',constraint:false});
+	Sortable.create('group3',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem',constraint:false});
+	//alert(Sortable.serialize('group1'));
+ 	//  Sortable.create("firstlist",
+  	 //  {dropOnEmpty:true,containment:["firstlist","secondlist"],constraint:false});
+ 	 // Sortable.create("secondlist",
+	   //  {dropOnEmpty:true,handle:'handle',containment:["firstlist","secondlist"],constraint:false});
+ 
+ 
+	function getGroupOrder() {
+		var sections = document.getElementsByClassName('section');
+		var alerttext = '';
+		for(var i=0;i < sections.length;i++) {
+			// alert(Sortable.sequence(sections[i]));
+			var sectionID = sections[i].id;
+			var order = Sortable.serialize(sectionID);
+			alerttext +=  Sortable.sequence(sections[i]) + '#';
+		}
+		//alert(alerttext);
+		document.getElementById("sort_layout").value=alerttext;
+		document.getElementById("sort_layout_form").submit();
+		//return false;
+	}
+
+</script>
+      </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF'><font color="#FF0000">注意:以上设置仅适合于部分风格,不适合于所有风格</font> 
+      </td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor='#FFFFFF'>
+        <input  type='button' name='w' value='保存设置' onClick="getGroupOrder()">
+        <input type="hidden" name="webdbs[sort_layout]" value="$webdb[sort_layout]" id="sort_layout">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

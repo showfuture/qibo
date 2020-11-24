@@ -1,0 +1,68 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<div class="MainCont">
+	<div class="head">
+    <div class="tag">以下是你最近带来的访客:</div>
+  </div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="40%">访客IP</th>
+            <th width="20%">来源地</th>
+            <th width="15%">访问时间</th>
+            <th width="25%">来源网址</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr>
+            
+        <td class="tL">$rs[ip] <a href="homepage.php?uid=$rs[newuid]" target="_blank">$rs[username]</a> $rs[more]</td>
+            <td>$rs[ipfrom]</td>
+            <td>$rs[posttime]</td>
+            <td><input type="text" name="textfield2" value="$rs[fromurl]" onclick="if(this.value!='')window.open('$rs[fromurl]');"></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">推广赚取积分</div></div>
+    
+  <div class="cont"> 
+    <ul class="aboutnote">
+      <li>1.你把以下网址复制下来,通过QQ或MSN发给你朋友或者是粘贴到其它网站或论坛,只要他们点击了此网址,你就可以获得{$webdb[propagandize_Money]}积分的奖励.对于同一个访客,一天内只能统计一次有效,重复点击无效.</li>
+      <li>2.鼓励大家介绍新用户注册,每推荐一个用户注册可以获得{$webdb[propagandize_Reg_Money]}积分的奖励,这里使用金字塔方式的奖励制度,比如A是B推荐注册的,而B又是C推荐注册的,那么不仅B可以得到奖励,他的上级C也同时得到奖励,如果C有上级D的话,他的上级D也可以得到奖励,以此类推 
+      </li>
+      <li> 
+        <input type="text" name="textfield" size="80" id="urlcode" value="$webdb[www_url]/do/job.php?job=propagandize&uid=$lfjuid">
+        <input type="submit" name="Submit" value="复制" onClick="JM_cc('urlcode');alert('网址复制成功！')">
+		<center><img src="$webdb[www_url]/images/default/propagandize_demo.jpg"></center>
+      </li>
+      <SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+    </ul>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

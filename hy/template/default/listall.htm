@@ -1,0 +1,97 @@
+<!--
+<?php
+$ordertype = $ordertype ? $ordertype : "rid";
+$select[$ordertype] = "ch";
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Mdomain/images/hy/list.css">
+<div class="ShowSort">
+	<div class="head"><span class="tag">分类</span></div>
+    <div class="cont">
+<!--
+EOT;
+foreach($Fid_db[0] AS $fkey=>$fvalue){
+print <<<EOT
+-->
+			<a href="list.php?fid=$fkey">$fvalue</a>
+ <!--
+EOT;
+}print <<<EOT
+-->
+    </div>
+</div>
+<div class="MainContainer">
+	<div class="Main">
+    	<div class="ShowList">
+        	<div class="head">
+            	<div class="tag"><span>商家列表</span></div>
+                <div class="more">
+                	<a href="listall.php?ordertype=" class="$select[rid]">最新商家</a>
+                    <a href="listall.php?ordertype=hits" class="$select[hits]">热门商家</a>
+                    <a href="listall.php?ordertype=levelstime" class="$select[levelstime]">推荐商家</a>
+                </div>
+            </div>
+            <div class="cont" id="ListCommany" onmouseout="HiddenBg()">
+            	<div class="h">
+                	<div class="img">图片</div>
+                    <div class="word">公司名称</div>
+                    <div class="date">登记日期</div>
+                    <div class="yz">商家认证</div>
+                </div>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+                <dl onmouseover="ShowBg(this)">
+					<div class="img"><span><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank"><img src="$rs[picurl]" onError="this.src='$webdb[www_url]/images/default/nopic.jpg'" height="90"></a></span></div>
+                    <div class="word">
+                    	<div class="t"><a href="$webdb[www_url]/home/?uid=$rs[uid]" target="_blank">$rs[title]</a></div>
+                  		<div class="m">日期:{$rs[posttime]} 浏览:{$rs[hits]}次 发布者:{$rs[username]}</div>
+				  		<div class="c">经营模式:<span>{$rs[qy_saletype]}</span>企业类型:<span>{$rs[qy_cate]}</span>所属分类:<span>{$rs[fname]}</span></div>
+                    </div>
+                    <div class="date">$rs[posttime]</div>
+                    <div class="yz"><img alt="{$renzhengDB[$rs[renzheng]]}" src="$Mdomain/images/hy/renzheng{$rs[renzheng]}.gif"></div>
+                </dl>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+				<div class="page">$showpage</div>	
+            </div>
+        </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var obj=document.getElementById("ListCommany").getElementsByTagName("dl");
+function ShowBg(TheLi){
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	TheLi.className='ck';
+}
+function HiddenBg(){
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+    </div>
+    <div class="Side">
+    	<div class="sidecont">
+        	<div class="head"><div class="tag">推荐企业</div></div>
+            <div class="cont">
+            	{$label[hylistallt1]}
+            </div>
+        </div>
+    </div>
+    <div class="Clear"></div>
+</div>
+<div class="MainBanner">
+	{$label[hylistallt2]}
+</div>
+<!--
+EOT;
+?>
+-->

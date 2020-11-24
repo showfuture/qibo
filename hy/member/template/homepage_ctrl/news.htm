@@ -1,0 +1,39 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+  <tr>
+    <th width="60%">新闻标题</th>
+    <th width="8%">审核</th>
+    <th width="12%">发布时间</th>
+    <th width="8%">浏览量</th>
+    <th width="12%">操作</th>
+  </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr>
+    <td class="tL"><a href="$Mdomain/homepage.php?uid=$uid&m=newsview&id=$rs[id]" target="_blank">$rs[title]</a></td>
+    <td>$rs[yz]</td>
+    <td>$rs[posttime]</td>
+    <td>$rs[hits]</td>
+    <td><a href="?atn=postnews&id=$rs[id]&uid=$uid" >编辑</a>/<a href="?atn=delnews&id=$rs[id]&uid=$uid" onclick="return confirm('删除后不可恢复，是否继续？');">删除</a></td>
+  </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+</table>
+$showpage
+<div class="Showpage">
+	<span class="b">友情提示</span>：如发现您发布的新闻长期处于‘<span class="red">审核中</span>’状态，则推荐您查看或修改您的新闻内容，并确定内容是否真实可靠；
+</div>
+<!--
+EOT;
+?>
+-->

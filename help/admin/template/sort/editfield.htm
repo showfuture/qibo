@@ -1,0 +1,93 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr>
+    <td><a href="$admin_path&job=listsort">顶级分类</a>$gudie</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head" align="left"> 
+      <td colspan="2">字段管理</td>
+    </tr>
+    <tr> 
+      <td width="37%">当前栏目名称:</td>
+      <td width="63%"> $rsdb[name] </td>
+    </tr>
+    <tr> 
+      <td width="37%">字段名称:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[title]" value="$_rs[title]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">字段ID:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_name]" value="$_rs[field_name]" $readonly>
+        (必须为3个字母以上,字母后面可以跟数字) </td>
+    </tr>
+    <tr> 
+      <td width="37%">用户填写的表单类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select name="postdb[form_type]">
+          <option value="text" {$form_type[text]}>单行文本框</option>
+          <option value="textarea" {$form_type[textarea]}>多行文本框</option>
+          <option value="select" {$form_type[select]}>下拉菜单</option>
+          <option value="radio" {$form_type[radio]}>单选框</option>
+          <option value="checkbox" {$form_type[checkbox]}>复选框</option>
+          <option value="ieedit" {$form_type[ieedit]}>可视化编辑器</option>
+          <option value="upfile" {$form_type[upfile]}>文件上传</option>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单参数选项:<br>
+        (适用下拉菜单/单选框/复选框,每个值换一行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_set]" cols="50" rows="8">$_rs[form_set]</textarea>
+      </td>
+    </tr>
+     
+    <tr> 
+      <td width="37%">表单附注文字:<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_title]" cols="50" rows="5">$_rs[form_title]</textarea>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="fid" value="$fid">
+        <input type="hidden" name="field_name" value="$field_name">
+        <input type="hidden" name="list" value="$_rs[list]">
+        <input type="hidden" name="postdb[orderlist]" value="$_rs[orderlist]">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

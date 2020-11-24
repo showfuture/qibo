@@ -1,0 +1,289 @@
+<!--
+<?php
+$priceColordb["c$price1$price2"]='red';
+$orderColordb["$ordertype"]='red';
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="zone_street_menu">
+<!--
+EOT;
+if($city_id){
+$url=get_info_url('',$fid,$city_id,'','',$TempSearch_array);
+print <<<EOT
+-->
+        <tr> 
+          <td class="zone" id="zone_td"><span id="zone_span_0"><A HREF="$url">{$city_DB[name][$city_id]}</A></span> 
+            <!--
+EOT;
+foreach($zone_DB[name] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$key,'',$TempSearch_array);
+print <<<EOT
+-->
+            <span class="choose" id="zone_span_$key"><A HREF="$url">$value</A></span> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="street" id="street_td"> 
+            <!--
+EOT;
+foreach($street_DB[$zone_id] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$zone_id,$key,$TempSearch_array);
+print <<<EOT
+-->
+            <A id="street_a_$key" HREF="$url">$value</A> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function zone_menu(zone_id){
+	obj=document.getElementById("zone_td").getElementsByTagName("span");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	document.getElementById("zone_span_"+zone_id).className='choose';
+}
+zone_menu("$zone_id");
+function street_menu(street_id){
+	obj=document.getElementById("street_td").getElementsByTagName("a");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	document.getElementById("street_a_"+street_id).className='choose';
+}
+street_menu("$street_id");
+//-->
+</SCRIPT>
+      </table>
+    </td>
+  </tr>
+</table> 
+<div class="maindiv" id=banner1>
+	<a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/ad1.jpg" width="990" height="65" /></a>
+</div>
+<div class="maindiv" id="mainbigsort">
+	<div class="bigsortleft">
+    	<div class="contbox">
+        	<div class="head" style="overflow:hidden;">全部{$fidDB[name]}分类</div>
+            <div class="cont">
+<!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$name){
+$listurl=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <div>  <a href="$listurl">$name</a> </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+        <div class="leftadpic">
+        	<div><a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/l4.gif" width="150" height="50" /></a></div>
+            <div><a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/l5.gif" width="150" height="50" /></a></div>
+            <div><a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/l6.gif" width="150" height="50" /></a></div>
+            <div><a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/l7.gif" width="150" height="50" /></a></div>
+            <div><a href="#" target="_blank"><img src="$webdb[www_url]/images/163k/l8.gif" width="150" height="210" /></a></div>
+        </div>
+    </div>
+    <div class="bigsortcenter">
+    	<div class="helpinfo">
+        	<h4>帮助信息</h4>
+        	1、分类焦点显示要花费{$webdb[AdInfoBigsortShow]}个积分.<br/>
+            2、要想设置显示或取消显示某条信息的话,请进行修改即有相关选项.<br/>
+            3、<a href="$webdb[www_url]/do/jf.php" target="_blank">点击查看如何赚取积分</a>?
+			<div style="text-align:right;padding:2px 10px 0 0;"><a href="$city_url/post.php?fid=$fid&city_id=$city_id&zone_id=$zone_id&street_id=$street_id"><img src="$webdb[www_url]/images/default/btn_post.gif"/></a></div>
+        </div>
+<script language="javascript">
+window.onload=function showtable(){
+var tablename=document.getElementById("mytable");
+var li=tablename.getElementsByTagName("ul");
+var table=tablename.getElementsByTagName("table");
+for (var i=0;i<=li.length;i++){
+		if (i%2==0){
+		  li[i].className="";
+		}else {
+			li[i].className="havebc";
+		}
+		table[i].className="";
+		table[i].onmouseover=function(){
+		this.className="mouseover";
+		}
+		table[i].onmouseout=function(){
+		this.className="";
+		}
+	}
+}
+</script>
+        <div class="bigsortlist" id="mytable">
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+@extract($db->get_one("SELECT content FROM `{$_pre}content_$rs[mid]` where id='$rs[id]'"));
+ $rs[content]=$content;
+ $rs[content]=get_word($rs[content],150);
+ $fidurl=get_info_url('',$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+				<ul>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td>
+                	<div class="line_1">
+                    	<span class="title"><a href="$rs[url]" target="_blank">$rs[title]</a> <a href="$fidurl"><font style="color:#999;font-size:12px;">($rs[fname])</font></a></span>
+                        <span class="posttime"><font color="#999">$rs[username]</font> $rs[posttime] <font color="#666">发布</font></span>
+                    </div>
+                    <div class="content">
+                    	$rs[content]
+                    </div>
+                    <div class="info">
+                    	发布者IP：<font color="#FE8802">$rs[ip]</font>  展示时间：<font color="#FE8802">$rs[showday]</font>天 图片数量：<font color="#FE8802">$rs[picnum]</font>张
+                    </div>
+                        </td>
+                      </tr>
+                    </table>
+                </ul>
+<!--
+EOT;
+}print <<<EOT
+-->				<div class="page" style="padding:5px;">$showpage</div>
+        </div>
+    </div>
+    <div class="bigsortright">
+    	 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rconbox">
+          <tr>
+            <td class="head">最热信息</td>
+           </tr> 
+          <tr>
+            <td class="cont">
+<!--
+EOT;
+$listdb=Get_Info($type='hot',$rows=10,$leng=35,$fid,$mid=0);
+foreach($listdb AS $key=>$rs){
+$rs[title] = get_word($rs[title],25);
+$url=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+			<div>
+                <a href="$url"  target="_blank">$rs[title]</a>
+            </div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rconbox">
+          <tr>
+            <td class="head">最新信息</td>
+           </tr> 
+          <tr>
+            <td class="cont">
+<!--
+EOT;
+$listdb=Get_Info($type='new',$rows=10,$leng=35,$fid,$mid=0);
+foreach($listdb AS $key=>$rs){
+$rs[title] = get_word($rs[title],25);
+$url=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+			<div>
+                <a href="$url"  target="_blank">$rs[title]</a>
+            </div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+         <div class="centbox contact">
+        	<div class="head"><span class="l">联系我们</span></div>
+            <div class="cont">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[Info_contact]);
+print <<<EOT
+-->
+                <div class="phone">电话:$detail[0]</div>
+                <div class="email">邮箱:$detail[1]</div>
+                <div class="msn">MSN:$detail[2]</div>				
+                <div class="qq">QQ:$detail[3]</div>
+            </div>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rconbox">
+          <tr>
+            <td class="head">{$Fid_db[name][$fidDB[fup]]}的所有分类:</td>
+           </tr> 
+          <tr>
+            <td class="cont">
+<!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          	<div><a href="$url" target="_blank">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a></div>            
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rconbox">
+          <tr>
+            <td class="head">城市链接:</td>
+           </tr> 
+          <tr>
+            <td class="cont">
+<!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>7)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <div style="width:70px;height:20px;overflow:hidden;float:left;"><a href="$url" target="_blank">{$city_DB[name][$key]}{$fidDB[name]}</a></div> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="cleardiv"></div>
+</div>
+
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,233 @@
+.Contenainer{
+	width:990px;
+	clear:both;
+}
+.Contenainer .main{
+	width:740px;
+	float:left;
+}
+.Contenainer .side{
+	width:240px;
+	float:right;
+}
+/*
+*
+*/
+.TheTitle{
+	border:#93C37A solid 1px;
+	border-bottom:0;
+	height:30px;
+	line-height:32px;
+	overflow:hidden;
+	text-align:center;
+	background:url(head6.gif) repeat-x;
+	padding:0 15px 0 15px;
+	font-size:14px;
+	font-weight:bold;
+}
+/*
+*
+*/
+.BaseInfo{
+	border:#D3D3D3 solid 1px;
+	border-top:0;
+} 
+.BaseInfo .tdL{
+	width:260px;
+}
+.BaseInfo .tdL .atc{
+	padding:10px 0 5px 15px;
+}
+.BaseInfo .tdL .infopic{
+	padding:0 0 10px 15px;
+}
+.BaseInfo .tdL .infopic .img{
+	width:210px;
+	border:#DDD solid 1px;
+	padding:5px 0 5px 0;
+}
+.BaseInfo .tdL .infopic .img a{
+	display:block;
+	width:200px;
+	height:160px;
+	text-align:center;
+	background:#efefef;
+	margin:auto;
+	overflow:hidden;
+}
+.BaseInfo .tdL .infopic .w{
+	text-align:center;
+	padding:8px 0 5px 0;
+	width:210px;
+}
+.showinfos{
+	padding-top:10px;
+	line-height:20px;
+}
+.minfo{
+	line-height:30px;
+	color:#999;
+}
+.imgbuttons{
+	padding-bottom:15px;
+}
+.imgbuttons .action{
+	line-height:30px;
+	text-align:center;
+}
+.imgbuttons .action a{
+	padding:3px 30px 2px 25px;
+	font-size:14px;
+	font-weight:bold;
+	background:url(atcbg.gif) left -2px no-repeat;
+}
+.imgbuttons .action a.send{
+	background:url(atcbg.gif) left -32px no-repeat;
+}
+.imgbuttons .action a.report{
+	background:url(atcbg.gif) left -66px no-repeat;
+}
+.imgbuttons #sendmsg p{
+	line-height:25px;
+	color:#999;
+}
+
+/*
+*
+*/
+.headL{
+	height:28px;
+	overflow:hidden;
+	background:url(head4.gif) left -5px repeat-x;
+	border-left:#D3D3D3 solid 1px;
+	border-right:#D3D3D3 solid 1px;
+	overflow:hidden;
+	line-height:32px;
+}
+.headL .tag{
+	float:left;
+	padding-left:40px;
+	background:url(tag2.gif) 5px 2px no-repeat;
+	font-weight:bold;
+}
+.headL .more{
+	float:right;
+	padding-right:10px;
+}
+.contents{
+	border:#D3D3D3 solid 1px;
+	padding:10px;
+	line-height:20px;
+	color:#666;
+}
+/*
+*
+*/
+.listcomment{
+	border-top:#DDD dotted 1px;
+	clear:both;
+}
+.listcomment dt{
+	padding:8px 10px 8px 0;
+	float:left;
+}
+.listcomment dd{
+	width:650px;
+	float:left;
+	padding-top:5px;
+}
+.listcomment dd p{
+	line-height:20px;
+	padding-bottom:10px;
+}
+.listcomment dd  div{
+	line-height:20px;
+	text-align:right;
+}
+.listcomment dd  div span{
+	color:#F60;
+}
+.listcomment dd  div em{
+	color:#aaa;
+}
+.showpages{
+	clear:both;
+	line-height:30px;
+}
+.nocomment{
+	clear:both;
+	line-height:50px;
+	text-align:center;
+	font-size:16px;
+	color:#f00;
+}
+.addcomment .tdL{
+	width:100px;
+	line-height:25px;
+	text-align:right;
+}
+.addcomment .tdR{
+	padding-top:3px;
+}
+/*
+*
+*/
+.poster{
+	border:#93C37A solid 1px;
+}
+.poster .head{
+	padding:5px 0 0 10px;
+	height:25px;
+	line-height:25px;
+	font-size:14px;
+	font-weight:bold;
+}
+.poster dl{
+	height:95px;
+	overflow:hidden;
+}
+.poster dl dt{
+	width:100px;
+	text-align:center;
+	float:left;
+	padding-top:5px;
+}
+.poster dl dd{
+	width:135px;
+	float:left;
+	line-height:17px;
+}
+.poster dl dd a{
+	color:#000066;
+	font-weight:bold;
+}
+.poster .showm{
+	padding:5px 0 10px 10px;
+}
+/*
+*
+*/
+.sidecont{
+	border:#93C37A solid 1px;
+	margin-top:10px;
+}
+.sidecont .head{
+	height:30px;
+	overflow:hidden;
+	line-height:33px;
+	padding-left:10px;
+	font-size:14px;
+	font-weight:bold;
+	background:url(head6.gif) repeat-x;
+}
+.sidecont .cont{
+	padding:10px;
+	line-height:22px;
+}
+.sidecont .cont .title{
+	color:#999;
+}
+.sidecont .cont .post{
+	text-align:center;
+	padding-top:5px;
+}

@@ -1,0 +1,88 @@
+<!--
+<?php 
+print <<<EOT
+--> 
+<table width="794" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="100" valign="top" class="Main"> 
+       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="map_art">
+        <tr> 
+          <td class="top"><span class="L">内容管理</span> </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[check]=$rs[yz]?"<A HREF=\"$webdb[www_url]/job.php?job=doyz&yz=0&fid=$rs[fid]&id=$rs[id]\" style=\"color:red;\">已审核</A>":"<A HREF=\"$webdb[www_url]/job.php?job=doyz&yz=1&fid=$rs[fid]&id=$rs[id]\" style=\"color:#999;\">未审核</A>";
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list $rs[cl]">
+              <tr> 
+                <td class="a1"><a href="$rs[url]" target="_blank">$rs[title]</a> 
+                  ({$rs[posttime]}) </td>
+              </tr>
+              <tr> 
+                <td align="right" class="a2" style="padding-top:5px;"><span class="about"> 
+                  栏目:<a href="$rs[Lurl]" target="_blank">$rs[fname]</a> 浏览({$rs[hits]}) 
+                  评论({$rs[comments]})</span> [{$rs[update]}] [{$rs[dotop]}] [{$rs[pop1]}] 
+                  [{$rs[pop2]}] [{$rs[pop3]}] [{$rs[check]}][<a href="$webdb[www_url]/post.php?job=edit&fid=$rs[fid]&id=$rs[id]" target="_blank">修改]</a> 
+                  [<a href="$webdb[www_url]/post.php?action=del&fid=$rs[fid]&id=$rs[id]" onClick="return confirm('你确认要删除吗?不可恢复');" target="_blank">删除</a>]</td>
+              </tr>
+            </table>
+            <!--
+EOT;
+}print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td align="center" class="page">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_num(obj,max){
+	max = parseInt(max);
+	if(isNaN(parseInt(max)))max=10;
+	if(/^[1-9][0-9]*$/.test(obj.value)==false){
+		alert('请输入正整数');
+		obj.value=1;
+	}
+	if(obj.value>max){
+		alert('最大不能超过'+max+'天');
+		obj.value=max;
+	}
+}
+function set_top(url){
+	var msg = '<form name="form1" method="post" action="'+url+'" style="margin:5px;line-height:180%;">置顶：<input type="text" name="TopDay" value="1" onBlur="check_num(this,\'10\')" style="width:30px"> 天<br>注：栏目内置顶每天需要消费积分：<b><font color="#FF0000">1</font></b>个，不可大于<font color="#0000FF">10</font>天。<br><input type="button" onclick="close_layer_msg()" name="Submit2" value="取消"> <input type="submit" name="Submit" value="提交"></form>';
+	$("#body_msg_table").html(msg);
+	show_layer_msg("body_msg_layer");
+}
+function set_buy(url,type){
+	if(type==1){
+		title='首页';
+		content='首页焦点显示每天收费积分<font color="#FF0000">5</font>';
+	}else if(type==2){
+		title='子栏目';
+		content='栏目焦点显示每天收费积分<font color="#FF0000">1</font>';
+	}else if(type==3){
+		title='父分类';
+		content='分类焦点显示每天收费积分<font color="#FF0000">1</font>';
+	}
+	var msg = '<form name="form1" method="post" action="'+url+'" style="margin:5px;line-height:180%;">'+title+'焦点显示：<input type="text" name="ShowDay" value="1" onBlur="check_num(this,\'10\')" style="width:30px"> 天<br>注意：系统规定'+content+'个，不可大于<font color="#0000FF">10</font>天。<br><input type="button" onclick="close_layer_msg()" name="Submit2" value="取消"> <input type="submit" name="Submit" value="提交"></form>';
+	$("#body_msg_table").html(msg);
+	show_layer_msg("body_msg_layer");
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

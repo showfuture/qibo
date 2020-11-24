@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+  <tr>
+    <td class="tdL">新闻标题:</td>
+    <td class="tdR"><input name="title" type="text" id="title" value="$news[title]" size="40" /> (5-30个字之间)</td>
+  </tr>
+  <tr>
+    <td class="tdL">新闻内容:</td>
+    <td class="tdR">
+    	<textarea name="content" id="myEditor" style="width:650px;">$news[content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:300});
+editor_a.render( 'myEditor' );
+</script>
+		<div style="padding:10px 0 5px 0;">新闻内容不能为空，切最多50000字符，包括HTML代码;</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">插入图库里的图片:</td>
+    <td class="tdR">
+<!--include
+EOT;
+//导入绑定图片功能
+require(Mpath.'template/default/bd_pics.htm');
+print <<<EOT
+include-->
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><br/></td>
+    <td class="tdR">
+    	<input name="atn" type="hidden" id="atn" value="$atn" />
+        <input name="step" type="hidden" id="step" value="1" />
+        <input name="uid" type="hidden" id="uid" value="$uid" />
+        <input name="id" type="hidden" id="id" value="$id" />
+        <input type="submit" name="button14" value="提 交"/>
+    </td>
+  </tr>
+</table>
+</form>
+<!--
+EOT;
+?>
+-->

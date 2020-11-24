@@ -1,0 +1,207 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="bigsortPage_listsort">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">{$city_DB[name][$city_id]}{$fidDB[name]}分类</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> 
+            <!--
+EOT;
+foreach($sortDB AS $key=>$rs){
+print <<<EOT
+-->
+            <div class="Lsort">
+              <div class="name"><a href="$rs[url]">$rs[name] &raquo;</a></div>
+              <div class="sortid"> 
+                <!--
+EOT;
+foreach($rs[sortdb] AS $key2=>$value2){
+print <<<EOT
+-->
+                <span>$value2</span> 
+                <!--
+EOT;
+}print <<<EOT
+-->
+              </div>
+            </div>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="bigsortPage_listsort">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">{$city_DB[name][$city_id]}{$fidDB[name]}最新信息</span> 
+            <span class="more" id="showNewSort"> 
+            <!--
+EOT;
+$i=0;
+foreach($Fid_db[$fid] AS $key=>$value){
+$color='';
+if($i++==0){$iframefid=$key;$color="style='color:red;'";}
+print <<<EOT
+-->
+            <a href="#$key" id="newsort$key" onclick="choose_newsort('$key')" $color>$value</a> 
+            <!--
+EOT;
+}print <<<EOT
+-->
+            </span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="bigsortshownewinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=bigsortshownewinfo&city_id=$city_id&iframeID=bigsortshownewinfo&fid=$iframefid" name="bigsortshownewinfo" width=0 height=0></iframe></div>');
+
+function choose_newsort(f){
+	obj=document.getElementById("showNewSort").getElementsByTagName("A");
+	for(i=0;i<obj.length ;i++ ){
+		if('newsort'+f==obj[i].id){
+			obj[i].style.color='red';
+		}else{
+			obj[i].style.color='';
+		}
+	}
+	window.open("$city_url/job.php?job=bigsortshownewinfo&city_id=$city_id&iframeID=bigsortshownewinfo&fid="+f+"&","bigsortshownewinfo");
+}
+//-->
+</SCRIPT></td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">分类焦点</span> 
+            <h3 class="R"></h3>
+            <span class="more" style="float:right;"><a href="javascript:alert('分类焦点显示要花费{$webdb[AdInfoBigsortShow]}个积分,显示 {$webdb[AdInfoShowTime]} 天。要想设置显示或取消显示某条信息的话,请修改信息即可设置')">帮助</a></span> 
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> 
+ 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="side_adinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=adinfo&fid=$fid&rows=$webdb[AdInfoListRow]&leng=$webdb[InfoListLeng]&iframeID=side_adinfo" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">帮助信息</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left" style="line-height:200%;"> 
+            1、分类焦点显示要花费{$webdb[AdInfoBigsortShow]}个积分.要想设置显示或取消显示某条信息的话,请进行修改即有相关选项.<br>
+            3、<a href="$webdb[www_url]/do/jf.php" target="_blank">点击查看如何赚取积分</a>?</td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td align="left">$label[bigsort]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="list_search">
+  <tr> 
+    <td style="padding:4px;"> 
+      <div class="sort"> 
+        <div class="t1">{$city_DB[name][$city_id]}{$Fid_db[name][$fidDB[fup]]}的所有分类:</div>
+        <div class="t2"> 
+          <!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <span><a href="$url" target="_blank">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a> 
+          </span> 
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+        </div>
+      </div>
+      <div class="sort"> 
+        <div class="t1">城市链接:</div>
+        <div class="t2"> 
+          <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>7)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <span><a href="$url" target="_blank">{$city_DB[name][$key]}{$fidDB[name]}</a> 
+          </span> 
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

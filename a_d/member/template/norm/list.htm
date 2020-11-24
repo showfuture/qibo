@@ -1,0 +1,50 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">现有广告位列表</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="30%">广告位名称</th>
+            <th width="15%">售价({$webdb[MoneyName]}/天)</th>
+            <th width="10%">状态</th>
+            <th width="15%">是否需要审核</th>
+            <th width="10%">预览</th>
+            <th width="10%">购买</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+          <tr>
+            <td class="tL">$rs[name]</td>
+            <td>$rs[moneycard]</td>
+            <td>$rs[state]</td>
+            <td>$rs[_ifyz]</td>
+            <td><a href="$rs[demourl]" target="_blank"><img src="$webdb[www_url]/member/images/icon_view.gif"/></a></td>
+            <td><a href="?job=buy&id=$rs[id]" style="color:$rs[color];" onclick="$rs[alert]">购买</a></td>
+          </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div class="Showpage">$showpage</div>
+    </div>
+</div>
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">说明</div></div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1.购买以上广告,需要消费{$webdb[MoneyName]}.</li>
+            <li>2.你当前拥有的{$webdb[MoneyName]}数是:<span class="b red">{$lfjdb[money]}</span>{$webdb[MoneyDW]}，{$webdb[MoneyName]}不足的话，你可以选择在线即时充值
+                  <a href="$webdb[www_url]/member/money.php?job=list"><span class="b red">我要充值</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

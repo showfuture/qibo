@@ -1,0 +1,116 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">创建地区分类</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+       
+      
+      <form action="?lfj=$lfj&action=addsort" method=POST>
+       
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="8%">分类名称</td>
+            <td width="92%">
+              <input type=text name="name" size=50>
+            </td>
+          </tr>
+          <tr>
+            <td width="8%">所属分类</td>
+            <td width="92%">{$sort_fup}(不选择将成为一级分类)</td>
+          </tr>
+          <tr>
+            <td width="8%">&nbsp;</td>
+            <td width="92%">
+              <input type=submit value="创 建" name="submit">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+</table>
+<br>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="?lfj=$lfj&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑地区分类</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">编辑地区分类排序的规则是,数值大的排在前面,只能是同一级的进行排序</font></li>
+        </ul> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td>[<a href="javascript:load_sort_td(1);">只显示一级分类</a>] [<a href="javascript:load_sort_td(10);">显示全部</a>]</td>
+  </tr>
+</table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0"  id='list_sort'>
+          <tr align="center"> 
+            <td width="5%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">FID</td>
+            <td  style="background:#449AE8;color:#fff;border-right:1px solid #fff;" width="64%">编辑地区分类名称</td>
+            <td width="11%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">排序</td>
+            <td width="9%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">设置</td>
+            <td width="11%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="5%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" width="64%" style="border-bottom:1px dotted #ccc;"> 
+              $rs[icon]【{$rs[name]}】<span class='sort_span'></span></td>
+            <td width="11%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="9%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href='?lfj=$lfj&job=editsort&fid=$rs[fid]'><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="11%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delete&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <input type="button" name="Submit2" value="修改栏目排序" onclick="postlist('list')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="?lfj=$lfj&action=editlist";
+	}else{
+		document.formlist.action="?lfj=$lfj&job=batch_edit";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+          <script language="JavaScript" src="images/sort.js"></script>
+          <script language="JavaScript">
+<!--
+load_sort_td(1);
+//-->
+</script>
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

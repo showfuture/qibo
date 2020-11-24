@@ -1,0 +1,138 @@
+<!--
+<?php
+$alipay_partner[$webdb[alipay_service]]='selected';
+$transport[$webdb[alipay_transport]]='selected';
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&action=config">
+    <tr align="center" class="head"> 
+      <td colspan="3" height="19">电子商务设置</td>
+    </tr>
+	
+	<tr> 
+      <td colspan="3" style="background:#eee;">网银在线信息</td>
+    </tr>
+	
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>收款网银在线商户号：</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[chinabank_id]' name='webdbs[chinabank_id]'>
+        (<a href="../do/buymoneycard.php?paytype=chinabank" target="_blank">测试付款充值</a>) 
+        <a href="http://www.chinabank.com.cn/gateway/foropening.html" target="_blank">注册</a> 
+        <a href="https://merchant3.chinabank.com.cn/login.do" target="_blank">登录</a></td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>收款网银在线密钥：</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='40' value='$webdb[chinabank_key]' name='webdbs[chinabank_key]'>
+      </td>
+    </tr>
+	
+    <tr> 
+      <td colspan="3"  style="background:#eee;">易宝信息</td>
+    </tr>
+	
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>收款易宝支付商户编号：</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[yeepay_id]' name='webdbs[yeepay_id]'>
+        (<a href="../do/buymoneycard.php?paytype=yeepay" target="_blank">测试付款充值</a>) 
+        <a href="https://www.yeepay.com/reg.html" target="_blank">注册</a> <a href="https://www.yeepay.com/individualservice/Login.action" target="_blank">登录</a></td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>收款易宝支付商户密钥：</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='text' size='40' value='$webdb[yeepay_key]' name='webdbs[yeepay_key]'>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3"  style="background:#eee;">财付通信息</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF' >收款财付通商户号：</td>
+      <td colspan='2' bgcolor='#FFFFFF'  > 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[tenpay_id]' name='webdbs[tenpay_id]'>
+        (<a href="../do/buymoneycard.php?paytype=tenpay" target="_blank">测试付款充值</a>) 
+        <a href="http://union.tenpay.com/mch/mch_register.shtml?posid=123&actid=84&opid=50&whoid=31&sp_suggestuser=1202267301" target="_blank">注册</a> 
+        <a href="http://mch.tenpay.com/" target="_blank">登录</a></td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF' style="background:#F9F9F9;">收款财付通商户密钥：</td>
+      <td colspan='2' bgcolor='#FFFFFF' style="background:#F9F9F9;"> 
+        <input  class=mmcinb  type='text' size='40' value='$webdb[tenpay_key]' name='webdbs[tenpay_key]'>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="3"  style="background:#eee;">支付宝信息</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>收款支付宝帐号：</td>
+      <td colspan='2'> 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[alipay_id]' name='webdbs[alipay_id]'>
+        (<a href="../do/buymoneycard.php?paytype=alipay" target="_blank">测试付款充值</a>) 
+        <a href="https://www.alipay.com/user/user_register.htm" target="_blank">注册</a> 
+        <a href="https://www.alipay.com/" target="_blank">登录</a></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>交易安全校验码（key）:</td>
+      <td colspan='2'> 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[alipay_key]' name='webdbs[alipay_key]'>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>合作者身份（partnerID）：</td>
+      <td colspan='2'> 
+        <input  class=mmcinb  type='text' size='30' value='$webdb[alipay_partner]' name='webdbs[alipay_partner]'>
+        <a href="https://www.alipay.com/himalayas/practicality_customer.htm?customer_external_id=C4335324344127901113&market_type=from_agent_contract&pro_codes=26A533A9D11BD074727C1991119AA03E" target="_blank" style="color:#03F">签约地址</a>(您可以通过注册获得一个支付宝的合作者身份ID，拥有该ID，您可以在支付宝网站上查询到该ID产生的所有交易历史</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>接口类型</td>
+      <td colspan='2'>
+        <select name="webdbs[alipay_service]">
+		  <option value="create_direct_pay_by_user" $alipay_partner[create_direct_pay_by_user]>即时到账</option>
+          <option value="create_partner_trade_by_buyer" $alipay_partner[create_partner_trade_by_buyer]>纯担保交易</option>
+          <option value="trade_create_by_buyer" $alipay_partner[trade_create_by_buyer]>标准实物</option>
+          
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:none;"> 
+      <td width='28%'>提交方式</td>
+      <td colspan='2'>
+        <select name="webdbs[alipay_transport]">
+          <option value="https" $transport[https]>https</option>
+          <option value="http" $transport[http]>http</option>
+        </select>
+      </td>
+    </tr>
+    
+    
+    <tr> 
+      <td colspan="3"  style="background:#eee;">充值人民币兑换比例设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>每充值一块钱,可得{$webdb[MoneyName]}多少{$webdb[MoneyDW]}:</td>
+      <td colspan='2'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[alipay_scale]' name='webdbs[alipay_scale]'>
+        {$webdb[MoneyDW]}</td>
+    </tr>
+     <tr bgcolor="#FFFFFF"> 
+      <td width='28%'>促销政策,每充值10块钱,可赠送{$webdb[MoneyName]}多少{$webdb[MoneyDW]}:<span help=1>这是一种促销手段,比如每充值10块钱赠送1个{$webdb[MoneyName]},以此类推,每充值50块钱即可赠送5个{$webdb[MoneyName]},不足10的倍数,比如39块钱,那只能赠送相当于30块钱的数量3个</span></td>
+      <td colspan='2'> 
+        <input  class=mmcinb  type='text' size='10' value='$webdb[alipay_give_scale]' name='webdbs[alipay_give_scale]'>
+        {$webdb[MoneyDW]} (每次充值越多,赠送就越多)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">&nbsp;</td>
+      <td width="73%"> 
+        <input type="submit" name="Submit" value="修改">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

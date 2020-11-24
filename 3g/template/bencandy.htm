@@ -1,0 +1,35 @@
+<!--<?php
+$pic_html=$rsdb[picurl]?"<div class=\"showPic\"><img src=\"$rsdb[picurl]\" width=\"300\" /></div>":"";
+print <<<EOT
+-->
+<div class="ListSortCont">  
+	<h3><a href="index.php">首页</a>{$guides}</h3>
+    <h4>$rsdb[title]</h4>
+    <div class="BenInfo">
+    	发布时间:{$rsdb[posttime]}　关注度:{$rsdb[hits]}次
+    </div>
+    <div class="BenContent">
+    	$showmoreconts
+        $pic_html
+    </div>
+    <h3>更多信息</h3>
+    <ul>
+<!--
+EOT;
+$sorlists=GetInfos("id",$fidDB[fup],$city_id,10);
+foreach($sorlists AS $keys=>$rss){
+$listtitle=get_word($rss[title],40);
+print <<<EOT
+-->
+			<li><a href="list.php?fid=$rss[fid]" class="f">[{$rss[fname]}]</a><a href="bencandy.php?fid=$rss[fid]&id=$rss[id]" title="$rss[title]">{$listtitle}</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </ul>
+</div>
+<!--
+EOT;
+?>
+-->

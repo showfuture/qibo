@@ -1,0 +1,41 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+<div class="MainCont mtop10">
+	<div class="head">
+    <div class="tag">以下是你最近积累的注册用户:</div>
+  </div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="40%">注册用户</th>
+            <th width="20%">来源地</th>
+            <th width="15%">访问时间</th>
+            <th width="25%">来源网址</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr>
+            
+        <td class="tL">$rs[ip] <a href="homepage.php?uid=$rs[newuid]" target="_blank">$rs[username]</a></td>
+            <td>$rs[ipfrom]</td>
+            <td>$rs[posttime]</td>
+            <td><input type="text" name="textfield2" value="$rs[fromurl]" onclick="if(this.value!='')window.open('$rs[fromurl]');"></td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </table>
+</div>
+</div>
+<!--
+EOT;
+?>
+-->

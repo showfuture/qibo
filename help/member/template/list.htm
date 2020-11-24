@@ -1,0 +1,49 @@
+<!--
+<?php
+$city_DB[name][0]='全国';
+print <<<EOT
+-->
+<div class="MainCont">
+	<div class="head"><div class="tag">文章管理</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="35%">标 题</th>
+            <th width="15%">栏 目</th>
+            <th width="15%">日期</th>
+            <th width="10%">署名</th>
+            <th width="15%">状态</th>
+            <th width="10%">修改/删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$titles=get_word($rs[title],30);
+print <<<EOT
+-->
+          <tr>
+            <td class="tL">
+            {$rs[id]}、<a href="$Mdomain/bencandy.php?fid=$rs[fid]&id=$rs[id]" target="_blank" title="所属城市:{$city_DB[name][$rs[city_id]]}" style="color:$rs[titlecolor];">$rs[title]</a>
+            </td>
+            <td><a href="$Mdomain/list.php?fid=$rs[fid]" target="_blank">$rs[fname]</a></td>
+            <td>$rs[posttime]</td>
+            <td>$rs[username]</td>
+            <td>$rs[state]/$rs[levels]</td>
+            <td>
+            	<a href="post.php?job=edit&fid=$rs[fid]&id=$rs[id]&rid=$rs[rid]">修改</a>/<a href="post.php?action=del&fid=$rs[fid]&id=$rs[id]&rid=$rs[rid]" onclick="return confirm('你确认要删除吗?不可恢复');">删除</a>
+            </td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

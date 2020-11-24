@@ -1,0 +1,60 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&action=replace">
+    <tr  class="head"> 
+      <td>请选择要替换哪个字段的内容:</td>
+    </tr>
+   
+    <!--
+EOT;
+foreach($m_config[field_db] AS $key=>$rs){
+print <<<EOT
+-->
+    <tr  bgcolor="#FFFFFF"> 
+      <td style="padding-left:10em;"> 
+        <input type="checkbox" name="field_db[]" value="{$key}">
+        <a href="$admin_path&job=choose&mid=$key">$rs[title]</a> <font color="#666666">({$key})</font></td>
+    </tr>
+    
+    <!--
+EOT;
+}
+print <<<EOT
+--> <tr  bgcolor="#FFFFFF"> 
+      <td style="padding-left:10em;"> 原字符 
+        <textarea name="atc_oldword" cols="80" rows="5"></textarea>
+        <br>
+        新字符 
+        <textarea name="atc_newword" cols="80" rows="5"></textarea>
+         </td>
+    </tr><tr  bgcolor="#FFFFFF">
+      <td style="padding-left:10em;">
+        <input type="submit" name="Submit" value="开始替换">
+        <input type="hidden" name="mid" value="$mid">
+        <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+      </td>
+    </tr>
+  </form>
+</table><SCRIPT LANGUAGE="JavaScript">
+<!--
+ 
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

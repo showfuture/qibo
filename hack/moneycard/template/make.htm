@@ -1,0 +1,55 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&action=make">
+    <tr align="center" class="head"> 
+      <td colspan="2" height="19">批量创建充值卡</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">每张充值卡的面值为:</td>
+      <td width="73%"> 
+        <input type="text" name="atc_rmb" size="7">
+        元(整数)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">每张充值卡里包含{$webdb[MoneyName]}:</td>
+      <td width="73%"> 
+        <input type="text" name="atc_mcard" size="7">
+        {$webdb[MoneyDW]}(整数)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">充值卡密码位数:</td>
+      <td width="73%"> 
+        <input type="text" name="atc_leng" size="5">
+        位(整数,建议16位即可)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">充值卡密码类型:</td>
+      <td width="73%"> 
+        <input type="radio" name="atc_type" value="1" checked>
+        纯数字 
+        <input type="radio" name="atc_type" value="2">
+        纯字母 
+        <input type="radio" name="atc_type" value="3">
+        数字+字母</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">要创建多少张充值卡:</td>
+      <td width="73%">
+        <input type="text" name="atc_num" size="5">
+        张(整数)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="27%" align="center">&nbsp;</td>
+      <td width="73%">
+        <input type="submit" name="Submit" value="创建">
+      </td>
+    </tr>
+  </form>
+</table> 
+<!--
+EOT;
+?>
+-->

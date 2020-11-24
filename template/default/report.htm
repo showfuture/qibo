@@ -1,0 +1,80 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG"><a >TOP</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable">
+              <form name="form1" method="post" action="">
+                <tr align="center"> 
+                  <td colspan="2">举报信息</td>
+                </tr>
+                <tr align="left"> 
+                  <td colspan="2">&nbsp;</td>
+                </tr>
+                
+                <tr> 
+                  <td width="21%" height="23">性质:</td>
+                  <td width="79%" height="23"> 
+				  
+<!--
+EOT;
+foreach($report_type AS $key=>$value){
+print <<<EOT
+-->
+                    <input type="radio" name="type" value="$key" $typedb[$key]  >
+                    $value
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                     </td>
+                </tr>
+                <tr> 
+                  <td width="21%">附注:</td>
+                  <td width="79%"> 
+                    <textarea name="content" cols="50" rows="5"></textarea>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="21%">&nbsp;</td>
+                  <td width="79%"> 
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="step" value="2">
+                    <input type="hidden" name="id" value="$id">
+                    <input type="hidden" name="fid" value="$fid">
+                  </td>
+                </tr>
+              </form>
+            </table>
+             
+             </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+ 
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

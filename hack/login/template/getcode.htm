@@ -1,0 +1,40 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23"><font color="#FFFFFF">演示效果如下:</font></td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td style="padding:30px;"> 
+      <!--
+EOT;
+if($styletype==1){print <<<EOT
+-->
+      <div style="width:230px;padding:4px;border:1px solid #ccc;"> 
+        <script language="JavaScript" src="$webdb[www_url]/do/hack.php?hack=login&job=js&styletype=$styletype"></script>
+      </div>
+      <!--
+EOT;
+}else{print <<<EOT
+-->
+      <div style="height:30px;padding:4px;border:1px solid #ccc;"> 
+        <script language="JavaScript" src="$webdb[www_url]/do/hack.php?hack=login&job=js&styletype=$styletype"></script>
+      </div>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td style="padding:20px;" align="center"> 
+      <input type="button" name="Submit22" value="点击返回" onClick="window.location=('index.php?lfj=$lfj&hack=$hack&job=list')">
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,80 @@
+<!--
+<?php
+print <<<EOT
+-->
+ <form name="form_work" method="post" action="$admin_path&action=del">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+    <tr align="center" class="head"> 
+      <td width="6%">ID</td>
+      <td width="28%">标 题</td>
+	  <td width="10%">所在城市</td>
+      <td width="10%">发布者</td>
+      <td width="11%">所在栏目</td>
+      <td width="4%">点击</td>
+      <td>最后更新日期</td>
+      <td width="10%">取消定时</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center">$rs[id]</td>
+      <td > 
+        <input type="checkbox" name="ids[{$rs[id]}]" value="$rs[id]">
+        <a href="$rs[url]" target='_blank'  style="color:$rs[titlecolor];">$rs[title]</a> 
+        </td>
+	  <td align="center">$rs[city]</td>		
+      <td align="center"><a href="$admin_path&job=$job&type=username&keyword=$rs[username]">$rs[username]</a></td>
+      <td align="center"><a href="$admin_path&job=list&fid=$rs[fid]">$rs[fname]</a></td>
+      <td align="center">$rs[hits]</td>
+      <td align="center">$rs[posttime]</td>
+      <td align="center"><a href="$admin_path&amp;action=del&amp;id=$rs[id]">取消定时</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> {$showpage}</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a>
+      <input type="submit" name="Submit3" value="删除"  ></td>
+    </tr>
+  
+</table></form><table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head" align="left"> 
+      
+    <td colspan="2">帮助说明:</td>
+    </tr>
+  <tr>
+    <td>1、刷新，即代表更新信息的发布日期为当前日期，刷新后会排在当前栏目的前面。<br />
+      2、有两种方式进行刷新：一种就是这里重点讲解的系统定时自动刷新，另一种是手工点击立即刷新。<br />
+      3、系统定时自动刷新分类信息的时间可以自由设置刷新时刻，每天就会在这个时刻之后自动进行刷新一次。<br />
+    4、不同的用户组具有不同的刷新条数限制。<br />
+    5、系统出于效率考虑，刷新的原理是当网站有人访问的时候，才去执行相关操作，也就是说刷新的时刻一般会稍晚于设置的时刻，而不可能刚刚好那个时刻。</td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+ 
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+<!--
+EOT;
+?>
+-->

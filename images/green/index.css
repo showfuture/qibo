@@ -1,0 +1,508 @@
+.Container{
+	clear:both;
+	width:990px;
+	position:relative;	
+}
+.Container .side{
+	width:165px;
+	float:left;
+}
+.Container .main{
+	width:815px;
+	float:right;
+	padding-top:10px;
+}
+/*
+*类目样式
+*/
+.showsorts{
+	border:#66A630 solid 1px;
+	background:#F2FAED;
+}
+.showsorts .head{
+	width:165px;
+	height:49px;
+	position:absolute;
+	background:url(shead.gif) no-repeat;
+	left:0px;
+	top:-48px;
+	z-index:1000;
+	text-align:center;
+	line-height:40px;
+	color:#3D8400;
+	font-size:14px;
+	font-weight:bold;
+}
+.showsorts .cont dl{
+	position:relative;
+	background:url(dlbg.gif) no-repeat;
+}
+.showsorts .cont dl.ck{
+	background:url(dlck.gif) no-repeat;
+}
+.showsorts .cont dl dt{
+	height:32px;
+	line-height:32px;
+	overflow:hidden;
+	padding-left:32px;
+}
+.showsorts .cont dl dt.dt1{
+	background:url(bsort.gif) 8px -1px no-repeat;
+}
+.showsorts .cont dl dt.dt2{
+	background:url(bsort.gif) 8px -30px no-repeat;
+}
+.showsorts .cont dl dt.dt3{
+	background:url(bsort.gif) 8px -61px no-repeat;
+}
+.showsorts .cont dl dt.dt4{
+	background:url(bsort.gif) 8px -92px no-repeat;
+}
+.showsorts .cont dl dt.dt5{
+	background:url(bsort.gif) 8px -125px no-repeat;
+}
+.showsorts .cont dl dt.dt6{
+	background:url(bsort.gif) 8px -161px no-repeat;
+}
+.showsorts .cont dl dt.dt7{
+	background:url(bsort.gif) 8px -192px no-repeat;
+}
+.showsorts .cont dl dt.dt8{
+	background:url(bsort.gif) 8px -221px no-repeat;
+}
+.showsorts .cont dl dt.dt9{
+	background:url(bsort.gif) 8px -253px no-repeat;
+}
+.showsorts .cont dl dt.dt10{
+	background:url(bsort.gif) 8px -285px no-repeat;
+}
+.showsorts .cont dl dt.dt11{
+	background:url(bsort.gif) 8px -316px no-repeat;
+}
+.showsorts .cont dl dt a{
+	color:#3D8400;
+	font-size:14px;
+	font-weight:bold;
+}
+.showsorts .cont dl dd{
+	display:none;
+}
+.showsorts .cont dl.ck dd{
+	display:block;
+	width:250px;
+	position:absolute;
+	padding-bottom:5px;
+	left:163px;
+	top:0;
+	z-index:1000;
+	background:url(ddbg.gif) left bottom no-repeat;
+}
+.showsorts .cont dl.ck dd div.c{
+	background:url(ddbg.gif) left top no-repeat;
+	padding:8px 10px 3px 15px;
+	line-height:23px;
+	word-spacing:8px;
+}
+.showsorts .cont dl.ck dd div.c div{
+	background:url(msort.gif);
+}
+.showsorts .cont dl.ck dd div.c div a{
+	color:#666;
+}
+.showsorts .cont .allsort{
+	height:35px;
+	line-height:35px;
+	padding-left:15px;
+	background:#EEFFBA;
+}
+.showsorts .cont .allsort a{
+	color:#444;
+}
+/*
+*sidelad
+*/
+.sidelad{
+	width:165px;
+	overflow:hidden;
+	text-align:center;
+	margin:10px auto;
+}
+/*
+*sidewordad
+*/
+.sidewordad,.bmservers,.contact{
+	border:#d3d3d3 solid 1px;
+}
+.sidewordad .head,.bmservers .head,.contact .head{
+	height:31px;
+	line-height:31px;
+	border:#FFF solid 1px;
+	background:url(head3.gif) repeat-x;
+	padding-left:15px;
+	font-size:14px;
+	font-weight:bold;
+	color:#2A490F;
+}
+.sidewordad .cont{
+	padding-top:10px;
+}
+.sidewordad .cont .list{
+	height:38px;
+	padding:0 20px 0 25px;
+	line-height:30px;
+	background:url(wadbg.gif) center top no-repeat;
+	overflow:hidden;
+}
+.sidewordad .cont .list a{
+	font-size:14px;
+	color:red;
+}
+.bmservers .cont{
+	padding:10px 5px 5px 5px;
+}
+.bmservers .cont .list{
+	width:50%;
+	height:22px;
+	line-height:22px;
+	text-align:center;
+	overflow:hidden;
+	float:left;
+}	
+.contact .cont{
+	padding:10px;
+	line-height:22px;
+}
+.contact .cont div{
+	padding-left:20px;
+	height:22px;
+	overflow:hidden;
+	color:#333;
+}
+.contact .cont div.tel{
+	background:url(icon.gif) no-repeat;
+}
+.contact .cont div.email{
+	background:url(icon.gif) left -22px no-repeat;
+}
+.contact .cont div.msn{
+	background:url(icon.gif) left -44px no-repeat;
+}
+.contact .cont div.qq{
+	background:url(icon.gif) left -65px no-repeat;
+}
+/*
+*BaseInfo
+*/
+.BaseInfo{
+	height:290px;
+	overflow:hidden;
+	margin-bottom:10px;
+}
+/*
+*幻灯片样式
+*/
+.ShowSlides{
+	width:508px;
+	height:288px;
+	border:#D5D5D5 solid 1px;
+	float:left;
+}
+.ShowSlides .showpic{
+	width:380px;
+	height:278px;
+	overflow:hidden;
+	padding-top:10px;
+	border-right:#D5D5D5 solid 1px;
+	float:left;
+}
+.ShowSlides .showpic a{
+	display:block;
+	text-align:center;
+}
+.ShowSlides .showpic a.a_jimg{
+	width:360px;
+	height:245px;
+	background:#efefef;
+	overflow:hidden;
+	margin:auto;
+}
+.ShowSlides .showpic a.a_jimg img{
+	height:245px;
+}
+.ShowSlides .showpic a.a_jimg1{
+	height:20px;
+	overflow:hidden;
+	line-height:20px;
+	padding-top:5px;
+	color:#3D8400;
+}
+.ShowSlides .showlist{
+	width:127px;
+	height:287px;
+	overflow:hidden;
+	float:left;
+}
+.ShowSlides .showlist div{
+	height:79px;
+	text-align:center;
+	padding-top:16px;
+	border-bottom:#D5d5d5 solid 1px;
+	FILTER: alpha(opacity=50);
+	opacity: 0.5;
+}
+.ShowSlides .showlist div.on{
+	background:url(ckimg.gif) center 6px no-repeat;
+	FILTER: alpha(opacity=100);
+	opacity: 1;
+}
+/*
+*最新消息
+*/
+.Newestcont{
+	width:293px;
+	height:193px;
+	border:#d5d5d5 solid 1px;
+	float:right;
+	margin-bottom:10px;
+}
+.Newestcont .head{
+	height:30px;
+	line-height:30px;
+	background:url(head1.gif) center 1px no-repeat;
+	padding:5px 0 0 25px;
+	font-size:14px;
+	font-weight:bold;
+	color:#2A490F;
+}
+.Newestcont .cont .list{
+	height:21px;
+	line-height:21px;
+	padding:0 10px 0 25px;
+	overflow:hidden;
+	background:url(array.gif) 15px 8px no-repeat;
+}
+.Newestcont .cont .list a{
+	display:block;
+	width:170px;
+	float:left;
+}
+.Newestcont .cont .list span{
+	float:right;
+	color:#aaa;
+}
+
+.TopInfo{
+	width:293px;
+	height:83px;
+	border:#d5d5d5 solid 1px;
+	float:right;
+	overflow:hidden;
+}
+.TopInfo .head{
+	width:14px;
+	height:70px;
+	float:left;
+	padding:13px 3px 0 3px;
+	text-align:center;
+	background:url(head2.gif);
+	color:#FFF;
+}
+.TopInfo .cont{
+	width:260px;
+	float:left;
+	padding:7px 0 0 5px;
+}
+.TopInfo .cont .list{
+	height:18px;
+	line-height:18px;
+	padding-left:15px;
+	background:url(pointer.gif) 5px 8px no-repeat;
+}
+
+/*
+*ShowCompany
+*/
+.ShowCompany{
+	border:#d3d3d3 solid 1px;
+	background:url(companybg.gif) repeat-x;
+	height:330px;
+	overflow:hidden;
+}
+.ShowCompany .head{
+	height:40px;
+	overflow:hidden;
+}
+.ShowCompany .head .tag{
+	float:left;
+	padding-left:55px;
+	line-height:40px;
+	font-size:14px;
+	font-weight:bold;
+	background:url(tag1.gif) 15px 3px no-repeat;
+	color:#2A490F;
+}
+.ShowCompany .head .more{
+	float:right;
+	padding:5px 10px 0 0;
+}
+.ShowCompany .cont{
+	width:790px;
+	height:270px;
+	padding:10px 0 0 10px;
+	overflow:hidden;
+}
+.ShowCompany .cont dl{
+	width:395px;
+	height:90px;
+	border-bottom:#d3d3d3 dotted 1px;
+	overflow:hidden;
+	float:left;
+}
+.ShowCompany .cont dl dt{
+	float:left;
+	padding:6px 10px 0 5px;
+}
+.ShowCompany .cont dl dt a{
+	display:block;
+	width:100px;
+	height:75px;
+	border:#d3d3d3 solid 1px;
+	text-align:center;
+	background:#efefef;
+	overflow:hidden;
+}
+.ShowCompany .cont dl dd{
+	float:left;
+	width:260px;
+}
+.ShowCompany .cont dl dd div{
+	height:35px;
+	line-height:35px;
+	overflow:hidden;
+	font-weight:bold;
+}
+.ShowCompany .cont dl dd p{
+	height:40px;
+	overflow:hidden;
+	line-height:20px;
+	overflow:hidden;
+	color:#555;
+}
+.rightmainad{
+	width:815px;
+	overflow:hidden;
+	text-align:center;
+	margin:10px auto;
+}
+.ShowMoreSide{
+	width:825px;
+	height:300px;
+	overflow:hidden;
+	margin-right:-10px;
+}
+.sidecont{
+	width:265px;
+	height:300px;
+	overflow:hidden;
+	padding-right:10px;
+	float:left;
+}
+.sidecont .head{
+	border:#D3D3D3 solid 1px;
+	height:33px;
+	overflow:hidden;
+	background:url(head4.gif) repeat-x;
+	line-height:35px;
+}
+.sidecont .head .tag{
+	float:left;
+	padding-left:40px;
+	background:url(tag2.gif) 5px 7px no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#2A490F;
+}
+.sidecont .head .more{
+	float:right;
+	padding-right:10px;
+	word-spacing:20px;	
+}
+.sidecont .head .more .post{
+	color:#f00;
+}
+.sidecont .cont{
+	border:#D3D3D3 solid 1px;
+	border-top:0;
+	height:249px;
+	padding:10px 5px 5px 5px;
+	overflow:hidden;
+}
+.sidecont .cont div{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	background:url(lista.gif) repeat-x;
+}
+.sidecont .cont div.listb{
+	background:url(listb.gif) repeat-x;
+}
+.sidecont .cont div a{
+	float:left;
+	padding-left:12px;
+	background:url(array.gif) 5px 10px no-repeat;
+}
+/*
+*showrightmad
+*/
+.showrightmad{
+ 	width:830px;
+	height:60px;
+	overflow:hidden;
+	margin:10px -15px 10px 0;
+}
+.showrightmad .listad{
+	width:265px;
+	height:60px;
+	float:left;
+	padding-right:10px;
+	overflow:hidden;
+}
+/*
+*Dbanner
+*/
+.Dbanner{
+	width:990px;
+	overflow:hidden;
+	margin:10px auto;
+	text-align:center;
+}
+/*
+*FrendLink
+*/
+.FrendLink{
+	border:#d3d3d3 solid 1px;
+}
+.FrendLink .head{
+	height:32px;
+	line-height:32px;
+	overflow:hidden;
+	background:url(head3.gif) repeat-x;
+}
+.FrendLink .head .tag{
+	float:left;
+	padding-left:10px;
+	font-size:14px;
+	font-weight:bold;
+	color:#2A490F;
+}
+.FrendLink .head .more{
+	float:right;
+	padding-right:10px;
+}
+.FrendLink .cont{
+	padding:10px;
+}
+.FrendLink .cont .wordfriendlink{
+	padding-top:5px;
+	line-height:20px;
+}

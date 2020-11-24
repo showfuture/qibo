@@ -1,0 +1,284 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<style type="text/css">
+.showarea{
+	height:25px;
+	line-height:25px;
+	padding:0 5px 0 10px;
+	overflow:hidden;
+	color:#999;
+}
+.showarea div{
+	float:left;
+}
+.showarea div.select{
+	padding:3px 5px 0 0;
+}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="150" valign="top" class="Main"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td id="allcitytoptable">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+              <tr>
+                <td><!--
+EOT;
+if($_COOKIE[From_City]){
+print <<<EOT
+-->
+                  <div class="goto"><a href="{$city_DB[url][$_COOKIE[From_City]]}">进入<font color="#FFFF00">{$city_DB[name][$_COOKIE[From_City]]}</font>分类信息</a></div>
+           <div class="ti">提示:系统判断出你所在城市是:{$city_DB[name][$_COOKIE[From_City]]}</div>
+<!--
+EOT;
+}elseif($city_id){
+print <<<EOT
+-->
+<div class="goto"><a href="{$city_DB[url][$city_id]}">进入{$city_DB[name][$city_id]}分类信息</a></div>			<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<div class="goto"><a>请选择一个城市</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                </td>
+              </tr>
+            </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="t2">
+              <tr>
+                <td><b>免费：</b>浏览、发布全免费<br>
+                  <b>简单：</b>10秒注册，30秒完成信息发布，简单快捷！<br>
+                  <b>真实：</b>人工审核信息内容，与虚假违规信息说：不！<br>
+                  <b>本地：</b>百闻不如一见，当面交易更放心<br>
+                  <b>海量：</b>数十万信息涵盖生活的方方面面</td>
+              </tr>
+            </table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="t3">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+  </tr>
+</table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;" class="hotcity">
+        <tr> 
+          <td width="69%"> <b><font color="#FF0000">推荐城市:</font></b> 
+            <!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key2=>$value2){
+if(!$key2||++$i>7)break;
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}">$value2</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+          <td width="31%" align="right">请选择一个城市↓</td>
+        </tr>
+      </table>
+      <div class="showarea">
+	<div>按省份查找城市：</div>
+    <div class="select">
+    	<select name="areaid" class="areaids">
+<!--
+EOT;
+foreach($area_DB[name] AS $keys=>$values){
+$selecteds = $areaids==$keys?"selected=\"selected\"":"";
+print <<<EOT
+-->
+		<option value="$keys" $selecteds>$values</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </select>
+    </div>
+    <div class="select">
+    	<select name="cityid" class="cityids">
+          <option value="0">请选择城市</option>
+        </select>
+    </div>
+    <div style="padding:2px 0 0 10px;">
+    	<input type="button" class="GotoCity" value="确定" /> 
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".areaids").change(function(){
+		var areaid = $(this).val();
+		List_citys(areaid,0);
+	});	
+	$(".GotoCity").click(function(){
+		var cityid = $(".cityids").val();
+		window.location = "?job=jump&choose_cityID="+cityid;
+	});	
+	List_citys($areaids,$city_id);
+});
+function List_citys(areaid,cityid){
+	$.get("?show=citys&areaid="+areaid+"&cityid="+cityid+"&"+Math.random(),function(d){
+		$(".cityids").html(d);
+	});
+}
+</script>
+<!--
+EOT;
+if($webdb[Info_allcityType]==1){
+print <<<EOT
+-->
+      <table width="99%" border="0" cellspacing="1" cellpadding="3" class="dragTable">
+        <tr align="left" height="18" class='head' > 
+          <td style="line-height:180%;">城市列表: 
+            <!--
+EOT;
+foreach($listdb AS $key=>$array){
+print <<<EOT
+-->
+            &nbsp;<a href="#$key">{$key}</a> 
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+  
+        <tr  style="line-height:150%;"> 
+          <td align="left" style="border-bottom:1px dotted #ccc;">
+		        <!--
+EOT;
+foreach($listdb AS $key=>$array){
+print <<<EOT
+-->
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
+  <tr>
+                <td style="background:#F6F6F6;line-height:170%;" align="center"><b><a name='$key'></a><font color="#0000FF">$key</font></b></td>
+  </tr>
+  <tr>
+                <td> 
+                  <!--
+EOT;
+foreach($array AS $key2=>$rs){
+$color=$rs[hits]?'color:red;':'';
+print <<<EOT
+-->
+                  &nbsp;<a href="{$city_DB[url][$rs[fid]]}" style="font-size:15px;$color">{$rs[name]}</a>&nbsp;&nbsp; 
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                </td>
+  </tr>
+</table>
+
+   <!--
+EOT;
+}print <<<EOT
+--> </td>
+        </tr>
+      
+      </table><!--
+EOT;
+}else{
+print <<<EOT
+-->
+<!--
+EOT;
+foreach($area_DB[name] AS $key=>$value){
+print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="allcity">
+        <tr> 
+          <td class="L">$value</td>
+          <td class="R"> 
+            <!--
+EOT;
+foreach($city_DB[$key] AS $key2=>$value2){
+$color=$city_DB[hits][$key2]?'color:red;':'';
+print <<<EOT
+-->
+            <a href="{$city_DB[url][$key2]}" style="$color">$value2</a> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+          </td>
+        </tr>
+      </table>
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:10px;" class="MainTable">
+  <tr> 
+    <td height="40" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">友情链接</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="imgfriendlink"> 
+              <!--
+EOT;
+foreach($friendlinkDB[1] AS $key=>$rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target=_blank><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="88" height="31" border=0></A> 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+            <div class="wordfriendlink"> 
+              <!--
+EOT;
+foreach($friendlinkDB[0] AS $key=>$rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A>&nbsp; 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

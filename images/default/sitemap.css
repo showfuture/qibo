@@ -1,0 +1,44 @@
+.SideConts{
+	clear:both;
+	margin-top:15px;
+}
+.SideConts .head{
+	height:30px;
+	border:#ABBBED solid 1px;
+	background:url(post_bt.gif) left bottom repeat-x;
+}
+.SideConts .head .tag{
+	float:left;
+	padding:9px 0 0 15px;
+	font-size:14px;
+	font-weight:bold;
+	color:#3F5AAE;
+}
+.SideConts .cont{
+	padding:5px 0 0 0;
+	line-height:25px;
+}
+.SideConts .cont table.h_dotted{
+	border-top:#DDD dotted 1px;
+}
+.SideConts .cont .bigsort{
+	width:105px;
+	padding:10px 0 10px 0;
+	background:url(bigsort.gif) left 9px no-repeat;
+}
+.SideConts .cont .bigsort a{
+	display:block;
+	height:25px;
+	overflow:hidden;
+	padding:0 15px 0 10px;
+	font-weight:bold;
+	color:#666;
+}
+.SideConts .cont .minsort{
+	padding:8px 0 5px 0;
+	word-spacing:5px;
+	color:#aaa;
+}
+.SideConts .cont .minsort a{
+	color:#666;
+}

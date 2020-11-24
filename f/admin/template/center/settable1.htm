@@ -1,0 +1,242 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script language="JavaScript" src="images/scriptaculous/prototype.js"></script>
+<script language="JavaScript" src="images/scriptaculous/scriptaculous.js"></script>
+<style type="text/css">
+.tablewidth .head{
+	padding:0;
+	line-height:25px;
+	text-align:center;
+	word-spacing:20px;
+	font-weight:bold;
+}
+.tablewidth .head a{
+	color:#FFF;
+}
+.tablewidth .cont{
+	padding:10px;
+}
+.ShowListTable{
+	border-top:#DDD solid 1px;
+	border-left:#DDD solid 1px;
+}
+.ShowListTable td{
+	border-right:#DDD solid 1px;
+	border-bottom:#DDD solid 1px;
+}
+.ShowListTable td{
+	padding:10px;
+	vertical-align:top;
+}
+.ShowListTable td h3{
+	text-align:center;
+	line-height:25px;
+	border:#DDD solid 1px;
+	background:#EFEFEF;
+	padding:0;
+	margin:0;
+	color:red;
+}
+.ShowListTable td dl{
+	padding:0;
+	margin:5px auto 0 auto;
+	border:#DDD solid 1px;
+	cursor:move;
+}
+.ShowListTable td dl dt{
+	margin:0;
+	padding:0 0 0 10px;
+	line-height:22px;
+	border-bottom:#DDD solid 1px;
+	background:#EFEFEF;
+	font-weight:bold;
+}
+.ShowListTable td dl dd{
+	margin:0;
+	padding:5px 10px 5px 15px;
+	line-height:18px;
+	color:#666;
+}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablewidth">
+  <tr>
+    <td class="head">
+    	<a href="$admin_path&job=settable">四列布局设置</a>
+        <a href="$admin_path&job=settable1">五列布局设置</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="cont">
+    	<form name="sort_layout_form" method="post" action="$admin_path&action=settable1" id="sort_layout_form">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowListTable">
+          <tr>
+            <td width="20%" id="ListTd1" class="ListTd">
+            	<h3>第1列</h3>
+<!--
+EOT;
+foreach($layout[0] AS $fup=>$rs ){print <<<EOT
+-->
+				<dl class="sorts">
+                	<input type="hidden" value="$fup" />
+                	<dt>$rs[name]</dt>
+                    <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                    	<div>$name</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="20%" id="ListTd2" class="ListTd">
+            	<h3>第2列</h3>
+<!--
+EOT;
+foreach($layout[1] AS $fup=>$rs ){print <<<EOT
+-->
+				<dl class="sorts">
+                	<input type="hidden" value="$fup" />
+                	<dt>$rs[name]</dt>
+                    <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                    	<div>$name</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="20%" id="ListTd3" class="ListTd">
+            	<h3>第3列</h3>
+<!--
+EOT;
+foreach($layout[2] AS $fup=>$rs ){print <<<EOT
+-->
+				<dl class="sorts">
+                	<input type="hidden" value="$fup" />
+                	<dt>$rs[name]</dt>
+                    <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                    	<div>$name</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="20%" id="ListTd4" class="ListTd">
+            	<h3>第4列</h3>
+<!--
+EOT;
+foreach($layout[3] AS $fup=>$rs ){print <<<EOT
+-->
+				<dl class="sorts">
+                	<input type="hidden" value="$fup" />
+                	<dt>$rs[name]</dt>
+                    <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                    	<div>$name</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            <td width="20%" id="ListTd5" class="ListTd">
+            	<h3>第5列</h3>
+<!--
+EOT;
+foreach($layout[4] AS $fup=>$rs ){print <<<EOT
+-->
+				<dl class="sorts">
+                	<input type="hidden" value="$fup" />
+                	<dt>$rs[name]</dt>
+                    <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){print <<<EOT
+-->
+                    	<div>$name</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    </dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+        <div style="text-align:center;padding:10px 0 5px 10px;">
+        	<input  type='button' name='w' value='保存设置' onClick="getGroupOrder()">
+        	<input type="hidden" name="webdbs[sort_layout1]" value="$webdb[sort_layout1]" id="sort_layout">
+        </div>
+    	</form>
+    </td>
+  </tr>
+</table>
+<script language="JavaScript">
+sections = ['ListTd1','ListTd2','ListTd3','ListTd4','ListTd5'];
+Sortable.create('ListTd1',{tag:'dl',dropOnEmpty: true, containment: sections,only:'sorts',constraint:false});
+Sortable.create('ListTd2',{tag:'dl',dropOnEmpty: true, containment: sections,only:'sorts',constraint:false});
+Sortable.create('ListTd3',{tag:'dl',dropOnEmpty: true, containment: sections,only:'sorts',constraint:false});
+Sortable.create('ListTd4',{tag:'dl',dropOnEmpty: true, containment: sections,only:'sorts',constraint:false});
+Sortable.create('ListTd5',{tag:'dl',dropOnEmpty: true, containment: sections,only:'sorts',constraint:false});
+function getGroupOrder(){
+	var lists=new Array();;
+	var tds = document.getElementsByClassName('ListTd');
+	for(var i=0;i < tds.length;i++){
+		var sorts=tds[i].getElementsByTagName('input');
+		var sortn=new Array();
+		for(var j=0;j<sorts.length;j++){
+			sortn[j]=sorts[j].value;
+		}
+		var sortns = sortn.join(",");
+		lists[i]=sortns;
+	}
+	var sort_layout=lists.join("#");
+	document.getElementById("sort_layout").value=sort_layout;
+	document.getElementById("sort_layout_form").submit();
+}
+</script>
+<!--
+EOT;
+?>
+-->

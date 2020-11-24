@@ -1,0 +1,149 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td>[<a href="index.php?lfj=$lfj&job=editsort&id=$id">字段列表</a>] [<a href="?lfj=$lfj&job=addfield&id=$id"><font color="#FF0000"><b>添加字段</b></font></a>] 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="?lfj=$lfj&action=$job">
+    <tr class="head" align="left"> 
+      <td colspan="2">字段管理</td>
+    </tr>
+    <tr> 
+      <td width="37%">字段名称:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[title]" value="$_rs[title]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段ID:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_name]" value="$_rs[field_name]" $readonly>
+        (必须为3个字母以上,字母后面可以跟数字) </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段存放数据类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select name="postdb[field_type]"  onChange="field_choose(this.options[this.selectedIndex].value)">
+          <option value="varchar" {$field_type[varchar]}>255个字符串以内</option>
+          <option value="int" {$field_type[int]}>10位以内纯数字</option>
+          <option value="mediumtext" {$field_type[mediumtext]}>文本文档</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="field_leng_tr"> 
+      <td width="37%">数据库字段长度:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_leng]" value="$_rs[field_leng]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">用户填写的表单类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select name="postdb[form_type]"  onChange="form_choose(this.options[this.selectedIndex].value)">
+          <option value="text" {$form_type[text]}>单行文本框</option>
+          <option value="textarea" {$form_type[textarea]}>多行文本框</option>
+          <option value="select" {$form_type[select]}>下拉菜单</option>
+          <option value="radio" {$form_type[radio]}>单选框</option>
+          <option value="checkbox" {$form_type[checkbox]}>复选框</option>
+          <option value="time" {$form_type[time]}>日期选择框</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="field_inputleng_tr"> 
+      <td width="37%">表单输入框长度:</td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_inputleng]" value="$_rs[field_inputleng]" size="5">
+        个字 </td>
+    </tr>
+    <tr id="form_set_tr"> 
+      <td width="37%">表单参数选项:<br>
+        (适用下拉菜单/单选框/复选框,每个值换一行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_set]" cols="50" rows="5">$_rs[form_set]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单默认值:<br>
+        (一般为空,如果是多选框多个的话,用<b><font color="#FF0000">/</font></b>线隔开,不能换行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_value]" cols="50" rows="3">$_rs[form_value]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单字段单位名称：<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <input type="text" name="postdb[form_units]" size="5" value="$_rs[form_units]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单附注文字:<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_title]" cols="50" rows="4">$_rs[form_title]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">是否为必填选项:<br>
+      </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[mustfill]" value="0" $mustfill[0]>
+        不限制 
+        <input type="radio" name="postdb[mustfill]" value="1" $mustfill[1]>
+        必填 
+        <!--
+        <input type="radio" name="postdb[mustfill]" value="2" $mustfill[2]>
+        隐藏(不提供给用户填写，可作为二次开发使用) -->
+      </td>
+    </tr>
+    <tr>
+      <td width="37%">允许哪些用户组查看:<br>
+        (不选择的话,都有权限,管理员与本人默认有权限)</td>
+      <td width="63%">$group_view</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="field_name" value="$field_name">
+        <input type="hidden" name="list" value="$_rs[list]">
+        <input type="hidden" name="postdb[orderlist]" value="$_rs[orderlist]">
+      </td>
+    </tr>
+  </form>
+</table> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function field_choose(t){
+	if(t=='mediumtext'){
+		get_obj('field_leng_tr').style.display='none';
+	}else{
+		get_obj('field_leng_tr').style.display='';
+	}
+}
+field_choose('$_rs[field_type]');
+
+
+function form_choose(t){
+	if(t=='select'||t=='radio'||t=='checkbox'||t=='select'||t=='pingfen'){
+		get_obj('form_set_tr').style.display='';
+	}else{
+		get_obj('form_set_tr').style.display='none';
+	}
+	if(t=='text'){
+		get_obj('field_inputleng_tr').style.display='';
+	}else{
+		get_obj('field_inputleng_tr').style.display='none';
+	}
+}
+form_choose('$_rs[form_type]');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

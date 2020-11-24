@@ -1,0 +1,195 @@
+<!--
+<?php
+print<<<EOT
+-->
+<style type="text/css">
+<!--
+.MainTable{
+	border:#1A5DB0 solid 1px;
+	width:99%;
+	margin:0 auto;
+}
+.MainTable .head{
+	line-height:25px;
+	padding:0 10px 0 10px;
+	border:#FFF solid 1px;
+	background:#6799B8;
+	color:#FFF;
+	font-weight:bold;
+}
+.MainTable .head a{
+	color:#FFF;
+}
+.MainTable .head .FL{
+	float:left;
+}
+.MainTable .head .FR{
+	float:right;
+}
+.MainTable .cont{
+	padding:5px;
+}
+.MainTable .cont form{
+	padding:0;
+	margin:0;
+}
+.MainTable .cont div{
+	clear:both;
+	line-height:25px;
+}
+.MainTable .cont div a{
+	line-height:25px;
+}
+.MainTable .cont div span{
+	display:block;
+	float:left;
+}
+.MainTable .cont div span.s1{
+	width:6%;
+	text-align:center;
+}
+.MainTable .cont div span.s2{
+	width:10%;
+}
+.MainTable .cont div span.s3{
+	width:15%;
+	text-align:center;
+}
+.MainTable .cont div span.s4{
+	width:40%;
+}
+.MainTable .cont div span.s5{
+	width:15%;
+	text-align:center;
+}
+.MainTable .cont div span.s6{
+	width:6%;
+	text-align:center;
+}
+.MainTable .cont div span.s7{
+	width:6%;
+	text-align:center;
+}
+.MainTable .cont div.headdiv {
+	height:25px;
+	background:url($webdb[www_url]/images/default/flea_line.gif) left bottom repeat-x;
+	font-weight:bold;
+	text-align:center;
+}
+.MainTable .cont div.list {
+	height:25px;
+	background:url($webdb[www_url]/images/default/flea_line.gif) left bottom repeat-x;
+}
+.MainTable .cont div.page {
+	text-align:center;
+	line-height:40px;
+}
+.MainTable .cont div.page a{
+	border:#ccc solid 1px;
+	padding:3px 5px 2px 5px;	
+}
+.MainTable .cont div.action {
+	text-align:center;
+	padding:5px 0 5px 0;
+}
+.MainTable .cont div.view{
+	background:url($webdb[www_url]/images/default/flea_line.gif) left bottom repeat-x;
+	padding-left:50px;
+}
+.MainTable .cont div.view span{
+	font-weight:bold;
+	padding-right:20px;
+}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0"class="MainTable">
+    <tr> 
+      <td class="head">{$headhtml}</td>
+    </tr> 
+    <tr>
+      <td class="cont"> 
+<!--
+EOT;
+if($job=="list"){
+print <<<EOT
+-->
+		<form name="form_work" method="post" action="index.php?lfj=$lfj&job=delall">
+        	<div class='headdiv'>
+            	<span class='s1'>ID</span>
+                <span class='s2'>用户名</span>
+                <span class='s3'>{$webdb[MoneyName]}数({$webdb[MoneyDW]})</span>
+                <span class='s4'>项目</span>
+                <span class='s5'>日期</span>
+                <span class='s6'>查看</span>
+                <span class='s7'>删除</span>
+            </div>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+			<div class='list'>
+            	<span class='s1'><input type="checkbox" name="listdb[{$rs[id]}]" value="$rs[id]">{$rs[id]}</span>
+                <span class='s2'> &nbsp;&nbsp; <a href='?lfj=$lfj&job=list&uid={$rs[uid]}'>{$rs[username]}</a></span>
+                <span class='s3'>{$rs[money]}</span><span class='s4'> &nbsp;&nbsp; {$rs[about]}</span>
+                <span class='s5'>{$rs[posttime]}</span>
+                <span class='s6'><a href='?lfj=moneylog&job=view&id={$rs[id]}'>查看</a></span>
+                <span class='s7'><a href='?lfj=moneylog&job=del&id={$rs[id]}&page=$page'>删除</a></span>
+            </div>
+<!--
+EOT;
+}if($showpage){
+print <<<EOT
+-->
+			<div class='page'>$showpage</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        	<div class='action'>
+            	<a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a>
+                <input type="submit" name="button" id="button" value="批量删除" />
+            </div>
+        </form>
+<!--
+EOT;
+}elseif($job=="view"){
+print <<<EOT
+-->
+			<div class='view'><span>用户名:</span> {$rsdb[username]}</div>
+            <div class='view'><span>{$webdb[MoneyName]}数({$webdb[MoneyDW]}):</span> {$rsdb[money]}</div>
+            <div class='view'><span>项目:</span> {$rsdb[about]}</div>
+            <div class='view'><span>日期:</span> {$rsdb[posttime]}</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+      </td>
+    </tr>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

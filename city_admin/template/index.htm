@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$jj=0;
+print <<<EOT
+-->
+<head>
+<title>城市管理</title>
+<link rel="stylesheet" type="text/css" href="images/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="齐博CMS">
+<meta name="description" content="整站系统">
+</head>
+<script type="text/javascript">
+function SetCwinHeight(){
+	var obj=document.getElementById("member_mainiframe"); //iframe id
+	if (document.getElementById){
+		if (obj && !window.opera){
+			if (obj.contentDocument && obj.contentDocument.body.offsetHeight){
+				obj.height = obj.contentDocument.body.offsetHeight;
+			}else if(obj.Document && obj.Document.body.scrollHeight){
+				obj.height = obj.Document.body.scrollHeight;
+			}
+			if(obj.height<800){
+				obj.height=800;
+			}
+		}else {
+			obj.height = 1000;
+		}
+		//navigator.userAgent.toLowerCase().indexOf("msie 8.0") != -1
+		//obj.document.getElementById("footer").style.display='none';
+	}
+}
+</script>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<div class="city_mdiv">
+	<div id="head_bg1">
+		<div id="logo"><A HREF="$webdb[www_url]/"><img src="images/city_logo.gif" width="255" height="37" border=0 /></A></div>
+		<div id="nav_div">
+			 <!--
+EOT;
+$detail=explode("\r\n",$webdb[guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]$webdb[path]/$url";
+}
+print <<<EOT
+-->
+<span><a href="$url" target="_blank">$name</a></span>	
+ <!--
+EOT;
+}print <<<EOT
+-->	
+		</div>
+	</div>
+</div>
+<div class="city_mdiv">
+    <div id="head_bg2">
+		<span id="L"><img src="images/login_i.gif" width="11" height="18" align="absmiddle" /> 你好! <b style="color:#0000FF">$lfjid</b> 欢迎登陆城市管理中心 [<a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid">个人信息</a>]  <img src="images/login_x.gif" width="12" height="12" /> <a href="../do/login.php?action=quit">退出系统</a></span>
+		<div class="guide" style="display:none;"> 
+          <div class="more"><IMG id="more_left" style="MARGIN-BOTTOM: 0px" 
+      onclick="show_more_menu('left');" src="images/more_l1.gif" border=0></div>
+          <div class="more"><IMG id="more_right" style="MARGIN-BOTTOM: 0px" 
+      onclick="show_more_menu('right');" src="images/more_r1.gif" border=0></div>
+          <DIV id=top_menu_div></DIV>
+        </div>
+		<span id="R"><span id="liveclock"></span> 
+          <script language="javascript" type="text/javascript"> 
+function p8_time() 
+{ 
+	var Digital=new Date();
+	var hours=Digital.getHours();
+	var minutes=Digital.getMinutes();
+	var seconds=Digital.getSeconds();
+	var year=Digital.getFullYear();
+	var month=Digital.getMonth()+1; 
+	var day=Digital.getDate();
+	
+	if(month<=9) month="0"+month;
+	if(day<=9) day="0"+day;
+	if(minutes<=9) minutes="0"+minutes;
+	if(seconds<=9) seconds="0"+seconds ;
+	myclock="当前时间: "+year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds;
+	if(document.layers){
+		document.layers.liveclock.document.write(myclock);
+		document.layers.liveclock.document.close();
+	}else {
+		document.getElementById('liveclock').innerHTML=myclock;
+	}
+	setTimeout("p8_time()",1000) 
+} 
+p8_time(); 
+//--> 
+</script></span>	
+	</div>
+</div>
+<div class="city_mdiv">
+	<div id="index_L">
+		<div id="index_L" class="frame L_top">
+				<div class="column_bg">
+					<span>当前城市:{$city_DB[name][$city_id]}</span>
+				</div>
+				<div  class="column_list" style="padding-top:10px; text-align:center">
+					$selectcity
+				</div>
+		</div> 
+<!--
+EOT;
+foreach($menudb AS $SortName=>$array){
+$jj++;
+print<<<EOT
+-->
+
+		<div id="index_L" class="frame L_top">
+				<div class="column_bg">
+					<span>$SortName</span>
+				</div>
+				<div  class="column_list">
+					<!--
+EOT;
+foreach($array AS $MenuName=>$array2){
+if($power<$array2[power])continue;
+if(strstr($array2[link],'../')){
+$target='_blank';
+}else{
+$target='member_mainiframe';
+}
+$title=strip_tags($MenuName);
+print<<<EOT
+-->
+		<span><A HREF='$array2[link]' title="$title" onclick="self.scroll(0,0);" target='$target'>$MenuName</A></span>
+					
+<!--
+EOT;
+}print<<<EOT
+-->
+				</div>
+		</div>
+	        <!--
+EOT;
+}print<<<EOT
+-->	</div>
+<div id="index_R">
+				<div  style="margin-top:10px"><iframe width="100%" name="member_mainiframe" id="member_mainiframe" height="100"  onload="Javascript:SetCwinHeight();" scrolling="no" marginwidth=0 marginheight=0 frameborder="0" src=""></iframe></div> 
+				
+		
+	</div>
+</div>
+
+<SCRIPT language=JavaScript>
+<!--
+var menu_array=new Array(
+'会员中心|index.php|left.php'
+$topmenu
+);
+var start_id=0;
+var select_id=0;
+function show_top_menu(){
+	var str='';
+	var last_str='';
+	var jj=-1;
+	for(var i=start_id;i<menu_array.length;i++){
+		jj++;
+		var ar=menu_array[i].split('|');
+		str+='<span id="span'+i+'"><a href="'+ar[1]+'" onclick="sethighlight('+jj+','+i+');">'+ar[0]+'</a></span>';
+		document.getElementById("top_menu_div").innerHTML=str;
+
+		var len=0;
+		var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+		for(var j = 0; j < lis.length; j++) {
+			len=len+lis[j].offsetWidth;
+		}
+		if(len>=600){
+			document.getElementById("top_menu_div").innerHTML=last_str;
+			break;
+		}
+		last_str=str;
+	}
+	show_more_icon();
+	sethigh__light();
+}
+show_top_menu();
+
+function sethighlight(n,m) {
+	var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+	for(var i = 0; i < lis.length; i++){
+		lis[i].className = '';
+	}
+	select_id=m;
+	lis[n].className = 'menuon';
+}
+
+function sethigh__light() {
+	var lis = document.getElementById("top_menu_div").getElementsByTagName('span');
+	for(var i = 0; i < lis.length; i++){
+		if(lis[i].id=='span'+select_id){
+			lis[i].className = 'menuon';
+		}else{
+			lis[i].className = '';
+		}
+	}
+}
+
+function show_more_menu(t){
+	if(t=='left')
+	{
+		if(start_id<(menu_array.length-1)){
+			start_id++;
+		}
+		show_top_menu();
+	}
+	else if(t=='right')
+	{
+		if(start_id>0){
+			start_id--;
+		}
+		show_top_menu();
+	}
+}
+
+function show_more_icon(){
+	document.getElementById("more_left").style.cursor='';
+	document.getElementById("more_right").style.cursor='';
+	if(start_id==(menu_array.length-1)){
+		document.getElementById("more_left").src="images/more_l1.gif";
+		document.getElementById("more_right").style.cursor='hand';
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}else if(start_id==0){
+		document.getElementById("more_right").src="images/more_r1.gif";
+		document.getElementById("more_left").src="images/more_l2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+		}
+		
+	}else{
+		document.getElementById("more_left").src="images/more_l2.gif";
+		document.getElementById("more_right").src="images/more_r2.gif";
+		if(window.ActiveXObject==null){
+			document.getElementById("more_left").style.cursor='pointer';
+			document.getElementById("more_right").style.cursor='pointer';
+		}else{
+			document.getElementById("more_left").style.cursor='hand';
+			document.getElementById("more_right").style.cursor='hand';
+		}
+	}
+}
+
+function load_window(a,b){
+	sethighlight(a,b);
+	start_id=b;
+	select_id=a;
+	show_top_menu();
+	//var ar=menu_array[0].split('|');
+	member_mainiframe.location="$MainUrl";
+	///parent.menu.location=ar[2];
+}
+function show_base_tb(num){
+	if(document.getElementById("base_tb"+num).style.display==''){
+	document.getElementById("base_tb"+num).style.display='none';
+	}else{
+		document.getElementById("base_tb"+num).style.display='';
+	}
+}
+load_window($select_id,$start_id);
+//-->
+</SCRIPT>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

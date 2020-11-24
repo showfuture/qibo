@@ -1,0 +1,40 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2" align="center">统计代码帐号申请</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="38%" align="center"> 你的国际域名: </td>
+      <td align="left" width="62%"> 
+        <input type="text" name="mydomain" value="$mydomain">
+        (比如:www.qibosoft.com) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="38%" align="left">&nbsp;</td>
+      <td width="62%" align="left"> 
+        <input type="submit" name="Submit" value="立即申请">
+      </td>
+    </tr>
+	
+<!--
+EOT;
+if($webdb[cnzz_id]){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="left"><b><font color="#FF0000">严重警告:请不要重复申请,否则新帐号会替换掉原来旧帐号的统计资料!!!</font></b></td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+	
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

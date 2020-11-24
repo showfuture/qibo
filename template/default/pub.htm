@@ -1,0 +1,79 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="200" valign="top" class="Main"> 
+  
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+              <tr> 
+                <td class="head">
+                  <h3 class="L"></h3>
+                  <span class="TAG">请选择一个分类</span>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle"> 
+ 
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" class="indexlistsort">
+                                  <!--
+EOT;
+$array=array_flip($Fid_db[0]);
+$array=array_chunk($array,3);
+foreach($array AS $key_1=>$array1){
+print <<<EOT
+--> <tr> <!--
+EOT;
+foreach($array1 AS $key_2){
+print <<<EOT
+-->  
+                <td width="33%">
+                        
+                  <div class="bigsort" style="border-bottom:1px dotted #ccc;width:90%;"><a href="#">{$Fid_db[name][$key_2]}</a></div>
+				        
+                  <div class="smallsort"> 
+                    <!--
+EOT;
+$i=0;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+print <<<EOT
+-->
+                    <span style="display:block;float:left;width:49%;">[<a href="$city_url/post.php?city_id=$city_id&zone_id=$zone_id&street_id=$street_id&fid=$key_3">{$Fid_db[name][$key_3]}</a>]&nbsp;</span> 
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </div>
+                </td>
+              <!--
+EOT;
+}print <<<EOT
+--> </tr><!--
+EOT;
+}print <<<EOT
+--> 
+            </table>
+</td>
+              </tr>
+              <tr>
+                <td class="foot">
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+      
+ 
+ 
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,75 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,v){
+	form1.pic.value+="[MMCBBS]"+url;
+}
+//-->
+</SCRIPT>
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="3"> 
+        <!--
+EOT;
+if($job=='mod'){
+print <<<EOT
+-->
+        修改友情链接分类 
+        <!--
+EOT;
+}
+elseif($job=="add"){
+print <<<EOT
+-->
+        添加友情链接分类 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">分类名称：</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input class=mmcinb type='text' name='postdb[name]' value='$rsdb[name]'>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">排序值：</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input class=mmcinb type='text' name='postdb[list]' value='$rsdb[list]' size='10'>
+        (数值越大.排在越前) </td>
+    </tr>
+     
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align='right'></div>
+      </td>
+      <td colspan="2"> 
+        <input class=mmcinb type='submit' name='Submit' value='提交数据'>
+        <input type="hidden" name="fid" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	get_obj('pic').value=url;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->
+
+

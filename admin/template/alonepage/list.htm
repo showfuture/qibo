@@ -1,0 +1,62 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="7%" align="center">序号 </td>
+      <td width="35%" align="center">单独页名称</td>
+      <td width="12%" align="center">开放与否</td>
+      <td width="17%" align="center">标签 </td>
+      <td width="29%" align="center">删除 / 修改 / 生成静态</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="7%" align="center">$rs[id]</td>
+      <td width="35%"> 
+        <input type="checkbox" name="iddb[]" value="$rs[id]" $rs[checked]>
+        <a href="$webdb[www_url]/do/alonepage.php?id=$rs[id]" target="_blank">$rs[name]</a></td>
+      <td width="12%" align="center">$rs[_ifclose]</td>
+      <td width="17%" align="center"><a href="$webdb[www_url]/do/alonepage.php?id=$rs[id]" target="_blank"> 
+        </a><a href="$webdb[www_url]/do/alonepage.php?id=$rs[id]&jobs=show" title="更新标签"><img src="images/icon_updatalabel.gif" border="0"></a> 
+      </td>
+      <td width="29%" align="center"><a href="index.php?lfj=$lfj&action=delete&id=$rs[id]"  onclick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+        <a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+        <a href="$webdb[www_url]/do/alonepage.php?id=$rs[id]&job=makehtml" target="_blank"><img alt='点击生成静态' src='../member/images/icon_html.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="5" align="center">
+        <input type="submit" name="Submit" value="批量生成静态">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td colspan="5" align="center">$showpage </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>1.通过做出各种各样的独立页模板,你就可以实现不同功能的页面,比如友情链接页,公司介绍页,等等.这会变得非常的轻松自如.<br>
+        2.如果你想节省服务器资源加快页面浏览速度的话,可以生成静态,静态页面名称可以自由定义,当然可以定义成多级目录的形式,系统会自动创建目录的<br>
+        3.关闭某个页面以后,只有管理员才可以查看.</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,141 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" align="center">
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit222" value="添加广告位" onClick="window.location=('$admin_path&job=addplace')">
+      　　　 
+      <input type="button" name="Submit23" value="广告位管理" onClick="window.location=('$admin_path&job=listad')">
+      　　
+      <input type="button" name="Submit23" value="购买广告" onClick="window.open('../member/index.php?main=../$dirname/member/norm.php?job=list')">
+      　　 　 </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td colspan="2"> 修改资料</td>
+  </tr>
+  <form name="form1" method="post" action="$admin_path&">
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告位名称:</td>
+      <td align="left" width="79%">$rsdb[name]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告类型:</td>
+      <td align="left" width="79%">{$array_adtype[$rsdb[type]]}</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">审核类型:</td>
+      <td align="left" width="79%">$rsdb[_ifyz]</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">费用:</td>
+      <td align="left" width="79%">{$rsdb[moneycard]} ({$webdb[MoneyName]}/天)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">购买几天:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_day" size="4" value="$rsdb[u_day]">
+        天</td>
+    </tr>
+    <!--
+EOT;
+if($rsdb[type]=='code'){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告代码:</td>
+      <td align="left" width="79%"> 
+        <textarea name="atc_code" cols="60" rows="10">$code</textarea>
+      </td>
+    </tr>
+    <!--
+EOT;
+}elseif($rsdb[type]=='word'){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告文字:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_word" size="30" value="$word">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告网址:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_url" size="60" value="$linkurl">
+      </td>
+    </tr>
+    <!--
+EOT;
+}elseif($rsdb[type]=='pic'||$rsdb[type]=='updown'){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告图片:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_img" size="60" value="$picurl">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告网址:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_url" size="60" value="$linkurl">
+      </td>
+    </tr>
+    <!--
+EOT;
+}elseif($rsdb[type]=='swf'){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告FLASH:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="atc_url" size="60" value="$flashurl">
+      </td>
+    </tr>
+    <!--
+EOT;
+}elseif($rsdb[type]=='duilian'){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告左边的FLASH/图片源地址:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="l_src" size="60" value="$l_src">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告左边的FLASH/图片链接地址:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="l_link" size="60" value="$l_link">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">广告右边的FLASH/图片源地址:</td>
+      <td align="left" width="79%"> 
+        <input type="text" name="r_src" size="60" value="$r_src">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%" height="32">广告右边的FLASH/图片链接地址:</td>
+      <td align="left" width="79%" height="32"> 
+        <input type="text" name="r_link" size="60" value="$r_link">
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" width="21%">&nbsp;</td>
+      <td align="left" width="79%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+        <input type="hidden" name="action" value="$job">
+        <input type="hidden" name="u_id" value="$u_id">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,30 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/moneycard/moneycard.css">
+<div class="MoneyCard">
+<form name="form1" method="post" action="?action=get">
+	<div class="Heads"><div class="tag"><span>欢迎使用充值系统</span></div></div>
+    <dl class="Conts">
+        <div class="head"></div>
+        <div class="cont">
+        	<div class="cont1">
+            	<dl>
+                	<dt></dt>
+                    <dd>
+                    	<div class="word">请输入充值卡密码</div>
+                        <div class="input"><input type="text" name="atc_passwd"></div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="cont2"><span>你当前具有{$webdb[MoneyName]}</span><span class="num">{$lfjdb[money]}</span><span>{$webdb[MoneyDW]}</span></div>
+            <div class="cont3"><input type="image" src="$webdb[www_url]/images/default/moneycard/but.gif" /></div>
+        </div>
+    </dl>
+</form>
+</div>
+<!--
+EOT;
+?>
+-->

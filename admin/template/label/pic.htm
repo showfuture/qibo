@@ -1,0 +1,143 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	form1.imgurl.value=url;
+}
+function CT_jumpMenu(selObj){
+  window.location.href=window.location.href+"&pic_city_id="+selObj.options[selObj.selectedIndex].value
+}
+//-->
+</SCRIPT>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form id="form1" name="form1" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=pic&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&">
+    <tr align="center"> 
+      <td colspan="2" class="head"> 
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr><!--
+EOT;
+if($select_city){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF">
+      <td width="17%">显示范围:</td>
+      <td>$select_city</td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">图片地址</td>
+      <td width="80%"> 
+        <input type="text" name="imgurl" value="$imgurl" id="imgurl"  size="50">
+        <a href='javascript:' onClick='window.open("upfile.php?lfj=$lfj&ch_module=$ch_module&dir=label","","width=350,height=50,top=200,left=400")'>点击上传图片</a> 
+        <a href="javascript:" class="style30"  onClick="javascript:cutimg();">[剪裁图片]</a> 
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">图片链接地址</td>
+      <td width="80%"> 
+        <input type="text" name="imglink" value="$imglink" size="50" />
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">&nbsp;</td>
+      <td width="80%"><label>图片宽 
+        <input type="text" name="width" value="$width" size="4" id=width />
+        图片高 </label> <label> 
+        <input type="text" name="height" value="$height" size="4" id=height />
+        </label></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">是否隐藏,暂时不显示:</td>
+      <td width="80%"> 
+        <input type="radio" name="hide" value="1" $hidedb[1]/>
+        隐藏 
+        <input type="radio" name="hide" value="0" $hidedb[0]/>
+        显示</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="20%">更新内容时上方遮蔽层设置:</td>
+      <td width="80%">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+  function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="2"><label> 
+        <input type="submit" name="Submit" value="提交" onClick=sub() />
+        </label> 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function chooseAD(type){
+	if(type=='1'){
+		document.getElementById('ifad1').checked=true;
+		document.getElementById('ifad0').checked=false;
+		document.getElementById('isadconfig').style.display='';
+	}else{
+		document.getElementById('ifad1').checked=false;
+		document.getElementById('ifad0').checked=true;
+		document.getElementById('isadconfig').style.display='none';
+	}
+}
+//chooseAD('$ifad');
+//-->
+</SCRIPT>
+        <script language="javascript">
+function cutimg() 
+{
+	var img=document.form1.imgurl.value;
+	var cw=document.form1.width.value;
+	var ch=document.form1.height.value;
+	if(cw==''){
+		document.form1.width.focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.form1.height.focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	window.open("cutimg.php?lfj=$lfj&ch_module=$ch_module&job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	document.form1.imgurl.focus();
+	alert('图片地址不存在');
+}
+}
+</script>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

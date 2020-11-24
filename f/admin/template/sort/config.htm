@@ -1,0 +1,55 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">文章模块设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否开放前台用户/游客投稿功能:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[ifContribute]" value="1" $ifContribute[1]>
+        开放 
+        <input type="radio" name="webdbs[ifContribute]" value="0" $ifContribute[0]>
+        禁止</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>未审核的文章是否允许浏览:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[viewNoPassArticle]" value="1" $viewNoPassArticle[1]>
+        允许 
+        <input type="radio" name="webdbs[viewNoPassArticle]" value="0" $viewNoPassArticle[0]>
+        不允许 </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>发表文章时是否自动获取文章内的图片作为缩略图:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[autoGetSmallPic]" value="1" $autoGetSmallPic[1]>
+        是 
+        <input type="radio" name="webdbs[autoGetSmallPic]" value="0" $autoGetSmallPic[0]>
+        否</td>
+    </tr>
+    <tr>
+      <td width='28%' bgcolor='#FFFFFF'>后台发表文章默认是哪种类型的编辑器:</td>
+      <td colspan='2' bgcolor='#FFFFFF'>
+        <input type="radio" name="webdbs[adminPostEditType]" value="html" $adminPostEditType[html]>
+        多彩编辑器 
+        <input type="radio" name="webdbs[adminPostEditType]" value="code" $adminPostEditType[code]>
+        代码编辑器</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

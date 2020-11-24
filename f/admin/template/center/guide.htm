@@ -1,0 +1,49 @@
+<!--
+<?php
+$Info_showsorttype[intval($webdb[Info_showsorttype])]=' checked ';
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=config">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">付费推广设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>付费推广每条信息最多选择几天:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[AdInfoShowTime]" size="5" value="$webdb[AdInfoShowTime]">
+        天 </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>子栏目付费推广每天要收费,{$webdb[MoneyName]}</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[AdInfoSortShow]" size="7" value="$webdb[AdInfoSortShow]">
+        $webdb[MoneyDW] </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>大分类付费推广每天要收费,{$webdb[MoneyName]}</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[AdInfoBigsortShow]" size="7" value="$webdb[AdInfoBigsortShow]">
+        $webdb[MoneyDW] </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>首页付费推广每天要收费,{$webdb[MoneyName]}</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[AdInfoIndexShow]" size="7" value="$webdb[AdInfoIndexShow]">
+        $webdb[MoneyDW] </td>
+    </tr>
+    
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

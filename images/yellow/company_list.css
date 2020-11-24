@@ -1,0 +1,153 @@
+/***************************产品供应列表页*******************************/
+.supply_list .main{
+	padding-right:10px;
+}
+.supply_list .main .CC{
+	border:1px solid #FDDCB7;
+	border-top:0;
+}
+.supply_list .main .head{
+	height:30px;
+	background:url(supply_view_head_bg.gif);
+}
+.supply_list .main .head .LL{
+	height:30px;
+	width:15px;
+	background:url(supply_view_head_l.gif);
+	float:left;
+}
+.supply_list .main .head .TAG{
+	height:22px;
+	background:url(supply_view_head_tag.gif) right;
+	float:left;
+	padding-right:60px;
+	padding-left:5px;
+	padding-top:8px;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+}
+.supply_list .main .head .RR{
+	height:30px;
+	width:8px;
+	background:url(supply_view_head_r.gif);
+	float:right;
+}
+
+
+
+.supply_list .side .CC{
+	border:1px solid #FDDCB7;
+	border-top:0;
+}
+.supply_list .side .head{
+	height:30px;
+	background:url(supply_view_side_head_bg.gif);
+}
+.supply_list .side .head .LL{
+	height:30px;
+	width:16px;
+	background:url(supply_view_side_head_l.gif);
+	float:left;
+}
+.supply_list .side .head .RR{
+	height:30px;
+	width:7px;
+	background:url(supply_view_side_head_r.gif);
+	float:right;
+}
+.supply_list .side .head .TAG{
+	height:22px;
+	float:left;
+	padding-top:8px;
+	font-size:13px;
+	font-weight:bold;
+	color:#545454;
+}
+
+
+.supply_list .CC #top_list{
+	margin-top:15px;
+}
+.supply_list .CC #line{
+	border-bottom:1px dotted #FDDCB7;
+	margin-top:8px;
+	margin-bottom:8px;
+}
+
+.supply_list .CC .list_pro .title a{
+	font-size:14px;
+	color:#00349A;
+	font-weight:bold;
+	text-decoration: underline;
+}
+.supply_list .CC .list_pro .title {
+	margin-bottom:8px;
+
+}
+.supply_list .CC .list_pro .company_name {
+	margin-top:8px;
+
+}
+.supply_list .CC .list_pro .company_name a{
+	color:#00349A;
+}
+.supply_list .CC .list_pro .price {
+	color:red;
+	font-weight:bold;
+	margin-top:8px;
+	margin-bottom:8px;
+}
+.supply_list .CC .list_pro .pic a{
+	display:block;
+	width:120px;
+	height:90px;
+	border:1px solid #ddd ;
+}
+.supply_list .CC .list_pro .pic img{
+	border:1px solid #fff;
+}
+.supply_list .CC .list_pro td{
+	padding-bottom:8px;
+}
+.supply_list .CC .list_pro{
+	border-bottom:1px dotted #eee;
+	padding-bottom:8px;
+	margin-top:8px;
+}
+
+
+.supply_list #filtate_sort{
+	border:1px solid #FDDCB7;
+	margin-bottom:10px;
+}
+.supply_list #filtate_sort td{
+	border:2px solid #FFF5E6;
+	padding:8px;
+}
+.supply_list #filtate_sort .bigword{
+	background:url(supply_list_icon.gif) no-repeat;
+	height:20px;
+	padding-left:15px;
+	font-weight:bold;
+}
+.supply_list #filtate_sort .sonname{
+	padding-left:15px;
+	line-height:25px;
+}
+.supply_list #filtate_sort .sonname a{
+	margin-right:15px;
+}
+
+.supply_list #page td{
+	padding:10px;
+}
+.supply_list #page a{
+	font-size:14px;
+}
+
+.other2{
+	padding-top:6px;
+	line-height:18px;
+	color:#666;
+}

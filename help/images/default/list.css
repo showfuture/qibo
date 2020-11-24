@@ -1,0 +1,237 @@
+.MainContainers{
+	padding-top:5px;
+	color:#555;
+}
+.MainContainers a:link,.MainContainers a:hover,.MainContainers a:visited{
+	color:#265F8C;
+}
+.MainContainers .Mains{
+	width:680px;
+	float:left;
+}
+.MainContainers .Sides{
+	width:300px;
+	float:right;
+}
+.ClearDiv{
+	clear:both;
+}
+/*
+*
+*/
+.BigSortTable td.td1{
+	width:50%;
+}
+.BigSortTable td.td1{
+	padding-right:5px;
+}
+.BigSortTable td.td2{
+	padding-left:5px;
+}
+.BigSortTable td dl dt{
+	height:30px;
+	background:url(hd1.gif) right top no-repeat;
+}
+.BigSortTable td dl dt a{
+	float:left;
+	padding:2px 10px 0 10px;
+	line-height:28px;
+}
+.BigSortTable td dl dt a.t{
+	background:url(hd1.gif) left top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#555;
+	padding-left:30px;
+}
+.BigSortTable td dl dt a.m{
+	float:right;
+}
+.BigSortTable td dl dd{
+	padding:10px;
+	border:#DDD solid 1px;
+	border-top:0;
+}
+.BigSortTable td dl dd div{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	padding-left:10px;
+	background:url(array1.gif) left 10px no-repeat;
+}
+.BigSortTable td dl dd div a{
+	float:left;
+}
+.BigSortTable td dl dd div span{
+	float:right;
+}
+/*
+*
+*/
+.MoreSorts{
+	border:#DDD solid 1px;
+}
+.MoreSorts .head{
+	display:none;
+}
+.MoreSorts .cont{
+	padding:10px;
+}
+.MoreSorts .cont .sortname{
+	width:50%;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	float:left;
+}
+.MoreSorts .cont .sortname a{
+	display:block;
+	padding-left:25px;
+	background:url(array2.gif) 5px 5px no-repeat;
+	font-weight:bold;
+	color:#666;
+}
+/*
+*
+*/
+.MoreConts{
+	margin-top:10px;
+}
+.MoreConts .head{
+	height:30px;
+	background:url(hd1.gif) right top no-repeat;
+}
+.MoreConts .head .tag{
+	float:left;
+	background:url(hd1.gif) left top no-repeat;
+	padding:2px 0 0 28px;
+	line-height:28px;
+	font-weight:bold;
+}
+.MoreConts .cont{
+	border:#DDD solid 1px;
+	padding:10px;
+	border-top:0;
+}
+.MoreConts .cont .list{
+	height:22px;
+	line-height:22px;
+	overflow:hidden;
+	padding-left:15px;
+	background:url(array1.gif) left 9px no-repeat;
+}	
+/*
+*
+*/
+.MainContainers .Mains .MoreConts{
+	margin-top:0;
+}
+.MainContainers .Mains .MoreConts .cont .lists{
+	height:30px;
+	line-height:30px;
+	border-bottom:#DDD dotted 1px;
+	background:url(array.gif) 5px 10px no-repeat;
+	padding-left:20px;
+}
+.MainContainers .Mains .MoreConts .cont .lists a{
+	float:left;
+}
+.MainContainers .Mains .MoreConts .cont .lists span{
+	float:right;
+}
+.showpage{
+	text-align:center;
+	padding:15px 0 5px 0;
+}
+.showpage a{
+	border:#DDD solid 1px;
+	padding:3px 5px 2px 5px;
+	color:#888;
+}
+
+/*
+*
+*/
+.PostAct{
+	line-height:25px;
+	text-align:right;
+}
+.TheTitle{
+	text-align:center;
+	padding:10px;
+	line-height:20px;
+	font-size:14px;
+	font-weight:bold;
+	color:#990000
+}
+.TheSubhead{
+	line-height:20px;
+	border-bottom:1px solid #ccc;
+	color:#888;
+	text-align:center;
+	margin-bottom:15px;
+}
+.MoreActs{
+	line-height:25px;
+	text-align:right;	
+}
+.Up_Down{
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+}
+.Up_Down dt{
+	float:left;
+}
+.Up_Down dd{
+	float:right;
+}
+/*
+*
+*/
+.PostComment .tdL{
+	width:70px;
+	text-align:right;
+	line-height:30px;
+}
+.PostComment .tdR{
+	padding:5px 0 0 5px;
+}
+/*
+*
+*/
+.ListComment{
+	margin-bottom:10px;
+	border-bottom:#DDD dotted 1px;
+	position:relative;
+}
+.ListComment .img{
+	width:60px;
+	padding-bottom:10px;
+}
+.ListComment .img div{
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.ListComment .img div a{
+	display:block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+	background:#EFEFEF;
+}
+.ListComment .word{
+	padding-left:10px;
+	line-height:20px;
+	text-indent:20px;
+}
+.ListComment .info{
+	line-height:30px;
+	text-align:right;
+	color:#888;
+	padding-right:5px;
+}
+
+.BigSortTable dl{
+	margin-bottom:10px;
+}

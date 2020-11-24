@@ -1,0 +1,61 @@
+#stus-slideshow {
+	width:600px; 
+	/*position:relative; */
+	/*height:180px; */
+	margin: auto;
+	clear:both;
+}
+#nav {
+	width:372px; 
+	height:28px; 
+	margin:0 auto;
+}
+#nav img {
+	display:block; 
+	float:left; 
+	margin:0 5px; 
+	display:inline;
+}
+#nav h2 {
+	width:100px; 
+	line-height:25px; 
+	text-align:center; 
+	font-family:georgia, serif; 
+	font-size:18px; 
+	padding:0; 
+	margin:0 5px; 
+	float:left; 
+}
+#slideshow {
+	width:600px; 
+	margin-top:10px; 
+	border:1px solid #aaa; 
+	position:relative; 
+	background:#f8f8f8; 
+	padding-bottom:10px;
+	clear:both;
+}
+#slideshow img {
+	display:block; 
+	margin:0 auto;
+}
+#slideshow .entry {
+	width:580px; 
+	position:relative; 
+	top:10px; 
+	left:10px; 
+	display:none;
+}
+#slideshow .entry h1 {
+	background:#f8f8f8; 
+	font-size:18px; 
+	width:372px; 
+	margin:10px auto;
+}
+#slideshow .entry p {
+	background:#f8f8f8; 
+	width:372px; 
+	margin:0 auto; 
+	padding:0; 
+	line-height:1.4em;
+}

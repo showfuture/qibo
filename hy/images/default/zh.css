@@ -1,0 +1,260 @@
+.leftMain{width:300px;}
+.rightMain{ padding-left:10px;}
+/*
+*左边容器样式
+*/
+
+.leftDiv{ 
+border:1px #CCCCCC solid;
+margin-top:5px;
+clear:both;
+}
+.leftDiv .head{
+background-image:url(zh_left_div_top1.jpg);
+border-bottom:1px #CCCCCC solid;
+height:28px;
+} 
+.leftDiv .head .L{
+background-image:url(zh_left_div_top2.jpg); height:28px; width:26px; float:left;
+} 
+.leftDiv .head .title{
+	height:28px; line-height:28px; font-weight:bold; font-size:14px;float:left;
+}
+.leftDiv .head .R{
+height:28px; float:left;
+} 
+
+.leftDiv .head .more{
+height:28px;  float:right; width:30%;
+line-height:28px;
+text-align:right;
+padding-right:5px;
+}
+.leftDiv .content{
+line-height:180%; padding:5px 10px 5px 10px;
+background-color:#FFFFFF;
+word-break:break-all
+} 
+
+/*
+*右边边容器样式
+*/
+
+.rightDiv{
+border:1px #FF99CC solid;
+border-top:3px #FF99CC solid;
+margin-top:5px;
+}
+.rightDiv .head{
+border-bottom:1px #FFbbdd solid;
+background-color:#FFF0F8;
+height:25px;
+} 
+.rightDiv .head .L{
+height:25px;
+ float:left;
+background-image:url(zh_right_top1.png); 
+background-position:center; 
+width:30px;
+} 
+.rightDiv .head .title{
+	height:25px; line-height:25px;
+	 font-weight:bold; font-size:14px; 
+	 color:#E30072; float:left;
+}
+.rightDiv .head .R{
+height:25px;  float:left;
+} 
+
+.rightDiv .head .more{
+height:25px;  float:right; width:30%;
+line-height:25px;
+text-align:right;
+padding-right:5px;
+}
+
+.rightDiv .content{
+line-height:180%; padding:5px;
+background-color:#FFFFFF;
+word-break:break-all
+} 
+.rightDiv .imgdiv{
+border:1px #FFbbdd solid;
+background-color:#FFF8Fa; padding:1px;}
+
+/*
+*列表表头
+*/
+.trA td{ color:#666666; font-weight:bold; border-bottom:1px #999999 dotted;}
+.trB td{ color:#666666; background-color:#FFFFFF; padding-top:5px;}
+.trC td{ color:#666666; background-color:#FFF4F8; padding-top:5px;}
+/*
+*首页上部 无TITLE部分样式
+*/
+.notitle{
+clear:both;
+margin-top:5px; 
+border:1px #CCCCCC solid; 
+background-color:#FFFAEE; 
+padding:2px;
+line-height:170%;
+}
+.notitle .line{ clear:both;height:22px;}
+.form{
+clear:both;
+ background-color:#FCEAEA;
+ }
+.notitle .big{ 
+font-size:14px;
+color:#FF3300;
+font-weight:bold;
+text-align:center;
+} 
+
+
+/**
+*发布按钮
+**/
+.zhpost{ margin-top:5px;  width:100%; line-height:180%;  width:180px; text-align:left;}
+.zhpost .postzh{ color:#BD005F;}
+.zhpost .postzlg{ color:#33761D;}
+
+
+/*
+* 展会表单
+*/
+.zhpostform{ margin-top:5px; text-align:left;}
+.zhpostform .head{ line-height:20px; font-weight:bold; border-bottom:1px #898998 dotted; font-size:14px}
+.zhpostform td{ padding:5px; line-height:180%;}
+.zhpostform .btn{ padding:10px;}
+.zhpostform .showmsg{ font-size:14px; line-height:150%; font-weight:bold; color:red
+}
+
+/**
+别表
+**/
+.bigfont{ font-size:14px;}
+
+/*
+*展会详细页
+*/
+.zhtitle{ font-size:20px; font-weight:bold; color:#FF3300; text-align:center; line-height:30px}
+.zhUFtitle{ font-size:14px; font-weight:bold; color:#565656; text-align:center; line-height:20px}
+
+
+
+
+
+.showDiv{
+
+}
+.showDiv .head{
+border-bottom:3px #FF99CC solid;
+height:25px;
+} 
+.showDiv .head .L{
+height:25px;
+float:left;
+background-position:center;
+background:url(iicon1.gif);
+background-position:center;
+ width:20px;
+ background-repeat:no-repeat;
+} 
+.showDiv .head .title{
+	height:25px; line-height:25px;
+	 font-weight:bold; font-size:14px; 
+	 color:#E30072; float:left;
+}
+.showDiv .head .R{
+height:25px;  float:left;
+} 
+
+.showDiv .head .more{
+height:25px;  float:right; width:30%;
+line-height:25px;
+text-align:right;
+padding-right:5px;
+}
+
+.showDiv .content{
+line-height:180%; padding:5px;
+background-color:#FFFFFF;
+font-size:14px;
+word-break:break-all
+} 
+
+.zh_menu{ background:url(zh_menu.gif);
+background-repeat:no-repeat;
+height:38px;
+line-height:38px;
+font-size:14px;
+font-weight:bold;
+text-align:left; 
+padding-left:35px;  
+}
+.zh_menu a{ font-size:14px;}
+
+
+
+/**
+展览馆列表
+**/
+
+.zlgDiv{
+margin-top:5px;
+}
+.zlgDiv .head{
+background:url(showromm_div1.jpg);
+background-repeat:repeat-x;
+height:29px;
+} 
+.zlgDiv .head .L{
+height:29px;
+float:left;
+background-position:center;
+background:url(showroom_div2.jpg);
+width:22px;
+background-repeat:no-repeat;
+} 
+.zlgDiv .head .title{
+	height:29px; line-height:29px;
+	 font-weight:bold; font-size:13px; 
+	 color:#E30072; float:left;
+}
+.zlgDiv .head .R{
+height:29px;  float:left;
+} 
+
+.zlgDiv .head .more{
+height:29px;  float:right; width:30%;
+line-height:29px;
+text-align:right;
+padding-right:5px;
+}
+
+.zlgDiv .content{
+line-height:180%; padding:5px;
+background-color:#FFFFFF;
+font-size:12px;
+word-break:break-all
+}
+
+/*
+* 展览馆列表样式
+*/
+.showroomlist{ 
+float:left; 
+width:160px; 
+height:160px;
+margin-bottom:5px; 
+margin-right:5px; 
+text-align:center; 
+background-color:#F5F5F5; 
+padding-top:5px;
+}
+.showroomlist .picurl{
+border:3px #CCCCCC solid; 
+width:140px; 
+height:105px;
+}

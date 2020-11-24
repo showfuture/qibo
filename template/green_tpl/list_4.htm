@@ -1,0 +1,257 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/list.css">
+<!--
+EOT;
+if($city_id){
+$url=get_info_url('',$fid,$city_id,'','',$TempSearch_array);
+print <<<EOT
+-->
+<div class="ShowSearch">
+	<div id="Showzone">
+    	<span id="zone_0"><A HREF="$url">{$city_DB[name][$city_id]}</A></span>
+<!--
+EOT;
+foreach($zone_DB[name] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$key,'',$TempSearch_array);
+print <<<EOT
+-->
+         <span id="zone_$key"><A HREF="$url">$value</A></span> 
+<!--
+EOT;
+}print <<<EOT
+--> 
+    </div>
+    <div class="cont">
+<!--
+EOT;
+if($street_DB[$zone_id]){print <<<EOT
+-->
+    	<div id="Showstreet">
+<!--
+EOT;
+foreach($street_DB[$zone_id] AS $key=>$value){
+$url=get_info_url('',$fid,$city_id,$zone_id,$key,$TempSearch_array);
+print <<<EOT
+-->
+            <A id="street_$key" HREF="$url">$value</A> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </div>
+<!--
+EOT;
+}print <<<EOT
+-->		
+    </div>    
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function zone_menu(zone_id){
+	obj=document.getElementById("Showzone").getElementsByTagName("span");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	document.getElementById("zone_"+zone_id).className='choose';
+}
+zone_menu("$zone_id");
+function street_menu(street_id){
+	obj=document.getElementById("Showstreet").getElementsByTagName("a");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='';
+	}
+	if(document.getElementById("street_"+street_id)!=null){
+		document.getElementById("street_"+street_id).className='choose';
+	}
+}
+street_menu("$street_id");
+//-->
+</SCRIPT>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div class="MainContainer">
+	<div class="Main">
+    	<div class="ShowType">
+			<div class="head">{$city_DB[name][$city_id]}$fidDB[name]</div>
+    	    <div class="cont">        	
+
+<div>
+<span class='t'>工作经验：</span><span class='f'><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array());
+print <<<EOT
+--><A HREF='$url' {$search_fieldDB[sortid][0]}>不限</A> <!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>'1'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['1']}>应届生</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>'2'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['2']}>一年</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>'3'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['3']}>两年</A><!--
+EOT;
+$url=get_info_url('',$fid,$city_id,$zone_id,$street_id,array('sortid'=>'4'));
+print <<<EOT
+--> <A HREF='$url' {$search_fieldDB[sortid]['4']}>三年以上</A></span>
+</div>
+<!---->
+           </div>
+        </div>
+    	<div class="ShowList">
+        	<div class="head">
+            	<div class="img">图片</div>
+                <div class="title">标题</div>
+ 
+<div class="other">工作经验</div>
+<!---->
+                <div class="time">时间</div>
+            </div>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?" target=\"_blank\"":" target=\"_self\"";
+$colorstyle=$rs[titlecolor]?" style=\"color:$rs[titlecolor];\"":'';
+//$rs[title] = get_word($rs[full_title],46);
+$showpic = $rs[picurl]? "<span><img src=\"$webdb[www_url]/images/default/tu.gif\"></span>" : "";
+$rs[username] || $rs[username]='游客';
+print <<<EOT
+-->
+			<div class="list">
+            	<div class="img"><a href="$rs[url]" title='$rs[full_title]'{$colorstyle}{$target}><img src="$rs[picurl]" onerror="this.src='$webdb[www_url]/images/blue/nopic.gif'" height="45"/></a></div>
+                <div class="title">
+                	<div class="t"><a href="$rs[url]" title='$rs[full_title]'{$colorstyle}{$target}>$rs[title]</a><span>{$showpic}</span></div>
+                    <div class="m">发布者：{$rs[username]} 浏览人次：$rs[hits]</div>
+                </div>
+ 
+<div class="other">{$rs[sortid]} </div>
+<!---->
+                <div class="time">{$rs[times]}</div>
+            </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+			<div class="showpage">$showpage</div>
+        </div>
+    </div>
+    <div class="Side">
+    	<div class="sidecont">
+        	<div class="head heada">焦点信息</div>
+            <div class="cont">
+<script language="JavaScript">
+<!--
+document.write('<span id="side_adinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=adinfo&fid=$fid&rows=$webdb[AdInfoListRow]&leng=$webdb[InfoListLeng]&iframeID=side_adinfo" width=0 height=0></iframe></div>');
+//-->
+</script>
+            </div>
+        </div>
+    	<div class="sidecont">
+        	<div class="head">信息发布</div>
+            <div class="cont">
+            	<div class="title"> 租售房子、求职招聘、找朋友、二手买卖就在本分类信息网！</div>
+            	<div class="post"><a href="$city_url/post.php?fid=$fid"><img src="$webdb[www_url]/images/green/post.gif"/></a></div>
+            </div>
+        </div>
+        <div class="sidecont sideconts">
+        	<div class="head">{$fidDB[name]}搜索</div>
+            <div class="cont">
+            	<form name="form_searchpage" method="post" action="$city_url/search.php" target="_blank">
+                <div>
+                    <span>性质</span>
+                    <span class="sel">
+                        <select name='postdb[sortid]' id='atc_sortid'>
+                        <option value=''>不限</option>
+                        <option value='1' {$rsdb[sortid]['1']}>个人</option>
+                        <option value='2' {$rsdb[sortid]['2']}>中介</option>
+                        </select> 
+                    </span>
+                 </div>
+                 <div>
+                    <span>关键字</span>        
+                    <span class="text"><input type="text" name="keyword" value="$keyword" class="keyword"/></span>
+                </div>
+                <div>
+                    <span>搜索类型</span>
+                    <span class="rad"><input type="radio" name="type" value="title" $typedb[title] checked> 标题 <!----></span>
+                </div>
+                <div>
+                    <span class="sub">
+                        <input type="submit" name="Submit" value="搜索">
+                        <input type="hidden" name="mid" value="$fidDB[mid]">
+                        <input type="hidden" name="action" value="search">
+                        <input type="hidden" name="postdb[city_id]" value="$city_id">
+                        <input type="hidden" name="fid" value="$fid">
+                    </span>
+            	</div>
+            </form>
+            </div>
+        </div>          
+        <div class="sidecont">
+        	<div class="head">联系我们</div>
+            <div class="cont">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[Info_contact]);
+print <<<EOT
+-->
+                <div class="tel">电话:$detail[0]</div>
+                <div class="email">邮箱:$detail[1]</div>
+                <div class="msn">msn:$detail[2]</div>
+                <div class="qq">QQ:$detail[3]</div>
+            </div>
+        </div>
+    </div>
+    <div class="cleardiv"></div>
+</div>
+<dl class="OtherContainer">
+	<dt>{$city_DB[name][$city_id]}{$Fid_db[name][$fidDB[fup]]}的所有分类:</dt>
+    <dd>
+<!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </dd>
+    <dt>城市链接:</dt>
+    <dd class="bottom">
+<!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>12)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <a href="$url" target="_blank">{$city_DB[name][$key]}{$fidDB[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </dd>
+</dl>
+<!--
+EOT;
+?>
+-->

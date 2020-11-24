@@ -1,0 +1,38 @@
+<!--
+<?php
+$www_url=str_replace("http://","",$webdb[www_url]);
+print <<<EOT
+--> 
+<div id="bottom"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="footer">
+  <tr> 
+    <td align="center"><center></center>
+    </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('</div>');
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+clickEdit.init();
+//-->
+</SCRIPT>
+
+<!--CNZZ站点统计
+EOT;
+if($webdb[cnzz_open]&&$webdb[cnzz_id]){print <<<EOT
+-->
+<div style="display:none"><script src='http://pw.cnzz.com/c.php?id=$webdb[cnzz_id]' language='JavaScript' charset='gb2312'></script></div>
+<!--CNZZ站点统计
+EOT;
+}print <<<EOT
+-->
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

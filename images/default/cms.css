@@ -1,0 +1,541 @@
+/********************************以下是整站CMS部分**********************************/
+.MainDivTable .Main{
+	width:70%;
+	float:left;
+}
+.MainDivTable .Side{
+	width:30%;
+	text-align:right;
+	float:right;
+}
+.MainDivTable .Side .dragTable{
+	float:right;
+}
+
+.MainTable{
+	margin-top:0px;
+}
+
+.MainTable .Side .dragTable{
+	width:98%;
+}
+
+.MainTable .dragTable{
+	width:100%;
+	margin-top:5px;
+	overflow:hide;
+	border:0px #9ACAD6 solid;
+	
+}
+.MainTable .dragTable .head{
+	background:#eee url(../default/head_bg.gif) ;
+	height:30px;
+	padding-top:0px;
+	border:0px #FFF solid;
+	border-bottom:0px #C6EBEE solid;
+}
+.MainTable .dragTable .head .L{
+	background:url(../default/hd_a1.gif);
+	width:30px;
+	height:30px;
+	margin-left:0px;
+	float:left;
+}
+.MainTable .dragTable .TAG{
+	float:left;
+	color:#247384;
+	font-weight:bold;
+	padding:9px 5px 0 0px;
+	height:21px;
+	font-size:13px;
+}
+.MainTable .dragTable .TAG a{
+	color:#247384;
+	font-size:13px;
+}
+.MainTable .dragTable .morelink{
+	float:left;
+	padding-top:8px;
+	padding-left:10px;
+}
+.MainTable .dragTable .morelink a{
+	margin-left:10px;
+	text-decoration: underline;
+}
+.MainTable .dragTable .more{
+	float:right;
+	padding-right:1em;
+	padding-top:8px;
+}
+.MainTable .dragTable .more a{
+	color:#666;
+}
+
+
+.MainTable .Side .dragTable .middle{
+	line-height:17px;
+}
+
+.MainTable .dragTable .middle{
+	padding:6px 1px 4px 7px;
+	height:50px;
+	line-height:20px;
+	border:1px solid #D0D0D0;
+	border-top:0px solid #D0D0D0;
+}
+#AutoRows .dragTable .middle{
+	padding-top:0px;
+	padding-bottom:0px;
+	height:100px;
+}
+.MainTable .listpic{
+	width:120px;
+	padding:3px 7px 3px 5px;
+	float:left;
+}
+.MainTable .listpic .title{
+	width:120px;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.MainTable .listpic img{
+	border:1px #FFF solid;
+	width:120px;
+	height:90px;
+}
+.MainTable .listpic .img a{
+	width:120px;
+	height:90px;
+	display:block;
+	text-align :center;
+	border:1px #ccc solid;
+	margin-bottom:5px;
+}
+.MainTable .page{
+	text-align:center;
+	padding:8px;
+}
+.MainTable .content_word,.MainTable .content_word p{
+	font-size:15px;
+}
+.MainTable #comment .content,.MainTable #comment_show .content{
+	width:99%;
+	border:dotted 1px #ddd;
+	margin-bottom:10px;
+}
+.MainTable #comment .content .word,.MainTable #comment_show .content .word{
+	border-bottom:solid 1px #eee;
+	padding-left:5px;
+	height:50px;
+}
+.MainTable #comment .content .img,.MainTable #comment_show .content .img{
+	border-right:dotted 1px #ddd;
+	padding:1em;
+}
+.MainTable #comment .content .info,.MainTable #comment_show .content .info{
+	padding:2px 0 0 5px;
+}
+
+ 
+/*****留言本*******/
+
+.MainTable .guestbook{
+	margin-bottom:4px;
+	border:1px dotted #ccc;
+	width:99%;
+}
+.MainTable .guestbook .Ftd{
+	padding:4px;
+	border-right:1px dotted #ccc;
+}
+.MainTable .guestbook .Atd{
+	border-top:1px solid #eee;
+	padding-left:4px;
+}
+.MainTable .guestbook .Ctd{
+	padding:4px;
+}
+/*****评论页显示样式************/
+
+.MainTable #comment_title{
+	height:92px;
+	background:url(../default/comment_title.gif);
+}
+.MainTable #comment_title td{
+	padding-top:18px;
+}
+/********顶客页digg.php显示样式************/
+.MainTable .list_sortTCP{
+	margin-bottom:12px;
+	width:99%;
+}
+.MainTable .list_sortTCP .pic{
+	padding-right:1em;
+}
+.MainTable .list_sortTCP .content{
+	border-bottom:1px dotted #ccc;
+	text-indent:2em;
+	color:#646464;
+}
+.MainTable .list_sortTCP .title a{
+	color:#555555;
+}
+.MainTable .list_sortTC{
+	margin-bottom:5px;
+	width:99%;
+	border-bottom:1px dotted #ccc;
+}
+.MainTable .list_sortTC .title a{
+	color:#555555;
+}
+.MainTable .list_sortTC .content{
+	text-indent:2em;
+	color:#646464;
+}
+/***顶客*********/
+.MainTable .Digg{
+	background:url(../default/digg_center.gif) center;
+}
+.MainTable .Digg .left{
+	background:url(../default/digg_left.gif) left;
+	width:5px;
+}
+.MainTable .Digg .right{
+	background:url(../default/digg_right.gif) right;
+	width:5px;
+}
+.MainTable .Digg .number{
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+	padding-top:14px;
+	color:#2B4399;
+}
+.MainTable .Digg .title{
+	font-size:13px;
+	text-align:center;
+	padding-top:18px;
+}
+.MainTable .Digg .title a{
+	color:#990000;
+}
+
+.MainTable .small_digg{
+	width:38px;
+	height:24px;
+	background:url(../default/bg_digg.gif);
+	text-align:center;
+	padding-top:7px;;
+	font-size:16px;
+	margin-bottom:8px;
+	margin-right:4px;
+}
+
+/*****提交按钮*********/
+.MainTable .button{
+	color:#333;
+	background:url(../default/bt_bg.gif);
+	height:21px;
+	border:1px solid #555;
+	letter-spacing:2px;
+}
+
+
+/****专题列表页************/
+.MainTable #listsp{
+	width:99%;
+}
+.MainTable #listsp .sptd{
+	border-bottom:1px dotted #ccc;
+	padding-top:5px;
+}
+.MainTable #listsp .pic{
+	padding:3px 1em 0.5em 5px;
+}
+.MainTable #listsp .title{
+	padding-bottom:0.2em;
+}
+.MainTable #listsp .title a{
+	color:#990000;
+}
+.MainTable #listsp .pic img{
+	border:1px solid #333;
+}
+.MainTable #spshow .about{
+	color:#990000;
+}
+
+
+/***积分介绍页******/
+.MainTable .jfsort{
+	margin-bottom:10px;
+}
+.MainTable .jfsort .jfname{
+	background:url(article_elite.gif) no-repeat 10px 0px  ;
+	text-indent:25px;
+	color:red;
+	font-weight:bold;
+}
+.MainTable .jfsort .title{
+	background:url(arrow.gif) no-repeat 25px 0px;
+	text-indent:35px;
+}
+
+.MainTable .jfsort .about{
+	text-indent:45px;
+}
+
+ 
+/*****下载*****/
+.MainTable .viewcontent .middle{
+	padding:0px;	
+}
+.MainTable #viewdownload .middle td{
+	padding-left:8px;
+	padding-top:3px;
+}
+.MainTable #viewdownload .middle .a1{
+	font-weight:bold;
+}
+.MainTable #viewdownload .middle .b1{
+	background:#fff;
+}
+/*****视频**********/
+.MainTable #viewmv .middle td{
+	padding-left:8px;
+	padding-top:3px;
+}
+.MainTable #viewmv .middle .a1{
+	font-weight:bold;
+}
+.MainTable #viewmv .middle .b1{
+	background:#fff;
+}
+/************商城****************/
+.MainTable .sortshop{
+	width:180px;float:left;
+	border-right:solid 1px #ccc dotted;
+	border-bottom:solid 1px #ccc dotted;
+}
+.MainTable .sortshop.about{
+	padding-left:5px;
+}
+.MainTable .sortshop a{
+	font-weight:bold;
+}
+
+.MainTable .sorttitle{
+	width:98%;
+}
+.MainTable .sorttitle td{
+	padding-top:3px;
+	background:url(iicon3.gif) repeat-x bottom;
+}
+.MainTable .sorttitle a{
+	display:block;
+	background:url(iicon1.gif) no-repeat left;
+	text-indent:1.2em;
+	background-position: 0 40%;
+}
+
+
+.MainTable .sortshop .title a{
+	display:block;
+	background:url(items.gif) no-repeat 5px 0px;
+	width:170px;
+	text-indent:2em;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+/****图片大分类页******/
+.MainTable .BigsortImg .v0{
+	width:120px;
+	padding:5px 0px 5px 18px;
+}
+.MainTable .BigsortImg .v0 .p1 img{
+	width:120px;
+	height:90px;
+	border:1px solid #fff;
+}
+.MainTable .BigsortImg .v0 .p1 a{
+	width:120px;
+	height:90px;
+	display:block;
+	border:1px solid #ccc;
+}
+.MainTable .BigsortImg .v0 .p2{
+	text-align:center;
+	padding-top:5px;
+	width:120px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/****图片内容列表页*******/
+.MainTable .list_sortpic .listpic{
+	margin-left:6px;
+}
+/***********/
+.MainTable .BigsortTile .a2{
+	padding-right:10px;
+}
+
+/****图片主题*******/
+.MainTable #ListShowPic .listpic{
+	margin-left:6px;
+}
+
+
+.MainTable #content_vote{
+	margin:10px;
+}
+
+
+
+/***Flash大分类页******/
+.MainTable .FlashBigsortImg .v0 .p2{
+	text-align:left;
+}
+/***商城大分类页*********/
+.MainTable .ShopBigsortImg .v0 .p2{
+	text-align:left;
+}
+/**商城大分类页*******/
+.MainTable .MvBigsortImg .v0 .p2{
+	text-align:left;
+}
+/***文章内容页*****/
+.MainTable #view_article .head{
+	display:none;
+}
+.MainTable #view_article .middle{
+	border-top:1px solid #D0D0D0;
+	background:#FDFEFF;				/**内容页背景颜色**/
+}
+.MainTable #view_article .main_title{
+	margin-top:33px;
+	margin-bottom:15px;
+	font-size:20px;
+	color:#000;
+	font-weight:bold;
+	text-align:center;
+}
+.MainTable #view_article .fit_title{
+	line-height:40px;
+	font-size:15px;
+	color:#000;
+	text-align:center;
+}
+.MainTable #view_article .top_about{
+	text-align:center;
+	color:#666;
+	padding-bottom:10px;
+	border-bottom:1px solid #eee;
+	width:96%;	
+	margin:auto;
+	margin-bottom:15px;
+}
+.MainTable #view_article .top_about a{
+	color:#666;
+}
+.MainTable #view_article .top_about #commnetsnum{
+	color:red;
+}
+.MainTable #view_article .content{
+	width:96%;
+}
+.MainTable .content_word,.MainTable .content_word td,.MainTable .content_word p,.MainTable .content_word div,.MainTable .content_word span,.MainTable .content_word a{
+	font-size:15px;
+	line-height:200%;
+}
+.MainTable #view_article .tag_username{
+	border:#ccc dotted 1px;
+}
+.MainTable #view_article .tag_username .Tags a{
+	font-weight:bold;
+}
+.MainTable #view_article .tag_username td{
+	padding:3px 9px 1px 9px;
+	background:#fff;
+}
+.MainTable #view_article .nextpage td{
+	font-size:14px;
+	line-height:80px;
+}
+.MainTable #view_article .nextpage td a{
+	font-size:14px;
+}
+/****列表页****/
+.MainTable #list_article .head{
+	display:none;
+}
+.MainTable #list_article .middle{
+	border-top:1px solid #D0D0D0;
+	background:#FDFEFF;	
+}
+
+/**自定义表单**/
+.MainTable .formlist_head td{
+	line-height:24px;
+	color:red;
+	background:#eee;
+}
+.MainTable .formlist_tr td{
+	line-height:26px;
+}
+.MainTable .formlist_table{
+	background:#eee;
+}
+
+
+/*把相关相目的TAG隐藏掉*/
+.MainTable #sonSortName .head{
+	display:none;
+}
+.MainTable #sonSortName .middle{
+	border-top:1px solid #D0D0D0;
+	
+	padding:0px;
+}
+
+/*控制内容页的图片，不能超过700像素*/
+.content_word img { 
+    max-width:700px;    
+    height:auto;            
+    zoom:expression( function(elm) {    
+        if (elm.width>560) {    
+              var oldVW = elm.width; elm.width=700;                  
+              elm.height = elm.height*(700 /oldVW);            
+        }      
+    }(this));  
+}
+
+
+/*********************************************************************
+**********************************************************************
+AJAX在线编辑DIV容器
+**********************************************************************
+*********************************************************************/
+.AjaxEditTable{
+	border:4px solid #F8F6F6;
+	border-left:0;
+	border-top:0;
+}
+.AjaxEditTable div{
+	padding:8px 10px 10px 10px;
+	line-height:20px;
+	background:#fff;
+	border:1px solid #E7E5E5;
+}
+
+
+/********按钮样式********/
+
+.buttonStyle{
+	background:url(button_bg.gif);
+	line-height:21px;
+}

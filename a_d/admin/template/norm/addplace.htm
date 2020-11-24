@@ -1,0 +1,363 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	//if(p=='pic'){
+		document.getElementById(p).value=url;
+	//}else{
+	//	document.getElementById("flashurl").value=url;
+	//}
+	
+}
+//-->
+</SCRIPT>
+
+<script src="images/setday.js"></script>
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" align="center">
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit222" value="添加广告位" onClick="window.location=('$admin_path&job=addplace')">
+      　　　 
+      <input type="button" name="Submit23" value="广告位管理" onClick="window.location=('$admin_path&job=listad')">
+      　　
+      <input type="button" name="Submit23" value="购买广告" onClick="window.open('../member/index.php?main=../$dirname/member/norm.php?job=list')">
+      　　 　 </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan="2">管理</td>
+    </tr>
+    <!--
+EOT;
+if($job=="editadplace"){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">广告启用/停用</td>
+      <td width="84%"> 
+        <input type="radio" name="isclose" value="1" $isclose[1]>
+        停用 
+        <input type="radio" name="isclose" value="0" $isclose[0]>
+        启用</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">是否开通给用户购买:</td>
+      <td width="84%"> 
+        <input type="radio" name="ifsale" value="1" $ifsale[1] onclick="if_sale('1')">
+        允许购买 
+        <input type="radio" name="ifsale" value="0" $ifsale[0] onclick="if_sale('0')">
+        禁止购买</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id='saletr1'> 
+      <td width="16%">购买的广告是否自动通过审核:</td>
+      <td width="84%"> 
+        <input type="radio" name="autoyz" value="1" $autoyz[1]>
+        自动通过审核 
+        <input type="radio" name="autoyz" value="0" $autoyz[0]>
+        手工审核</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id='saletr2'> 
+      <td width="16%">购买价格:</td>
+      <td width="84%"> 
+        <input type="text" name="moneycard" size="5" value="$rsdb[moneycard]">
+        ({$webdb[MoneyName]}/天)数值必须要大于0</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id='nosaletr1'> 
+      <td width="16%">本广告有效日期</td>
+      <td width="84%">开始: 
+        <input type="text"  onclick="setday(this)" size="20" value="$rsdb[begintime]" name="begintime">
+        结束: 
+        <input type="text" name="endtime"  onclick="setday(this)" size="20" value="$rsdb[endtime]">
+        (填0则不做限制) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">广告位名称: </td>
+      <td width="84%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]" size="40">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="16%">广告所在页面网址:<span help=1>这一项,可以留空.<br>但是,当你的广告位设置给用户购买的时候,建议不要留空,方便用户查看广告位的具体位置及展示效果.<br>同时也建议你画一张图,指出具体的广告位置,然后在这里输入这张图片的访问网址,以方便用户准确的理解到这个广告的位置及展未效果.</span></td>
+      <td width="84%">
+        <input type="text" name="postdb[demourl]" value="$rsdb[demourl]" size="50">
+        (可留空) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="16%">关键字:<br>
+        (英文或数字,不能跟之前的雷同) </td>
+      <td width="84%"> 
+        <input type="text" name="postdb[keywords]" value="$rsdb[keywords]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 
+        <input type="radio" name="postdb[type]" value="word" id="word_bt" onclick="choose_type('word')">
+        文字广告位 
+        <input type="radio" name="postdb[type]" value="pic" id="pic_bt" onclick="choose_type('pic')">
+        图片广告位 
+        <input type="radio" name="postdb[type]" value="swf" id="swf_bt" onclick="choose_type('swf')">
+        FLASH广告位 
+        <input type="radio" name="postdb[type]" value="code" id="code_bt" onClick="choose_type('code')">
+        代码广告位 
+        <input type="radio" name="postdb[type]" value="duilian" id="duilian_bt" onClick="choose_type('duilian')">
+        对联广告位 
+		<input type="radio" name="postdb[type]" value="updown" id="updown_bt" onClick="choose_type('updown')">
+        上下收缩广告位
+		</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td>以下是默认参数,当没人投广告,或广告失效时,将在页面显示如下内容,而不致于页面是空白的</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="3" id="worddiv" style="display:none;">
+          <tr> 
+            <td width="16%">文字内容:</td>
+            <td width="84%"> 
+              <input type="text" name="cdb[word]" value="$word">
+            </td>
+          </tr>
+          <tr> 
+            <td width="16%">文字链接地址:</td>
+            <td width="84%"> 
+              <input type="text" name="wordlinkurl" value="$linkurl">
+            </td>
+          </tr>
+          <tr> 
+            <td width="16%">打开方式:</td>
+            <td width="84%"> 
+              <input type="radio" name="wordtarget" value="blank" $_wordtarget[blank]>
+              新窗口打开 
+              <input type="radio" name="wordtarget" value="self" $_wordtarget[self]>
+              本窗口打开 </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="picdiv" style="display:none;">
+          <tr> 
+            <td width="16%">图片地址:</td>
+            <td width="84%"> 
+              <input type="text" name="cdb[picurl]" size="60" value="$picurl" id="imgurl">
+              <a href='javascript:' onClick='window.open("upfile.php?label=imgurl&dir=ad","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传图片</font></a> 
+              <a href="javascript:" class="style30"  onClick="javascript:cutimg();">[剪裁图片]</a> 
+            </td>
+          </tr>
+          <tr> 
+            <td width="16%">图片链接地址:</td>
+            <td width="84%"> 
+              <input type="text" name="cdb[linkurl]" size="60" value="$linkurl">
+            </td>
+          </tr>
+          <tr> 
+            <td width="16%">图片宽度:</td>
+            <td width="84%"> 
+              <input type="text" name="picwidth" value="$width" size="5" id="imgwidth">
+              像素</td>
+          </tr>
+          <tr> 
+            <td width="16%">图片高度:</td>
+            <td width="84%"> 
+              <input type="text" name="picheight" value="$height" size="5" id="imgheight">
+              像素</td>
+          </tr>
+          <tr> 
+            <td width="16%">打开方式:</td>
+            <td width="84%"> 
+              <input type="radio" name="pictarget" value="blank" $_pictarget[blank]>
+              新窗口打开 
+              <input type="radio" name="pictarget" value="self" $_pictarget[self]>
+              本窗口打开</td>
+          </tr>
+        </table><table width="100%" border="0" cellspacing="0" cellpadding="0" id="updowndiv" style="display:none;">
+  <tr> 
+    <td width="16%">停留显示时间:</td>
+    <td width="84%"> 
+      <input type="text" name="second_time" value="$second_time" size="5" >
+      秒</td>
+  </tr>
+  <tr> 
+    <td width="16%">多久播放一次:</td>
+    <td width="84%"> 
+      <input type="text" name="hour_time" value="$hour_time" size="5">
+      小时</td>
+  </tr>
+</table>
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="flashdiv" style="display:none;">
+          <tr> 
+            <td width="16%">FLASH地址:</td>
+            <td width="84%"> 
+              <input type="text" name="cdb[flashurl]" size="60" value="$flashurl" id="flashurl">
+              <a href='javascript:' onClick='window.open("upfile.php?label=flashurl&dir=ad","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传FLASH</font></a> 
+            </td>
+          </tr>
+          <tr> 
+            <td width="16%">FLASH宽度:</td>
+            <td width="84%"> 
+              <input type="text" name="swfwidth" value="$width" size="5">
+              像素</td>
+          </tr>
+          <tr> 
+            <td width="16%">FLASH高度:</td>
+            <td width="84%"> 
+              <input type="text" name="swfheight" value="$height" size="5">
+              像素</td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="codediv" style="display:none;">
+          <tr> 
+            <td width="16%">广告代码:<br>
+              注意:如果是插入JS代码的话,请点击编辑器上方的"源码"然后把JS代码粘贴进去,立即提交.而不要再点"设计"返回来,否则将提交不成功。另外，修改的时候,如果JS代码的话，需要点击“源码”才能看得到，同理不要点击“设计”返回来，否则也是提交不成功的</td>
+            <td width="84%"> <iframe id="eWebEditor1" src="ewebeditor/ewebeditor.php?id=content&style=standard" frameborder="0" scrolling="no" width="650" height="250"></iframe> 
+              <input name="cdb[code]" type="hidden" id="content" value='$code'>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="duiliandiv" style="display:none;">
+          <tr> 
+            <td width="18%">左边的FLASH/图片源地址</td>
+            <td width="82%"> 
+              <input type="text" name="l_src" value="$l_src" size="50" id="l_src">
+              <a href='javascript:' onClick='window.open("upfile.php?label=l_src&dir=ad","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传文件</font></a></td>
+          </tr>
+          <tr> 
+            <td width="18%">左边的FLASH/图片链接地址</td>
+            <td width="82%"> 
+              <input type="text" name="l_link" value="$l_link" size="50">
+            </td>
+          </tr>
+          <tr> 
+            <td width="18%">左边的FLASH/图片尺寸</td>
+            <td width="82%">宽: 
+              <input type="text" name="l_width" value="$l_width" size="8">
+              像素,高: 
+              <input type="text" name="l_height" value="$l_height" size="8">
+              像素 </td>
+          </tr>
+          <tr> 
+            <td width="18%">右边的FLASH/图片源地址</td>
+            <td width="82%"> 
+              <input type="text" name="r_src" value="$r_src" size="50" id="r_src">
+              <a href='javascript:' onClick='window.open("upfile.php?label=r_src&dir=ad","","width=350,height=50,top=200,left=400")'><font color="#FF0000">点击上传文件</font></a></td>
+          </tr>
+          <tr> 
+            <td width="18%">右边的FLASH/图片链接地址</td>
+            <td width="82%"> 
+              <input type="text" name="r_link" value="$r_link" size="50">
+            </td>
+          </tr>
+          <tr> 
+            <td width="18%">右边的FLASH/图片尺寸</td>
+            <td width="82%">宽: 
+              <input type="text" name="r_width" value="$r_width" size="8">
+              像素,高: 
+              <input type="text" name="r_height" value="$r_height" size="8">
+              像素 </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="center"> 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_type(type){
+		document.getElementById("word_bt").checked=false;
+		document.getElementById("pic_bt").checked=false;
+		document.getElementById("swf_bt").checked=false;
+		document.getElementById("code_bt").checked=false;
+		document.getElementById("duilian_bt").checked=false;
+		document.getElementById("updown_bt").checked=false;
+		
+		document.getElementById("worddiv").style.display='none';
+		document.getElementById("picdiv").style.display='none';
+		document.getElementById("flashdiv").style.display='none';
+		document.getElementById("codediv").style.display='none';
+		document.getElementById("duiliandiv").style.display='none';
+		document.getElementById("updowndiv").style.display='none';
+				
+	if(type=="word"){
+		document.getElementById("word_bt").checked=true;
+		document.getElementById("worddiv").style.display='';
+	}else if(type=="pic"){
+		document.getElementById("pic_bt").checked=true;
+		document.getElementById("picdiv").style.display='';
+	}else if(type=="swf"){
+		document.getElementById("swf_bt").checked=true;
+		document.getElementById("flashdiv").style.display='';
+	}else if(type=="code"){
+		document.getElementById("code_bt").checked=true;
+		document.getElementById("codediv").style.display='';
+	}else if(type=="duilian"){
+		document.getElementById("duilian_bt").checked=true;
+		document.getElementById("duiliandiv").style.display='';
+	}else if(type=="updown"){
+		document.getElementById("updown_bt").checked=true;
+		document.getElementById("picdiv").style.display='';
+		document.getElementById("updowndiv").style.display='';
+	}
+}
+choose_type('$rsdb[type]');
+//-->
+</SCRIPT>
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提 交">
+        <script language="javascript">
+function cutimg() 
+{
+	var img=document.getElementById("imgurl").value;
+	var cw=document.getElementById("imgwidth").value;
+	var ch=document.getElementById("imgheight").value;
+	if(cw==''){
+		document.getElementById("imgwidth").focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.getElementById("imgheight").focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	document.getElementById("imgurl").focus();
+	alert('图片地址不存在');
+}
+}
+</script>
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function if_sale(v){
+	if(v=='1'){
+		get_obj('saletr1').style.display='';
+		get_obj('saletr2').style.display='';
+		get_obj('nosaletr1').style.display='none';
+	}else{
+		get_obj('saletr1').style.display='none';
+		get_obj('saletr2').style.display='none';
+		get_obj('nosaletr1').style.display='';
+	}
+}
+if_sale('$rsdb[ifsale]');
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

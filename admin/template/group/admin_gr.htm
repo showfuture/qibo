@@ -1,0 +1,95 @@
+<!--
+<?php
+print <<<EOT
+-->  
+
+<form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job">
+
+
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr class="head"> 
+      <td>修改用户组:<b>$rsdb[grouptitle]</b></td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td>
+<!--
+EOT;
+foreach($adminDB AS $key=>$array){
+if($key=='自定义菜单')continue;
+print <<<EOT
+-->	  
+        <table width="100%" border="0" style="margin-top:5px;border:#ccc solid 1px;">
+          <tr> 
+            <td colspan="5" bgcolor="#EBEBEB" style="height:19px;">$key</td>
+  </tr>
+		<tr>
+            <td bgcolor="#FFFFFF"> 
+              <!--
+EOT;
+foreach($array AS $title=>$rs){
+$ckk=$grdb[$rs[power]]?' checked ':'';
+$myckk=$mygrdb[$rs[power]]?' checked ':'';
+$rs[power]==1 && $ckk = 'disabled';
+$title = stripslashes($title);
+print <<<EOT
+--><span style="display:block;width:200px;height:25px;float:left;overflow:hide;">
+              <input type="checkbox" name="adgrdb[{$rs[power]}]" value="1" $ckk>
+              <span style="display:none;"> 
+              <input class='myadgrdb' type="checkbox" name="myadgrdb[{$rs[power]}]" value="1" $myckk>
+              </span> <a href="$rs[link]" target="_blank">$title</a> </span> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+ <!--
+EOT;
+}print <<<EOT
+-->		
+		
+      </td>
+    </tr> <tr > 
+      <td align="center">  <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a>  
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="gid" value="$gid">
+      </td>
+    </tr>
+  </table>
+
+
+ 
+</form><SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(e.className=='myadgrdb')continue;
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+ <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="display:none;">
+    <tr class="head"> 
+    <td>提醒:</td>
+  </tr>
+  <tr>
+    <td>1.每个功能前面有两个选择框,第一个选择框是分配权限的总控制开关.第二个选择框如果选定的话,将会在自定义菜单那里显示,主要是为了一些常用功能可以快速的操作,非常用的功能,就不必选中.<br>
+      2.第一个总开关不选择,只选择第二个的话.将不生效. </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

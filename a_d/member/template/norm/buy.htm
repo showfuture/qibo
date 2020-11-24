@@ -1,0 +1,123 @@
+<!--
+<?php
+$_city_id=$rsdb[city_id]?$rsdb[city_id]:$city_id;
+print <<<EOT
+--> 
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">购买广告</div></div>
+    <div class="cont">
+        <form name="form1" method="post" action="?">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr> 
+            <td class="tdL"> 所在城市:</td>
+            <td class="tdR">{$city_DB[name][$_city_id]}</td>
+          </tr>
+          <tr>
+           
+            <td class="tdL"> 广告位名称:</td>
+            <td class="tdR">{$rsdb[name]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告类型:</td>
+            <td class="tdR">{$array_adtype[$rsdb[type]]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL">审核类型:</td>
+            <td class="tdR">$rsdb[_ifyz]</td>
+          </tr>
+          <tr> 
+            <td class="tdL">费用:</td>
+            <td class="tdR">{$rsdb[moneycard]} ({$webdb[MoneyName]}/天)</td>
+          </tr>
+          <tr> 
+            <td class="tdL">购买几天:</td>
+            <td class="tdR"><input type="text" name="atc_day" size="4" value="$rsdb[u_day]"> 天</td>
+          </tr>
+<!--
+EOT;
+if($rsdb[type]=='code'){print <<<EOT
+-->
+          <tr> 
+            <td class="tdL">广告代码:</td>
+            <td class="tdR"><textarea name="atc_code" cols="50" rows="10">$code</textarea></td>
+          </tr>
+<!--
+EOT;
+}elseif($rsdb[type]=='word'){print <<<EOT
+-->
+          <tr> 
+            <td class="tdL">广告文字:</td>
+            <td class="tdR"><input type="text" name="atc_word" size="30" value="$word"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告网址:</td>
+            <td class="tdR"><input type="text" name="atc_url" size="50" value="$linkurl"></td>
+          </tr>
+<!--
+EOT;
+}elseif($rsdb[type]=='pic'||$rsdb[type]=='updown'){print <<<EOT
+-->
+          <tr> 
+            <td class="tdL">广告图片:</td>
+            <td class="tdR"><input type="text" name="atc_img" size="50" value="$picurl" id="picurlid"> <a href='javascript:' onclick='window.open("$webdb[www_url]/do/upfile.php?fn=upfile&dir=ad&label=picurlid","","width=350,height=50,top=200,left=400")'>点击上传图片</a></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告网址:</td>
+            <td class="tdR"><input type="text" name="atc_url" size="50" value="$linkurl"></td>
+          </tr>
+<!--
+EOT;
+}elseif($rsdb[type]=='swf'){print <<<EOT
+-->
+          <tr> 
+            <td class="tdL">广告FLASH:</td>
+            <td class="tdR"><input type="text" name="atc_url" size="50" value="$flashurl"></td>
+          </tr>
+<!--
+EOT;
+}elseif($rsdb[type]=='duilian'){print <<<EOT
+-->
+          <tr> 
+            <td class="tdL">广告左边的FLASH/图片源地址:</td>
+            <td class="tdR"><input type="text" name="l_src" size="60" value="$l_src"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告左边的FLASH/图片链接地址:</td>
+            <td class="tdR"><input type="text" name="l_link" size="60" value="$l_link"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告右边的FLASH/图片源地址:</td>
+            <td class="tdR"><input type="text" name="r_src" size="60" value="$r_src"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告右边的FLASH/图片链接地址:</td>
+            <td class="tdR"><input type="text" name="r_link" size="60" value="$r_link"></td>
+          </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR"> 
+              <input type="submit" name="Submit" value="提交">
+              <input type="hidden" name="id" value="$id">
+              <input type="hidden" name="action" value="$job">
+              <input type="hidden" name="u_id" value="$u_id">
+            </td>
+          </tr>
+        </table>
+        </form>
+	</div>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,label){
+	document.getElementById(label).value=url; 
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

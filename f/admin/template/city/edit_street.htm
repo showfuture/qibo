@@ -1,0 +1,52 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="24%">名称:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr><tr bgcolor="#FFFFFF">
+      <td width="24%">伪静态目录名:</td>
+      <td width="76%"> 
+        <input type="text" name="postdb[dirname]" value="$rsdb[dirname]">
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

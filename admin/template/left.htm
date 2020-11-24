@@ -1,0 +1,154 @@
+<html>
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>后台管理 powerby www.qibosoft.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="images/style.css" type="text/css">
+<script language="javascript">
+//if(self==top){window.location="index.php?iframe=1";}
+</script>
+<SCRIPT language=JavaScript>
+function killErrors() {
+	return true;
+}
+window.onerror = killErrors;
+</SCRIPT>
+<SCRIPT language=javascript>
+function showson(ss){
+	if (document.getElementById(ss).style.display == 'none'){
+		document.getElementById(ss).style.display = '';
+	}else{
+		document.getElementById(ss).style.display = 'none';
+	}
+}
+function showmenu(ss){
+	for(i=0;i<500;i++){
+		obj=document.getElementById("s"+i);	
+		if(ss=='open'){
+			if(obj && obj.style.display=="none"){
+				obj.style.display="";
+			}
+		}else{
+			if(obj && obj.style.display==""){
+				obj.style.display="none";
+			}
+		}
+	}
+	
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0" >
+<div id="leftmenu"> 
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class="head_menu"><a href='javascript:' onclick='showson("s")'>当前状态</a></td>
+    </tr>
+    <tr> 
+      <td class="c_menu"> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id=s>
+          <tr> 
+            <td style='padding-left:10px;line-height:16px;'> 帐号:<strong>$userdb[username]</strong> 
+              <br>
+              级别: 
+              <!--
+EOT;
+if($admin_name==$userdb[username]){
+print <<<EOT
+-->
+              <a title='$userdb[groupid]'>创始人</a> 
+              <!--
+EOT;
+}else{
+print <<<EOT
+-->
+              {$ltitle[$userdb[groupid]]} 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+              <br>
+              <a href="index.php?lfj=center&job=map" target="main">管理首页</a> <a href=?action=quite target=main>安全退出</a><br>
+              <a href='$webdb[www_url]/{$ModuleDB[$Smenu][dirname]}' target="_blank">查看首页</a> 
+              <a href="?lfj=center&job=phpinfo" target="main">服务器信息</a> <br>
+              <a href="javascript:" onClick="return showmenu('open')" >全部展开</a> 
+              <a href="javascript:" onClick="return showmenu('close')" >全部收缩</a> 
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  $mainlink 
+  <!--
+EOT;
+foreach($menu_GpartDB AS $key=>$array){
+print <<<EOT
+-->
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class='head_menu'><a href='javascript:' onclick='showson("s$key")'>$array[name]</a></td>
+    </tr>
+    <tr> 
+      <td class='c_menu'> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id='s$key'>
+          <!--
+EOT;
+$ck=0;
+$endtr='';
+foreach($array[son] AS $key2=>$rs){
+$ck++;
+$endtr='</td></tr>';
+if($ck==1){
+	$a1="<tr><td onmouseover=\"this.className='leftA'\" onmouseout=\"this.className='leftB'\">";	 
+}elseif(!$rs[iftier]){
+	$a1="</td></tr><tr><td onmouseover=\"this.className='leftA'\" onmouseout=\"this.className='leftB'\">";
+}elseif($rs[iftier]){
+	$a1=" | ";
+}
+print <<<EOT
+-->
+          $a1 <A HREF='$rs[linkurl]' target='main' style="color:$rs[color];">$rs[name]</A> 
+          <!--
+EOT;
+}print <<<EOT
+-->$endtr
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!--
+EOT;
+}print <<<EOT
+-->
+  <table cellspacing='0' cellpadding='0' class='tablewidth_menu'>
+    <tr> 
+      <td class="head_menu"><a href='javascript:' onclick='showson("s98")' style="color:#666;">版权所有</a></td>
+    </tr>
+    <tr> 
+      <td class="c_menu"> 
+        <table width='100%' cellspacing='0' cellpadding='0' style='display:' id='s98'>
+          <tr> 
+            <td style='padding-left:10px;line-height:16px;color:#666;'>系统版本:$qibosoft_Edition<br>
+              系统设计:龙城<br>
+             
+              支持团队:齐博技术团队<br>
+              技术支持:<A HREF="http://bbs.qibosoft.com/" style="color:#666;" target="_blank">齐博官方论坛</A> 
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+<div style='display:none;'><iframe src="index.php?lfj=center&job=GetOfficialNotice" width=0 height=0></iframe></div>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

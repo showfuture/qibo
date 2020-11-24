@@ -1,0 +1,27 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" class="tablewidth" cellspacing="1" cellpadding="3" align="center">
+  <tr> 
+    <td bgcolor="#FFFFFF">[<a href="index.php?lfj=center&job=config">网站核心设置</a>] 
+      [<a href="index.php?lfj=center&job=yz">用户身份验证设置</a>] [<a href="index.php?lfj=center&job=gd_img">图片水印设置</a>] 
+      [<a href="index.php?lfj=center&job=olpay">电子商务设置</a>] [<a href="index.php?lfj=center&job=sms">短信接口设置</a>] 
+      [<a href="index.php?lfj=center&job=mail">邮件发送设置</a>] [<a href="index.php?lfj=center&job=ftp">FTP设置</a>] 
+      <!--
+EOT;
+if($IS_BIZ){
+print <<<EOT
+-->
+      [<a href="index.php?lfj=center&job=limitip">IP限制设置</a>] [<a href="index.php?lfj=center&job=cc_attack">防CC攻击设置</a>] 
+      <!--
+EOT;
+}print <<<EOT
+--> [<a href="index.php?lfj=center&job=yzimg">验证码复杂度设置</a>]
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

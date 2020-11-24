@@ -1,0 +1,110 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr class="head"> 
+      <td colspan="2" align="center">手机短信接口资料配置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="18%">手机短信接口提供商:</td>
+      <td align="left" width="82%"> <a href="index.php?lfj=$lfj&action=delete_admin_logs&iddb[{$rs[id]}]=1"></a> 
+        <input type="radio" name="webdbs[sms_type]" value="eshang8" onclick="choose_sms('eshang8')" $sms_type[eshang8]>
+        短信通dxton平台(<a href="http://www.dxton.com/" target="_blank"><u>官网</u></a>) 
+        <input type="radio" name="webdbs[sms_type]" onclick="choose_sms('winic')" value="winic" $sms_type[winic]>
+        移动商务应用中心(<a href="http://www.winic.org/" target="_blank"><u>官网</u></a>)
+        <input type="radio" name="webdbs[sms_type]" onClick="choose_sms('ccell')" value="ccell" $sms_type[ccell]>
+        单元科技(<a href="http://www.ccell.com.cn/" target="_blank"><u>官网</u></a>)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="eshang8_1" style="display:none;"> 
+      <td align="left" width="18%">帐户:</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_es_name]" value="$webdb[sms_es_name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="eshang8_2" style="display:none;">
+      <td align="left" width="18%">key：</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_es_key]" value="$webdb[sms_es_key]" size="40">
+      </td>
+    </tr><tr bgcolor="#FFFFFF" id="winic_1" style="display:none;"> 
+      <td align="left" width="18%">账号:</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_wi_id]" value="$webdb[sms_wi_id]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="winic_2" style="display:none;">
+      <td align="left" width="18%">密码：</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_wi_pwd]" value="$webdb[sms_wi_pwd]" size="40">
+      </td>
+    </tr>
+	
+	
+	<tr bgcolor="#FFFFFF" id="ccell_1" style="display:none;"> 
+      <td align="left" width="18%">账 号:</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_ccell_id]" value="$webdb[sms_ccell_id]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="ccell_2" style="display:none;">
+      <td align="left" width="18%">密 码：</td>
+      <td align="left" width="82%"> 
+        <input type="text" name="webdbs[sms_ccell_pwd]" value="$webdb[sms_ccell_pwd]" size="40">
+      </td>
+    </tr>
+	
+	
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="18%">&nbsp;</td>
+      <td align="left" width="82%"> 
+        <input type="submit" name="Submit" value="提交"><SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_sms(type){
+	if(type=='eshang8'){
+		get_obj('eshang8_1').style.display="";
+		get_obj('eshang8_2').style.display="";
+		get_obj('winic_1').style.display="none";
+		get_obj('winic_2').style.display="none";
+		get_obj('ccell_1').style.display="none";
+		get_obj('ccell_2').style.display="none";
+	}else if(type=='winic'){
+		get_obj('eshang8_1').style.display="none";
+		get_obj('eshang8_2').style.display="none";
+		get_obj('ccell_1').style.display="none";
+		get_obj('ccell_2').style.display="none";
+		get_obj('winic_1').style.display="";
+		get_obj('winic_2').style.display="";		
+	}
+	else if(type=='ccell'){
+		get_obj('eshang8_1').style.display="none";
+		get_obj('eshang8_2').style.display="none";
+		get_obj('ccell_1').style.display="";
+		get_obj('ccell_2').style.display="";
+		get_obj('winic_1').style.display="none";
+		get_obj('winic_2').style.display="none";		
+	}
+}
+choose_sms('$webdb[sms_type]');
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+  </form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+   
+    <tr class="head"> 
+      <td align="left">帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td align="left">要使用手机短信功能,你必须选择一个短信接口平台提供商,选择之后,你需要去对应的提供商官方网站注册一个帐号,然后他会分配给你帐号与密码.然后把他填入到以上表格里,最后再给相应的接口平台充值,才能成功的发送短信.</td>
+    </tr>
+   
+</table>
+<!--
+EOT;
+?>
+-->

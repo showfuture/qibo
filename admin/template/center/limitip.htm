@@ -1,0 +1,65 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan="2"> 
+        <div align='center'><b><font color="#FFFFFF">IP设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="31%" valign="top"><b><font color="#FF0000">允许进入整站后台的IP:</font></b><span help=1><br>
+        (留空则不限制,你可以设置只允许哪些IP进入后台,每个IP换一行,比如<br>
+        192.168.0.2<br>
+        192.168.1.5<br>
+        <font color="#FF0000">192.168.0</font> <br>
+        <br>
+        如果某行设置成192.168.0 那么192.168.0.1-192.168.0.255这个范围内的IP都是在允许的范围内<br>
+        你当前的IP是:&nbsp;<font color="#0000FF">$onlineip</font><br>
+        注意:如果你的IP不是固定的话,比如是ADSL拨号的话,请不要填写,否则IP更换后就进不了后台,此时只能通过修改后台文件强制进入后台进行修改恢复<br>
+        )</span></td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="69%"> 
+        <textarea name="webdbs[AdminIp]" cols="50" rows="8">$webdb[AdminIp]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="31%" valign="top"><b><font color="#FF0000">允许访问前台网站的IP:</font></b><span help=1><br>
+        (留空则不限制,你可以设置只允许哪些IP访问网站,每个IP换一行,比如<br>
+        192.168.0.2<br>
+        192.168.1.5<br>
+        <font color="#FF0000">192.168.0</font> <br>
+        <br>
+        如果某行设置成192.168.0 那么192.168.0.1-192.168.0.255这个范围内的IP都是在允许的范围内<br>
+        注意:这里只限制访问前台,但不限制登录后台<br>
+        ) </span></td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="69%"> 
+        <textarea name="webdbs[AllowVisitIp]" cols="50" rows="8">$webdb[AllowVisitIp]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="31%" valign="top"><b><font color="#FF0000">封IP:</font></b><span help=1><br>
+        (你可以设置封掉哪些IP访问网站前台和后台,每个IP换一行,比如<br>
+        192.168.0.2<br>
+        192.168.1.5<br>
+        <font color="#FF0000">192.168.0</font> <br>
+        <br>
+        如果某行设置成192.168.0 那么192.168.0.1-192.168.0.255这个范围内的IP都是在受封的范围内<br>
+        注意:这里会同时禁止访问前台与后台,请不要封自己的IP,否则很麻烦,你需要修改文件data/config.php查找到你的IP把他删除才行<br>
+        )</span></td>
+      <td align="left" bgcolor='#FFFFFF' id="setindex" width="69%"> 
+        <textarea name="webdbs[ForbidIp]" cols="50" rows="8">$webdb[ForbidIp]</textarea>
+      </td>
+    </tr>
+    <tr align="center"> 
+      <td bgcolor='#FFFFFF' id="setindex" colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

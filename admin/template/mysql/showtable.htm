@@ -1,0 +1,78 @@
+<html>
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.choose td{
+	background:#eee;
+}
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td align="center">$showpage</td>
+  </tr>
+</table>
+<table border="0" cellspacing="1" cellpadding="3" bgcolor="#cccccc">
+  <tr align="center"> 
+
+<!--
+EOT;
+foreach($titledb AS $value){print <<<EOT
+-->
+    <td bgcolor="#F0F0F0"><b><font color="#FF0000">$value</font></b></td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr><!--
+EOT;
+foreach($listdb AS $array){print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" align="center" onmouseover="this.className='choose'" onmouseout="this.className=''"> 
+<!--
+EOT;
+for($i=0;$i<$num;$i++){print <<<EOT
+-->
+    <td>$array[$i]</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+</table>
+
+<!--
+EOT;
+if(!$listdb){print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td>当前数据表没有任何内容,记录为空!!</td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td align="center">$showpage</td>
+  </tr>
+</table>
+</body>
+<!--
+EOT;
+?>
+-->
+</html>

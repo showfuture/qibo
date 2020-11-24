@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+if($webdb[SystemType]&&!function_exists('get_info_url')){
+@include(ROOT_PATH."$webdb[SystemType]/global.php");
+}
+if($webdb[SystemType]){
+$webdb[Info_guide_word]=$webdb[guide_word];
+}
+$GuideFid[$fid]=str_replace("<a href='$webdb[www_url]' class='guide_menu'>&gt;首页</a>","",$GuideFid[$fid]);
+$bodyondblclick = (function_exists('label_array')&&$web_admin&&!$MakeIndex) ?"dblclick_label();":"";
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]                           </title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/$STYLE/default.css">
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/cms.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--//导航菜单
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+</SCRIPT>
+<!--
+EOT;
+if($webdb[cookieDomain]){print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+//解决不同域名的框架跨域问题
+document.domain = "$webdb[cookieDomain]";
+</SCRIPT>
+<!--
+EOT;
+}print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" ondblclick="$bodyondblclick">
+
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="header_top" align="center">
+  <tr>
+  <td class="L"></td>
+    <td>
+      <div class="login">
+        <SCRIPT src="$webdb[www_url]/do/hack.php?hack=login&job=js"></SCRIPT>
+      </div>
+	  <div class="Time">
+<script language="JavaScript"> 
+<!---
+today=new Date();
+var hours = today.getHours();
+var minutes = today.getMinutes();
+var seconds = today.getSeconds();
+var timeValue = "<FONT COLOR=black>" + ((hours >12) ? hours -12 :hours); timeValue += ((minutes < 10) ? "<BLINK><FONT COLOR=black>:</FONT></BLINK>0" : "<BLINK><FONT COLOR=black>:</FONT></BLINK>") + minutes+"</FONT></FONT>";
+timeValue += (hours >= 12) ? " 下午 " : " 上午 ";
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i]  }
+var d=new initArray("<font color=RED>星期日","<font color=black>星期一","<font color=black>星期二","<font color=black>星期三","<font color=black>星期四","<font color=black>星期五","<font color=red>星期六"); document.write("<font color=black>",today.getFullYear(),"<font color=black>年","<font color=black>",today.getMonth()+1,"<font color=black>月","<font color=black>",today.getDate(),"<font color=black>日 </FONT>",d[today.getDay()+1]," ",timeValue);  //-->
+</script>
+
+ <a class=top 
+            onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('$webdb[www_url]');" 
+            href="#">设为首页</a>
+			 <a class=top   href="javascript:window.external.AddFavorite('$webdb[www_url]','$webdb[webname]')">加入收藏</a>
+	  </div>
+    </td>
+    <td class="R"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="header">
+  <tr>
+    <td>
+	
+	     <div class="logo"><A HREF="{$city_url}/"><img src="$webdb[www_url]/images/default/logo.gif" border=0></A></div>
+<div class="cityname">
+<span class="title">{$city_DB[name][$city_id]}</span>
+<!--
+EOT;
+if(count($city_DB[name])>1){
+print <<<EOT
+-->
+<span class="change">[<a href="$webdb[www_url]/allcity.php">切换城市</a>]</span>
+<!--
+EOT;
+}print <<<EOT
+-->
+</div>
+<div id="headsearch">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  id="serach_ff">
+        <tr> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function cksearch(){
+	form=document.form_headsearch; 
+	if(form.fid.value=='0'){
+		//alert("请选择一个栏目!!");
+		//return false;		
+	}
+	if(form.keyword.value==''){
+		alert("关键字不能为空!!");
+		return false;		
+	}
+	
+}
+//-->
+</SCRIPT>
+		  
+          <form name="form_headsearch" method="GET" action="$city_url/search.php" target="_blank" onsubmit="return cksearch();">
+            <td class="middle" valign="top" align="left"> 
+              <table width="100%" border="0" cellspacing="5">
+                <tr> 
+                  <td width="87%">所属栏目: {$search_fid_select} </td>
+                </tr>
+                <tr> 
+                  <td width="87%"> 关 键 字: 
+                    <input type="text" name="keyword" value="$keyword" size="40">
+                    <input type="submit" name="Submit" value="搜索" class="Submit">
+                    <a href="$city_url/search.php" target="_blank">高级搜索</a> 
+                    <input type="hidden" name="action" value="search">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </form>
+        </tr>
+      </table>
+      </div>
+
+ 
+    </td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="guide">
+  <tr>
+    <td><div class="L">
+<!--
+EOT;
+if(!$webdb[Info_guide_word]){
+$fup=$Fid_db[$fid]?$fid:$fidDB[fup];
+$ck_class=$fup?"":"class=\"ck\"";
+if($choose_class['hy']){
+unset($ck_class);
+$choose_class['hy']="class=\"ck\"";
+$_array=@include(ROOT_PATH.'data/all_fid.php');
+$array=$_array[0];
+}else $array=$Fid_db[0];
+print <<<EOT
+-->
+	 
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td class="a1"><a href="$webdb[www_url]/">网站主页</a></td>
+    <td class="a2">&nbsp;</td>
+  </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td class="a1"><a href="$webdb[www_url]/hy/">黄页</a></td>
+    <td class="a2">&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+$i=0;
+foreach($array AS $key=>$name){
+$i++;if($i>5)break;
+$url=get_info_url('',$key,$city_id);
+$ck_class=$key==$fup?"class=\"ck\"":"";
+if($choose_class['hy']){unset($ck_class);$choose_class['hy']="class=\"ck\"";}
+print <<<EOT
+-->
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td class="a1"><a href="$url" target="$blank" style="color:$color;">{$name}</a></td>
+    <td class="a2">&nbsp;</td>
+  </tr>
+</table>
+
+
+<!--
+EOT;
+}}else{
+$detail=explode("\r\n",$webdb[Info_guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(ereg("^list\.php",$url)){
+	$_detail=explode("fid=",$url);
+	$url=get_info_url('',$_detail[1],$city_id);
+}elseif($url=='index.php'){
+	$url="$city_url/";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]/$url";
+}
+$blank=$blank?"_blank":'';
+$color=$color?"$color":'';
+print <<<EOT
+-->
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td class="a1"><a href="$url" target="$blank" style="color:$color;">{$name}</a></td>
+    <td class="a2">&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+}}print <<<EOT
+-->
+	</div>
+<div class="RR">
+<table border="0" cellspacing="0" cellpadding="0" class="ck">
+  <tr>
+            <td class="a1"><a href="$city_url/post.php">免费发布</a> </td>
+    <td class="a2">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<div class="R">
+      <!--
+EOT;
+if($lfjuid){
+print <<<EOT
+-->
+<a href="$webdb[www_url]/admin.php?job=sort">版主管理</a> 
+<a href="$webdb[www_url]/member/" target="_blank">我的信息</a> 
+<!--
+EOT;
+}print <<<EOT
+--> 
+     </div> 
+</td>
+  </tr>
+</table> 
+
+ 
+      
+<!--
+EOT;
+if($GuideFid[$_GET[fid]]){
+print <<<EOT
+-->   
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="nav_guide" align="center">
+  <tr> 
+          
+    <td>当前位置：<a href="$city_url/">首页</a> {$GuideFid[$_GET[fid]]} </td>
+        </tr>
+      </table>
+	   <!--
+EOT;
+}
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('<div class="wrap">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

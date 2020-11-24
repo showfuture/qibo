@@ -1,0 +1,75 @@
+/*
+*头部
+*/
+.homepage_top .banner{ background:url(banner.jpg) no-repeat; font-size:30px; font-weight:bold; line-height:120px; height:120px; text-align:right; padding-right:100px; color:#361715; }
+.homepage_top .guide{}
+.homepage_top .menu{ background:url(menu_1.jpg) repeat-x; height:29px;}
+.homepage_top .menu a{ margin-left:5px; font-size:14px; line-height:29px; padding:0 8px 0 8px; }
+.homepage_top .menu a:link {
+	text-decoration: none; color:#492D21;
+	background:url(menu_1.jpg); 
+}
+.homepage_top .menu a:visited {
+	text-decoration: none;
+	color:#492D21;
+}
+.homepage_top .menu a:hover {
+	text-decoration: underline;
+	color:#000000;
+	background:url(menu_2.jpg) repeat-x; padding:8px;
+
+
+}
+.homepage_top .menu a:active {
+	text-decoration: none;
+	color:#492D21;
+}
+
+
+/**
+主体部分框架
+**/
+.homepage{ margin-top:5px;}
+
+.homepage_left{ width:200px; background-color:#F2F2F2; text-align:left;}
+.homepage_right{ padding-left:10px; text-align:left;}
+
+/**
+主体左边部分
+**/
+.leftinfo{ margin-bottom:5px; border:1px #FDBC51 solid;list-style:none;}
+.leftinfo .head{ border-bottom:1px #FDBC51 solid;font-weight:bold; background:url(leftbg.jpg) right no-repeat; height:28px;}
+.leftinfo .head .L{ float:left;}
+.leftinfo .head .T{ float:left; line-height:26px; padding-left:25px; padding-right:15px; color:#232323;height:26px; background:url(leftbg2.jpg) no-repeat left; }
+.leftinfo .head .R{ float:left; line-height:26px; }
+.leftinfo .head .more{ float:right; font-weight:100; line-height:25px; padding-right:5px; }
+.leftinfo .head a{ color:#232323}
+.leftinfo .logo{ border:3px #CCCCCC solid;}
+.leftinfo .content{  padding:8px;background-color:#FFF0D9; line-height:150%}
+.leftinfo .content li{list-style:none; list-style-position:outside;}
+/*
+*商家档案 突出显示
+*/
+.leftinfo .base{ border-bottom:1px $CCCCCC solid; padding:8px;line-height:150%;background-color:#f9f9f9;}
+/**
+主体右边部分
+**/
+.rightinfo{ clear:both;margin-bottom:5px; border:1px #F68914 solid;list-style:none;}
+.rightinfo .head{ border-bottom:1px #F68914 solid;font-weight:bold;  background:url(rightbg.jpg) repeat-x right; height:26px; }
+.rightinfo .head .L{ float:left;  width:15px; height:26px; background:url(rightbg2.jpg) no-repeat left; }
+.rightinfo .head .T{ float:left; line-height:26px; padding-left:5px; padding-right:5px; color:#232323;height:26px; }
+.rightinfo .head .R{ float:left; line-height:26px; }
+.rightinfo .head .more{ float:right; font-weight:100; line-height:26px; padding-right:5px; }
+.rightinfo .head .more a{ color:#232323;}
+.rightinfo .head a{ color:#232323; line-height:26px;}
+.rightinfo .content{padding:8px;background-color:#FFFFFF;line-height:150%;}
+.rightinfo .content .show_windows{ float:left; width:130px; height:180px; margin:10px; text-align:center;}
+.rightinfo .content .visitor{ float:left; width:200px; height:20px; margin:2px; text-align:left; line-height:20px;}
+.rightinfo .content .page{}
+
+.hr_list td{ clear:both;border-bottom:1px #CCCCCC dotted; padding:5px;}
+
+/*
+列表
+*/
+.show_windows .t{ height:55px}

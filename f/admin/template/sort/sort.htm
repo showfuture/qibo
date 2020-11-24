@@ -1,0 +1,152 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width="100%" cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">栏目</font></span></td>
+  </tr>
+  <tr> <form action="$admin_path&action=addsort" method=POST>
+    <td bgcolor=#FFFFFF> 
+      
+        <span class=bold>创建新栏目--</span>&nbsp;名称 
+        <textarea name="name" cols="25" rows="5"></textarea>
+        归属
+        <select name="fid">
+          <!--
+EOT;
+if($fid){
+print <<<EOT
+--> <option value="$fid">$rsdb[name]</option>
+          <!--
+EOT;
+}print <<<EOT
+-->
+          <option value="0">顶级栏目</option>{$fup_select}
+        </select>
+        所属模型{$module_select} 
+        <input type="radio" name="Type" value="0" checked>
+        栏目 
+        <input type="radio" name="Type" value="1">
+        分类(不可发表内容)
+        <input type="hidden" name="yellow" value="$yellow">
+        <input type=submit value="创 建" name="submit">
+        <br>
+        <font color="#FF0000">注意:</font>可以同时创建多个栏目,每个栏目换一行即可.</td>
+    </form>
+  </tr>
+     
+</table>
+<table width="100%" cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+    <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑栏目</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor="#FFFFFF" align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">栏目排序的规则是,数值大的排在前面,只能是同一级的进行排序<br>
+            <b><font color="#0000FF">提醒:</font></b><font color="#0000FF">分类信息普遍只适合两级分类,一级或者大于两级,页面布局将会错乱或者会带来其它不可预料的后果.</font></font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td width="6%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="26%">栏目名称</td>
+            <td width="7%" style="border-right:1px solid #fff;">排序</td>
+            <td width="15%" style="border-right:1px solid #fff;">模块类型</td>
+            <td width="7%" style="border-right:1px solid #fff;">性质</td>
+            <td width="5%" style="border-right:1px solid #fff;">设置</td>
+            <td width="6%" style="border-right:1px solid #fff;">内容</td>
+			
+            <td width="5%" style="border-right:1px solid #fff;">
+分表
+</td>
+            <td width="5%" style="border-right:1px solid #fff;">信息</td>
+            <td width="6%" style="border-right:1px solid #fff;">标签</td>
+            <td width="6%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="6%" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td width="26%" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="fiddb[{$rs[fid]}]" value="$rs[name]" style="border:0px;">
+              {$rs[icon]}【<a href='$webdb[www_url]/list.php?fid=$rs[fid]' target="_blank" style="color:$rs[color]">{$rs[name]}</a>】$rs[more]</td>
+            <td width="7%" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="15%" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&file=module&job=editsort&id=$rs[mid]">{$rs[m_name]}&nbsp;</a></td>
+            <td width="7%" align="center" style="border-bottom:1px dotted #ccc;">$rs[_type]</td>
+            <td width="5%"  align="center" style="border-bottom:1px dotted #ccc;"><a href='$admin_path&job=editsort&fid=$rs[fid]'><font color=red>修改</font></a></td>
+            <td width="6%" align="center" style="border-bottom:1px dotted #ccc;"><a href='$admin_path&file=list&job=list&fid=$rs[fid]' $rs[_ifcontent]>管理</a></td>
+            <td width="5%"  align="center" style="border-bottom:1px dotted #ccc;">
+          <!--
+EOT;
+if($rs[type]){print <<<EOT
+-->&nbsp;
+			 <!--
+EOT;
+}elseif(!$rs[tableid]){print <<<EOT
+-->
+<a href='$admin_path&job=table&fid=$rs[fid]' >分表</a><!--
+EOT;
+}elseif($rs[tableid]){print <<<EOT
+-->
+<a href='$admin_path&job=table&fid=$rs[fid]'  style='color:red;'>$rs[tableid]</a>
+          <!--
+EOT;
+}print <<<EOT
+-->
+			</td>
+            <td width="5%" align="center" style="border-bottom:1px dotted #ccc;"><a href="$webdb[www_url]/post.php?fid=$rs[fid]" target="_blank" $rs[_ifcontent]>发布</a></td>
+            <td width="6%"  align="center" style="border-bottom:1px dotted #ccc;"><a href="$labelUrl&fid=$rs[fid]" target="_blank">标签</a></td>
+            <td width="6%"  align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&action=delete&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"> 
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a>
+          <input type="button" name="Submit22" value="删除栏目" onClick="postlist('del')">
+          <input type="button" name="Submit2" value="修改栏目排序" onclick="postlist('list')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="$admin_path&action=editlist";
+		
+	}else if(t=='del'){
+		r=confirm('你确认要删除栏目吗?不可恢复');
+		if(r==true){
+			document.formlist.action="$admin_path&action=delete";			
+		}else{
+			return false;
+		}
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

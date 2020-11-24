@@ -1,0 +1,59 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2" align="center">统计代码设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display;"> 
+      <td width="38%" align="center"> 站点统计ID帐号: </td>
+      <td align="left" width="62%"> 
+        <input type="text" name="webdbs[cnzz_id]" value="$webdb[cnzz_id]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$display;"> 
+      <td width="38%" align="center"> <a href="#" onClick="CheckAll('all')"> </a>统计详情登录密码:</td>
+      <td width="62%" align="left"> 
+        <input type="text" name="webdbs[cnzz_pwd]" value="$webdb[cnzz_pwd]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="38%" align="center">启用统计与否:</td>
+      <td width="62%" align="left"> 
+        <input type="radio" name="webdbs[cnzz_open]" value="1" $cnzz_open[1]>
+        启用统计 
+        <input type="radio" name="webdbs[cnzz_open]" value="0" $cnzz_open[0]>
+        不统计 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="38%" align="left">&nbsp;</td>
+      <td width="62%" align="left"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="left">
+        为什么要使用此统计功能?<br>
+        可以更好的掌握网站的流量,在线人数,访问来源等等相关信息...</td>
+    </tr>
+<!--
+EOT;
+if($webdb[cnzz_id]){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF">
+      <td colspan="2" align="left">你可以把以下统计代码插入到你的网页模板底部即可进行站点流量统计:<br>
+        &lt;div style=&quot;display:none&quot;&gt;&lt;script src='http://pw.cnzz.com/c.php?id=$webdb[cnzz_id]&l=2' 
+        language='JavaScript' charset='gb2312'&gt;&lt;/script&gt;&lt;/div&gt;</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

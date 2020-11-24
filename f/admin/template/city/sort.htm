@@ -1,0 +1,88 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">创建区域/省份</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+       
+      
+      <form action="$admin_path&action=addsort" method=POST>
+       
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="8%">名称</td>
+            <td width="92%">
+              <input type=text name="name" size=30>
+            </td>
+          </tr>
+          <tr style="display:none;">
+            <td width="8%">所属<span class=bold>区域</span></td>
+            <td width="92%">{$sort_fup}(不选择将成为一级分类)</td>
+          </tr>
+          <tr>
+            <td width="8%">&nbsp;</td>
+            <td width="92%">
+              <input type=submit value="创 建" name="submit">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+</table>
+ 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA">地域/省份管理</td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">编辑专题分类排序的规则是,数值大的排在前面,只能是同一级的进行排序</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center"> 
+            <td width="6%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">FID</td>
+            <td  style="background:#449AE8;color:#fff;border-right:1px solid #fff;" width="38%">名称</td>
+            <td width="6%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">排序值</td>
+            <td width="12%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">城市数目</td>
+            <td width="24%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">城市管理</td>
+            <td width="7%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">设置</td>
+            <td width="7%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" width="38%" style="border-bottom:1px dotted #ccc;"> 
+              $rs[icon]【{$rs[name]}】</td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="12%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">$rs[num]</td>
+            <td width="24%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <a href="$admin_path&job=city&fup=$rs[fid]">创建及管理城市</a> &nbsp;</td>
+            <td width="7%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href='$admin_path&job=editsort&fid=$rs[fid]'><font color=red>修改</font></a>]</td>
+            <td width="7%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href="$admin_path&action=delete&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a>]</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <input type="submit" name="Submit2" value="修改排序" onclick="postlist('list')">
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

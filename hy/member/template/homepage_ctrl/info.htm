@@ -1,0 +1,168 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div style="display:none;"> 
+  <iframe width=1 height=1 src='' id="iframe_zone" name="iframe_zone"></iframe> 
+  <iframe width=1 height=1 src='' id="iframe_street" name="iframe_street"></iframe> 
+  <form name="form1" method="post" action="" target="iframe_zone" id="form_zone">
+  </form>
+</div>
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+  <tr>
+    <td class="tdL"><span class="red">*</span>公司全称:</td>
+    <td class="tdR"><input    type='text' name='title' id='atc_title' size='30' value='$intro[title]' /></td>
+  </tr>
+  <tr>
+    <td class="tdL">商家LOGO:</td>
+    <td class="tdR">
+    	<div><input name="postfile" type="file" size="30" /></div>
+        <div style="width:300px;height:60px;overflow:hidden;margin:5px auto 5px 0;">
+        <img src="$companydb[logo]" height="60" onerror="this.src='$Murl/images/default/icobg.gif'"/> 
+        </div>
+        <div><input name="oldfile" type="hidden"  value="$intro[picurl]" /></div>
+        <div class="tdT">(公司的LOGO尺寸长或宽如果大于300px,系统将自动截剪)</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><span class="red">*</span>主营分类:</td>
+    <td class="tdR">
+<!--include
+EOT;
+$post_company=1;
+require(dirname(__FILE__)."/../morechosefid.htm");
+print<<<EOT
+include-->
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><span class="red">*</span>所属行业:</td>
+    <td class="tdR">
+		<select name='my_trade' id='atc_my_trade'>
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[companyTrade]);
+foreach($detail AS $key=>$value){
+$ckk=$intro[my_trade]==$value?' selected ':' ';
+print <<<EOT
+-->
+          <option value="$value" $ckk>$value</option>
+<!--
+EOT;
+}print <<<EOT
+-->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><span class="red">*</span>企业类型:</td>
+    <td class="tdR">
+    	<select name='qy_cate' id='atc_qy_cate'>
+          <option value='个体经营' {$qy_cate['个体经营']}>个体经营</option>
+          <option value='个人独资企业' {$qy_cate['个人独资企业']}>个人独资企业</option>
+          <option value='私营合伙企业' {$qy_cate['私营合伙企业']}>私营合伙企业</option>
+          <option value='私营有限责任公司' {$qy_cate['私营有限责任公司']}>私营有限责任公司</option>
+          <option value='私营股份有限公司' {$qy_cate['私营股份有限公司']}>私营股份有限公司</option>
+          <option value='国有企业' {$qy_cate['国有企业']}>国有企业</option>
+          <option value='集体企业' {$qy_cate['集体企业']}>集体企业</option>
+          <option value='股份合作企业' {$qy_cate['股份合作企业']}>股份合作企业</option>
+          <option value='联营企业有限责任公司(国有独资)' {$qy_cate['联营企业有限责任公司(国有独资)']}>联营企业有限责任公司(国有独资)</option>
+          <option value='其他有限责任公司' {$qy_cate['其他有限责任公司']}>其他有限责任公司</option>
+          <option value='股份有限公司' {$qy_cate['股份有限公司']}>股份有限公司</option>
+          <option value='其他内资企业' {$qy_cate['其他内资企业']}>其他内资企业</option>
+          <option value='三来一补' {$qy_cate['三来一补']}>三来一补</option>
+          <option value='分支机构' {$qy_cate['分支机构']}>分支机构</option>
+          <option value='合资经营企业(港或澳、台资)' {$qy_cate['合资经营企业(港或澳、台资)']}>合资经营企业(港或澳、台资)</option>
+          <option value='合作经营企业(港或澳、台资)' {$qy_cate['合作经营企业(港或澳、台资)']}>合作经营企业(港或澳、台资)</option>
+          <option value='港、澳、台商独资经营企业' {$qy_cate['港、澳、台商独资经营企业']}>港、澳、台商独资经营企业</option>
+          <option value='港、澳、台商投资股份有限公司' {$qy_cate['港、澳、台商投资股份有限公司']}>港、澳、台商投资股份有限公司</option>
+          <option value='中外合资经营企业' {$qy_cate['中外合资经营企业']}>中外合资经营企业</option>
+          <option value='中外合作经营企业' {$qy_cate['中外合作经营企业']}>中外合作经营企业</option>
+          <option value='外资企业' {$qy_cate['外资企业']}>外资企业</option>
+          <option value='外商投资股份有限公司' {$qy_cate['外商投资股份有限公司']}>外商投资股份有限公司</option>
+          <option value='政府机构' {$qy_cate['政府机构']}>政府机构</option>
+          <option value='非盈利组织' {$qy_cate['非盈利组织']}>非盈利组织</option>
+          <option value='其他有限责任公司' {$qy_cate['其他有限责任公司']}>其他有限责任公司</option>
+          <option value='有限责任公司（国内合资）' {$qy_cate['有限责任公司（国内合资）']}>有限责任公司（国内合资）</option>
+          <option value='一人有限责任公司' {$qy_cate['一人有限责任公司']}>一人有限责任公司</option>
+          <option value='私营独资企业' {$qy_cate['私营独资企业']}>私营独资企业</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><span class="red">*</span>注册资本:</td>
+    <td class="tdR"><input type='text' name='qy_regmoney' id='atc_qy_regmoney' size='10' value='$intro[qy_regmoney]' /><span class="b red">万</span>人民币</td>
+  </tr>
+  <tr>
+    <td class="tdL"><span class="red">*</span>经营模式:</td>
+    <td class="tdR">
+    	<select name='qy_saletype' id='atc_qy_saletype'>
+          <option value='生产型' {$qy_saletype['生产型']}>生产型</option>
+          <option value='贸易型' {$qy_saletype['贸易型']}>贸易型</option>
+          <option value='服务型' {$qy_saletype['服务型']}>服务型</option>
+          <option value='政府或其他机构' {$qy_saletype['政府或其他机构']}>政府或其他机构</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">成立时间:</td>
+    <td class="tdR"><input type='text' name='qy_createtime' id='atc_qy_createtime' size='20' value='$intro[qy_createtime]' /></td>
+  </tr>
+  <tr>
+    <td class="tdL">主营产品:</td>
+    <td class="tdR"><input type='text' name='qy_pro_ser' id='atc_qy_pro_ser' size='50' value='$intro[qy_pro_ser]' /></td>
+  </tr>
+  <tr>
+    <td class="tdL">主要采购产品:</td>
+    <td class="tdR"><input type='text' name='my_buy' id='atc_my_buy' size='50' value='$intro[my_buy]' /></td>
+  </tr>
+  <tr>
+    <td class="tdL">注册地址:</td>
+    <td class="tdR"><input type='text' name='qy_regplace' id='atc_qy_regplace' size='50' value='$intro[qy_regplace]' /></td>
+  </tr>
+<!--
+EOT;
+$city_fid=select_where("{$pre}city","'postdb[city_id]'  onChange=\"choose_where('getzone',this.options[this.selectedIndex].value,'','1','')\"",$intro[city_id]);
+print <<<EOT
+-->
+  <tr>
+    <td class="tdL">所在区域:</td>
+    <td class="tdR">
+    	{$city_fid}<span id="showzone"></span><span id="showstreet"></span>  
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_where(t,fup,fid,delstreet,typeid){
+	if(t=='getzone'){
+		url="$webdb[www_url]/f/job.php?job=getzone&typeid="+typeid+"&fup="+fup+"&fid="+fid+"&delstreet="+delstreet;
+		target='iframe_zone';
+	}else{
+		url="$webdb[www_url]/f/job.php?job=getstreet&typeid="+typeid+"&fup="+fup+"&fid="+fid;
+		target='iframe_street';
+	}
+	document.getElementById("form_zone").action=url;
+	document.getElementById("form_zone").target=target;
+	document.getElementById("form_zone").submit();
+}
+choose_where("getzone","$intro[city_id]","$intro[zone_id]",'','');
+choose_where("getstreet","$intro[zone_id]","$intro[street_id]",'','');
+//-->
+</SCRIPT>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><br/></td>
+    <td class="tdR">
+    	<input type="submit" name="button8" id="button12" value="提 交" />
+        <input name="atn" type="hidden" id="atn" value="$atn" />
+        <input name="step" type="hidden" id="step" value="1" />
+        <input name="uid" type="hidden" id="uid" value="$uid" />
+    </td>
+  </tr>
+</table>
+</form>
+        
+<!--
+EOT;
+?>
+-->

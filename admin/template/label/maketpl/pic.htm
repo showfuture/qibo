@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr  class="head" > 
+    <td colspan="4">&nbsp;</td>
+  </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$array){
+print <<<EOT
+-->
+  <tr> 
+<!--
+EOT;
+foreach($array AS $key=>$pic){
+print <<<EOT
+-->
+    <td width="25%">&nbsp;<a href="#" onclick="getpic('$pic')"><img src="$pic" border="0"></a>[<a href="#" onclick="getpic('$pic')">选择</a>]</td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<tr> 
+    <td colspan="4">提示:你可以收集更多的小图标放在/images/diy.style/title_icon/目录.他就会自动在这里显示出来了.以方便平时调用</td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function getpic(va){
+	window.opener.document.getElementById("Ticourl").value=va;
+	window.self.close();
+}
+//-->
+</SCRIPT>
+
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,103 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="homepage_top">
+  <tr>
+    <td class="menu">
+	<!--
+EOT;
+foreach($h_menu as $key =>$rs){
+$i++;
+if($i<2)
+$begin="class=begin";
+else
+$begin="";
+print<<<EOT
+-->
+<a href="$rs[url]" target="$rs[target]" $begin>$rs[title]</a>
+	<!--
+EOT;
+}
+print<<<EOT
+-->
+
+
+<!--
+EOT;
+if($uid==$lfjuid){
+print <<<EOT
+-->    
+   <a href="$webdb[www_url]/member/?main=$Murl/member/homepage_ctrl.php" target="_blank"><strong><font color="#FF0000">商铺管理</font></strong></a>  
+<!--
+EOT;
+}
+print <<<EOT
+-->
+  </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="homepage_top" style="margin-top:1px;">
+  
+<!--
+EOT;
+if($banner_show){
+print<<<EOT
+-->
+  <tr>
+    <td colspan="2">$banner_show</td>
+  </tr>
+  <!--
+EOT;
+}else{
+print<<<EOT
+-->
+   <tr>
+    <td class="banner" $conf[banner] ><span>$rsdb[company_name_big]</span></td>
+  </tr> 
+<!--
+EOT;
+}
+print<<<EOT
+-->
+
+</table>
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr>
+<td class="guide">
+      <a href="$webdb[www_url]/">网站首页</a> > <a href="?uid=$uid">$rsdb[title]</a>
+</td>
+</tr> 
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="homepage">
+  <tr>
+    <td width="300"  class="homepage_left" align="left"><!--主体-左边部分-->
+<!--include
+EOT;
+$mod_in='left';
+foreach($conf[index_left] as $file){
+	get_homepage_module($file);
+}
+print <<<EOT
+include-->  
+    </td>
+    <td class="homepage_right" align="right"><!--主体-右边部分-->
+<!--include
+EOT;
+$mod_in='right';
+if(!$m){
+    foreach($conf[index_right] as $file){
+        get_homepage_module($file);
+    }
+}else{
+	get_homepage_module($m);
+}
+print <<<EOT
+include-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

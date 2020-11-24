@@ -1,0 +1,77 @@
+<!--
+<?php
+print <<<EOT
+-->
+<html>
+<head>
+<title>$webdb[webname]　　Powered by http://www.qibosoft.com</title>
+<meta name='keywords' content='CMS'>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type=text/css>
+<!--
+A:link {
+	COLOR: #552c55;
+	TEXT-DECORATION: none;
+}
+A:visited {
+	COLOR: #552c55;
+	TEXT-DECORATION: none;
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline;
+}
+A:active {
+	COLOR: #4d2a7c
+}
+
+TD {
+	FONT-SIZE: 9pt; COLOR: #552c55; LINE-HEIGHT: ; FONT-FAMILY: 宋体
+}
+-->
+</style> 
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="2%" background="$webdb[www_url]/images/default/footer_logo.gif"><a href="$webdb[www_url]/" target="_parent"><img src="$webdb[www_url]/images/default/footer_logo.gif" width="233" height="77" border="0"></a></td>
+    <td width="98%" background="$webdb[www_url]/images/default/footer_bg.gif">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="21" colspan="2">$forum_ups</td>
+        </tr>
+        <tr> 
+		
+		  <form name=f action='http://www.baidu.com/baidu' target=_blank>
+            <td width="50%"> 关键字: 
+              <input type='text' name='word' size='15' style="height:20px; background-color:#F4F6F7; border:1 solid #8DA5DA;" onMouseOver ="this.style.backgroundColor='#E7EDF4'" onMouseOut ="this.style.backgroundColor='#F4F6F7'"  >
+            <input type='submit' name='Submit322' value='百度搜索' style="height:20px; background-color:#BFCCEA; border:1 solid #8DA5DA;" onMouseOver ="this.style.backgroundColor='#E7EDF4'" onMouseOut ="this.style.backgroundColor='#BFCCEA'"  >
+          </td>
+		  </form>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+changetarget();
+function changetarget()
+{
+	oo=document.body.getElementsByTagName("A");
+	for(var i=0;i<oo.length;i++){
+		oo[i].target="_parent";
+	}
+}
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+</SCRIPT>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

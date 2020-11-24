@@ -1,0 +1,95 @@
+<!--
+<?php
+if($job == "list"){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+<form name="form_work" method="post" action="$admin_path&job=del">
+  <tr align="center" class="head">
+    <td width="5%">ID</td>
+    <td width="30%">标题</td>
+    <td width="30%">店铺名称</td>
+    <td width="10%">提交者</td>
+    <td width="15%">提交日期</td>
+    <td width="10%">查看/删除</td>
+  </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[content] = get_word($rs[content],40);
+print <<<EOT
+-->
+  <tr>
+    <td align="center">{$rs[id]}</td>
+    <td><input type="checkbox" name="listdb[{$rs[id]}]" value="$rs[title]">{$rs[content]}</td>
+    <td><a href="$webdb[www_url]/home/?uid=$rs[cuid]" target='_blank'>&nbsp;&nbsp;{$rs[title]}</a></td>
+    <td width="10%" align="center"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">{$rs[username]}</a></td>
+    <td width="10%" align="center">{$rs[posttime]}</td>
+    <td width="15%" align="center">
+    	<a href="$admin_path&job=see&id=$rs[id]">查看</a>/<a onclick="return confirm('你确认要删除吗?');" href="$admin_path&job=del&listdb[{$rs[id]}]=$rs[title]">删除</a>
+    </td>
+  </tr>
+<!--
+EOT;
+}if($showpage){
+print <<<EOT
+-->
+  <tr>
+    <td colspan="6" align="center">{$showpage}</td>
+  </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr>
+    <td colspan="6" align="center">
+    	<a href="javascript:" onClick="CheckAll('all')">全选</a> / <a href="javascript:" onClick='CheckAll()'>反选</a>
+        <input name="" type="submit" value="批量删除" />
+    </td>
+  </tr>
+</form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+}if($job == "see"){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr align="center" class="head">
+    <td>店铺留言详细</td>
+  </tr>
+  <tr>
+    <td style="padding:10px;line-height:20px;">
+    	<b>店铺名称:</b><a href="$webdb[www_url]/home/?uid=$rs[cuid]" target='_blank'>{$rs[title]}</a><br/>
+        <b>提交者:</b><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">{$rs[username]}</a><br/>
+        <b>IP:</b>{$rs[ip]}<br/>
+        <b>提交时间:</b>{$rs[posttime]}<br/>
+        <b>内容:</b>{$rs[content]}<br/>
+        <div>
+          <div align="right"><a href="$FROMURL">返回列表</a>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->
+ 

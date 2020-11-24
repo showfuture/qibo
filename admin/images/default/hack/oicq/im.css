@@ -1,0 +1,156 @@
+BODY {
+	MARGIN: 0px; BACKGROUND-COLOR: #ffffff
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; LINE-HEIGHT: 16px; TEXT-DECORATION: none
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: underline
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.A01:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A01:visited {
+	FONT-SIZE: 12px; COLOR: #f0f0f0; TEXT-DECORATION: none
+}
+A.A01:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A01:hover {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.A02:link {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.A02:visited {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.A02:active {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.A02:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.A03:link {
+	FONT-SIZE: 12px; COLOR: #7fc5e6; TEXT-DECORATION: underline
+}
+A.A03:visited {
+	FONT-SIZE: 12px; COLOR: #7fc5e6; TEXT-DECORATION: underline
+}
+A.A03:active {
+	FONT-SIZE: 12px; COLOR: #7fc5e6; TEXT-DECORATION: underline
+}
+A.A03:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.A04:link {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: none
+}
+A.A04:visited {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: none
+}
+A.A04:active {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: none
+}
+A.A04:hover {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; TEXT-DECORATION: none
+}
+A.A05:link {
+	FONT-SIZE: 12px; COLOR: #0f4981; TEXT-DECORATION: none
+}
+A.A05:visited {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.A05:active {
+	FONT-SIZE: 12px; COLOR: #0f4981; TEXT-DECORATION: none
+}
+A.A05:hover {
+	FONT-SIZE: 12px; COLOR: #0045ff; TEXT-DECORATION: none
+}
+A.A06:link {
+	FONT-SIZE: 12px; COLOR: #437c98; TEXT-DECORATION: none
+}
+A.A06:visited {
+	FONT-SIZE: 12px; COLOR: #437c98; TEXT-DECORATION: none
+}
+A.A06:active {
+	FONT-SIZE: 12px; COLOR: #437c98; TEXT-DECORATION: none
+}
+A.A06:hover {
+	FONT-SIZE: 12px; COLOR: #ff9e00; TEXT-DECORATION: none
+}
+A.A07:link {
+	FONT-SIZE: 12px; COLOR: #8c8a8c; TEXT-DECORATION: none
+}
+A.A07:visited {
+	FONT-SIZE: 12px; COLOR: #8c8a8c; TEXT-DECORATION: none
+}
+A.A07:active {
+	FONT-SIZE: 12px; COLOR: #8c8a8c; TEXT-DECORATION: none
+}
+A.A07:hover {
+	FONT-SIZE: 12px; COLOR: #ff9e00; TEXT-DECORATION: none
+}
+A.A08:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A08:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A08:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.A08:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.zixun:link {
+	FONT-SIZE: 12px; COLOR: #7b7b7b; TEXT-DECORATION: none
+}
+A.zixun:visited {
+	FONT-SIZE: 12px; COLOR: #616161; TEXT-DECORATION: none
+}
+A.zixun:hover {
+	FONT-SIZE: 12px; COLOR: #ff9c00; TEXT-DECORATION: underline
+}
+A.title:link {
+	FONT-SIZE: 12px; COLOR: #8c8a8c; TEXT-DECORATION: none
+}
+A.title:visited {
+	FONT-SIZE: 12px; COLOR: #8c8a8c; TEXT-DECORATION: none
+}
+A.title:hover {
+	FONT-SIZE: 12px; COLOR: #ffb71b; TEXT-DECORATION: underline
+}
+A.left:link {
+	FONT-SIZE: 12px; COLOR: #ff7e00; TEXT-DECORATION: none
+}
+A.left:visited {
+	FONT-SIZE: 12px; COLOR: #ff7e00; TEXT-DECORATION: none
+}
+A.left:active {
+	FONT-SIZE: 12px; COLOR: #ea7401; TEXT-DECORATION: none
+}
+A.left:hover {
+	FONT-SIZE: 12px; COLOR: #ff7e00; TEXT-DECORATION: underline
+}
+A.ZT:link {
+	FONT-SIZE: 12px; COLOR: #3b3b3b; LINE-HEIGHT: 18px; TEXT-DECORATION: none
+}
+A.ZT:visited {
+	FONT-SIZE: 16px; COLOR: #3b3b3b; LINE-HEIGHT: 18px; TEXT-DECORATION: none
+}
+A.ZT:hover {
+	FONT-SIZE: 16px; COLOR: #ff0000; LINE-HEIGHT: 18px; TEXT-DECORATION: underline
+}
+.kuoda {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 160%; FONT-FAMILY: "ËÎÌו"
+}
+.space_between_01 {
+	LINE-HEIGHT: 24px
+}

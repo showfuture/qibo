@@ -1,0 +1,154 @@
+<!--
+<?php
+include(dirname(__FILE__)."/map.php");
+$onlineip = ipfrom($onlineip);
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/member/images/blue/map/map.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="BaseInfos">
+  <tr>
+    <td class="MemberInfo">
+    	<div class="head">
+        	<span class="tag">会员动态</span>
+            <span class="more">
+<!--
+EOT;
+$pmhtml=$pmNUM?"<a href=\"pm.php?job=list\" style=\"color:red;\">你有新的消息,请注意查收!!</a>":"<a href=\"pm.php?job=list\">你暂时没有新消息!</a>";
+print <<<EOT
+-->
+				$pmhtml
+            </span>
+        </div>
+        <dl class="cont">
+        	<dt>
+            	<div>主页浏览: {$lfjdb[hits]} 次</div>                        
+                <div>信息总数: {$infoNum} 条</div>                        
+                <div>评论总数: {$CommentNum} 条</div>                        
+                <div>积分记录: {$moneylogNum} 条</div>                        
+                <div>点评总数: {$dianpingNum} 条</div>
+                <div>收藏总数: {$collectionNum} 条</div>
+            </dt>
+            <dd>
+            	<div>你的{$webdb[MoneyName]}: <img src="images/money.gif"> 
+                     <span> $lfjdb[money]</span> {$webdb[MoneyDW]} (<a href="../do/jf.php" target="_blank">如何获取{$webdb[MoneyName]}?</a>)
+                </div>
+                <div>空间容量: {$space_system} + {$space_group} + {$space_user} - {$lfjdb[usespace]}  = <em>{$onlySpace}</em> M(兆)</div>
+                <div>空间算法: 系统容量 + 用户组容量 + 自身容量 - 已用空间 = 剩余空间</div> 
+                <p>
+<!--
+EOT;
+if($lfjdb[grouptype]==1){
+	$companyhtml = "<a href=\"company.php?job=view&uid=$lfjuid\">你是企业会员,你可以点击查看企业资料</a>";
+}elseif($lfjdb[grouptype]==-1){
+	$companyhtml = "<a href=\"company.php?job=edit\"><span>你还不是企业会员,你的资料还在审核当中</span></a>";
+}else{
+	$companyhtml = "<a href=\"company.php?job=edit\"><em>你还不是企业会员,你可以点击申请成为企业会员</em></a>";
+}
+print <<<EOT
+-->
+        			 $companyhtml
+                </p>
+            </dd>
+        </dl>
+    </td>
+    <td class="MyInfos">
+    	<div class="head">
+        	<span class="tag">我的个人资料</span>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="picword">
+          <tr>
+            <td class="pic"><div><img src="$lfjdb[icon]" onerror="this.src='../images/default/noface.gif'" width="80"/></div></td>
+            <td class="word" style="text-align:left;">
+                <div>用户UID: <span>$lfjuid</span></div>
+                <div>帐号: <span>$lfjid</span></div>
+                <div>级别: <span>$groupdb[grouptitle]</span> ({$lfjdb[C][endtime]})</div>
+            </td>
+          </tr>
+        </table>
+        <div class="otherinfo">
+            <div>邮箱: <span>$lfjdb[email]</span> </div>
+            <div>IP来源地: <em>$onlineip</em></div>
+            <div>注册时间: <span>$lfjdb[regdate]</span> </div>
+            <div>上次登录时间: <span>$lfjdb[lastvist]</span> </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+if($myarticleDB){print <<<EOT
+-->
+<div class="MainCont mtop10 listinfo">
+	<div class="head"><span class="tag">我最新发布的信息</span></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListDls">
+          <tr>
+            <td>
+<!--
+EOT;
+foreach($myarticleDB AS $rs){
+$rs[title]=get_word($rs[title],48,0);
+print <<<EOT
+-->
+           <div class="list">·<a href="../bencandy.php?city_id=$rs[city_id]&fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><span class="tag">会员服务栏目</span></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListDls">
+          <tr>
+            <td>
+            	<dl class="dl1">        	
+                	<dt>完善的站内搜索<a href="../search.php" target="_blank">站内搜索</a></dt>
+                    <dd>方便查找资料</dd>
+                </dl>
+                <dl class="dl2">
+                    <dt>灵活的模块组合 </dt>
+                    <dd>让网站扩展更方便</dd>
+                </dl>
+                <dl class="dl3">
+                    <dt>方便升级</dt>
+                    <dd>可以平滑过度升级</dd>
+                </dl>
+                <dl class="dl4">
+                	<dt>实用的<a href="$webdb[www_url]/a_d/member/norm.php?job=list">广告系统</a></dt>
+                    <dd>更多的宣传自己</dd>
+                </dl>
+                <dl class="dl5">
+                    <dt>良好的用户口碑</dt>
+                    <dd>实用、易用是我们的宗旨</dd>
+                </dl>
+                <dl class="dl6">
+                    <dt>灵活的邮件模块</dt>
+                    <dd>让网站扩展更方便</dd>
+                </dl>
+                <dl class="dl7">
+                    <dt>灵活的万能表单</dt>
+                    <dd>可方便的进行二次开发</dd>
+                </dl>
+                <dl class="dl8">
+                    <dt>灵活的插件</dt>
+                    <dd>可自由安装卸载</dd>
+                </dl>
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+
+<!--
+EOT;
+}?>
+-->

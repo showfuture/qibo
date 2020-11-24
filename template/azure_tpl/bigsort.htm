@@ -1,0 +1,175 @@
+<?php
+$rows=4;	//只显示多少个分类的最新信息,没必要全部显示
+unset($listdb,$i);
+foreach($Fid_db[$fid] AS $key=>$value){
+	$i++;
+	if($i>$rows)break;
+	$listdb[$key]['name']=$Fid_db['name'][$key];
+	$listdb[$key]['url']=get_info_url('',$key,$city_id);
+	$_erp=$Fid_db[tableid][$key];
+	$query = $db->query("SELECT * FROM {$_pre}content$_erp WHERE yz=1 AND fid='$key' AND city_id='$city_id' ORDER BY id DESC LIMIT 3");
+	while($rs = $db->fetch_array($query)){
+		$rs[title]=get_word($rs[title],40);
+		$rs[posttime]=date("Y-m-d",$rs[posttime]);
+		$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+		$listdb[$key]['title'][$rs[id]]=$rs;
+	}
+}
+?>
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/azure/bigsort.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowSorts">
+<!--
+EOT;
+$j=0;
+foreach($sortDB AS $key=>$rs){
+if($j==0){
+print <<<EOT
+-->
+  <tr>
+<!--
+EOT;
+}$j++;print <<<EOT
+-->
+    <td>
+		<dl>
+        	<dt><a href="$rs[url]">$rs[name] &raquo;</a></dt>
+            <dd>
+<!--
+EOT;
+foreach($rs[sortdb] AS $key2=>$value2){
+print <<<EOT
+-->
+				$value2
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </dd>
+        </dl>
+    </td>
+<!--
+EOT;
+if($j==4){
+$j=0;print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}}if($j && $j<4){
+for($i=$j;$i<4;$i++){print <<<EOT
+-->
+	<td><br/></td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowMore">
+<!--
+EOT;
+$k=0;
+foreach($listdb AS $key=>$rs){
+if($k==0){
+print <<<EOT
+-->
+  <tr>
+<!--
+EOT;
+}$k++;print <<<EOT
+-->
+    <td class="td$k">
+		<dl>
+        	<dt><a href="$rs[url]">$rs[name]</a></dt>
+            <dd>
+<!--
+EOT;
+foreach($rs[title] AS $rss){
+print <<<EOT
+-->
+                <ul> 
+                  <li class="img"><a href="$rss[url]"><img src="$rss[picurl]" onerror="this.src='$webdb[www_url]/images/blue/nopic.gif'" width="70"/></a></li>
+                  <li class="t"><a href="$rss[url]">$rss[title]</a><br/>$rss[posttime]
+                  </li>
+                </ul>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </dd>
+        </dl>
+    </td>
+<!--
+EOT;
+if($k==2){
+$k=0;print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}}if($k && $k<2){
+for($i=$k;$i<2;$i++){print <<<EOT
+-->
+	<td class="td$k"><br/></td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+</table>
+<dl class="OtherContainer">
+	<dt>{$city_DB[name][$city_id]}{$Fid_db[name][$fidDB[fup]]}的所有分类:</dt>
+    <dd>
+<!--
+EOT;
+foreach($Fid_db[$fidDB[fup]] AS $key=>$value){
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+          <a href="$url" target="_blank">{$city_DB[name][$city_id]}{$Fid_db[name][$key]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </dd>
+</dl>
+<dl class="OtherContainer">
+	<dt>城市链接:</dt>
+    <dd class="bottom">
+<!--
+EOT;
+$i=0;
+foreach($city_DB[name] AS $key=>$value){
+if(!$key)continue;
+$i++;
+if($i>12)break;
+$url=get_info_url('',$fid,$key);
+print <<<EOT
+-->
+          <a href="$url" target="_blank">{$city_DB[name][$key]}{$fidDB[name]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </dd>
+</dl>
+<!--
+EOT;
+?>
+-->
+

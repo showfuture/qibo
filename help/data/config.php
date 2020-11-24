@@ -1,0 +1,11 @@
+<?php
+$webdb['Info_metakeywords']='帮助中心';
+$webdb['Info_webOpen']='1';
+$webdb['Info_webname']='公告资讯';
+$webdb['Info_description']='';
+$webdb['module_close']='0';
+$webdb['module_pre']='help_';
+$webdb['module_id']='20';
+$webdb['Info_PostCommentType']='0';
+$webdb['Info_PassCommentType']='0';
+$webdb['Info_ShowCommentRows']='';

@@ -1,0 +1,92 @@
+@charset "gb2312";
+/* CSS Document */
+
+body,ul,li,dl,dd,dt,ol,h1,h2,h3,h4,h5,h6,div{ margin:0; padding:0; text-align:left; font-size:12px;}
+ul,ol,li{ list-style-image:none; list-style-type:none;}
+body{ font-size:12px; color:#333; background: #D7E7F4 url(bg.png) repeat;}
+div,img{ border: none;}
+
+a:link { color:#333; text-decoration:none;}
+a:visited { color:#333; text-decoration:none;}
+a:hover { color:#f60; text-decoration:none;}
+a:active { color:#f60; text-decoration:none;}
+
+.clr {clear:both}
+.fl{float:left}
+.fr{float:right}
+.bold{font-weight:bold;}
+
+.orange{ color:#F96F22;}
+.blue{ color:#0E6BE9;}
+.brown { color:#AA4700;}
+.violet { color:#5933D3;}
+.green{ color:#46823F;}
+
+
+.mainbox{ width:970px; margin:0 auto;}
+.head{ width:970px; height:105px; background:url(topimg.png) no-repeat;}
+.head-logodiv{ width:970px; height:170px; background:url(top-bimg.png) no-repeat;}
+.logoandimgdiv{ width:435px; height:60px; margin:0 auto; padding:10px 0;}
+.logoandimgdiv img{ cursor:pointer; float:left;}
+.logoandimgdiv .buttonimg{ margin-top:16px;}
+
+.logoandimgdiv div{
+	float:left;
+}
+.logoandimgdiv div.gotocity{
+	width:162px;
+	height:22px;
+	background:url(button.png) no-repeat;
+	padding-top:9px;
+	text-align:center;
+	margin-top:15px;
+}
+.logoandimgdiv div.gotocity a{
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	 
+}
+
+.hrline{ width:826px; height:3px; margin:0 auto; background:url(hrbg.png) repeat-x;}
+.pbox{ width:780px; margin:0px auto; border-bottom:1px solid #E6F1FF; line-height:40px; font-size:14px; color:#333; overflow:hidden;}
+.pboxmt{ padding-top:40px; _padding-top:30px;}
+.pbox h1{ float:left; font-size:14px; font-weight:bold; margin-right:10px;}
+.pbox select{ width:92px;}
+.pbox a{ margin-right:8px;}
+
+.content{ width:970px; background:url(mainbg.png) repeat-y;}
+.citymap{ width:780px; padding:0px 30px 10px 30px; margin:0 auto; background:url(map.png) right bottom no-repeat; min-height:510px; height:auto !important; height:510px; overflow:visible;}
+.citymap dl{ line-height:30px; clear:both;}
+.citymap dt{ float:left; width:16px; height:16px; line-height:16px; background:url(dtbg.png) no-repeat; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; margin:6px 10px 0 0; _margin:7px 10px 0 0; color:#0F75FF;}
+.citymap dd{ float:left;}
+.citymap dd a{ font-size:13px;}
+.citymap dd{ float:left; width:750px;}
+.footer{ width:970px; height:30px; background:url(footbg.png) no-repeat;}
+
+.citymap dd{ float:left; width:750px;}
+.citymap dt{ float:left; width:16px; height:16px; line-height:16px; background:url(dtbg.png) no-repeat; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; margin:6px 10px 0 0; _margin:7px 10px 0 0; color:#0F75FF; }
+
+/*
+*
+*/
+.showarea{
+	height:25px;
+	line-height:25px;
+	padding:10px 5px 0 0;
+	overflow:hidden;
+	margin:auto;
+	font-size:16px;
+}
+.showarea div{
+	float:left;
+}
+.showarea div.select{
+	padding:3px 5px 0 0;
+}
+.showarea div.button{
+	padding:2px 0 0 10px;
+}
+/*
+*
+*/

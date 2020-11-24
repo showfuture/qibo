@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$headmoreword = $lfjid ? "<a href=\"$webdb[www_url]/member\">会员中心</a> ｜ <a href=\"$webdb[www_url]/do/login.php?action=quit\">退出</a>":"<a href=\"$webdb[www_url]/do/login.php\">登录</a> | <a href=\"$webdb[www_url]/do/reg.php\">注册</a>";
+print <<<EOT
+-->
+<head>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/err/style.css">
+<title>$webdb[webname] powered by www.qibosoft.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+</head>
+<body>
+<div class="container">
+	<div class="head">
+	<!--
+    	<div class="logo"><a href="$webdb[www_url]"><img src="$webdb[www_url]/images/default/err/logo.gif" /></a></div>
+	-->
+        <div class="more"><a href="$webdb[www_url]/">网站首页</a> | $headmoreword</div>
+    </div>
+    <div class="cont">
+    	<div class="showerrMsg">$showerrMsg</div>        
+        <div class="butters">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+if(document.referrer==''&&window.self==window.top){
+	document.write('<input type="button" name="Submit" value="点击关闭本网页" class="buta" onclick="window.self.close();"> <input type="button" name="Submit" value="返回网站首页" class="butb" onclick="top.location.href=\'$webdb[www_url]/\';"> ');
+}else{
+var num=0;
+document.write('<input type="button" name="Submit" value="点击返回" class="butb" onclick="history.back(-1);if(num>0)top.location.href=\'$FROMURL\';num++;">');
+}
+//-->
+</SCRIPT>
+        </div>
+        <div class="userinfo">
+<!--
+EOT;
+if(!$lfjid){print <<<EOT
+-->
+			<div class="h">登录通行证</div>
+            <div class="note">请输入帐号和密码</div>
+            <div class="logincont">
+            <form name="form1" method="post" action="$webdb[www_url]/do/login.php">
+            	<dl>
+            		<dt>帐号: </dt>
+                    <dd><input type="text" name="username" class="input"></dd>
+                </dl>
+                <dl>
+            		<dt>密码: </dt>
+                    <dd><input type="password" name="password" class="input"></dd>
+                </dl>
+                <dl>
+            		<dt><br/></dt>
+                    <dd><span><input type="image" src="$webdb[www_url]/images/default/err/login.gif"></span> <span><a href="$webdb[www_url]/do/sendpwd.php">忘记密码?</a></span></dd>
+                </dl>
+<!--
+EOT;
+if($webdb[QQ_login]){print <<<EOT
+-->
+				<dl>
+            		<dt><br/></dt>
+                    <dd><a href="$webdb[www_url]/do/qq_login.php"><img src="$webdb[www_url]/images/default/err/qqlogin.gif" /></a></dd>
+                </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+                <input type="hidden" name="step" value="2">
+      			<input class="radio" type="hidden" name="cookietime" value="86400" >
+            </form>
+            </div>
+            <div class="noreg">还没有通行证?</div>
+            <div class="regs"><a href="$webdb[www_url]/do/reg.php"><img src="$webdb[www_url]/images/default/err/reg.gif"/></a></div>
+            <div class="other">拥有通行证,整个网站畅通无阻!</div>
+<!--
+EOT;
+}else{
+$lfjdb[icon]=tempdir($lfjdb[icon]);
+$lfjdb[regdate]=date("Y-m-d H:i",$lfjdb[regdate]);
+$lfjdb[money]=get_money($lfjdb[uid]);
+print <<<EOT
+-->
+			<div class="h">我的资料</div>
+            <div class="icon">
+            	<a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid" target="_blank" class="img"><img src="$lfjdb[icon]" width="160" onerror="this.src='$webdb[www_url]/images/default/noface.gif'"/></a>
+                <a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid" target="_blank" class="t">$lfjid</a>
+            </div>
+            <div class="text">
+            	<div>级别: <span>{$ltitle[$lfjdb[groupid]]}</span></div>
+                <div>{$webdb[MoneyName]}: <img src="$webdb[www_url]/images/default/money.gif"> <em>$lfjdb[money]</em> {$webdb[MoneyDW]}</div>
+                <div>注册日期: $lfjdb[regdate]</div>
+            </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+        </div>
+    </div>
+    <div class="foot">
+   
+    </div>
+</div>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

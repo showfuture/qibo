@@ -1,0 +1,269 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td  valign="top" class="Main"> 
+       
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>$label[infoindex1]</td>
+  </tr>
+</table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="indexTopTable">
+        <tr> 
+          <td> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+              <tr> 
+                <td class="tt"><span style="width:40%;float:left;">首页焦点</span>
+ <span class="help"><a href="javascript:alert('系统规定首页焦点处显示每条信息收费{$webdb[MoneyName]} {$webdb[AdInfoIndexShow]} {$webdb[MoneyDW]},显示 {$webdb[AdInfoShowTime]} 天。修改某条信息,即可设置.');">如何成为焦点信息?</a></span> 
+				</td>
+              </tr>
+              <tr> 
+                <td><SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="adinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=adinfo&fid=-1&rows=$webdb[AdInfoIndexRow]&leng=$webdb[AdInfoIndexLeng]&iframeID=adinfo" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t2">
+              <tr> 
+                <td class="tt">最新信息</td>
+              </tr>
+              <tr> 
+                <td><SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<span id="allnewinfo">$Load_Msg</span>');
+document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=allnewinfo&rows=$webdb[AdInfoIndexRow]&leng=$webdb[AdInfoIndexLeng]&iframeID=allnewinfo" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t3">
+              <tr> 
+                <td class="tt">联系我们</td>
+              </tr>
+              <tr> 
+                <td>
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[Info_contact]);
+print <<<EOT
+-->
+				<div class="phone">客服电话:$detail[0]</div>
+<div class="email">客服邮箱:$detail[1]</div>
+<div class="msn">客服MSN:$detail[2]</div>				
+<div class="qq">客服QQ:$detail[3]</div>
+                  <div class="post"><a href="$city_url/post.php" target="_blank">免费发布信息</a></div>
+</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable" id="Itable">
+  <tr> 
+    <td height="200" valign="top" class="Main" align="left">
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="Infosort">
+        <tr> 
+          <td class="head">信息分类</td>           
+        </tr>
+        <tr> 
+          <td class="middle"> 
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="indexlistsort">
+                    <!--
+EOT;
+$array=array_flip($Fid_db[0]);
+$array=array_chunk($array,2);
+foreach($array AS $key_1=>$array1){
+print <<<EOT
+-->      <tr> 
+<!--
+EOT;
+foreach($array1 AS $key_2){
+$class=($key_1%2==0)?'c1':'c2';
+$url=get_info_url('',$key_2,$city_id);
+print <<<EOT
+-->  
+			   
+			    <td width='50%' class="$class"> 
+                  <div class="bigsort"><a href="$url">{$Fid_db[name][$key_2]}</a></div>
+                  <div class="smallsort"> 
+                    <!--
+EOT;
+$i=0;
+foreach($Fid_db[$key_2] AS $key_3=>$rs){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+$url=get_info_url('',$key_3,$city_id);
+$color=$Fid_db[ifcolor][$key_3]?"color:red;":'';
+print <<<EOT
+-->
+                    <span><a href="$url" style="$color">{$Fid_db[name][$key_3]}</a><a class="num">({$InfoNum[$key_3]})</a></span> 
+                    <!--
+EOT;
+}print <<<EOT
+-->
+                  </div>
+                </td>
+				
+				 <!--
+EOT;
+}print <<<EOT
+--> 
+				
+              </tr>
+           <!--
+EOT;
+}print <<<EOT
+--> </table>
+            
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      </td>
+     
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable" id="indexMoreSort">
+  <tr> 
+    <td  valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="moresort">
+        <!--
+EOT;
+$array=array_chunk($listdb_moresort,3);
+foreach($array AS $key2=>$array2){
+$i++;
+print <<<EOT
+-->
+        <tr> 
+          <!--
+EOT;
+foreach($array2 AS $key1=>$rss){
+$i++;
+$url=get_info_url('',$rss[fid],$city_id);
+print <<<EOT
+-->
+          <td class="c$key1"> 
+            <table border="0" cellspacing="0" cellpadding="0" class="dragTable">
+              <tr> 
+                <td class="head"> 
+                  <h3 class="L"></h3>
+                  <span class="TAG"><a href="$url">$rss[name]</a></span> 
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+              <tr> 
+                <td class="middle"> 
+                  <!--
+EOT;
+foreach($rss[article] AS $key2=>$rs){
+$url=get_info_url($rs[id],$rs[fid],$city_id);
+print <<<EOT
+-->
+                  <div>·<a href="$url" title="$rs[full_title]" target="_blank">$rs[title]</a> 
+                  </div>
+                  <!--
+EOT;
+}print <<<EOT
+-->
+                </td>
+              </tr>
+              <tr> 
+                <td class="foot"> 
+                  <h3 class="L"></h3>
+                  <h3 class="R"></h3>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!--
+EOT;
+}
+print <<<EOT
+-->
+        </tr>
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top:0px;" class="MainTable">
+  <tr> 
+    <td height="40" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">友情链接</span> 
+			 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="imgfriendlink"> 
+<!--
+EOT;
+if(count($friendlinkDB[1])&&count($friendlink_DB[$city_id][1])) $array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+elseif(count($friendlinkDB[1])) $array = $friendlinkDB[1];
+else $array = $friendlink_DB[$city_id][1];
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target=_blank><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="88" height="31" border=0></A> 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+            <div class="wordfriendlink"> 
+              <!--
+EOT;
+if(count($friendlinkDB[0])&&count($friendlink_DB[$city_id][0])) $array = $friendlinkDB[0]+$friendlink_DB[$city_id][0];
+elseif(count($friendlinkDB[0])) $array = $friendlinkDB[0];
+else $array = $friendlink_DB[$city_id][0];
+foreach($array AS $rs){print <<<EOT
+-->
+              <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A>&nbsp; 
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

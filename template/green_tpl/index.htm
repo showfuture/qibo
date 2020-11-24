@@ -1,0 +1,297 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/index.css">
+<div class="Container">
+	<div class="side">
+    	<div class="showsorts" onmouseout="hiddenshowsort()">
+        	<div class="head">全部信息</div>
+            <div class="cont" id="AllSorts">
+<!--
+EOT;
+$array=array_flip($Fid_db[0]);
+$i=0;
+foreach($array AS $key=>$rs){
+$i++;
+if($i>11)break;
+$url=get_info_url('',$rs,$city_id);
+print <<<EOT
+-->
+        			<dl onmouseover="showmoresort(this)">
+            			<dt class="dt$i"><a href="$url">{$Fid_db[name][$rs]}</a></dt>
+                		<dd>
+                        	<div class="c">
+                            	<div>
+<!--
+EOT;
+foreach($Fid_db[$rs] AS $key_3=>$rss){
+$InfoNum[$key_3]=intval($InfoNum[$key_3]);
+$url=get_info_url('',$key_3,$city_id);
+print <<<EOT
+-->
+                    				<a href="$url">{$Fid_db[name][$key_3]}</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+								</div>
+							</div>
+                		</dd>
+            		</dl>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var objdl=document.getElementById("AllSorts").getElementsByTagName("dl");
+function showmoresort(theDl){	
+	for(var i=0;i< objdl.length;i++ ){
+		objdl[i].className='';
+	}
+	theDl.className='ck';
+}
+function hiddenshowsort(){
+	for(var i=0;i< objdl.length;i++ ){
+		objdl[i].className='';
+	}
+}
+//-->
+</SCRIPT>
+				<div class="allsort">
+                	<a href="allsort.php">全部信息分类&gt;&gt;</a>
+                </div>
+            </div>
+        </div>
+        <div class="sidelad">
+        	{$label[green_listad1]}
+        </div>
+        <div class="sidewordad">
+        	<div class="head">分类广告</div>
+            <div class="cont">
+            	{$label[green_listwad1]}
+            </div>
+        </div>
+        <div class="sidelad">
+        	{$label[green_listad2]}
+        </div>
+        <div class="bmservers">
+        	<div class="head">便民服务</div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="cont">
+                {$label[green_listwad2]}
+                </td>
+              </tr>
+            </table>
+        </div>
+        <div class="sidelad">
+        	{$label[green_listad3]}
+        </div>
+        <div class="contact">
+            <div class="head">联系我们</div>
+            <div class="cont">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[Info_contact]);
+print <<<EOT
+-->
+                <div class="tel">电话:$detail[0]</div>
+                <div class="email">邮箱:$detail[1]</div>
+                <div class="msn">msn:$detail[2]</div>
+                <div class="qq">QQ:$detail[3]</div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+    	<div class="BaseInfo">
+            {$label[green_slide]}
+            <div class="ShowSlides"><SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/green/slide.js"></SCRIPT></div>
+            <div class="Newestcont">
+            	<div class="head">最新消息</div>
+                <div class="cont">
+<!--
+EOT;
+$listnewdb=Get_Info($type="new",$rows=7,$leng=40,$fid=0,$mid=0,$city_id);
+foreach($listnewdb AS $key=>$rs){
+$rs[title]=get_word($rs[title],30);
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+					<div class="list"><a href="$rs[url]" target="_blank" title='$rs[full_title]'>$rs[title]</a><span>$rs[posttime]</span></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                </div>
+            </div>
+            <div class="TopInfo">
+            	<div class="head">推荐消息</div>
+                <div class="cont">
+<!--
+EOT;
+$listhotdb=Get_Info($type="hot",$rows=4,$leng=40,$fid=0,$mid=0,$city_id);
+foreach($listhotdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+					<div class="list"><a href="$rs[url]" target="_blank" title='$rs[full_title]'>$rs[title]</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                </div>
+            </div>
+        </div>
+        <div class="ShowCompany">
+        	<div class="head">
+            	<div class="tag">优秀商家展示</div>
+                <div class="more"><a href="$webdb[www_url]/member/?main=$webdb[www_url]/hy/member/post_company.php" target="_blank"><img src="$webdb[www_url]/images/green/joyhy.gif"/></a></div>
+            </div>
+            <div class="cont">
+            	{$label[green_companyt]}
+            </div>
+        </div>
+        <div class="rightmainad">{$label[green_listad4]}</div>
+        <div class="ShowMoreSide">
+<!--
+EOT;
+$i=0;
+foreach($listdb_moresort AS $key=>$rs){
+$url=get_info_url('',$rs[fid],$city_id);
+$i++;
+if($i>3)break;
+$rs[name]=get_word($rs[name],10);
+print <<<EOT
+-->
+			<div class="sidecont">
+        		<div class="head">
+                	<div class="tag">$rs[name]</div>
+                	<div class="more"><a href="post.php?fid=$rs[fid]&city_id=$city_id" target="_blank" class="post">免费发布</a> <a href="$url">更多</a></div>
+                </div>
+                <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($rs[article] AS $key2=>$rss){
+$j++;
+$url=get_info_url($rss[id],$rss[fid],$city_id);
+$divclass = $j%2==0 ? "listb" : "lista";
+print <<<EOT
+-->
+                  <div class="$divclass"><a href="$url" title="$rss[full_title]" target="_blank">$rss[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                </div>
+        	</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->        	
+        </div>
+        <div class="showrightmad">
+        	<div class="listad">{$label[green_listad5]}</div>
+            <div class="listad">{$label[green_listad6]}</div>
+            <div class="listad">{$label[green_listad8]}</div>
+        </div>
+        <div class="ShowMoreSide">
+<!--
+EOT;
+$i=0;
+foreach($listdb_moresort AS $key=>$rs){
+$url=get_info_url('',$rs[fid],$city_id);
+$i++;
+if($i<4)continue;
+if($i>6)break;
+$rs[name]=get_word($rs[name],10);
+print <<<EOT
+-->
+			<div class="sidecont">
+        		<div class="head">
+                	<div class="tag">$rs[name]</div>
+                	<div class="more"><a href="post.php?fid=$rs[fid]&city_id=$city_id" target="_blank" class="post">免费发布</a> <a href="$url">更多</a></div>
+                </div>
+                <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($rs[article] AS $key2=>$rss){
+$j++;
+$url=get_info_url($rss[id],$rss[fid],$city_id);
+$divclass = $j%2==0 ? "listb" : "lista";
+print <<<EOT
+-->
+                  <div class="$divclass"><a href="$url" title="$rss[full_title]" target="_blank">$rss[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+                </div>
+        	</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->        	
+        </div>
+    </div>
+    <div class="cleardiv"></div>
+</div>
+<div class="Dbanner">
+	{$label[green_listad7]}
+</div>
+<div class="FrendLink">
+	<div class="head"><div class="tag">友情链接</div><div class="more"><a href="$webdb[www_url]/do/friendlink.php?job=apply" target="_blank">申请链接</a></div></div>
+    <div class="cont">
+    	<div class="imgfriendlink"> 
+<!--
+EOT;
+if($friendlinkDB[1]&&$friendlink_DB[$city_id][1]){
+$array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+}elseif($friendlinkDB[1]){
+$array = $friendlinkDB[1];
+}else{
+$array = $friendlink_DB[$city_id][1];
+}
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target=_blank><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="88" height="31"/></A> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </div>
+        <div class="wordfriendlink"> 
+<!--
+EOT;
+if($friendlinkDB[0]&&$friendlink_DB[$city_id][0]){
+$array = $friendlinkDB[0]+$friendlink_DB[$city_id][0];
+}elseif($friendlinkDB[0]){
+$array = $friendlinkDB[0];
+}else{
+$array = $friendlink_DB[$city_id][0];
+}
+foreach($array AS $rs){print <<<EOT
+-->
+              <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+         </div>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

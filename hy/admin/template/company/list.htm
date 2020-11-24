@@ -1,0 +1,102 @@
+<!--
+<?php
+print <<<EOT
+-->
+ <form name="form_work" method="post" action="$admin_path&action=batch">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+    <tr align="center" class="head"> 
+      <td width="6%">UID</td>
+      <td width="28%">店铺名称</td>
+      <td width="10%">所在城市</td>
+      <td width="13%">登记者</td>
+      <td width="8%">浏览</td>
+      <td width="10%">登记日期</td>
+      <td width="8%">审核</td>
+      <td width="7%">推荐</td>
+      <td width="10%">修改/删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="6%">$rs[uid]</td>
+      <td width="28%" > 
+        <input type="checkbox" name="udb[{$rs[uid]}]" value="$rs[title]">
+        <a href="$webdb[www_url]/home/?uid=$rs[uid]" target='_blank'  style="color:$rs[titlecolor];">$rs[title]</a></td>
+      <td align="center" width="10%">{$city_DB[name][$rs[city_id]]}</td>
+      <td align="center" width="13%"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a><a href="list.php?job=list&fid=$rs[fid]"> 
+        </a></td>
+      <td align="center" width="8%">$rs[hits]</td>
+      <td align="center" width="10%">$rs[posttime]</td>
+      <td align="center" width="8%">$rs[ischeck]</td>
+      <td align="center" width="7%">$rs[iscom]</td>
+      <td align="center" width="10%"  ><a href="$Murl/member/homepage_ctrl.php?atn=info&uid=$rs[uid]" target=_blank>修改</a>/<a onclick="return confirm('你确认要删除商家资料吗?');" href="$admin_path&action=work&jobs=del&uid=$rs[uid]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"> {$showpage} </td>
+    </tr><tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="9"><a href="javascript:CheckAll('all')">全选</a> <a href="javascript:CheckAll()">反选</a> 
+        <input type="button" name="Submit" value="批量删除" onclick="postdo()">
+ </td>
+    </tr>
+  
+</table></form>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(){ 
+	if(confirm('你确认要批量删除选中的商家吗?不可恢复!')){
+		document.form_work.submit();
+	}	
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br> <form name="form1" method="post" action="$admin_path&job=$job">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+    <tr class="head"> 
+      <td>搜索</td>
+    </tr>
+    <tr> 
+      <td align="center"> 关键字 
+        <input type="text" name="keyword">
+        <select name="type">
+          <option value="title">店铺名称</option>
+          <option value="id">店铺ID</option>
+          <option value="username">登记者</option>
+        </select>
+        <input type="submit" name="Submit7" value="提交">
+      </td>
+    </tr>
+  
+</table></form><br><table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+    <tr class="head"> <td>说明</td>
+    </tr>
+    <tr> 
+      
+    <td align="left"> 删除商家资料的话，不可恢复。他将会被降为个人用户。删除商家资料不会同时删除他的个人用户基本信息。要删除个人用户基本信息需要在用户资料管理那里进行删除！</td>
+    </tr>
+  
+</table>
+<!--
+EOT;
+?>
+-->
+ 

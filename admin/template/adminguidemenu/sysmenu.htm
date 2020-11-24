@@ -1,0 +1,68 @@
+<!--
+<?php
+print <<<EOT
+-->  
+
+ 
+
+  <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+    <tr class="head"> 
+      <td>请选择一个功能<font color="#FF0000"></font></td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      
+    <td> 
+      <table width="100%" border="0" cellspacing="10" cellpadding="0">
+        <tr>
+          <td>$show</td>
+        </tr>
+      </table>
+      <!--
+EOT;
+foreach($adminDB AS $key=>$array){
+print <<<EOT
+-->	  
+        <table width="100%" border="0" style="margin-top:5px;border:#ccc solid 1px;">
+          <tr> 
+            <td colspan="5" bgcolor="#EBEBEB" style="height:19px;">$key</td>
+  </tr>
+		<tr>
+            <td bgcolor="#FFFFFF"> 
+              <!--
+EOT;
+foreach($array AS $title=>$rs){
+$ckk=($Smenu||$grdb[$rs[power]])?" onclick=\"ckmenu('{$rs[link]}','$_fname$title');\" ":" onclick=\"alert('当前用户组没有这个功能的权限!');\" disabled ";
+print <<<EOT
+-->
+              <span style="display:block;width:200px;height:25px;float:left;overflow:hide;"> 
+                 
+              <input type="radio" name="adgrdb" value="{$rs[power]}"  $ckk>
+              $title </span> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+ <!--
+EOT;
+}print <<<EOT
+-->		
+		
+      </td>
+    </tr>  
+  </table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ckmenu(link,name){
+	window.opener.putmenu(link,name);
+	window.self.close();
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

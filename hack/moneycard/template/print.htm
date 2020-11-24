@@ -1,0 +1,27 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<style type="text/css">
+*{
+font-size:14px;
+}
+</style>
+<BODY onload="window.print()">
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="124" style="float:left;width:45%;padding:1em;margin:1em;border:1px dotted #ccc;line-height:150%;">
+  <tr>
+    <td valign="top" align="left">
+      <div style="border-bottom:2px solid #333;width:100%;color:red;margin-bottom:10px;"><b>欢迎使用充值卡</b></div>
+      <b>面值:</b> {$rs[moneyrmb]} 元<br>
+      <b>{$webdb[MoneyName]}:</b> {$rs[moneycard]} {$webdb[MoneyDW]}<br>
+      <b>充值密码:</b> {$rs[passwd]}</td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

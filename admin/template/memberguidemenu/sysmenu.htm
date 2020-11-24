@@ -1,0 +1,70 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td>批量添加以下菜单</td>
+  </tr>
+  <tr align="center" bgcolor="#FFFFFF"> 
+    <td> 
+      <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job&">
+        <!--
+EOT;
+foreach($menudb AS $key=>$array){
+print <<<EOT
+-->
+        <table width="100%" border="0" style="margin-top:5px;border:#ccc solid 1px;">
+          <tr> 
+            <td colspan="5" bgcolor="#EBEBEB" style="height:19px;">$key</td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF"> 
+              <!--
+EOT;
+foreach($array AS $title=>$rs){
+$url = eregi("^\/",$rs['link'])?"{$webdb[www_url]}{$rs[link]}":"$webdb[www_url]/member/{$rs[link]}";
+print <<<EOT
+-->
+              <span style="display:block;width:200px;height:25px;float:left;overflow:hide;"> 
+              <input type="checkbox" name="linkdb[{$key}][{$rs[link]}]" value="$title" checked>
+              <a href="$url" target="_blank">$title</a> </span> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <table width="100%" border="0" cellspacing="1" cellpadding="3">
+          <tr> 
+            <td width="34%">&nbsp;</td>
+            <td width="66%">所属用户组别:$select_group</td>
+          </tr>
+          <tr> 
+            <td width="34%">&nbsp;</td>
+            <td width="66%">所属用户类型: 
+              <input type="radio" name="postdb[ifcompany]" value="0" checked>
+              {$typeDB[0]} 
+              <input type="radio" name="postdb[ifcompany]" value="1">
+              {$typeDB[1]} </td>
+          </tr>
+          <tr> 
+            <td width="34%">&nbsp; </td>
+            <td width="66%"> 
+              <input type="submit" name="Submit" value="批量添加">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,90 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=config">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">信息内容页联系方式设置</font></b></div>
+      </td>
+    </tr>
+    <!--
+EOT;
+if($userdb[groupid]==3){print <<<EOT
+-->
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width='33%'> 
+        <div align="left">是否图片方式显示联系方式:</div>
+      </td>
+      <td width="67%"> 
+        <input type="radio" name="webdbs[Info_ImgShopContact]" value="1" $Info_ImgShopContact[1]>
+        是 
+        <input type="radio" name="webdbs[Info_ImgShopContact]" value="0" $Info_ImgShopContact[0]>
+        否</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='33%'> 
+        <div align="left">是否禁止游客查看联系方式:</div>
+      </td>
+      <td width="67%"> 
+        <input type="radio" name="webdbs[Info_ForbidGuesViewContact]" value="1" $Info_ForbidGuesViewContact[1]>
+        禁止 
+        <input type="radio" name="webdbs[Info_ForbidGuesViewContact]" value="0" $Info_ForbidGuesViewContact[0]>
+        允许 </td>
+    </tr><tr bgcolor="#FFFFFF"> 
+      <td width='33%'> 
+        <div align="left">是否禁止普通会员查看联系方式:</div>
+      </td>
+      <td width="67%"> 
+        <input type="radio" name="webdbs[Info_ForbidMemberViewContact]" value="1" $Info_ForbidMemberViewContact[1]>
+        禁止 
+        <input type="radio" name="webdbs[Info_ForbidMemberViewContact]" value="0" $Info_ForbidMemberViewContact[0]>
+        允许 </td>
+    </tr>
+     <tr bgcolor="#FFFFFF">
+      <td width='33%'>电话是否必填:</td>
+      <td width="67%">
+        <input type="radio" name="webdbs[Info_Musttelephone]" value="1" $Info_Musttelephone[1]>
+        必填 
+        <input type="radio" name="webdbs[Info_Musttelephone]" value="0" $Info_Musttelephone[0]>
+        不限</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width='33%'>手机是否必填:</td>
+      <td width="67%">
+        <input type="radio" name="webdbs[Info_Mustmobphone]" value="1" $Info_Mustmobphone[1]>
+        必填 
+        <input type="radio" name="webdbs[Info_Mustmobphone]" value="0" $Info_Mustmobphone[0]>
+        不限</td>
+    </tr><tr bgcolor="#FFFFFF">
+      <td width='33%'>QQ是否必填:</td>
+      <td width="67%">
+        <input type="radio" name="webdbs[Info_MustQQ]" value="1" $Info_MustQQ[1]>
+        必填 
+        <input type="radio" name="webdbs[Info_MustQQ]" value="0" $Info_MustQQ[0]>
+        不限</td>
+    </tr><tr bgcolor="#FFFFFF">
+      <td width='33%'>邮箱是否必填:</td>
+      <td width="67%">
+        <input type="radio" name="webdbs[Info_MustEmail]" value="1" $Info_MustEmail[1]>
+        必填 
+        <input type="radio" name="webdbs[Info_MustEmail]" value="0" $Info_MustEmail[0]>
+        不限</td>
+    </tr>
+    <tr> 
+      <td width='33%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="67%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

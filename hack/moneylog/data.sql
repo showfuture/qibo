@@ -1,0 +1,1 @@
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('moneylog', '用户消费积分记录', 0, '', '', '', '', '', 'index.php?lfj=moneylog&job=list', '', 'other', '插件大全', 0, '', 0);

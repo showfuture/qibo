@@ -1,0 +1,265 @@
+.ShowSearch #Showzone{
+	height:22px;
+	background:url(head7.gif) repeat-x;
+	overflow:hidden;
+	line-height:26px;
+	padding-left:8px;
+}
+.ShowSearch #Showzone span{
+	display:block;
+	padding-left:8px;
+	float:left;
+}
+.ShowSearch #Showzone span a{
+	display:block;
+	padding-right:8px;
+	color:#555;
+}
+.ShowSearch #Showzone span.choose{
+	background:url(choose.gif) left top no-repeat;
+}
+.ShowSearch #Showzone span.choose a{
+	background:url(choose.gif) right top no-repeat;
+	color:#333;
+}
+.ShowSearch .cont{
+	border:#93C37A solid 1px;
+	border-top:0;
+	padding:2px;
+	background:#F8FEE3;
+}
+#Showstreet{
+	line-height:20px;
+	word-spacing:5px;
+	padding:5px 5px 0 10px;
+}
+#Showstreet a{
+	color:#318D00;
+}
+#Showstreet .choose{
+	color:red;
+}
+.MainContainer{
+	margin-top:15px;
+}
+.MainContainer .Main{
+	width:740px;
+	float:left;
+}
+.MainContainer .Side{
+	width:240px;
+	float:right;
+}
+.MainContainer .cleardiv{
+	clear:both;
+}
+.ShowType{
+	border:#93C37A solid 1px;
+	background:#F8FEE3;
+	padding:6px;
+	margin-bottom:10px;
+}
+.ShowType .head{
+	height:25px;
+	line-height:20px;
+	padding-left:5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.ShowType .cont{
+	padding:10px 10px 2px 12px;
+	background:#FFF;
+}
+.ShowType .cont div{
+	height:30px;
+	line-height:20px;
+	overflow:hidden;
+}
+.ShowType .cont div span{
+	float:left;
+}
+.ShowType .cont div span.t{
+	border:#D5D5D5 solid 1px;
+	background:#EEFFBA;
+	padding:0 5px 0 5px;
+	margin-right:10px;
+}
+/*
+*列表样式
+*/
+.ShowList{
+	border:#D5D5D5 solid 1px;
+}
+.ShowList .head{
+	height:32px;
+	overflow:hidden;
+	line-height:35px;
+	background:url(head3.gif) left 1px repeat-x;
+	margin-bottom:5px;
+}
+.ShowList .img{
+	width:100px;
+	text-align:center;
+	float:left;
+}
+.ShowList .title{
+	width:360px;
+	text-align:center;
+	float:left;
+}
+.ShowList .other{
+	width:60px;
+	text-align:center;
+	float:left;	
+}
+.ShowList .time{
+	width:70px;
+	text-align:center;
+	float:right;	
+}
+.ShowList .list{
+	height:60px;
+	overflow:hidden;
+	border-bottom:#DDD dotted 1px;
+}
+.ShowList .list .img{
+	padding-top:6px;
+}
+.ShowList .list .img a{
+	display:block;
+	border:#DDD solid 1px;
+	width:60px;
+	height:45px;
+	overflow:hidden;
+	text-align:center;
+	background:#efefef;
+	margin:auto;
+}
+.ShowList .list .title{
+	text-align:left;
+	color:#aaa;
+}
+.ShowList .list .title .t{
+	height:30px;
+	line-height:30px;
+	padding-top:2px;
+	overflow:hidden;
+}
+.ShowList .list .title .t a{
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	color:#318D00;
+}
+.ShowList .list .title .t span{
+	float:left;
+	padding:3px 0 0 2px;
+}
+.ShowList .list .title .m{
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+}
+.ShowList .list .other,.ShowList .list .time{
+	padding-top:15px;
+	height:40px;
+	line-height:20px;
+	overflow:hidden;
+	color:#666;
+}
+.ShowList .showpage{
+	padding-top:5px;
+	height:35px;
+	line-height:30px;
+	text-align:center;
+}
+.ShowList .showpage a{
+	border:#EEE solid 1px;
+	padding:3px 5px 2px 5px;
+	color:#999;
+}
+.sidecont{
+	border:#93C37A solid 1px;
+	margin-bottom:10px;
+}
+.sidecont .head{
+	line-height:30px;
+	padding:5px 0 0 15px;
+	font-size:14px;
+	color:#666;
+}
+.sidecont .heada{
+	background:url(head6.gif) repeat-x;
+	padding:2px 0 0 15px;
+	margin-bottom:6px;
+}
+.sidecont .cont{
+	padding:0 10px  10px 10px;
+	line-height:20px;
+	color:#888;
+}
+.sidecont .cont .title{
+	padding-left:5px;
+	line-height:18px;
+}
+.sidecont .cont .post{
+	padding:10px 0 5px 0;
+	text-align:center;
+}
+.sidecont .cont div.tel{
+	background:url(icon.gif) 3px 3px no-repeat;
+	padding:2px 0 1px 25px;
+	color:#555;
+}
+.sidecont .cont div.email{
+	background:url(icon.gif) 3px -20px no-repeat;
+	padding:2px 0 1px 25px;
+	color:#555;
+}
+.sidecont .cont div.msn{
+	background:url(icon.gif) 3px -43px no-repeat;
+	padding:2px 0 1px 25px;
+	color:#555;
+}
+.sidecont .cont div.qq{
+	background:url(icon.gif) 3px -65px no-repeat;
+	padding:2px 0 1px 25px;
+	color:#555;
+}
+.sidecont .cont a{
+	color:#555;
+}
+.sideconts .head{
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.sideconts .cont div{
+	height:30px;
+	color:#555;
+	padding-left:10px;
+}
+.sideconts .cont .keyword{
+	width:100px;
+}
+
+.OtherContainer{
+	margin-top:10px;
+	border:#cbcbcb solid 1px;
+	padding-bottom:10px;
+}
+.OtherContainer dt{
+	padding-top:5px;
+	height:25px;
+	line-height:25px;
+	padding-left:35px;
+	background:url(icon1.gif) 15px 9px no-repeat;
+	color:#FF5A00;
+}
+.OtherContainer dd{
+	padding:0 5px 0 20px;
+	line-height:20px;
+	word-spacing:10px;
+}
+.OtherContainer dd a:link,.OtherContainer dd a:visited,.OtherContainer dd a:hover{
+	color:#666;
+}

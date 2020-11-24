@@ -1,0 +1,38 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">我投放的广告</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="30%">广告位名称</th>
+            <th width="15%">所在城市</th>
+            <th width="30%">开始日期/结束日期</th>
+            <th width="10%">审核与否</th>
+            <th width="15%">修改/删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+          <tr>
+            <td class="tL">$rs[name]</td>
+            <td>{$city_DB[name][$rs[city_id]]}</td>
+            <td>$rs[u_begintime]/$rs[u_endtime]</td>
+            <td>$rs[send]</td>
+            <td><a href="?job=edit&u_id=$rs[u_id]" onclick="$rs[alert]">修改</a>/<a href="?action=del&u_id=$rs[u_id]"  onclick="return confirm('你确认要删除吗?不可恢复')">删除</a></td>
+          </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div class="Showpage">$showpage</div>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

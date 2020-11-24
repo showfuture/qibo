@@ -1,0 +1,128 @@
+.cheaders{
+	height:27px;
+	overflow:hidden;
+	border-bottom:2px #3662A1 solid;
+}
+.cheaders li{
+	height:26px;
+	float:left;
+	padding:0 6px 0 6px;
+	overflow:hidden;
+	line-height:30px;
+	border:#3662A1 solid 1px;
+	background:url(mh.jpg) repeat-x;
+	margin-right:2px;
+}
+.cheaders li a{
+	font-weight:bold;
+	color:#3662A1;
+}
+.cheaders li.ck{
+	background:url(hck.jpg) repeat-x;
+}
+.cheaders li.ck a{
+color:#FFF;
+}
+.ccont{
+	padding-top:10px;
+}
+/*
+*
+*/
+.FormTable,.FormTable td{
+	border:#DDD solid 1px;
+}
+.FormTable td.tdR{
+	padding-left:8px;
+	padding-bottom:5px;
+}
+/**
+**/
+.FormTable td.tdL ul{
+	text-align:left;
+	font-weight:normal;
+}
+.lists{
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+}
+.lists li{
+	float:left;
+	text-align:center;
+	height:30px;
+}
+.lists li.li1{
+	width:130px;
+	overflow:hidden;
+}
+.lists li.li1 input{
+	width:120px;
+}
+.lists li.li2{
+	width:250px;
+	overflow:hidden;
+}
+.lists li.li2 input{
+	width:240px
+}
+.lists li.li3,.lists li.li4{
+	width:35px;
+	overflow:hidden;
+}
+.lists li.li3 input{
+	width:25px;
+}
+.Hlists li{
+	height:26px;
+	background:#EFEFEF;
+	border-right:#FFF solid 1px;
+}
+.lists2{
+	height:180px;
+	overflow:hidden;
+}
+.lists2 li{
+	float:left;
+	text-align:center;
+	padding-left:10px;
+}
+.lists2 li.li2{
+	padding-top:20px;
+}
+.lists2 li.li2 div{
+	padding-bottom:10px;
+}
+/*
+*
+*/
+.PicTable,.PicTable td{
+	border:#DDD solid 1px;
+}
+.PicTable td{
+	padding:10px;
+}
+.RightTd div{
+	padding-bottom:8px;
+}
+.listPic{
+	width:100px;
+	height:150px;
+	overflow:hidden;
+	float:left;
+}
+.listPic div{
+	width:90px;
+	margin:auto;
+	text-align:center;
+	line-height:18px;
+}
+.listPic div.img{
+	border:#DDD solid 1px;
+	padding:1px;
+	margin-bottom:5px;
+}
+.listPic div.t div{
+	height:18px;
+	overflow:hidden;
+}

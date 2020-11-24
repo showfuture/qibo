@@ -1,0 +1,85 @@
+<!--
+<?php
+print <<<EOT
+--> <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  
+    <tr class="head"> 
+      <td colspan="2">单独页面管理</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2">单独页名称: 
+        <input type="text" name="postdb[name]" value="$rsdb[name]" size="40">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td colspan="2">标 题: 
+        <input type="text" name="postdb[title]" value="$rsdb[title]" size="70">
+        (内容标题,可留空) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="50%">头部模板:
+        <input type="text" name="postdb[tpl_head]" size="40" id="head_tpl" value="$rsdb[tpl_head]">
+        {$tpl_head}<br>
+        底部模板:
+        <input type="text" name="postdb[tpl_foot]" size="40" id="foot_tpl" value="$rsdb[tpl_foot]">
+        {$tpl_foot}<br>
+        内容模板:
+        <input type="text" name="postdb[tpl_main]" size="40" id="main_tpl" value="$rsdb[tpl_main]">
+        {$tpl_main}<br>
+        (你完全可以自己模仿template/default/alonepage.htm这个文件做一个模板,然后在这里输入模板所在路径) </td>
+      <td width="50%">风 格: {$style_select} (某些风格可能设置无效)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"> 静态网页名: 
+        <input type="text" name="postdb[filename]" value="$rsdb[filename]" size="50">
+        (可以为多级目录) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2">SEO关键字: 
+        <input type="text" name="postdb[keywords]" value="$rsdb[keywords]" size="50">
+        (可留空) </td>
+    </tr>
+	<tr bgcolor="#FFFFFF"> 
+      <td colspan="2">SEO描述: 
+        <input type="text" name="postdb[descrip]" value="$rsdb[descrip]" size="100">
+        (可留空) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2">   
+
+
+<textarea name="postdb[content]" id="myEditor" style="width:800px;">$rsdb[content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:190});
+editor_a.render( 'myEditor' );
+</script>
+
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="center"> 
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  
+</table></form>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+   
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>头部模板,底部模板,内容模板,你都可以自己做一个有个性的,然后在上面输入他们所在的目录即可调用显示.留空的话.将以默认为标准.<br>
+        或者你可以不做头部与底部模板.只做内容模板,此时上面的头部模板与底部模板就得选择&quot;头部白板&quot;&quot;底部白板&quot;<br>
+        通过做出各种各样的模板,你就可以实现不同功能的页面,比如友情链接页,公司介绍页,等等.这会变得非常的轻松自如.<br>
+        如果你想节省服务器资源加快页面浏览速度的话,可以生成静态,静态页面名称可以自由定义,当然可以定义成多级目录的形式,系统会自动创建目录的</td>
+    </tr>
+   
+</table>
+<!--
+EOT;
+?>
+-->

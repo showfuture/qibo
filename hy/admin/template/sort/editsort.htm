@@ -1,0 +1,52 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">栏目修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">栏目名称:</td>
+      <td width="60%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%"> 父栏目FID: (不选择,将作为顶级栏目) </td>
+      <td width="60%"> 
+        <select name="postdb[fup]">
+          <option value="0">请选择</option>{$fup_select}
+        </select>
+      </td>
+    </tr>
+	<tr bgcolor="#FFFFFF"  class="hidetr">
+      <td width="40%">SEO优化:</td>
+      <td width="60%"> 标题(title): 
+        <input type="text" name="postdb[metatitle]" size="35" value="$rsdb[metatitle]">
+        <br>关键字(metakeywords):
+        <input type="text" name="postdb[metakeywords]" size="35" value="$rsdb[metakeywords]">
+        <br>
+        描述(metadescription): 
+        <input type="text" name="postdb[metadescription]" size="35" value="$rsdb[metadescription]">
+        <br>
+        <br>
+        部分变量如下:<br>
+        {city_name} 代表当前城市名称<br>
+        {sort_name} 代表栏目名称<br>
+        {zoon_name} 代表当前城市区域名称<br>
+        {street_name} 代表当前城市街道地段名称</td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

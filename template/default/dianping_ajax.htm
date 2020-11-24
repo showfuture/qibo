@@ -1,0 +1,87 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="content">
+  <tr> 
+    <td rowspan="2" width="5%" class="img"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" class="p" target="_blank"><img onerror="this.src='$webdb[www_url]/images/default/nohead.gif'" src='$rs[icon]' border="0"></a> 
+      <a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a><br>
+      <a href="$webdb[www_url]/member/?main=pm.php?job=send&username=$rs[username]" target="_blank"><img src="$webdb[www_url]/images/default/ww_offline.gif" border="0"></a></td>
+    <td width="95%" class="word" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word">
+        <tr> 
+          <td class="fen_show">$rs[fen]</td>
+        </tr>
+      <tr> 
+          <td><div class="c1">$rs[content]</div>
+      <!--
+EOT;
+if($rs[fen6]){
+print <<<EOT
+-->
+		  <div class="c1">$rs[fen6]</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+		  <div class="c3">
+      <!--
+EOT;
+if($rs[price]){
+print <<<EOT
+-->
+		  人均消费：{$rs[price]}元/人  
+<!--
+EOT;
+}if($rs[keywords2]){print <<<EOT
+-->
+		  推荐菜：$rs[keywords2]
+<!--
+EOT;
+}print <<<EOT
+-->
+		  </div>
+      <!--
+EOT;
+if($rs[keywords]){
+print <<<EOT
+-->
+		  <div class="c4">标签：$rs[keywords]</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+		  </td>
+        </tr></table>
+    </td>
+  </tr>
+  <tr> 
+    <td width="95%" class="info"> 日期:$rs[posttime] 
+      <!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+      <A HREF="javascript:getcomment('$city_url/job.php?job=dianping_ajax&action=del&id=$id&cid=$rs[cid]')">删除</A> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+      <img src="$webdb[www_url]/images/default/flowers.gif"> <a HREF="javascript:getcomment('$city_url/job.php?job=dianping_ajax&action=flowers&id=$id&cid=$rs[cid]')">鲜花</a>(<b><font color="#FF0000">{$rs[flowers]}</font></b>) 
+      <a HREF="javascript:getcomment('$city_url/job.php?job=dianping_ajax&action=egg&id=$id&cid=$rs[cid]')">鸡蛋</a>(<b><font color="#0000FF">{$rs[egg]}</font></b>)</td>
+  </tr>
+</table>
+<!--
+EOT;
+}print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="page">$showpage</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

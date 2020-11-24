@@ -1,0 +1,73 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td width="5%" align="center" height="21">序号</td>
+      <td width="55%" align="center" height="21">评论部分内容</td>
+      <td width="10%" align="center" height="21">用户名</td>
+      <td width="5%" align="center" height="21">精华</td>
+      <td width="5%" align="center" height="21">时间</td>
+      <td width="5%" align="center" height="21">审核</td>
+      <td width="5%" align="center" height="21">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center">$rs[cid]</td>
+      <td> 
+        <input type="checkbox" name="ciddb[{$rs[cid]}]" value="$rs[cid]">
+        <a href="$admin_path&job=show&cid=$rs[cid]">$rs[content]</a> </td>
+      <td align="center">$rs[username]</td>
+      <td align="center">$rs[ifgood]</td>
+      <td align="center">$rs[posttime]</td>
+      <td align="center">$rs[yz]</td>
+      <td align="center"><a href="$admin_path&action=list&jobs=delete&ciddb[{$rs[cid]}]=$rs[cid]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7">$showpage</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"><a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+        <input type="hidden" name="jobs">
+        <input type="button" name="Submit" value="通过验证" onClick="postdo('yz')">
+        <input type="button" name="Submit2" value="取消验证" onClick="postdo('unyz')">
+        <input type="button" name="Submit22" value="推荐优秀" onClick="postdo('good')">
+        <input type="button" name="Submit222" value="取消优秀" onClick="postdo('ungood')">
+        <input type="button" name="Submit3" value="删 除" onClick="postdo('delete')">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

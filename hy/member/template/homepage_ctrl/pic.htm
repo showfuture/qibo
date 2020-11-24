@@ -1,0 +1,48 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="PicTable">
+  <tr>
+    <td style="width:500px;">
+<!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+              <div class="listPic">
+              	<div class="img" >
+              		<a href="?atn=piclist&amp;uid=$uid&amp;psid=$rs[psid]"><img src="$rs[faceurl].gif" width="90" onerror="this.src='$Murl/images/default/userpicsortdefault.gif';"/> </a>
+                </div>
+                <div class="t">
+                	<div>$rs[name]</div>
+                    <div><a href="?atn=pic&amp;edit_psid=$rs[psid]&uid=$uid">编辑</a> <a href="?atn=del_picsort&amp;psid=$rs[psid]&uid=$uid" onclick="return confirm('确定删除{$rs[name]}吗？');">删除</a></div>
+                </div>
+              </div>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+    </td>
+    <td class="RightTd">
+    	<form id="form2" name="form2" method="post" action="?">
+          <input name="psid" type="hidden" id="psid" value="$edit_psid" />
+          <input name="uid" type="hidden" id="uid" value="$uid" />
+          <input name="atn" type="hidden" id="atn" value="save_picsort" />
+          <div>图集名称：(2-8个字)</div>
+  		  <div><input name="name" type="text" id="name" value="$rsdb[name]" size="20" /></div>
+          <div>图集描述：(0-50个字)</div>
+          <div><textarea name="remarks" cols="20" rows="3" id="remarks">$rsdb[remarks]</textarea></div>
+          <div>图集排序：<input name="orderlist" type="text" id="orderlist" value="$rsdb[orderlist]" size="5" /></div>
+          <div>(填写数字，数字大在前)</div>
+          <div><input type="submit" name="Submit" value="保 存" /></div>
+        </form>
+        <div><a href="?atn=pic_upload&amp;uid=$uid"><img src="$Murl/images/default/userpicupload.gif"/></a></div>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

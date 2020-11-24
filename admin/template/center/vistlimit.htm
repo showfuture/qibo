@@ -1,0 +1,65 @@
+<!--
+<?php
+print <<<EOT
+--><table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth"> <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+  <tr  class="head"> 
+    <td colspan='2'> 
+      <div align='center'><font color="#FFFFFF">网站相关设置</font></div>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td> 
+      <div align='right'><font color=#0000CC> 当天允许访问的时间段,多个时间,比如7,8,9用英文逗号隔开,写0不作限制</font>： 
+      </div>
+    </td>
+    <td bgcolor='#FFFFFF'> 
+      <input name='webdbs[allow_visit_hour]' type='text' class=mmcinb value='$webdb[allow_visit_hour]'  size=40>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td> 
+      <div align='right'><font color=#0000CC> 当月允许访问时间段,多个时间,比如7,18,25日用英文逗号隔开,写0不作限制</font>： 
+      </div>
+    </td>
+    <td bgcolor='#FFFFFF'> 
+      <input name='webdbs[allow_visit_day]' type='text' class=mmcinb value='$webdb[allow_visit_day]'  size=40>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td> 
+      <div align='right'><font color=#0000CC>禁止哪些会员访问本网站,多个会员,请回车换行,不想限制,请别填</font>： 
+      </div>
+    </td>
+    <td bgcolor='#FFFFFF'> 
+      <textarea name='webdbs[forbid_visit_members]' cols='40' rows='5'>$webdb[forbid_visit_members]</textarea>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td> 
+      <div align='right'><font color=#0000CC>只允许哪些IP段进入本网站,多个IP,请回车换行,不想限制,请别填</font>： 
+      </div>
+    </td>
+    <td bgcolor='#FFFFFF'> 
+      <textarea name='webdbs[allow_visit_ip]' cols='40' rows='5'>$webdb[allow_visit_ip]</textarea>
+      (如果此设置后,下一项设置无效)</td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td> 
+      <div align='right'><font color=#0000CC>禁止哪些IP段进入本网站,多个IP,请回车换行,不想限制,请别填</font>： 
+      </div>
+    </td>
+    <td bgcolor='#FFFFFF'> 
+      <textarea name='webdbs[forbid_visit_ip]' cols='40' rows='5'>$webdb[forbid_visit_ip]</textarea>
+    </td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td width='34%'>&nbsp;</td>
+    <td width='70%'> 
+      <input type='submit' name='Submit' value='提交' class=mmcinb>
+    </td>
+  </tr></form>
+</table>
+<!--
+EOT;
+?>
+-->

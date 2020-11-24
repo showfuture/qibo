@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="200" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="pubpost">
+        <tr> 
+          <td width="69%">&nbsp; </td>
+          <td width="31%" align="right">&nbsp;</td>
+        </tr>
+      </table>
+      <table width="99%" border="0" cellspacing="1" cellpadding="3" class="dragTable">
+        <tr align="left" height="18" class='head' style="line-height:200%;"> 
+          <td >IP归属地查询</td>
+        </tr>
+ 
+        <tr  style="line-height:150%;"> 
+          <td align="left" style="border-bottom:1px dotted #ccc;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!--
+EOT;
+if($area){print <<<EOT
+-->
+			  <tr>
+                <td align="center">你查询的IP是:<b><font color="#FF0000">$ip</font></b>,所在地是:<b><font color="#0000FF">$area</font></b></td>
+              </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+              <tr>
+                <td align="center"> 
+                  <form name="form1" method="post" action="?job=$job">
+                    ip: 
+                    <input type="text" name="ip">
+                    <input type="submit" name="Submit" value="我要查询">
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+       
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

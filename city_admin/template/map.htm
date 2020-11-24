@@ -1,0 +1,113 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table  width="794" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;" id="baidusearch">
+
+<form name=f action="http://www.baidu.com/baidu" target=_blank>
+  <tr> 
+    <td style="width:158px;height:38px;background:url(./images/baidu1.gif);">&nbsp;</td>
+    <td   style="height:38px;background:url(./images/baidu2.gif);">
+      
+        <input type="text" name="word" style="border:1px #7F9DB9 solid;width:180px;height:21px;margin-left:20px;">
+        <input type="submit" name="Submit" value="提交">
+        <a href="http://news.baidu.com/" target="_blank">新闻</a> <a href="http://tieba.baidu.com/" target="_blank">贴吧</a> 
+        <a href="http://zhidao.baidu.com/" target="_blank">知道</a> <a href="http://mp3.baidu.com/" target="_blank">MP3</a> 
+        <a href="http://image.baidu.com/" target="_blank">图片</a> <a href="http://image.baidu.com/" target="_blank">地图</a></td>
+    <td  style="width:11px;height:38px;background:url(./images/baidu3.gif);">&nbsp;</td>
+  </tr></form>
+</table>
+<table width="794" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="50%" valign="top" style="padding-right:10px;"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="newsdongtai">
+        <tr> 
+          <td class="top"> 
+            <div class="msg"> 
+              <!--
+EOT;
+if($pmNUM){print <<<EOT
+-->
+              <a href="$webdb[www_url]/member/pm.php?job=list"><font color="#FF0000">你有新的消息,请注意查收!!</font></a> 
+              <!--
+EOT;
+}else{print <<<EOT
+-->
+              <a href="$webdb[www_url]/member/pm.php?job=list">你暂时没有新消息!</a> 
+              <!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            
+
+
+          </td>
+        </tr>
+      </table>    
+      <div id="ifcompany"> 
+        <!--
+EOT;
+if($companyDB[if_homepage]){print <<<EOT
+-->
+        <font color="#FF0000">我是企业会员!</font>　 [<a href="$webdb[www_url]/hy/member/homepage_ctrl.php?atn=info">修改企业资料</a>] 
+        　 [<a href="$webdb[www_url]/home/?uid=$lfjuid" target="_blank">查看商铺</a>] 
+        <!--
+EOT;
+}elseif($companyDB){print <<<EOT
+-->
+        <font color="#FF0000">我是企业会员!</font>　 [<a href="$webdb[www_url]/hy/member/post_company.php">修改企业资料</a>] 
+        　 [<a href="$webdb[www_url]/hy/member/post_company.php?job=view&uid=$lfjuid">查看企业资料</a>] 
+        　 [<a href="$webdb[www_url]/hy/member/post_company.php?action=apply"><font color="#0000FF">申请商铺</font></a>] 
+        <!--
+EOT;
+}else{print <<<EOT
+-->
+        <a href="$webdb[www_url]/hy/member/post_company.php"><font color="#0000FF">你还不是企业会员,你可以点击申请成为企业会员</font></a> 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="spaceTable">
+        <tr> 
+          <td>你的财富: $webdb[MoneyName]<b><font color="#0000FF"><img src="images/money.gif"> 
+            $lfjdb[money]</font></b> {$webdb[MoneyDW]} (<a href="$webdb[www_url]/do/jf.php" target="_blank">如何获取{$webdb[MoneyName]}?</a>)<br>
+            空间容量: {$space_system} + {$space_group} + {$space_user} - {$lfjdb[usespace]} 
+            = <font color="#FF0000">{$onlySpace}</font> M(兆)<br>
+            空间算法: 系统容量 + 用户组容量 + 自身容量 - 已用空间 = 剩余空间 </td>
+        </tr>
+      </table>
+  
+ 
+    </td>
+    <td width="50%"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="myinfo">
+        <tr> 
+          <td class="top"> 
+            <div style="float:right;padding-right:8px;"><a href="$webdb[www_url]/member/userinfo.php?uid=$lfjuid" style="color:#fff;" target="_blank">更多...</a></div>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div class="img"><a href="$webdb[www_url]/member/userinfo.php?uid=$lfjuid" target="_blank"><img src="$lfjdb[icon]" onerror="this.src='../images/default/noface.gif'" width="120" height="120" border="0"></a></div>
+            <div class="about">用户UID: <b><font color="#FF0000">$lfjuid</font></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帐号: 
+              <font color="#0000FF"><b>$lfjid</b></font><br>
+              级别: <font color="#0000FF">$groupdb[grouptitle]</font> ({$lfjdb[C][endtime]})<br>
+              邮箱: $lfjdb[email] <br>
+              注册时间: $lfjdb[regdate] <br>
+              上次登录时间: $lfjdb[lastvist] </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+ <!--
+EOT;
+?>
+-->

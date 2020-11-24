@@ -1,0 +1,96 @@
+<!--
+<?php
+if(eregi("\.(jpg|jpeg|gif|png|bmp)$",$banner_url))$conf[banner]=" style='background:url($banner_url);'";
+print <<<EOT
+-->
+<script type="text/javascript">
+$(function(){
+	var checksmenu=$(".HyHeader .Menus .ck").html();
+	if(checksmenu==null){
+		$(".HyHeader .Menus li:eq(0)").addClass("ck");
+	}
+	$(".HyHeader .Menus li").mouseover(function(){
+		$(".HyHeader .Menus li").removeClass("over");
+		$(this).addClass("over");
+	});
+	$(".HyHeader").mouseout(function(){
+		$(".HyHeader .Menus li").removeClass("over");
+	});
+});
+</script>
+<link rel="stylesheet" type="text/css" href="$Murl/images/homepage_style/$homepage_style/css.css">
+<div class="HyHeader">
+	<div class="HeaderBg" $conf[banner]></div>
+	<dl class="Logo_Title">
+    	<dt><a href="?uid=$uid"><img src="$rsdb[logo]" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg';" height="60"/></a></dt>
+        <dd>$rsdb[title]</dd>
+    </dl>
+    <ul class="Menus">
+    
+<!--
+EOT;
+$adminlink=($uid==$lfjuid)?"<li class=\"admin\"><a href=\"$webdb[www_url]/member/?main=$Murl/member/homepage_ctrl.php\" target=\"_blank\">商铺管理</a></li>":"";
+foreach($h_menu as $key =>$rs){
+$cks=strstr($rs[url],$m)?" class=\"ck\"":"";
+$targets=$rs[target]?" target=\"_blank\"":"";
+print<<<EOT
+-->
+		<li{$cks}><a href="$rs[url]"{$targets}>$rs[title]</a></li>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+		$adminlink
+        
+    </ul>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="HomePages">
+  <tr>
+    <td class="Side">
+<!--include
+EOT;
+$mod_in='left';
+foreach($conf[index_left] as $file){
+	get_homepage_module($file);
+}
+print <<<EOT
+include-->
+		<div class="Sendmsg"><a href='$webdb[www_url]/member/?main=pm.php?job=send&username=$rsdb[username]' target="_blank"><img src='$Murl/images/homepage_style/vip_a1/sendmsg.gif' alt='发送站内信'/></a></div>
+<!--
+EOT;
+if($rsdb[gg_maps]){
+print <<<EOT
+-->
+        <div class="Mapcont">
+            <div class="head"><div class="tag">地图位置</div></div>
+            <div class="cont">
+                <iframe src="$Mdomain/job.php?job=show_ggmaps&position=$rsdb[gg_maps]&title=$rsdb[title]"  width="230" height="250" scrolling="no" frameborder="0" ></iframe>
+            </div>
+        </div>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+    </td>
+    <td class="Main">
+<!--include
+EOT;
+$mod_in='right';
+if(!$m){
+    foreach($conf[index_right] as $file){
+        get_homepage_module($file);
+    }
+}else{
+	get_homepage_module($m);
+}
+print <<<EOT
+include-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

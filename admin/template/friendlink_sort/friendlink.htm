@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="7%" align="center">FID </td>
+      <td align="center" width="53%">名称 </td>
+      <td align="center" width="14%">管理链接</td>
+      <td align="center" width="11%">修改</td>
+      <td width="15%" align="center">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td width='7%' align="center">$rs[fid]</td>
+      <td width="53%"> 
+        <input type="checkbox" name="iddb[{$rs[id]}]" value="$rs[id]">
+        <a href="$webdb[www_url]/do/friendlink.php?fid=$rs[fid]" target="_blank">$rs[name]</a> 
+      </td>
+      <td width="14%" align="center"><a href="index.php?lfj=friendlink&job=list&fid=$rs[fid]"><img alt='' src='../member/images/art_icon.gif' border=0></a></td>
+      <td width="11%" align="center"><a href="index.php?lfj=friendlink_sort&job=mod&fid=$rs[fid]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+      <td width="15%" align="center"><a href="index.php?lfj=friendlink_sort&action=delete&fid=$rs[fid]" onClick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <tr class="head"> 
+    <td align="left">说明:</td>
+  </tr>
+  <tr bgcolor='#FFFFFF'> 
+    <td align="left">把下面这段代码,插入到你其它频道的模板页面里边即可调用相应分类的友情链接,必须把99换成以上的栏目FID值即可.<a href="index.php?lfj=friendlink_sort&action=delete&fid=$rs[fid]" onClick="return confirm('删除后不可恢复,你确实要删除吗?')"></a></td>
+  </tr>
+  <tr bgcolor='#FFFFFF'>
+    <td align="left"> &lt;div class=&quot;imgfriendlink&quot;&gt; <br>
+      &lt;!--<br>
+      EOT;<br>
+      require_once(ROOT_PATH.&quot;data/friendlink.php&quot;);<br>
+      foreach($friendlink_DB[<font color="#FF0000">99</font>][1] AS $key=&gt;$rs){<br>
+      print &lt;&lt;&lt;EOT<br>
+      --&gt;<br>
+      &lt;A HREF=&quot;$rs[url]&quot; target=_blank&gt;&lt;img alt=&quot;名称:$rs[name]\r\n描述:$rs[descrip]&quot; 
+      src=&quot;$rs[logo]&quot; width=&quot;88&quot; height=&quot;31&quot; border=0&gt;&lt;/A&gt; 
+      <br>
+      &lt;!--<br>
+      EOT;<br>
+      }<br>
+      print &lt;&lt;&lt;EOT<br>
+      --&gt;<br>
+      &lt;/div&gt;<br>
+      &lt;div class=&quot;wordfriendlink&quot;&gt;<br>
+      &lt;!--<br>
+      EOT;<br>
+      foreach($friendlink_DB[<font color="#FF0000">99</font>][0] AS $key=&gt;$rs){<br>
+      print &lt;&lt;&lt;EOT<br>
+      --&gt;<br>
+      &lt;A HREF=&quot;$rs[url]&quot; target=&quot;_blank&quot; title=&quot;描述:$rs[descrip]&quot;&gt;$rs[name]&lt;/A&gt;&amp;nbsp; 
+      <br>
+      &lt;!--<br>
+      EOT;<br>
+      }<br>
+      print &lt;&lt;&lt;EOT<br>
+      --&gt;<br>
+      &lt;/div&gt;</td>
+  </tr>
+</table>
+
+
+

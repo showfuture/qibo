@@ -1,0 +1,132 @@
+<!--
+<?php
+$Info_showsorttype[intval($webdb[Info_showsorttype])]=' checked ';
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=config">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">发布信息权限设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>是否暂停发布/修改信息:(管理员不受限制)</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[Info_ClosePost]" value="1" $Info_ClosePost[1]>
+        暂停 
+        <input type="radio" name="webdbs[Info_ClosePost]" value="0" $Info_ClosePost[0]>
+        开放</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>暂停发布/修改信息的原因说明:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[Info_ClosePostWhy]" cols="40" rows="8">$webdb[Info_ClosePostWhy]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>禁止新发布信息的时间段:<span help=1><br>
+        每个时间段用空隔隔开,比如23 24 1 2 3 4<br>
+        代表当时间为23点或24点或1点或2点或3点或4点的时候不能新发布信息.不填则不限制</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" size="70" name="webdbs[forbidPostHour]" value="$webdb[forbidPostHour]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>注册多少小时后才允许发布信息:<span help=1><br>
+        留空则不限制,大于0的话游客不能发表信息,管理员不受限制</span></td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_RegTimePost]" size="4" value="$webdb[Info_RegTimePost]">
+        小时</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>一天内,游客最多可发几条免费信息:<br>
+        留空则不限制</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_GuestDayPostNum]" size="4" value="$webdb[Info_GuestDayPostNum]">
+        条</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>游客每条信息最多可发几张图片:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_GuestPostPicNum]" size="4" value="$webdb[Info_GuestPostPicNum]">
+        张 </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>一天内,是否允许游客发表雷同信息:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[Info_GuestPostRepeat]" value="1" $Info_GuestPostRepeat[1]>
+        允许 
+        <input type="radio" name="webdbs[Info_GuestPostRepeat]" value="0" $Info_GuestPostRepeat[0]>
+        禁止</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>哪些用户组发表的自动通过审核:<br>
+        (管理员不受限制,不选择,将都自动通过审核) </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="hidden" name="GroupPassYz" value="1">
+        $GroupPassYz</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>禁止发布信息的用户组:<br>
+        (管理员不受限制,这里是发表权限的总控制台,这里不允许的话,栏目那里即使设置允许也无效)</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="hidden" name="GroupPostInfo" value="1">
+        $GroupPostInfo</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>允许或禁止外部私自提交表单数据:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[Info_forbidOutPost]" value="0" $Info_forbidOutPost[0]>
+        允许 
+        <input type="radio" name="webdbs[Info_forbidOutPost]" value="1" $Info_forbidOutPost[1]>
+        禁止<br>
+        选择禁止的话,可以比较有效的防止发贴机器人灌水发表信息,如果造成系统也不能发信息的话,请选择允许</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>是否限制跨城市发布信息:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[Info_cityPost]" value="1" $Info_cityPost[1]>
+        限制跨城市发布 
+        <input type="radio" name="webdbs[Info_cityPost]" value="0" $Info_cityPost[0]>
+        不限制<br>
+        选择限制的话,非本城市的用户,不允许在本城市发信息. 如果IP来源判断不出用户所在城市,则不做限制.</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>黑名单(禁止发信息的用户)</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[ForbidPostMember]" cols="40" rows="8">$webdb[ForbidPostMember]</textarea>
+        每个用户名回车换一行</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>黑IP(禁止发信息的IP)</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <textarea name="webdbs[ForbidPostIp]" cols="40" rows="8">$webdb[ForbidPostIp]</textarea>
+        每个IP回车换一行,如要限制某个IP段的话,只输入IP前面部分即可,比如210.38. </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发表信息需要输入验证码的用户组:<br>
+        (不选择,将都不需要) </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="hidden" name="Info_GroupPostYzImg" value="1">
+        $Info_GroupPostYzImg</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>发表评论需要输入验证码的用户组:<br>
+        (不选择,将都不需要) </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="hidden" name="Info_GroupCommentYzImg" value="1">
+        $Info_GroupCommentYzImg</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

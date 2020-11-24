@@ -1,0 +1,70 @@
+.Container{
+	border:#93C37A solid 1px;
+}
+.Container .head{
+	height:30px;
+	line-height:33px;
+	overflow:hidden;
+	background:url(head6.gif) repeat-x;
+	padding-left:10px;
+	font-size:14px;
+	font-weight:bold;
+}
+.Container .cont{
+	padding:10px;
+}
+.formsearch .h{
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+}
+.formsearch dl{
+	height:30px;
+	overflow:hidden;
+}
+.formsearch dl dt{
+	width:150px;
+	float:left;
+	line-height:30px;
+	text-align:right;
+}
+.formsearch dl dd{
+	float:left;
+	padding-top:3px;
+}
+.listtable{
+	margin-top:10px;
+}
+.listtable td{
+	height:25px;
+	text-align:center;
+	vertical-align:middle;
+	border-right:#FFF solid 1px;
+}
+.listtable td a{
+	display:block;
+	float:left;
+	text-align:center;
+	padding:0 5px 0 5px;
+	line-height:25px;
+	height:25px;
+	overflow:hidden;
+}
+.listtable .h td{
+	background:#B5D79D;
+}
+.listtable .listb td{
+	background:#FAFAFA;
+}
+#searchNO{
+	line-height:50px;
+	text-align:center;
+	font-size:18px;
+	color:red;
+}
+.showpages{
+	text-align:center;
+	line-height:25px;
+	height:25px;
+	padding:5px;
+}

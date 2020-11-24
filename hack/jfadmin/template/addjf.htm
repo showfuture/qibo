@@ -1,0 +1,53 @@
+<!--
+<?php
+print <<<EOT
+--> <table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">添加内容</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF>  
+      <form action="index.php?lfj=$lfj&action=$job" method=POST>
+        <span class=bold> </span>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+          <tr> 
+            <td>标题<br>
+            </td>
+            <td> 
+              <input type="text" name="title" size="50" value="$rsdb[title]">
+            </td>
+          </tr>
+          <tr> 
+            <td>所属分类</td>
+            <td>$selectfid </td>
+          </tr>
+          <tr>
+            <td>排序值</td>
+            <td>
+              <input type="text" name="list" size="10" value="$rsdb[list]">
+              数值越大,排在越前 </td>
+          </tr>
+          <tr> 
+            <td><span class=bold>内容</span> </td>
+            <td> 
+              <textarea name="content" cols="70" rows="7">$rsdb[content]</textarea>
+            </td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td> 
+              <input type=submit value="提 交" name="submit">
+              <input type="hidden" name="id" value="$id">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+</table>
+ 
+
+ 
+<!--
+EOT;
+?>
+-->

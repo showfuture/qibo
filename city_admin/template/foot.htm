@@ -1,0 +1,39 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('</div>');
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function set_class(){
+	obj=document.body.getElementsByTagName("input");
+	for(var i=0;i< obj.length;i++ ){
+		if(obj[i].type=='submit'||obj[i].type=='button'){
+			obj[i].className='submit';
+		}else if (obj[i].type=='radio'||obj[i].type=='checkbox'){
+			obj[i].style.border='0px;';
+		}else if(obj[i].type=='text'){
+			obj[i].className='input_text';
+		}
+	}
+	obj=document.body.getElementsByTagName("textarea");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='input_textarea';
+	}
+	if(document.getElementById("top_menu")!=null)
+	{
+		obj2=get_obj('top_menu').getElementsByTagName("td");
+	
+		for(var i=0;i< obj2.length;i++ ){
+			s=obj2[i].innerHTML;
+			s=s.replace(/\[|\]/g, "");
+			obj2[0].innerHTML=s;	
+		}
+	}
+	
+}
+set_class();
+//-->
+</SCRIPT>
+</body>
+</html>

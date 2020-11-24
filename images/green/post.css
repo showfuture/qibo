@@ -1,0 +1,48 @@
+.Container{
+	border:#64BD19 solid 1px;
+}
+.Container .head{
+	height:30px;
+	overflow:hidden;
+	line-height:33px;
+	background:url(head6.gif) repeat-x;
+	padding-left:10px;
+	font-size:14px;
+	font-weight:bold;
+	color:#3B8200;
+}
+.Container .cont{
+	padding:10px;
+}
+.Container .cont .h{
+	height:25px;
+	width:920px;
+	line-height:25px;
+	border-bottom:#64BD19 solid 1px;
+	margin:0 auto 5px auto;
+	font-weight:bold;
+	clear:both;
+	padding-left:5px;
+}
+.Container .cont dl{
+	clear:both;
+	width:900px;
+	margin:auto;
+	padding-top:5px;
+}
+.Container .cont dl dt{
+	width:120px;
+	text-align:right;
+	float:left;
+	line-height:20px;
+}
+.Container .cont dl dt span{
+	color:red;
+	padding-right:5px;
+}
+.Container .cont dl dd{
+	width:750px;
+	float:left;
+	line-height:20px;
+	padding-left:10px;
+}

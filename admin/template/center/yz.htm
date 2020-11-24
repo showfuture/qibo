@@ -1,0 +1,65 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">用户身份验证设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>邮箱验证后,是否允许修改:<span help=1>建议不允许再修改,因为修改后,会处于未审核状态</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[EditYzEmail]" value="1" $EditYzEmail[1]>
+        允许 
+        <input type="radio" name="webdbs[EditYzEmail]" value="0" $EditYzEmail[0]>
+        不允许</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>手机号码验证后,是否允许修改:<span help=1>建议不允许再修改,因为修改后,会处于未审核状态</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[EditYzMob]" value="1" $EditYzMob[1]>
+        允许 
+        <input type="radio" name="webdbs[EditYzMob]" value="0" $EditYzMob[0]>
+        不允许</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>身份证资料验证后,是否允许修改:<span help=1>建议不允许再修改,因为修改后,会处于未审核状态</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[EditYzIdcard]" value="1" $EditYzIdcard[1]>
+        允许 
+        <input type="radio" name="webdbs[EditYzIdcard]" value="0" $EditYzIdcard[0]>
+        不允许</td>
+    </tr>
+    <tr>
+      <td width='28%' bgcolor='#FFFFFF'>成功验证邮箱奖励积分:</td>
+      <td colspan='2' bgcolor='#FFFFFF'>
+        <input type="text" name="webdbs[YZ_EmailMoney]" value="$webdb[YZ_EmailMoney]" size="5">
+        个 </td>
+    </tr>
+    <tr>
+      <td width='28%' bgcolor='#FFFFFF'>成功验证手机号码奖励积分:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[YZ_MobMoney]" value="$webdb[YZ_MobMoney]" size="5">
+        个 </td>
+    </tr>
+    <tr>
+      <td width='28%' bgcolor='#FFFFFF'>成功验证身份证:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[YZ_IdcardMoney]" value="$webdb[YZ_IdcardMoney]" size="5">
+        个 </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,67 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr> 
+    <td> [<a href="index.php?lfj=js&job=list">所有调用代码</a>]
+      <!--
+EOT;
+foreach($ModuleDB AS $key=>$rs){
+if($rs[type]||$key=='blog'||$key=='unite_')continue;
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&&job=mod&ch=0&chtype=&tag=$timestamp&inc=$key&ch_ifjs=1">创建{$rs[name]}JS</a>] 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      <!--
+EOT;
+if($ModuleDB[blog]){
+print <<<EOT
+-->
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&&job=mod&ch=0&chtype=&tag=$timestamp&inc=member&ch_ifjs=1">创建会员JS</a>] 
+      <!--
+EOT;
+if(ereg("^pwbbs",$webdb[passport_type])){
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&&job=mod&ch=0&chtype=&tag=$timestamp&inc=pwbbs&ch_ifjs=1">创建PW论坛贴子JS</a>] 
+      <!--
+EOT;
+}
+if(ereg("^dzbbs",$webdb[passport_type])){
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&&job=mod&ch=0&chtype=&tag=$timestamp&inc=dzbbs&ch_ifjs=1">创建DZ论坛贴子JS</a>] 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      <!--
+EOT;
+foreach($ModuleDB AS $key=>$rs){
+if(!$rs[type]||$rs[type]==2)continue;
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&job=mod&ch=0&chtype=&tag=$timestamp&inc=Info_$key&ch_ifjs=1">创建{$rs[name]}JS</a>] 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+      [<a href="index.php?lfj=label&&job=mod&ch=0&chtype=&tag=$timestamp&inc=mysql&ch_ifjs=1">创建Mysql万能标签JS</a>]</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

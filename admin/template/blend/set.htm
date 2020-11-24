@@ -1,0 +1,169 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job" onsubmit="return sub();">
+    <tr class="head"> 
+      <td colspan='2' > 
+        <div align='center'><b><font color="#FFFFFF">整合论坛设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF' rowspan="2">整合其他系统:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="radio" name="webdbs[passport_type]" onclick="choose_sys('');" value="0" id="passport_type_0" {$passport_type["0"]}>
+        不整合外部系统 
+        <input type="radio" name="webdbs[passport_type]" onclick="choose_sys('pwbbs5');" value="pwbbs5" id="passport_type_pwbbs5" {$passport_type["pwbbs5"]}>
+        整合PHPWIND论坛 
+        <input type="radio" name="webdbs[passport_type]" onclick="choose_sys('ucenter');" value="ucenter" id="passport_type_ucenter" {$passport_type["ucenter"]}>
+        整合UCenter </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>请不要胡乱选择,否则系统会运行出错,并且会造成不能登录后台!!<br>
+        <font color="#FF0000">如果整合失败,导致不能登录后台时,请修改文件/data/config.php,查找\$webdb[passport_type]把它的值改为0<br>
+        <font color="#0000FF">在整合论坛前,请先确认现在登录的帐号与论坛中的帐号密码是一样的.否则整合后将不能登录后台,此时候请修改文件data/admin.php里边的用户为你论坛的管理员帐号</font></font></td>
+    </tr>
+    <tr id="other_pre"> 
+      <td bgcolor='#FFFFFF' width="14%">外部系统数据表前缀:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[passport_pre]" value="$webdb[passport_pre]">
+        <br>
+        phpwind论坛默认是<font color="#FF0000">pw_</font> discuz论坛默认是<font color="#FF0000">cdb_</font> 
+        动网PHP论坛默认是<font color="#FF0000">dv_</font> 如果你修改过你外部系统的数据表前缀,请正确填写修改后的)<br>
+        <font color="#FF0000">注意: </font>如果你的论坛与整站不同一个数据库的话,请必须在数据表前面加上数据表名如:“<font color="#FF0000">db2.pw_</font>”,此时必须保证整站使用的数据库帐号权限可以访问论坛的数据库资料,否则无法整合.</td>
+    </tr>
+    <tr id="other_path"> 
+      <td bgcolor='#FFFFFF' width="14%">外部系统程序相对整站程序目录位置:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[passport_path]" value="$webdb[passport_path]">
+        <br>
+        推荐论坛取名为bbs并且放在整站目录下面,此时填写<font color="#FF0000">bbs</font> 以此类推<br>
+        如果论坛跟整站并列放在同一个目录,此时填写<font color="#FF0000">../bbs</font><br>
+        如果整站在论坛目录下面,此时填写<font color="#FF0000">../</font></td>
+    </tr>
+    <tr id="other_url"> 
+      <td bgcolor='#FFFFFF' width="14%">外部系统的访问网址:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[passport_url]" value="$webdb[passport_url]" size="50">
+        <br>
+        比如外部论坛访问地址http://bbs.qibosoft.com此时上方输入<font color="#FF0000">http://bbs.qibosoft.com<br>
+        </font>或者是http://www.qibosoft.com/bbs此时上方输入<font color="#FF0000">http://www.qibosoft.com/bbs<br>
+        </font>注意:结尾不要加<font color="#FF0000">/ </font></td>
+    </tr>
+    <tr id="other_config"> 
+      <td width='14%' bgcolor='#FFFFFF'>UCenter 配置信息:</td>
+      <td bgcolor='#FFFFFF'> 
+        <textarea name="UCenter_config" cols="80" rows="7">$UCenter_config</textarea>
+        <br>
+        首次整合,需要做如下操作:<br>
+        进UCenter管理后台,点击'应用管理',再点击'添加新应用',再选择'自定义安装'<br>
+        应用名称:输入 齐博CMS系统<br>
+        应用的 URL:输入 {$webdb[www_url]}/do (结尾不需要/号,并且注意是do结尾)<br>
+        应用 IP:留空即可<br>
+        通信密钥:随便写一个,比如123abcdkjhh<br>
+        应用类型:选择'其它<br>
+        应用的物理路径:留空即可<br>
+        查看个人资料页面地址:留空即可<br>
+        应用接口文件名称:uc.php<br>
+        标签单条显示模板:留空即可<br>
+        标签模板标记说明:留空即可<br>
+        是否开启同步登录:选择'是'<br>
+        是否接受通知:选择'是' 
+        <p>然后提交,提交之后,再返回到应用列表.然后再选择刚刚提交那个应用,点击编辑.</p>
+        <p>把'应用的 UCenter 配置信息:'里边的代码复制出来,粘贴到这里</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width='14%' bgcolor='#FFFFFF'>密钥:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[mymd5]" value="$webdb[mymd5]" size="50">
+        任意字符串,不限字数.确认以后,就不要随意修改!<br>
+        此密钥即是网站数据加密的密钥,也可拓展本系统作为通行证服务端的密钥.<br>
+        其它系统要与本系统通信,如用户同步登录的话.请把其它系统的密钥设置与这个一样.</td>
+    </tr>
+    <tr>
+      <td width='14%' bgcolor='#FFFFFF'>DISCUZ论坛贴子调用设置</td>
+      <td bgcolor='#FFFFFF'> 数据表前缀: 
+        <input type="text" name="webdbs[dzbbs_pre]" value="$webdb[dzbbs_pre]" size="20">
+        比如“pre_”，如果论坛跟本系统不在同一个库，就必须把库名也写进来用.号隔开如“dz.pre_”，并且要确认本系统的数据库帐号可能访问论坛的库<br>
+        贴子访问路径: 
+        <input type="text" name="webdbs[dzbbs_showurl]" value="$webdb[dzbbs_showurl]" size="70">
+        比如“http://bbs.abc.com/forum.php?mod=viewthread&amp;tid=\$tid” <br>
+        版块访问路径: 
+        <input type="text" name="webdbs[dzbbs_listurl]" value="$webdb[dzbbs_listurl]" size="70">
+        比如“http://bbs.abc.com/forum.php?mod=forumdisplay&amp;fid=\$fid” </td>
+    </tr>
+    <tr> 
+      <td width='14%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+ 
+    <tr class="head"> 
+    <td>帮助说明:</td>
+  </tr>
+  
+  <tr>
+    <td>如果整合其他系统后,造成不能登录后台。或者取消整合其他系统后,造成不能登录后台的解决办法如下:<br>
+      1.在整站前台新注册一个用户。<br>
+      2.通过FTP软件，修改空间上的文件admin/global.php查找“<font color="#FF0000">\$ForceEnter=0</font>”替换成“<font color="#0000FF">\$ForceEnter=1;</font>”通过这样就能强制进入后台了,当然,你平时密码忘记了,也可以通过这个办法进入后台.然后你就选择&quot;用户/权限管理&quot;-&gt;&quot;用户成员管理&quot;,找到你新注册的用户名,设置他为管理员即可.再把“<font color="#0000FF">\$ForceEnter=1</font>”还原为“<font color="#0000FF">\$ForceEnter=0</font>”否则的话,任何人都能进你的后台.<br>
+      <br>
+      如果你不小心而误操作的话，请修改文件data/config.php在最后一行添加这句话(即是取消整合系统):<font color="#0000FF">\$webdb['passport_type']='';<br>
+      </font><br>
+       
+      3.如果论坛使用二级域名,比如http://bbs.qibosoft.com,此时必须修改“网站核心设置”中的“COOKIE域名:”为你的域名，比如qibosoft.com 
+      否则的话，就不能同步登录,同时也要确保论坛也是这样修改。<br>
+      4.整站论坛系统，如果服务器的数据库版本是4.1以上的话，请必须确认他们的数据库编码同为GBK或同为其他的。<br>
+      5.关于标签调用DISCUZ论坛贴子的设置说明,如果忘记数据表前缀的话,请查看论坛文件/config/config_global.php查找tablepre这一行,贴子与版块的访问路径可以是伪静态的，但要注意\$tid与\$fid这两个变量名不能缺少，如果论坛跟本系统不在同一个库的话，必须要保证本系统的数据库帐号可以访问论坛所在的库。</td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function sub(obj){
+	if(get_obj("oldtype")=='0'&&get_obj("passport_type_0").checked==false){
+		var ischoose=confirm("你确实要整合其他系统吗?请先备份一下data/config.php这个文件,再按确定,以防止整合失败的时候方便还原.否则的话有可能造成登录不了后台的严重后果,提交操作后,请选择“功能插件管理中心” -》“用户登录插件”选择一下你需要的同步登录类型。否则的话，前台登录不了");
+		if(ischoose!=true){
+			return false;
+		}
+	}else if(get_obj("oldtype")!='0'&&get_obj("passport_type_$webdb[passport_type]").checked==false){
+		var ischoose=confirm("你确实要更换配置吗?请先备份一下data/config.php这个文件,再按确定,以防止整合失败的时候方便还原再替换即可.否则的话有可能造成登录不了后台的严重后果,");
+		if(ischoose!=true){
+			return false;
+		}
+	}
+	
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_sys(t){
+	get_obj('other_config').style.display='none';
+	get_obj('other_url').style.display='none';
+	get_obj('other_path').style.display='none';
+	get_obj('other_pre').style.display='none';
+	if(t=='pwbbs5'||t=='dvbbs1'||t=='dzbbs7'||t=='ucenter'){
+		if(t=='dzbbs7'||t=='ucenter'){
+			get_obj('other_config').style.display='';
+		}
+		if(t!='ucenter'){
+			get_obj('other_url').style.display='';
+			get_obj('other_path').style.display='';
+			get_obj('other_pre').style.display='';
+	
+		}		
+	}
+}
+choose_sys('$webdb[passport_type]');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

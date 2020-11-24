@@ -1,0 +1,60 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="7%" align="center">序号 </td>
+      <td width="32%" align="center">名称</td>
+      <td width="24%" align="center">类型 </td>
+      <td width="37%" align="center">删除 修改设置 修改名称 预览 获取代码</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="7%" align="center">$rs[lid]</td>
+      <td width="32%">$rs[name]</td>
+      <td width="24%" align="center"> $rs[type]</td>
+      <td width="37%" align="center"><a href="index.php?lfj=$lfj&action=delete&id=$rs[lid]"  onclick="return confirm('删除后不可恢复,你确实要删除吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+        &nbsp; <a href="index.php?lfj=label&&job=mod&ch=$rs[ch]&chtype=$rs[chtype]&tag=$rs[tag]&inc=$rs[type]&ch_ifjs=1"><img alt='设置管理' src='../member/images/icon_manage2.gif' border=0></a> 
+        &nbsp; <a href="index.php?lfj=$lfj&job=edit&lid=$rs[lid]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+        
+        &nbsp; <a href="index.php?lfj=$lfj&job=show&id=$rs[lid]"><img alt='预览效果' src='../member/images/icon_view.gif' border=0></a> &nbsp; <a href="javascript:" onClick="$('#js_$rs[lid]').show();JM_cc('js_$rs[lid]');alert('复制成功，你可以粘贴在网页代码里！')"><img alt='' src='../member/images/art_icon.gif' border=0></a>
+        <div><input type="text" style="width:200px;display:none;" value='<script src="$webdb[www_url]/do/js.php?id=$rs[lid]"></script>' id="js_$rs[lid]"></div></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="4" align="center"> $showpage </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td>帮助说明</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td>你可以在网页的任意地方调用上面的JS代码,即可显示你需要的标题内容.非常的灵活方便.站内站外都可以调用</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

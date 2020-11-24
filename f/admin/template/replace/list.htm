@@ -1,0 +1,26 @@
+<!--
+<?php
+print <<<EOT
+-->  
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr  class="head"> 
+    <td>请选择要替换哪个模块的内容:</td>
+  </tr>
+  <!--
+EOT;
+foreach($module_db AS $key=>$value){
+print <<<EOT
+-->
+  <tr align="center" bgcolor="#FFFFFF"> 
+    <td>[<a href="$admin_path&job=choose&mid=$key">$value</a>]</td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+<!--
+EOT;
+?>
+-->

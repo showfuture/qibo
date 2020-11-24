@@ -1,0 +1,113 @@
+<!--
+<?php
+if($fid){
+print<<<EOT
+--> 
+
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+      $gudie
+    </td>
+  </tr >
+</table><!--
+EOT;
+}
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">分类</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+      <form action="$admin_path&lfj=$lfj&action=addsort" method=POST>
+        <span class=bold>创建新类别--</span>&nbsp;名称 
+        <textarea name="name" cols="20" rows="5"></textarea>
+        <input type=submit value="创 建" name="submit">
+        <input type="hidden" name="fup" value="$fid">
+        <br>
+        <br>
+        注:如果想同时创建多个.每个换一行 
+      </form>
+    </td>
+  </tr >
+</table> 
+
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑<span class=bold><font color="#FFFFFF">分类</font></span></font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">分类排序的规则是,数值大的排在前面</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18"> 
+            <td align="center" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">分类名称</td>
+            <td width="10%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">排序</td>
+            <td width="12%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">子类个数</td>
+            <td width="22%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">修改名称</td>
+            <td width="14%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">创建/管理子类</td>
+            <td width="8%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" align="left" style="border-bottom:1px dotted #ccc;"><b></b> 
+              <input type="checkbox" name="fid_db[{$rs[fid]}]" value="$rs[fid]" style="border:0px;">
+              {$rs[icon]}【{$rs[name]}】</td>
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="12%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">$rs[NUM]</td>
+            <td width="22%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href='$admin_path&lfj=$lfj&job=editsort&fid=$rs[fid]'><font color="red">修改名称</font></a></td>
+            <td width="14%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&job=listsort&fid=$rs[fid]">创建/管理子类</a></td>
+            <td width="8%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&action=delete&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center">$showpage<br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a> 
+          <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> 
+		  <input type="button" name="Submit2" value="修改排序" onclick="postlist('list')">
+          <input type="button" name="Submit22" value="批量删除" onClick="postlist('delete')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='delete'){
+		document.formlist.action="$admin_path&action=delete";
+	}else{
+		document.formlist.action="$admin_path&action=editlist";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,57 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form2" method="post" action="$admin_path&lfj=$lfj&action=$job">
+    <tr> 
+      <td class="head" colspan="2">模型设置</td>
+    </tr>
+    <tr> 
+      <td width="21%">模型名称: </td>
+      <td width="79%"> 
+        <input type="text" name="name" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%">是否使用地图功能:</td>
+      <td width="79%"> 
+        <input type="radio" name="postdb[useMap]" value="1" $useMapDB[1]>
+        使用 
+        <input type="radio" name="postdb[useMap]" value="0" $useMapDB[0]>
+        禁用 </td>
+    </tr>
+    <tr>
+      <td width="21%">母模板:(你可以定义个性化母模板,默认请留空)</td>
+      <td width="79%">列表页母模板: 
+        <input type="text" name="tpldb[list]" size="50" value="$tpldb[list]">
+        <br>
+        内容页母模板: 
+        <input type="text" name="tpldb[show]" size="50" value="$tpldb[show]">
+        <br>
+        发布页母模板: 
+        <input type="text" name="tpldb[post]" size="50" value="$tpldb[post]">
+        <br>
+        搜索页母模板: 
+        <input type="text" name="tpldb[search]" size="50" value="$tpldb[search]">
+      </td>
+    </tr>
+    <!--
+    <tr>
+      <td width="32%">有权限使用此模型的用户组:<br>
+        (注:管理员默认有权限) </td>
+      <td width="68%">$allowpost</td>
+    </tr>
+-->
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit2" value="修改当前模型设置">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table> 
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,113 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&job=work">
+    <tr align="center" class="head"> 
+      <td width="5%">UID</td>
+      <td width="27%">企业名称</td>
+      <td width="21%">登记者</td>
+      <td width="12%">登记日期</td>
+      <td width="10%">认证情况</td>
+      <td width="10%">查看证件</td>
+      <td width="15%">操作</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center" width="5%">$rs[uid]</td>
+      <td width="27%" > 
+        <input type="checkbox" name="listdb[{$rs[uid]}]" value="$rs[title]">
+        <a href="$webdb[www_url]/home/?uid=$rs[uid]" target='_blank'  style="color:$rs[titlecolor];">$rs[title]</a></td>
+      <td align="center" width="21%"><a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a><a href="list.php?job=list&fid=$rs[fid]"> 
+        </a></td>
+      <td align="center" width="12%">$rs[posttime]</td>
+      <td align="center" width="10%">{$renzhengdb[$rs[renzheng]]}</td>
+      <td align="center" width="10%"><a href="$admin_path&uid=$rs[uid]&job=view">查看</a></td>
+      <td align="center" width="15%"  > 
+        <!--
+EOT;
+if($rs[renzheng]!=1){
+print <<<EOT
+-->
+        <a href="$admin_path&uid=$rs[uid]&job=rz&renzheng=1"><font color="#0000FF">普通</font></a> 
+        <!--
+EOT;
+}if($rs[renzheng]!=2){
+print <<<EOT
+-->
+        <a href="$admin_path&uid=$rs[uid]&job=rz&renzheng=2"><font color="#FF00FF">银牌</font></a> 
+        <!--
+EOT;
+}if($rs[renzheng]!=3){
+print <<<EOT
+-->
+        <a href="$admin_path&uid=$rs[uid]&job=rz&renzheng=3"><font color="#FF0000">金牌</font></a> 
+        <!--
+EOT;
+}if($rs[renzheng]){
+print <<<EOT
+-->
+        <a href="$admin_path&uid=$rs[uid]&job=rz&renzheng=0"><font color="#cccccc">取消</font></a> 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="7"> {$showpage} </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT><br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&job=$job">
+    <tr class="head"> 
+      <td><font color="#FFFFFF">搜索</font></td>
+    </tr>
+    <tr> 
+      <td align="center"> 关键字 
+        <input type="text" name="keyword">
+        <select name="type">
+          <option value="title">店铺名称</option>
+          <option value="id">店铺ID</option>
+          <option value="username">登记者</option>
+        </select>
+        <input type="submit" name="Submit7" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+ 

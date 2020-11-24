@@ -1,0 +1,90 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="form_work" method="post" action="">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">前台会员功能菜单管理</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <div style="margin:10px;line-height:21px;"> 1、每个会员被划分为某个用户组(比如普通用户或VIP用户或超级管理员)，同时也被划分为某个类型(比如个人用户或企业用户)。<br>
+          2、你可以指定某个会员级里边的个人用户或企业用户为他添加个性化的会员中心菜单。不添加的话，将使用系统默认的。<br>
+          3、某个会员组(比如VIP会员组或者是超级管理员组)，你需要分别按个人用户或企业用户添加菜单。如果只添加个人用户而不添加企业用户的话，企业用户将使用系统默认的，而不会使用个人用户的。<br>
+          4、首次为某个会员组添加菜单的话，你可以选择上面导航的“<a href="?lfj=$lfj&job=batch&gid=$gid">批量快速添加</a>”。<br>
+          5、个人用户与企业用户目前的主要区别在于是否拥有企业商铺，个人用户申请商铺后可以转为企业用户。<br>
+          6、以下的排序的规则是，数值大的排在前面。<br>
+            <br>
+            请选择一个用户组的菜单进行管理:{$select_group} 
+        </div> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" class="head"> 
+            <td  style="border-right:1px solid #fff;" width="25%">菜单名称</td>
+            <td  style="border-right:1px solid #fff;" width="17%">所属用户组</td>
+            <td  style="border-right:1px solid #fff;" width="22%">会员类型</td>
+            <td width="11%" style="border-right:1px solid #fff;">排序</td>
+            <td width="14%" style="border-right:1px solid #fff;">修改</td>
+            <td width="11%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" width="25%" style="border-bottom:1px dotted #ccc;color:$rs[color];"> 
+             <input type="checkbox" name="ids[]" value="$rs[id]"> $rs[icon]【{$rs[name]}】</td>
+            <td bgcolor="#FFFFFF" width="17%" style="border-bottom:1px dotted #ccc;color:$rs[color];" align="center">$rs[grouptitle]</td>
+            <td bgcolor="#FFFFFF" width="22%" style="border-bottom:1px dotted #ccc;color:$rs[color];" align="center">{$typeDB[$rs[ifcompany]]}</td>
+            <td width="11%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5' maxlength="4">
+            </td>
+            <td width="14%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="11%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delete&id=$rs[id]&gid=$gid" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> <input type="button" name="Submit" value="批量删除" onclick="ckdel()">
+
+          <input type="button" name="Submit2" value="修改排序" onclick="editorder()" >
+          <input type="hidden" name="gid" value="$gid">
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<br>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+function ckdel(){
+	msg=confirm('你确认要批量删除选中菜单吗？不可恢复！');
+	if(!msg){
+		return false;
+	}
+	document.form_work.action="index.php?lfj=$lfj&action=deleteall";
+	document.form_work.submit();
+}
+function editorder(){
+	document.form_work.action="index.php?lfj=$lfj&action=editlist";
+	document.form_work.submit();
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

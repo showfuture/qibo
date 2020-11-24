@@ -1,0 +1,150 @@
+/*
+*横幅广告
+*/
+.mainbanner{
+	margin-bottom:10px;
+	clear:both;
+	text-align:center;
+}
+/*
+*类目样式
+*/
+.ShowMainSort{
+	border:#D2E0F4 solid 3px;
+	border-top:#0871B3 solid 3px;
+}
+.ShowMainSort .showtd{
+	padding:10px 0 10px 10px;
+	width:20%;
+}
+.ShowMainSort .td4{
+	padding:10px;
+}
+.ShowMainSort .showtd dl dt{
+	height:30px;
+	background:url(icon6.gif);
+	overflow:hidden;
+	line-height:33px;
+	padding-left:5px;
+}
+.ShowMainSort .showtd dl dt a{
+	color:#2244DD;
+	font-size:14px;
+	font-weight:bold;
+}
+.ShowMainSort .showtd dl dd{
+	padding:5px;
+	line-height:20px;
+	color:#ACAEAC;
+}
+.ShowMainSort .showtd dl dd div{
+	height:20px;
+	overflow:hidden;
+}
+.ShowMainSort .showtd dl dd div a{
+	color:#2244DD;
+}
+/*
+*综合信息
+*/
+.MainMore{
+	height:190px;
+	border:#ccc solid 1px;
+	overflow:hidden;
+	margin:10px auto;
+}
+.MainMore .postinfo{
+	width:230px;
+	height:190px;
+	float:left;
+}
+.MainMore .postinfo dt{
+	height:50px;
+	line-height:50px;
+	padding-left:15px;
+	font-size:14px;
+	font-weight:bold;
+}
+.MainMore .postinfo dd{
+	padding:0 10px 0 15px;
+}
+.MainMore .postinfo dd p{
+	padding:0;
+	line-height:20px;
+	color:#999;
+}
+.MainMore .postinfo dd div{
+	padding-top:15px;
+	text-align:center;
+}
+.MainMore .listinfo{
+	width:500px;
+	height:180px;
+	padding:10px 0 0 10px;
+	border-left:#ccc solid 1px;
+	border-right:#CCC solid 1px;
+	float:left;
+}
+.MainMore .listinfo div{
+	width:240px;
+	height:21px;
+	overflow:hidden;
+	float:left;
+	line-height:21px;
+	color:#999;
+	padding-right:8px;
+}
+.MainMore .contact{
+	width:230px;
+	height:190px;
+	float:right;
+}
+.MainMore .contact dt{
+	height:50px;
+	line-height:50px;
+	padding-left:5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.MainMore .contact dd div{
+	height:25px;
+	line-height:25px;
+	padding-left:25px;
+}
+.MainMore .contact dd div.tel{
+	background:url(qq.gif) 3px 3px no-repeat;
+}
+.MainMore .contact dd div.email{
+	background:url(qq.gif) 3px -20px no-repeat;
+}
+.MainMore .contact dd div.msn{
+	background:url(qq.gif) 3px -43px no-repeat;
+}
+.MainMore .contact dd div.qq{
+	background:url(qq.gif) 3px -65px no-repeat;
+}
+/*
+*友情链接
+*/
+.FriendLink{
+	border:#CCC solid 1px;
+}
+.FriendLink dt{
+	height:30px;
+	overflow:hidden;
+	padding:0 10px 0 10px;
+	line-height:33px;
+}
+.FriendLink dt .tag{
+	float:left;
+	font-size:14px;
+}
+.FriendLink dt .more{
+	float:right;
+}
+.FriendLink dd{
+	padding:5px 5px 10px 10px;
+}
+.FriendLink dd .wordfriendlink{
+	line-height:20px;
+}

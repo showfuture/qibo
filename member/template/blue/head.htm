@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>会员操作平台</title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/member/images/blue/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/member/images/default/default.js"></SCRIPT>
+
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/baidu/editor_config.php"></script>
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/baidu/editor_all.js"></script>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/ewebeditor/baidu/themes/default/ueditor.css"/>
+<SCRIPT LANGUAGE="JavaScript">
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+<!--
+EOT;
+if($linkdb){
+print <<<EOT
+-->
+<div class="guide">
+<!--
+EOT;
+foreach($linkdb AS $name=>$url){
+print <<<EOT
+-->
+	[<a href="$url" target="{$link_blank[$name]}">$name</a>] 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<!--
+EOT;
+?>
+-->

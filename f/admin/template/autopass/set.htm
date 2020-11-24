@@ -1,0 +1,72 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="$admin_path&action=set">
+    <tr align="center" class="head"> 
+      <td colspan="2">信息过滤设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="left">违规关键词:<br>
+        （新发布的内容包含此关键词的信息，则自动过滤） </td>
+      <td width="78%"> 
+        <textarea name="webdbs[Info_YzKeyword]" cols="50" rows="12">$webdb[Info_YzKeyword]</textarea>
+        每个换一行 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="left">对违规关键词的处理方式:</td>
+      <td width="78%"> 
+        <input type="radio" name="webdbs[Info_YzKeyword_DO]" value="0" $Info_YzKeyword_DO[0]>
+        用***替换 
+        <input type="radio" name="webdbs[Info_YzKeyword_DO]" value="1" $Info_YzKeyword_DO[1]>
+        进回收站 
+        <input type="radio" name="webdbs[Info_YzKeyword_DO]" value="2" $Info_YzKeyword_DO[2]>
+        禁止发表</td>
+    </tr>
+    <tr bgcolor=""> 
+      <td colspan="2" align="left" style="background:#E8E8E8;">评论设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="left">发布评论自动通过审核的用户组:<br>
+        (不选择的话，将全部自动通过审核) </td>
+      <td width="78%">$CommentPass_group</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%" align="left">未审核的评论是否显示出来：</td>
+      <td width="78%">
+        <input type="radio" name="webdbs[showNoPassComment]" value="0" $showNoPassComment[0]>未审核的不显示
+		 <input type="radio" name="webdbs[showNoPassComment]" value="1" $showNoPassComment[1]>全显示
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td align="left">&nbsp;</td>
+      <td align="left"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

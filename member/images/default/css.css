@@ -1,0 +1,166 @@
+/*
+*样式初始化开始
+*/
+*{ 
+	padding: 0; 
+	margin: 0; 
+} 
+table{ 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+} 
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul { 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+	font-weight: normal;
+	font-size: 100%; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+body{
+	font-size:12px;
+}
+a,a:link,a:visited{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+/*
+*样式初始化结束
+*/
+/*
+*顶部
+*/
+#TopDiv{
+	height:33px;
+	background:url(topbg.gif) left top repeat-x;
+}
+#TopDiv ul{
+	width:985px;
+	height:33px;
+	overflow:hidden;
+	margin:auto;
+	background:url(topul.gif) left top no-repeat;
+	padding-left:5px;
+}
+#TopDiv ul li{
+	float:left;
+	padding:3px 15px 0 15px;
+	line-height:30px;
+	background:url(topli.gif) right top no-repeat;
+}
+#TopDiv ul li a{
+	font-weight:bold;
+	color:#666;
+}
+/*
+*头部
+*/
+.Header{
+	width:990px;
+	height:80px;
+	background:url(headbg.gif) center top no-repeat;
+	margin:5px auto 0 auto;
+}
+.Header .Logo{
+	width:240px;
+	float:left;
+	text-align:center;
+	background:url(logobg.gif) right 5px no-repeat;
+}
+.Header .welcome{
+	float:right;
+	width:720px;
+	height:42px;
+	overflow:hidden;
+	line-height:60px;
+	color:#D9E9FF;
+}
+.Header .welcome a{
+	color:#D9E9FF;
+	text-decoration:underline;
+}
+/*
+内容部分样式
+*/
+.MainCont{
+	width:990px;
+	margin:auto;
+}
+.MainCont td{
+	vertical-align:top;
+}
+.MainCont .Menus{
+	width:190px;	
+	background:#DEEBFE;
+}
+.MainCont .Iframe{
+	padding:5px 0 0 5px;
+}
+.MainCont .Menus dl.hidden dd{
+	display:none;
+}
+.MainCont .Menus dl{
+	margin-bottom:5px;
+}
+.MainCont .Menus dl dt,.MainCont .Menus h3{
+	background:url(menuhead1.gif) center top no-repeat;
+	margin-bottom:0;
+	padding:2px 0 0 30px;
+	line-height:25px;
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+.MainCont .Menus p{
+	padding:10px;
+	text-align:center;
+	word-spacing:10px;
+}
+.MainCont .Menus dl.hidden dt{
+	background:url(menuhead.gif) center top no-repeat;
+}
+.MainCont .Menus dl dd{
+	padding:10px 5px 5px 10px;
+	line-height:20px;
+}
+.MainCont .Menus dl dd div{
+	height:20px;
+	overflow:hidden;
+	padding-left:15px;
+	background:url(icon2.gif) left 5px no-repeat;
+}
+.MainCont .Menus dl dd div a{
+	color:#333;
+}
+/***
+CopyRight
+***/
+.CopyRight{
+	width:990px;
+	margin:10px auto 0 auto;
+	padding:10px;
+	line-height:20px;
+	color:#888;
+	border-top:#DEEBFE solid 1px;
+	text-align:center;
+}
+
+
+

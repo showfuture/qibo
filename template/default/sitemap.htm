@@ -1,0 +1,128 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/sitemap.css">
+<div class="SideConts">
+	<div class="head"><div class="tag">分类信息</div></div>
+    <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($fenlie_fid_db[0] AS $key=>$rs){
+$j++;
+$have_dotted = 1==$j ? "" : "class='h_dotted'";
+$url=get_info_url('',$key,$city_id);
+print <<<EOT
+-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" $have_dotted>
+          <tr>
+            <td class="bigsort"><a href="$url" target="_blank">{$fenlie_fid_db[name][$key]}</a></td>
+            <td class="minsort">
+<!--
+EOT;
+$i=0;
+foreach($fenlie_fid_db[$key] AS $keys=>$rss){
+$i++;
+$spac_word = 1==$i ? "" : "|";
+$url=get_info_url('',$keys,$city_id);
+print <<<EOT
+-->
+				$spac_word <a href="$url" target="_blank">{$fenlie_fid_db[name][$keys]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </div>
+</div>
+<div class="SideConts">
+	<div class="head"><div class="tag">黄页商铺</div></div>
+    <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($hy_fid_db[0] AS $key=>$rs){
+$j++;
+$have_dotted = 1==$j ? "" : "class='h_dotted'";
+print <<<EOT
+-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" $have_dotted>
+          <tr>
+            <td class="bigsort"><a href="$webdb[_www_url]/hy/list.php?fid=$key" target="_blank">{$hy_fid_db[name][$key]}</a></td>
+            <td class="minsort">
+<!--
+EOT;
+$i=0;
+foreach($hy_fid_db[$key] AS $keys=>$rss){
+$i++;
+$spac_word = 1==$i ? "" : "|";
+print <<<EOT
+-->
+				$spac_word <a href="$webdb[_www_url]/hy/list.php?fid=$keys" target="_blank">{$hy_fid_db[name][$keys]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </div>
+</div>
+<div class="SideConts">
+	<div class="head"><div class="tag">文章资讯</div></div>
+    <div class="cont">
+<!--
+EOT;
+$j=0;
+foreach($help_fid_db[0] AS $key=>$rs){
+$j++;
+$have_dotted = 1==$j ? "" : "class='h_dotted'";
+print <<<EOT
+-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" $have_dotted>
+          <tr>
+            <td class="bigsort"><a href="$webdb[_www_url]/help/list.php?fid=$key" target="_blank">{$help_fid_db[name][$key]}</a></td>
+            <td class="minsort">
+<!--
+EOT;
+$i=0;
+foreach($help_fid_db[$key] AS $keys=>$rss){
+$i++;
+$spac_word = 1==$i ? "" : "|";
+print <<<EOT
+-->
+				$spac_word <a href="$webdb[_www_url]/help/list.php?fid=$keys" target="_blank">{$help_fid_db[name][$keys]}</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </td>
+          </tr>
+        </table>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

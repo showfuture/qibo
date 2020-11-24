@@ -1,0 +1,36 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr bgcolor='#FFFFFF'> 
+    <td bgcolor="#FFFFFF"> [<a href="index.php?lfj=cnzz&job=set">统计帐号管理</a>]
+	
+      <!--
+EOT;
+if(!$webdb[cnzz_id]||!$webdb[cnzz_pwd]){print <<<EOT
+-->
+     [<a href="index.php?lfj=cnzz&job=ask">申请站点统计ID帐号</a>] 
+      <!--
+EOT;
+}print <<<EOT
+-->
+	
+
+
+      <!--
+EOT;
+if($webdb[cnzz_id]&&$webdb[cnzz_pwd]){print <<<EOT
+-->
+      [<a href="http://intf.cnzz.com/user/companion/php168_login.php?site_id=$webdb[cnzz_id]&password=$webdb[cnzz_pwd]" target="_blank">登录站点统计后台</a>] 
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

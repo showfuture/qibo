@@ -1,0 +1,161 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/allsort.css">
+<div class="TopBanner">{$label[green_allsortad1]}</div>
+<!--
+EOT;
+$layout1=array();
+$detail1=explode("#",$webdb[sort_layout1]);
+foreach($detail1 AS $key=>$value){
+	$detail2=explode(",",$value);
+    foreach($detail2 AS $fup){
+    	if(!$Fid_db['name'][$fup]) continue;
+        $layout1[$key][$fup]['name']=$Fid_db['name'][$fup];
+        $layout1[$key][$fup]['son']=$Fid_db[$fup];
+        $ckfup1[$fup]=1;
+    }
+}
+foreach($Fid_db[0] AS $fup=>$name){
+	if(!$ckfup1[$fup]){
+		$layout1[0][$fup]['name']=$Fid_db['name'][$fup];
+		$layout1[0][$fup]['son']=$Fid_db[$fup];
+	}
+}	
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowMainSort">
+  <tr>
+<!--
+EOT;
+foreach($layout1 AS $key=>$array){
+if($key>4)break;
+print <<<EOT
+-->
+    <td class="showtd td{$key}">
+<!--
+EOT;
+foreach($array AS $fup=>$rs){
+$url=get_info_url('',$fup,$city_id);
+$redcolor=$Fid_db[ifcolor][$fup]?" style=\"color:red\"":'';
+print <<<EOT
+-->
+		<dl>
+        	<dt><a href="$url"{$redcolor}>{$rs[name]}&gt;&gt;</a></dt>
+            <dd>
+<!--
+EOT;
+$i=0;
+foreach($rs['son'] AS $fid=>$name ){
+$i++;
+if($webdb[Info_showsortnum]>0&&$i>$webdb[Info_showsortnum]){break;}
+$InfoNum[$fid]=intval($InfoNum[$fid]);
+$url=get_info_url('',$fid,$city_id);
+$redcolor=$Fid_db[ifcolor][$fid]?" style=\"color:red\"":'';
+print <<<EOT
+-->
+                  <div><a href="$url"{$redcolor}>$name</a> ({$InfoNum[$fid]})</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+			</dd>
+		</dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowMoreInfo">
+  <tr>
+    <td class="post">
+    	<div class="head">信息发布</div>
+        <p>租售房子、求职招聘、找朋友、二手买卖就在本分类信息网站</p>
+        <div class="but"><a href="post.php"><img src="$webdb[www_url]/images/green/post.gif" /></a></div>
+    </td>
+    <td class="info">
+<!--
+EOT;
+$listnewdb=Get_Info($type="new",$rows=16,$leng=40,$fid=0,$mid=0,$city_id);
+foreach($listnewdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+		<div class="list"><a href="$rs[url]" target="_blank" title='$rs[full_title]'>$rs[title]</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    </td>
+    <td class="contact">
+    	<div class="head">联系我们</div>
+        <div class="cont">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[Info_contact]);
+print <<<EOT
+-->
+            <div class="tel">电话:$detail[0]</div>
+            <div class="email">邮箱:$detail[1]</div>
+            <div class="msn">msn:$detail[2]</div>
+            <div class="qq">QQ:$detail[3]</div>
+        </div>
+    </td>
+  </tr>
+</table>
+<div class="FrendLink">
+	<div class="head"><div class="tag">友情链接</div><div class="more"><a href="$webdb[www_url]/do/friendlink.php?job=apply" target="_blank">申请链接</a></div></div>
+    <div class="cont">
+    	<div class="imgfriendlink"> 
+<!--
+EOT;
+if($friendlinkDB[1]&&$friendlink_DB[$city_id][1]){
+$array = $friendlinkDB[1]+$friendlink_DB[$city_id][1];
+}elseif($friendlinkDB[1]){
+$array = $friendlinkDB[1];
+}else{
+$array = $friendlink_DB[$city_id][1];
+}
+foreach($array AS $rs){
+print <<<EOT
+-->
+              <A HREF="$rs[url]" target=_blank><img alt="名称:$rs[name]\r\n描述:$rs[descrip]" src="$rs[logo]" width="88" height="31"/></A> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </div>
+        <div class="wordfriendlink"> 
+<!--
+EOT;
+if($friendlinkDB[0]&&$friendlink_DB[$city_id][0]){
+$array = $friendlinkDB[0]+$friendlink_DB[$city_id][0];
+}elseif($friendlinkDB[0]){
+$array = $friendlinkDB[0];
+}else{
+$array = $friendlink_DB[$city_id][0];
+}
+foreach($array AS $rs){print <<<EOT
+-->
+              <A HREF="$rs[url]" target="_blank" title="描述:$rs[descrip]">$rs[name]</A> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+         </div>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

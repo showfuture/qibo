@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="images/style.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+
+function killErr(){
+
+	return true;
+
+}
+
+window.onerror=killErr;
+
+</SCRIPT>
+</head>
+<body> <!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="baseinfotable">
+  <tr>
+    <td class="td1">&nbsp;</td>
+    <td class="td3">
+    	
+      <div>分类信息共有：<span>{$fenleiNUM}</span> 条</div>
+        <div>共有会员：<span>{$Member}</span> 位</div>
+    </td>
+    <td class="td3">
+    	
+      <div>评论：<span>{$CommentNUM}</span> 条</div>
+        
+      <div>点评：<span>{$dianpingNUM}</span> 条</div>
+        
+    </td>
+  </tr>
+</table>
+
+ 
+ 
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<div align="center">');
+//-->
+</SCRIPT><table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head"> 
+      
+    <td height="23">欢迎使用齐博CMS建站系统</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      
+    <td> 
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead"> 使用技巧</td>
+        </tr>
+        <tr>
+          <td class="middle" valign="top"> 1、如要对首页进行重大修改，请手工修改模板文件/template/default/index.htm<br>
+2、如果忘记密码不能进入后台的话，请手工修改文件/admin/global.php,查找\$ForceEnter=0;改为\$ForceEnter=1;即能进入后台,重新设置管理员密码<br>
+3、数据库配置文件是/data/mysql_config.php,更换数据库帐号后,请修改此文件<br>
+4、要想更换创始人帐号,请修改文件/data/admin.php<br>
+            5、网站在使用过程中,如果更新添加了数据,务必经常备份网站数据库.<br>
+            6、如有更多不懂的问题.</a>
+        </tr>
+      </table>
+      
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead"> 新手入门指南</td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top"> 1、要获取更新的程序,<a href="http://bbs.qibosoft.com/thread-forum-fid-10313.htm" target="_blank">请点击</a><br>
+            2、要学习如何制作网站风格,<a href="http://bbs.qibosoft.com/thread-forum-fid-10323.htm" target="_blank">请点击</a><br>
+            3、对功能方面有什么建议,<a href="http://bbs.qibosoft.com/thread-forum-fid-10315.htm" target="_blank">请点击</a><br>
+            4、遇到更多的问题,无法解决,<a href="http://bbs.qibosoft.com/thread-forum-fid-10332.htm" target="_blank">请点击</a></td>
+        </tr>
+      </table>
+      <table width="51%" border="0" cellspacing="0" cellpadding="0" class="map">
+        <tr> 
+          <td class="maphead">官方重要公告</td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="center">&nbsp;
+</td>
+        </tr>
+      </table>
+    </td>
+    </tr>
+</table>
+
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23" colspan="2">服 务 器 信 息</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">服务端信息：$systemMsg[SERVER_SOFTWARE]</td>
+    <td width="50%">邮件模式：$systemMsg[sys_mail]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">PHP版本：$systemMsg[sysversion]</td>
+    <td width="50%">服务器IP：$systemMsg[SERVER_ADDR]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">MYSQL版本：$systemMsg[mysqlVersion]</td>
+    <td width="50%">服务器端口：$systemMsg[SERVER_PORT]</td>
+  </tr>
+    <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否允许文件上传：$systemMsg[file_uploads]<span help="1">（如果不允许可把php.ini里的file_uploads=Off改成file_uploads=On，重启服务器即可）</span></td>
+    <td width="50%">上传文件存放的临时目录：$systemMsg[upload_tmp_dir]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大上传限制：$systemMsg[max_upload]<span help="1">（需更大可修改php.ini里的upload_max_filesize值，重启服务器即可）</span></td>
+    <td width="50%">服务器所在时间：$systemMsg[systemtime]</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">最大执行时间：$systemMsg[max_ex_time]<span help="1">（需更大可修改php.ini里的max_execution_time值，重启服务器即可）</span></td>
+    <td width="50%">网站所在磁盘物理位置：$systemMsg[DOCUMENT_ROOT]</td>
+  </tr>
+   <tr bgcolor="#FFFFFF"> 
+    <td width="50%">空间限制内存：$systemMsg[memory_user_limit]<span help="1">（需更大可修改php.ini里的memory_limit值，重启服务器即可）</span></td>
+	<td width="50%">当前文件路径：$systemMsg[SCRIPT_FILENAME]</td>  
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否支持采集：$systemMsg[allow_url_fopen]<span help="1">（如果不支持可把php.ini里的allow_url_fopen=Off改成allow_url_fopen=On，重启服务器即可）</span></td>
+     <td width="50%">Zend Optimizer版本：$systemMsg[zendVersion]</td>
+  
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否支持GD2库：$systemMsg[gdpic]<span help="1">（如果不支持可把php.ini中;extension=php_gd2.dll前面的;去掉，重启服务器即可）</span></td>
+    <td width="50%">当前登陆IP：$systemMsg[onlineip]</td>
+  </tr>
+   <tr bgcolor="#FFFFFF"> 
+    <td width="50%">是否允许Cookie：$systemMsg[ifcookie]<span help="1">（如果不允许可在Windows控制面板 ,"Internet选项" ,隐私设置中调整）</span></td>
+    <td width="50%">当前域名：$systemMsg[SERVER_NAME]</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td height="23">开 发 团 队</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>官方网站： <a href="http://www.qibosoft.com" target="_blank">http://www.qibosoft.com</a> 
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td bgcolor="#FFFFFF">技术支持： <a href="http://bbs.qibosoft.com" target="_blank">http://bbs.qibosoft.com</a> 
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td bgcolor="#FFFFFF">
+      <!--
+EOT;
+if(is_file(ROOT_PATH."inc/biz/biz.php")){$BIZ_URLDB['0']=base64_decode($BIZ_URLDB['0']);
+print <<<EOT
+-->
+      版本类型： {$qibosoft_Edition} <A HREF="http://www.qibosoft.com/biz/impower.php" target="_blank"><font color=blue>商业授权</font></A><span help="1">（授权域名：{$BIZ_URLDB['0']}）</span><br>
+      <!--
+EOT;
+}else{
+print <<<EOT
+-->
+      版本类型： {$qibosoft_Edition} <A HREF="http://www.qibosoft.com/biz/product.php" target="_blank"><font color=green>个人免费</font></A><span help="1">（适合个人学习，否则建议购买商业授权版，获取更好的服务和功能）</span><br> 
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td>系统设计： 龙城</td>
+  </tr>
+  
+  <tr bgcolor="#FFFFFF"> 
+    <td>特别鸣谢： 
+     <A HREF="http://www.czin.cn" target="_blank">雄军</A>、<a href="http://bbs.qibosoft.com/u-forum-action-topic-uid-81067.htm" target="_blank">lisheng51</a>、 
+      <a href="http://www.zxx6.com/" target="_blank">toopd</a>、<A HREF="http://bbs.qibosoft.com/u-forum-action-topic-uid-117947.htm" target="_blank">七月</A> 等等</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

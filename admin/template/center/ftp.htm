@@ -1,0 +1,69 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">FTP设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP主机IP地址:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[FtpHost]" value="$webdb[FtpHost]">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP帐号:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[FtpName]" value="$webdb[FtpName]">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP密码:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="password" name="webdbs[FtpPwd]" value="$webdb[FtpPwd]">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP端口:(一般是21)</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[FtpPort]" value="$webdb[FtpPort]" size="7">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP存放附件目录:</td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[FtpDir]" value="$webdb[FtpDir]">
+        如:“abcd”,如果是根目录的话,就输入“./”</td>
+    </tr>
+    <tr> 
+      <td bgcolor='#FFFFFF'>FTP附件目录访问网址(镜像附件):<span help=1>如果没有的话,请必须留空,否则易出问题</span></td>
+      <td bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[mirror]" value="$webdb[mirror]" size="50">
+        如:“http://qibosoft.com/abcd”</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+     <tr  class="head"> 
+      
+    <td align="left"> <b><font color="#FFFFFF">说明</font></b></td>
+    </tr>
+    <tr> 
+      
+    <td bgcolor='#FFFFFF'>FTP远程服务器,必须跟本网站服务器同一个机房,以确保能稳定通信,如果不在同一个机房的话.因网络问题.FTP通信不稳定,容易失败.</td>
+    </tr>
+ </table>
+<!--
+EOT;
+?>
+-->

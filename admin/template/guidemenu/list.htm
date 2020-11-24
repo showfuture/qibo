@@ -1,0 +1,70 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="index.php?lfj=$lfj&action=setShowMenu">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">下拉菜单开关设置</font></td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="center"> 
+        <input type="radio" name="webdbs[ShowMenu]" value="1" $ShowMenu[1]>
+        启用下拉菜单 
+        <input type="radio" name="webdbs[ShowMenu]" value="0" $ShowMenu[0]>
+        禁用下拉菜单 
+        <input type="submit" name="Submit" value="提交">(有的风格设置无效)
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="index.php?lfj=$lfj&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">菜单管理</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">排序的规则是,数值大的排在前面</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" class="head"> 
+            <td  style="border-right:1px solid #fff;" width="50%">菜单名称</td>
+            <td width="10%" style="border-right:1px solid #fff;">排序</td>
+            <td width="10%" style="border-right:1px solid #fff;">状态</td>
+            <td width="17%" style="border-right:1px solid #fff;">修改</td>
+            <td width="13%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" width="50%" style="border-bottom:1px dotted #ccc;color:$rs[color];"> 
+              $rs[icon]【{$rs[name]}】</td>
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5' maxlength="4">
+            </td>
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">$rs[hide]</td>
+            <td width="17%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="13%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delete&id=$rs[id]" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a>
+          <input type="submit" name="Submit2" value="修改排序"  >
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

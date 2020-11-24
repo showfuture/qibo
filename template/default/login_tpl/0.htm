@@ -1,0 +1,43 @@
+<!--
+<?php
+if($lfjid){print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="20">
+  <tr> 
+    <td align="left" style="padding-top:4px;"> <span class="L2_name">&nbsp;欢迎你回来:<a style="color:#FF0000;">$lfjid</a></span> 
+      <span class="L2_msg"> $MSG </span> <span class="L2_info"> <a href="$webdb[www_url]/member/homepage.php?uid=$lfjuid" target="_blank">个人信息</a> 
+      <a href="$webdb[www_url]/member/" target="_blank">会员中心</a></span> <span class="L2_out"> 
+      <a href="$webdb[www_url]/member/index.php?main=userinfo.php?job=edit" target="_blank">修改资料</a> 
+      <a href="$webdb[www_url]/do/login.php?action=quit">安全退出</a></span> </td>
+  </tr>
+</table>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+<div class="login_tpl">
+  <form name="form_login" method="post" action="$webdb[www_url]/do/login.php">
+     <span class='L_passport'>&nbsp;通行证 |</span> <span class="L_name"> 帐号：
+        <input type="text" name="username" class="login_name">
+        </span> <span class="L_pwd"> 密码：
+        <input type="password" name="password" class="login_pwd">
+        </span> <span class="L_sub"> 
+        <input type="submit" name="Submit" value="登录" class="login_sub">
+        </span> <span class="L_reg"> <a href="$webdb[www_url]/do/reg.php">注册</a> 
+        | <a href="$webdb[www_url]/do/login.php">登录</a></span><input type="hidden" name="step" value="2">
+      <input class="radio" type="hidden" name="cookietime" value="86400" > 
+<!--
+EOT;
+if($webdb[QQ_login]){print <<<EOT
+-->
+<A HREF="$webdb[www_url]/do/qq_login.php" target="_blank"><img border=0 id="qqlogin"  src="$webdb[www_url]/images/default/qq_login_small.png"></A>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </form>
+</div>
+<!--
+EOT;
+}?>
+-->

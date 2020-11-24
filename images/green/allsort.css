@@ -1,0 +1,134 @@
+.TopBanner{
+	width:990px;
+	text-align:center;
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.ShowMainSort{
+	border:#92C279 solid 3px;
+}
+.ShowMainSort .showtd{
+	width:20%;
+	padding:10px 5px 10px 5px;
+}
+.ShowMainSort .td0{
+	padding:10px 5px 10px 10px;
+}
+.ShowMainSort .td4{
+	padding:10px 10px 10px 5px;
+}
+.ShowMainSort  dl dt{
+	height:30px;
+	line-height:33px;
+	overflow:hidden;
+	padding-left:8px;
+	background:url(head5.gif);
+}
+.ShowMainSort  dl dt a{
+	color:#3C8300;
+	font-size:14px;
+	font-weight:bold;
+}
+.ShowMainSort  dl dd{
+	padding:3px 0 5px 5px;
+	line-height:20px;
+}
+.ShowMainSort  dl dd div{
+	height:20px;
+	overflow:hidden;
+	color:#999;
+}
+.ShowMoreInfo{
+	border:#92C279 solid 1px;
+	margin:10px auto;
+}
+.ShowMoreInfo .post,.ShowMoreInfo .contact{
+	width:245px;
+}
+.ShowMoreInfo .head{
+	height:30px;
+	line-height:32px;
+	overflow:hidden;
+	background:url(head6.gif) repeat-x;
+	padding-left:15px;
+	font-size:14px;
+	font-weight:bold;
+}
+.ShowMoreInfo .post p{
+	padding:20px 10px 10px 15px;
+	line-height:20px;
+	color:#888;
+}
+.ShowMoreInfo .post .but{
+	text-align:center;
+	padding:8px 0 10px 0;
+}
+.contact .cont{
+	padding:10px;
+	line-height:22px;
+}
+.contact .cont div{
+	padding-left:20px;
+	height:22px;
+	overflow:hidden;
+	color:#333;
+}
+.contact .cont div.tel{
+	background:url(icon.gif) no-repeat;
+}
+.contact .cont div.email{
+	background:url(icon.gif) left -22px no-repeat;
+}
+.contact .cont div.msn{
+	background:url(icon.gif) left -44px no-repeat;
+}
+.contact .cont div.qq{
+	background:url(icon.gif) left -65px no-repeat;
+}
+.ShowMoreInfo .info{
+	border-left:#92C279 solid 1px;
+	border-right:#92C279 solid 1px;
+	padding:10px;
+}
+.ShowMoreInfo .info .list{
+	width:50%;
+	height:22px;
+	overflow:hidden;
+	line-height:22px;
+	float:left;
+}
+.ShowMoreInfo .info .list a{
+	float:left;
+	padding-left:15px;
+	background:url(pointer.gif) 5px 8px no-repeat;
+}
+/*
+*FrendLink
+*/
+.FrendLink{
+	border:#d3d3d3 solid 1px;
+}
+.FrendLink .head{
+	height:32px;
+	line-height:32px;
+	overflow:hidden;
+	background:url(head3.gif) repeat-x;
+}
+.FrendLink .head .tag{
+	float:left;
+	padding-left:10px;
+	font-size:14px;
+	font-weight:bold;
+	color:#2A490F;
+}
+.FrendLink .head .more{
+	float:right;
+	padding-right:10px;
+}
+.FrendLink .cont{
+	padding:10px;
+}
+.FrendLink .cont .wordfriendlink{
+	padding-top:5px;
+	line-height:20px;
+}

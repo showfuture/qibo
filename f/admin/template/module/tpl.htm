@@ -1,0 +1,63 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_tpl" method="post" action="$admin_path&action=$job&page=$page" id='form_tpl'>
+    <tr class="head" align="left"> 
+      <td colspan="2">模板管理</td>
+    </tr>
+    <tr> 
+      <td width="17%">信息发表模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_post" cols="90" rows="8">$post_tpl</textarea>
+        <br>
+        母模板:$postF <br>
+        新模板:{$Mpath}template/$webdb[Info_style]/post_$id.htm </td>
+    </tr>
+    <tr> 
+      <td width="17%">信息列表栏目页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_sort" cols="90" rows="5">$sort_tpl</textarea>
+        <br>
+        母模板:$listF<br>
+        新模板:{$Mpath}template/$webdb[Info_style]/list_$id.htm </td>
+    </tr>
+    <tr> 
+      <td width="17%">信息内容页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_show" cols="90" rows="5">$show_tpl</textarea>
+        <br>
+        母模板:$bencandyF<br>
+        新模板:{$Mpath}template/$webdb[Info_style]/bencandy_$id.htm </td>
+    </tr>
+    <tr> 
+      <td width="17%">信息搜索页模板:</td>
+      <td width="83%"> 
+        <textarea name="tpl_search" cols="90" rows="5">$search_tpl</textarea>
+        <br>
+        母模板:$searchF<br>
+        新模板:{$Mpath}template/$webdb[Info_style]/search_$id.htm </td>
+    </tr>
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交生成模板">
+        <input type="hidden" name="id" value="$id">
+        <input type="hidden" name="automaketpl" value="$automaketpl">
+      </td>
+    </tr>
+  </form>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function autopost(){
+	document.getElementById("form_tpl").submit();
+}
+$autojump
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

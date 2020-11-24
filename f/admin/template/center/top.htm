@@ -1,0 +1,63 @@
+<!--
+<?php
+$Info_showsorttype[intval($webdb[Info_showsorttype])]=' checked ';
+print <<<EOT
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function foreColor_font()
+{
+  
+  var arr = showModalDialog('$webdb[www_url]/images/default/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  get_obj('titlecolor').value=arr;
+  else  get_obj('titlecolor').focus();
+  get_obj('titlecolor').style.background=arr;
+}
+//-->
+</SCRIPT>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=config">
+    <tr  class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">信息列表页置顶设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>每个栏目最多同时置顶几条信息:<br>
+        留空则不限制 </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_TopNum]" size="4" value="$webdb[Info_TopNum]">
+        条</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>每条信息允许选择最多置顶几天:<br>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_TopDay]" size="4" value="$webdb[Info_TopDay]">
+        天</td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>每条置顶信息每天收费多少{$webdb[MoneyName]}:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_TopMoney]" size="4" value="$webdb[Info_TopMoney]">
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>置顶信息标题颜色:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="text" name="webdbs[Info_TopColor]" size="10" value="$webdb[Info_TopColor]"  onclick="foreColor_font();" id="titlecolor" style="color:$webdb[Info_TopColor];">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

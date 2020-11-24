@@ -1,0 +1,103 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script>
+function show2(tt){
+	if(tt==2){
+		$("#txt1").css("display","none");
+		$("#txt2").css("display","");
+		//txt1.style.display='none';
+		//txt2.style.display='';
+	}else{
+		//txt1.style.display='';
+		//txt2.style.display='none';
+		$("#txt1").css("display","");
+		$("#txt2").css("display","none");
+	}
+}
+
+function upfile(url,name,size,b){
+	document.form1.upsql.value=url;
+}
+</script>
+<table width='100%' cellspacing='1' cellpadding='3'  class="tablewidth">
+  <form name="form1" method="post" action="?lfj=$lfj&action=sql">
+    <tr  class="head"> 
+      <td colspan='3'>&nbsp;</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan='3'><font color='#0000FF'>在此导入MYSQL数据库，方便大家的网站升级与维护更新，这样很方便操作数据库，同时也非常简单（导入升级数据库，就像上传文件一样简单），不必再那么麻烦要上传一个2M多的PHPmyadmin那么麻烦啦！！！</font></td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td>升级数据库方式:</td>
+      <td colspan='2'> 
+        <input type="radio" name="t" value="2"  onClick=show2(1) >
+        上传sql数据库升级文件包 
+        <input type="radio" name="t" value="1"  onClick=show2(2) checked >
+        运行sql语句代码 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' align="center"> 
+      <td colspan="3"> 
+        <div id=txt1 style='display:none'> 
+          <table width="98%" border="0" cellspacing="0" cellpadding="0">
+            <tr align="center"> 
+              <td colspan="3"> <b><font color='#FF0000'>请上传要导入的mySQL数据库:</font></b> 
+                如果<b><font color="#FF0000">.sql</font></b>后缀文件不允许上传，则请改后缀名为<b><font color="#FF0000">.txt</font></b> 
+              </td>
+            </tr>
+            <tr> 
+              <td width="27%">上传成功后，请再点击下面的(立刻执行SQL语句)</td>
+              <td width="20%"> 
+                <input type='text' name='upsql' size='30' value='' id=upsql>
+              </td>
+              <td width="53%"><IFRAME name='mainFrame2' frameBorder=0 height=23 scrolling=no src='upfile.php?postid=upsql' width=310></IFRAME></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' align="center"> 
+      <td colspan="3"> 
+        <div id=txt2 style='display:'> 
+          <table width="98%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td colspan="2">每一条sql语句必须用;号分隔开<font color='#FF0000'>(注意，此框今后升级数据库会经常用到，把代码粘贴进去，点击提交就行了)</font></td>
+              <td width="0%">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td width="25%">请粘贴要执行的SQL语句代码</td>
+              <td width="75%"> 
+                <textarea name='sql' cols='70' rows='10'></textarea>
+              </td>
+              <td width="0%">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='28%'>&nbsp;</td>
+      <td colspan='2'> 
+        <input type='submit' name='Submit' value='立刻执行SQL语句'>
+      </td>
+    </tr>
+<!--
+EOT;
+if($pre!='qb_'){print <<<EOT
+-->
+    <tr bgcolor='#FFFFFF'> 
+      <td colspan="3">请务必注意:sql语句中如包含有qb_的字符会被替换为$pre</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+--> <tr bgcolor='#FFFFFF'> 
+      <td colspan="3">提醒:这里可以输入select语句进行资料查看</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

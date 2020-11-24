@@ -1,0 +1,484 @@
+.mt10{
+	margin-top:10px;
+}
+.SideL{
+	width:240px;
+	float:left;
+}
+.SideC{
+	width:510px;
+	float:left;
+	padding-left:10px;
+}
+.SideR{
+	width:220px;
+	float:right;
+}
+.MainL{
+	width:760px;
+	float:left;
+}
+/*
+*
+*/
+.MainContainer1{
+	width:990px;
+	height:290px;
+	overflow:hidden;
+	margin-bottom:10px;
+}	
+.ActionCont{
+	border:#DBDBDB solid 1px;
+	height:48px;
+	text-align:center;
+	padding-top:10px;
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.sidecont{
+	border:#DBDBDB solid 1px;
+}
+.sidecont .head{
+	height:35px;
+	overflow:hidden;
+}
+.sidecont .head .tag{
+	float:left;
+	padding:15px 0 0 15px;
+	font-weight:bold;
+	font-size:14px;
+}
+.sidecont .head .cou{
+	float:left;
+	padding:15px 0 0 15px;
+	font-weight:bold;
+	font-size:14px;
+}
+.sidecont .newscont{
+	padding:3px 10px 10px 10px;
+	height:170px;
+	overflow:hidden;
+}
+.sidecont .newscont .cc1 .listpica{
+	height:60px;
+	overflow:hidden;
+	background:url(dotted2.gif) left 59px repeat-x;
+}
+.sidecont .newscont .cc1 .listpica .img{
+	float:left;
+	width:60px;
+	height:45px;
+	text-align:center;
+	background:#efefef;
+	overflow:hidden;
+}
+.sidecont .newscont .cc1 .listpica .word{
+	width:145px;
+	float:left;
+	padding-left:10px;
+	line-height:16px;
+	height:48px;
+	overflow:hidden;
+}
+.sidecont .newscont .cc1 .listpica .word .t{
+	height:16px;
+	overflow:hidden;
+}
+.sidecont .newscont .cc1 .listpica .word .t a{
+	color:#2143dc;
+}
+.sidecont .newscont .cc1 .listpica .word .m{
+	color:#777;
+	text-indent:20px;
+}
+.sidecont .newscont .cc2{
+	padding-top:8px;
+}
+.sidecont .newscont .cc2 .list{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	color:#999;
+}
+/*
+*
+*/
+.slidescont{
+	width:508px;
+	height:288px;
+	border:#DBDBDB solid 1px;
+	overflow:hidden;
+}
+
+.slidescont .slidePic{
+	width:380px;
+	height:288px;
+	border-right:#DBDBDB solid 1px;
+	overflow:hidden;
+	float:left;
+}
+.slidescont .slidePic li{
+	height:288px;
+	overflow:hidden;
+}
+.slidescont .slidePic li div{
+	width:360px;
+	margin:auto;
+	overflow:hidden;
+	text-align:center;
+}
+.slidescont .slidePic li div.img{
+	height:245px;
+	padding-top:10px;
+}
+.slidescont .slidePic li div.t{
+	height:20px;
+	line-height:20px;
+	padding-top:8px;
+}
+.slidescont .slidePic li div.t a{
+	font-size:14px;
+	color:#0000CC;
+}
+.slidescont .slideTxt{
+	width:127px;
+	height:287px;
+	overflow:hidden;
+	float:left;
+}
+.slidescont .slideTxt li{
+	height:77px;
+	border-bottom:#DBDBDB solid 1px;
+	padding-top:18px;
+	overflow:hidden;
+	text-align:center;
+	cursor:pointer;
+	FILTER: alpha(opacity=50);
+	opacity: 0.5;
+}
+.slidescont .slideTxt li.cur{
+	background:url(curbg.gif) center top no-repeat;
+	FILTER: alpha(opacity=100);
+	opacity: 1;
+}
+/*
+*
+*/
+.sidecont .head .cou{
+	float:right;
+	display:block;
+	width:25px;
+	height:25px;
+	background:url(coubg.gif) right top no-repeat;
+}
+.sidecont .couponcont{
+	height:240px;
+	overflow:hidden;
+	padding:3px 10px 10px 10px;
+}
+.sidecont .couponcont div{
+	height:24px;
+	line-height:24px;
+	overflow:hidden;
+	padding-right:5px;
+}
+.sidecont .couponcont div span{
+	display:block;
+	width:20px;
+	text-align:center;
+	font-size:10px;
+	float:left;
+	color:#868686;
+	background:url(numbg.gif) center -20px no-repeat;
+}
+.sidecont .couponcont div.list1 span,.sidecont .couponcont div.list2 span,.sidecont .couponcont div.list3 span{
+	background:url(numbg.gif) center 5px no-repeat;
+	color:#FFF;
+}
+/*
+*
+*/
+.TzInfo,.ShowSort,.ShowCommpany{
+	border:#DBDBDB solid 1px;
+}
+.MainL .head{
+	height:29px;
+	padding-top:10px;
+	overflow:hidden;
+	background:url(head1.gif) repeat-x;
+}
+.MainL .head a{
+	color:#2143DC;
+}
+.MainL .head .tag{
+	float:left;
+	line-height:20px;
+	padding:0 50px 0 20px;
+	font-size:14px;
+	font-weight:bold;
+}
+.MainL .head .more{
+	float:right;
+	line-height:20px;
+	padding-right:10px;
+}
+.MainL .ShowSort .head .tag{
+	color:#CC3333;
+}
+.MainL .ShowSort .head .more{
+	margin-top:-5px;
+}
+.ShowCommpany .head div{
+	width:80px;
+	height:28px;
+	border-top:#DBDBDB solid 1px;
+	border-right:#DBDBDB solid 1px;
+	float:left;
+	text-align:center;
+	background:url(out1.gif) left -1px repeat-x;
+	overflow:hidden;
+	line-height:30px;
+	cursor:pointer;
+	color:#666666;	
+}
+#Span1{
+	border-left:#DBDBDB solid 1px;
+}
+.ShowCommpany .head div.choose{
+	background:#FFF;
+	color:#2143DC;
+}
+.ShowCommpany .cont{
+	height:260px;
+	overflow:hidden;
+	padding-top:15px;
+	padding-left:10px;
+}
+.ShowCommpany .cont .lista{
+	width:148px;
+	height:130px;
+	overflow:hidden;
+	float:left;
+}
+.ShowCommpany .cont .lista div{
+	width:120px;
+	margin:auto;
+	text-align:center;
+}
+.ShowCommpany .cont .lista div.img{
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.ShowCommpany .cont .lista div.img a{
+	display:block;
+	width:120px;
+	height:90px;
+	overflow:hidden;
+	background:#efefef;
+}
+.ShowCommpany .cont .lista div.t{
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	padding-top:5px;
+}
+.ShowSort .cont td{
+	width:33%;
+}
+.ShowSort .cont .havebg td{
+	background:#fafafa;
+}
+.ShowSort .cont td.choose{
+	background:#efefef;
+}
+.ShowSort .cont td dl dt{
+	height:25px;
+	overflow:hidden;
+	line-height:28px;
+	padding-left:15px;
+	padding-top:5px;
+}
+.ShowSort .cont td dl dt a{
+	font-size:14px;
+	font-weight:bold;
+	color:#2143DC;
+}
+.ShowSort .cont td dl dd{
+	padding:0 10px 5px 15px;
+	line-height:20px;
+	color:#999;
+	word-spacing:3px;
+}
+.ShowSort .cont td dl dd a{
+	color:#666;
+}
+.ShowSort .cont td dl dd a.m{
+	color:#f60;
+}
+.TzInfo .cont{
+	height:170px;
+	overflow:hidden;
+	position:relative;
+}
+#showup,#showdown{
+	width:18px;
+	height:64px;
+	position:absolute;
+	top:49px;
+	z-index:1000;
+}
+#showup{
+	left:22px;
+}
+#showdown{
+	right:22px;
+}
+.TzInfo .cont .up0{
+	background:url(up0.gif);
+}
+.TzInfo .cont .up{
+	background:url(up.gif);
+	cursor:pointer;
+}
+.TzInfo .cont .down0{
+	background:url(down0.gif);
+}
+.TzInfo .cont .down{
+	background:url(down.gif);
+	cursor:pointer;
+}
+.TzInfo .cont ul{
+	width:670px;
+	height:145px;
+	overflow:hidden;
+	padding:25px 0 0 45px;
+}
+.TzInfo .cont ul li{
+	width:134px;
+	height:145px;
+	overflow:hidden;
+	float:left;
+}
+.TzInfo .cont ul li div{
+	width:110px;
+	margin:auto;
+	text-align:center;
+}
+.TzInfo .cont ul li div.img{
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.TzInfo .cont ul li div.img a{
+	display:block;
+	width:110px;
+	height:90px;
+	background:#efefef;
+	overflow:hidden;
+}
+.TzInfo .cont ul li div.t{
+	height:20px;
+	line-height:20px;
+	overflow:hidden;
+	padding-top:8px;
+}
+
+/*
+*
+*/
+.sidecont .dianpingcong{
+	padding:0 10px 10px 10px;
+	color:#888;
+	line-height:20px;
+}
+.sidecont .dianpingcong a{
+	color:#369;
+}
+.sidecont .dianpingcong .listdianpin{
+	padding-top:8px;
+}
+.sidecont .dianpingcong .listdianpin .c{
+	color:#6C9932;
+}
+.sidecont .dianpingcong .listdianpin .dp img{
+	width:12px;
+	height:11px;
+}
+/*
+*
+*/
+.sidecont .tzcommany{
+	padding:0 10px 10px 10px;
+}
+.sidecont .tzcommany .listtz{
+	height:60px;
+	overflow:hidden;
+	background:url(dotted.gif) left 69px repeat-x;
+	padding-top:10px;
+	position:relative;
+}
+.sidecont .tzcommany .listtz .num{
+	width:15px;
+	height:20px;
+	position:absolute;
+	text-align:center;
+	line-height:18px;
+	background:url(numbg1.gif) center top no-repeat;
+	z-index:1000;
+	left:1px;
+	top:12px;
+	color:#FFF;
+}
+.sidecont .tzcommany .listtz .img{
+	width:60px;
+	height:50px;
+	text-align:center;
+	background:#efefef;
+	text-align:center;
+	overflow:hidden;
+	float:left;
+}
+.sidecont .tzcommany .listtz .word{
+	width:125px;
+	float:left;
+	padding-left:10px;
+	line-height:17px;
+	color:#888;
+}
+.sidecont .tzcommany .listtz .word div{
+	height:17px;
+	overflow:hidden;
+}
+.sidecont .tzcommany .listtz .word div a{
+	color:#2143DC;
+}
+.sidecont .tzcommany .listtz .word div span{
+	color:#f60;
+}
+/*
+*
+*/
+.sidecont .cont1{
+	width:100%;
+	text-align:center;
+	overflow:hidden;
+	padding-top:15px;
+}
+.sidecont .cont2{
+	padding:10px;
+}
+.sidecont .cont2 div{
+	height:23px;
+	line-height:23px;
+	overflow:hidden;
+	padding-left:5px;
+	color:#888;
+}
+/*
+*
+*/
+.MainBanner{
+	width:990px;
+	overflow:hidden;
+	margin-top:10px;
+	text-align:center;
+}

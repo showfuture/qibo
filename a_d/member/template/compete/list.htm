@@ -1,0 +1,230 @@
+<!--
+<?php
+if($job=='buy'){
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">购买广告</div></div>
+    <div class="cont">
+        <form name="form1" method="post" action="?">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr> 
+            <td class="tdL"> 所在城市:</td>
+            <td class="tdR">{$city_DB[name][$city_id]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL"> 广告位名称:</td>
+            <td class="tdR">{$rsdb[name]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL">投放天数:</td>
+            <td class="tdR">{$rsdb[day]}天</td>
+          </tr>
+          <tr> 
+            <td class="tdL"> 消费{$webdb[MoneyName]}:</td>
+            <td class="tdR">{$webdb[MoneyName]}<span class="b red">{$lfjdb[money]}</span> $webdb[MoneyDW] (你当前具有消费的{$webdb[MoneyName]}数是)</td>
+          </tr>
+          <tr> 
+            <td class="tdL">价格:</td>
+            <td class="tdR"><input type="text" name="postdb[price]" size="5" value="$rsdb[price]">(出价越高,越排前)</td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告文字内容:</td>
+            <td class="tdR"><input type="text" name="postdb[adword]"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告链接地址:</td>
+            <td class="tdR"><input type="text" name="postdb[adlink]" size="50"></td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+              <input type="submit" name="Submit" value=" 购 买 ">
+              <input type="hidden" name="step" value="2">
+              <input type="hidden" name="job" value="$job">
+              <input type="hidden" name="id" value="$id">
+            </td>
+          </tr>
+        </table>
+        </form>
+	</div>
+</div>
+<!--
+EOT;
+}elseif($job=='list'){
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">现有广告位列表</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="30%">广告位名称</th>
+            <th width="15%">广告空位</th>
+            <th width="15%">投放天数</th>
+            <th width="10%">底价</th>
+            <th width="10%">广告</th>
+            <th width="10%">效果</th>
+            <th width="10%">购买</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+		  <tr>
+            <td class="tL">{$rs[name]}</td>
+            <td>{$rs[AdNum]}(个)</td>
+            <td>$rs[day]</td>
+            <td>$rs[price]</td>
+            <td><a href="?job=sell_list&id=$rs[id]"><img alt='' src='$webdb[www_url]/member/images/art_icon.gif'/></a></td>
+            <td><a href="$rs[demourl]" title="点击浏览" target="_blank"><img src="$webdb[www_url]/member/images/icon_view.gif"/></a></td>
+            <td><a href="?job=buy&id=$rs[id]" style="color:red;">购买</a></td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </table>
+        <div class="Showpage">$showpage</div>
+    </div>
+</div>
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">相关信息</div></div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1.购买以上竞价广告,需要{$webdb[MoneyName]}购买,你当前拥有的{$webdb[MoneyName]}数是 <span class="b red">{$lfjdb[money]}</span> 个</li>
+            <li>2.如果你的{$webdb[MoneyName]}不足,你可以在线充值.<a href="$webdb[www_url]/member/money.php?job=list"><span class="b red">我要充值</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--
+EOT;
+}elseif($job=='mylist'){
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">我购买的广告</div></div>
+    <div class="cont">    	
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+        <tr> 
+          <th width="15%">广告位名称</th>
+          <th width="15%">所在城市</th>
+          <th width="25%">广告内容</th>
+          <th width="29%">开始日期/结束日期</th>
+          <th width="8%">出价</th>
+          <th width="8%">操作</th>
+        </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+        <tr> 
+          <td class="tL">{$rs[name]}</td>
+          <td>{$city_DB[name][$rs[city_id]]}</td>
+          <td><a href="{$rs[adlink]}" target="_blank">{$rs[adword]}</a></td>
+          <td>$rs[begintime]/$rs[endtime] </td>
+          <td>$rs[money]</td>
+          <td><a href="?job=edit&ad_id=$rs[ad_id]"><img alt='点击修改' src='$webdb[www_url]/member/images/button_edit.png'/></a> 
+            <a href="?action=del&ad_id=$rs[ad_id]"  onclick="return confirm('你确认要删除吗?不可恢复')"><img alt='点击删除' src='$webdb[www_url]/member/images/del_icon2.gif'></a></td>
+        </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+      </table>
+      <div class="Showpage">$showpage</div>
+    </div>
+</div>
+<!--
+EOT;
+}elseif($job=='sell_list'){
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">已购买的广告</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+              <th width="25%">广告内容</th>
+              <th width="15%" >用户名</th>
+              <th width="40%" >开始日期/结束日期</th>
+              <th width="10%" >出价</th>
+              <th width="10%" >状态</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+		  <tr>
+            <td class="tL"><a href="{$rs[adlink]}" target="_blank">{$rs[adword]}</a></td>
+            <td>{$rs[username]}</td>
+            <td>$rs[begintime]/$rs[endtime] </td>
+            <td>$rs[money]</td>
+            <td>$rs[state]</td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </table>
+        <div class="Showpage">$showpage</div>
+    </div>
+</div>
+<!--
+EOT;
+}elseif($job=='edit'){
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">购买广告</div></div>
+    <div class="cont">
+        <form name="form1" method="post" action="?">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr> 
+            <td class="tdL"> 所在城市:</td>
+            <td class="tdR">{$city_DB[name][$rsdb[city_id]]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL"> 广告位名称:</td>
+            <td class="tdR">{$rsdb[name]}</td>
+          </tr>
+          <tr> 
+            <td class="tdL">投放日期:</td>
+            <td class="tdR">开始:$rsdb[begintime] &nbsp;&nbsp; 结束:$rsdb[endtime] </td>
+          </tr>
+          <tr> 
+            <td class="tdL">出价:</td>
+            <td class="tdR">$rsdb[money] </td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告文字内容:</td>
+            <td class="tdR"><input type="text" name="postdb[adword]" value="$rsdb[adword]"></td>
+          </tr>
+          <tr> 
+            <td class="tdL">广告链接地址:</td>
+            <td class="tdR"><input type="text" name="postdb[adlink]" size="50" value="$rsdb[adlink]"></td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+              <input type="submit" name="Submit2" value=" 修 改  ">
+              <input type="hidden" name="step" value="2">
+              <input type="hidden" name="ad_id" value="$ad_id">
+              <input type="hidden" name="job" value="$job">
+            </td>
+          </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<!--
+EOT;
+}
+?>
+-->

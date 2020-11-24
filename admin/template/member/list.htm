@@ -1,0 +1,172 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+function ckdel(){
+	msg=confirm('你确认要批量删除选中用户吗？你慎重考虑，不可恢复！');
+	if(!msg){
+		return false;
+	}
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+
+<form name="form_work" id="form_work" method="post" action="?lfj=$lfj&action=delete" onsubmit="return ckdel();">
+
+  <tr class="head"> 
+    <td width="7%" align="center">UID</td>
+    <td align="center">用户名</td>
+    <td width="18%" align="center">日期</td>
+    <td width="15%" align="center">IP</td>
+    <td width="17%" align="center">电子邮箱</td>
+    <td width="12%" align="center">用户权限</td>
+    <td width="9%" align="center">修改/删除</td>
+    <td width="8%" align="center">审核与否</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td align="center"><input type="checkbox" name="uid_db[]" value="$rs[uid]">
+$rs[uid]</td>
+      <td > <a href="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]" onclick="$rs[alert]" target="_blank">$rs[username]</a> 
+        <!--
+EOT;
+if($rs[email_yz]==1){
+print <<<EOT
+-->
+        <font color="#FF0000" title="邮件验证用户">邮</font> 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <!--
+EOT;
+if($rs[mob_yz]==1){
+print <<<EOT
+-->
+        <font color="#FF0000" title="手机验证用户">手</font> 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <!--
+EOT;
+if($rs[idcard_yz]==1){
+print <<<EOT
+-->
+        <font color="#FF0000" title="身份证验证用户">身</font> 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <!--
+EOT;
+if($rs[idcard_yz]==-1){
+print <<<EOT
+-->
+        <font color="#0000FF" title="身份证等待审核验证用户">身</font> 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+        <!--
+EOT;
+if($rs[qq_api]){
+print <<<EOT
+-->
+        <a href="index.php?lfj=$lfj&action=unbind&uid=$rs[uid]" title="当前用户已绑定QQ帐号,点击可取消绑定!"><font color="#FF0000">Q</font></a> 
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+      </td>
+    <td   align="center">注册:$rs[regdate]<br>访问:$rs[lastvist]</td>
+    <td  align="center">注册:$rs[regip]$rs[regip_area]<br/>访问:$rs[lastip]$rs[lastip_area]</td>
+    <td align="center">$rs[email]</td>
+    <td  align="center">{$ltitle[$rs[groupid]]}</td>
+    <td  align="center"> 
+      <!--
+EOT;
+if($rs[groupid]||$rs[regdate]){
+print <<<EOT
+-->
+      <a href="index.php?lfj=$lfj&job=editmember&uid=$rs[uid]" onclick="$rs[alert]" title="修改会员资料"><img src="../member/images/button_edit.png" border="0"></a> 
+&nbsp;
+      <a href="index.php?lfj=$lfj&action=delete&uid=$rs[uid]" onclick="{$rs[alert]};return confirm('你确实要删除此会员吗?不可恢复,请慎重!')" title="删除当前会员"><img src="../member/images/del_icon2.gif" border="0"></a> 
+      <!--
+EOT;
+}
+print <<<EOT
+-->
+    </td>
+    <td   align="center">$rs[yz]</td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td colspan="8" align="center">$showpage</td>
+  </tr><tr bgcolor="#FFFFFF"> 
+    <td colspan="8" align="center">　<a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> <input type="submit" name="Submit" value="批量删除">
+</td>
+  </tr>
+  </form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+<form name="form1" method="post" action="index.php?lfj=$lfj&job=$job">
+    <tr bgcolor="#FFFFFF" align="left"> 
+      <td colspan="8">只列出指定用户组的用户{$select_group}　　
+         
+        搜索&gt;&gt; 关键字<a href="index.php?lfj=$lfj&action=delete&uid=$rs[uid]"></a> 
+        <input type="text" name="keywords">
+        <select name="type">
+          <option value="username">用户名</option>
+          <option value="uid">用户uid</option>
+        </select>
+        <input type="submit" name="Submit" value="搜索">
+        [<a href="index.php?lfj=$lfj&job=$job">查看全部用户</a>] </td>
+    </tr>
+  </form></table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td>说明:</td>
+  </tr>
+  <tr>
+    <td>1.如果用户通过邮箱验证,就会在他的帐号后面有一个<font color="#FF0000" title="邮件验证用户"> 邮</font> 
+      字<br>
+      2.如果用户通过手机验证,就会在他的帐号后面有一个<font color="#FF0000" title="邮件验证用户"> </font><font color="#FF0000" title="手机验证用户">手</font> 
+      字 <br>
+      3.如果用户通过身份验证,就会在他的帐号后面有一个<font color="#FF0000" title="邮件验证用户"> </font><font color="#FF0000" title="身份证验证用户">身</font> 
+      字<br>
+      4.如果用户绑定了QQ号码,就会在他的帐号后面有一个<font color="#FF0000" title="邮件验证用户"> </font><font color="#FF0000" title="身份证验证用户">Q</font> 
+      字,点击可取消绑定,以方便更换其它QQ号码</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

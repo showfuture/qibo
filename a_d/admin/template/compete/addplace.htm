@@ -1,0 +1,170 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	if(p=='pic'){
+		document.getElementById("imgurl").value=url;
+	}else{
+		document.getElementById("flashurl").value=url;
+	}
+	
+}
+//-->
+</SCRIPT><table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+  <tr> 
+    <td align="left"> [<a href="$admin_path&job=listad">广告位管理</a>] [<a href="$admin_path&job=addplace">添加广告位</a>] 
+      [<a href="../member/index.php?main=../$dirname/member/compete.php?job=list" target="_blank">购买广告</a>] 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan="2">竞价广告位管理</td>
+    </tr>
+    <!--
+EOT;
+if($job=="editadplace"){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%">是否停止购买:<span help=1>停止后,将禁止用户购买,已购买的还继续生效,直到失效为止</span></td>
+      <td width="72%"> 
+        <input type="radio" name="isclose" value="1" $isclose[1]>
+        是 
+        <input type="radio" name="isclose" value="0" $isclose[0]>
+        否 </td>
+    </tr><tr bgcolor="#FFFFFF"> 
+      <td width="28%">排序值:<span help=1>数值大的排在前面,可留空</span></td>
+      <td width="72%"> 
+        <input type="text" name="postdb[list]" value="$rsdb[list]" size="5">
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%">广告位名称: </td>
+      <td width="72%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]" size="40">
+      </td>
+    </tr><tr bgcolor="#FFFFFF">
+      <td  >广告所在页面网址:<span help=1>这一项,可以留空.<br>但是,当你的广告位设置给用户购买的时候,建议不要留空,方便用户查看广告位的具体位置及展示效果.<br>同时也建议你画一张图,指出具体的广告位置,然后在这里输入这张图片的访问网址,以方便用户准确的理解到这个广告的位置及展未效果.</span></td>
+      <td  >
+        <input type="text" name="postdb[demourl]" value="$rsdb[demourl]" size="50">
+        (可留空) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%">同时最多显示的广告总个数:<span help=1>此广告位,最多允许同时显示多少条文字广告</span></td>
+      <td width="72%"> 
+        <input type="text" name="postdb[adnum]" value="$rsdb[adnum]" size="5">
+        个</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td width="28%">每条广告的文字数:<span help=1>一个汉字占用两个字母的位置.你可以限制一下,禁止用户输入过多的字符,撑破网页表格布局</span></td>
+      <td width="72%"> 
+        <input type="text" name="postdb[wordnum]" size="4" maxlength="3" value="$rsdb[wordnum]">
+        个 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%">有效投放天数:<span help=1>你可以设置本广告位,购买一次可以显示几天.到期后需要重新购买</span></td>
+      <td width="72%"> 
+        <input type="text" name="postdb[day]" value="$rsdb[day]" size="5">
+        天 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="28%">最低起价:({$webdb[MoneyName]})<span help=1>你可以设置本广告位每条广告的最低售价,出价越高将显示在越前面</span></td>
+      <td width="72%"> 
+        <input type="text" name="postdb[price]" size="5" value="$rsdb[price]">
+        $webdb[MoneyDW] </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2" align="center"> 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_type(type){
+	if(type=="word"){
+		document.getElementById("word_bt").checked=true;
+		document.getElementById("pic_bt").checked=false;
+		document.getElementById("swf_bt").checked=false;
+		document.getElementById("code_bt").checked=false;
+
+		document.getElementById("worddiv").style.display='';
+		document.getElementById("picdiv").style.display='none';
+		document.getElementById("flashdiv").style.display='none';
+		document.getElementById("codediv").style.display='none';
+	}else if(type=="pic"){
+		document.getElementById("word_bt").checked=false;
+		document.getElementById("pic_bt").checked=true;
+		document.getElementById("swf_bt").checked=false;
+		document.getElementById("code_bt").checked=false;
+
+		document.getElementById("worddiv").style.display='none';
+		document.getElementById("picdiv").style.display='';
+		document.getElementById("flashdiv").style.display='none';
+		document.getElementById("codediv").style.display='none';
+	}else if(type=="swf"){
+		document.getElementById("word_bt").checked=false;
+		document.getElementById("pic_bt").checked=false;
+		document.getElementById("swf_bt").checked=true;
+		document.getElementById("code_bt").checked=false;
+
+		document.getElementById("worddiv").style.display='none';
+		document.getElementById("picdiv").style.display='none';
+		document.getElementById("flashdiv").style.display='';
+		document.getElementById("codediv").style.display='none';
+	}else if(type=="code"){
+		document.getElementById("word_bt").checked=false;
+		document.getElementById("pic_bt").checked=false;
+		document.getElementById("swf_bt").checked=false;
+		document.getElementById("code_bt").checked=true;
+
+		document.getElementById("worddiv").style.display='none';
+		document.getElementById("picdiv").style.display='none';
+		document.getElementById("flashdiv").style.display='none';
+		document.getElementById("codediv").style.display='';
+	}
+}
+choose_type('$rsdb[type]');
+//-->
+</SCRIPT>
+        <input type="hidden" name="id" value="$id">
+        <input type="submit" name="Submit" value="提 交">
+        <script language="javascript">
+function cutimg() 
+{
+	var img=document.getElementById("imgurl").value;
+	var cw=document.getElementById("imgwidth").value;
+	var ch=document.getElementById("imgheight").value;
+	if(cw==''){
+		document.getElementById("imgwidth").focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.getElementById("imgheight").focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	if(img.indexOf("http://")==-1){
+		img="$webdb[www_url]/$webdb[updir]/"+img;
+	}
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+}else{
+	document.getElementById("imgurl").focus();
+	alert('图片地址不存在');
+}
+}
+</script>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

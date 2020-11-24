@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]</title>
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/default.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/new.css">
+<link rel="stylesheet" type="text/css" href="$Murl/images/homepage_style/$homepage_style/default.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+</head>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<!--
+EOT;
+if($webdb[allNotice]){
+print <<<EOT
+-->
+<div style="  padding:5px; background-color:#FDE9EB; border-bottom:1px #CC0000 solid; color:#FF0000; font-size:12px; font-weight:bold; text-align:center;">
+$webdb[allNotice]
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div id="topdiv">
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr>
+<td width="600" class="left"><script src="$webdb[www_url]/do/hack.php?hack=login&job=js"></script></td>
+<td width="390" class="right">
+	<a href="$webdb[www_url]/home/?uid=$lfjuid" target="_blank"><img src="$Murl/images/homepage_style/$homepage_style/top1.gif"  border="0" class="ico"/>我的商铺</a>
+    <a href="$webdb[www_url]/member/" target="_blank"><img src="$Murl/images/homepage_style/$homepage_style/top2.gif"  border="0" class="ico"/><font color="red">会员中心</font></a>
+    <a href="$webdb[www_url]/member/?main=$Murl/member/post_company.php">登记商家<img src="$Murl/images/default/free.gif" border="0"  /></a>
+</td>
+</tr>
+</table>	
+</div>
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr>
+<td width="440">
+      <div class="logo" ><A HREF="$webdb[www_url]/"><img src="$Murl/images/homepage_style/$homepage_style/logo.gif" border=0></A></div>
+</td>
+<td width="550">
+<form action="" target='_blank' method="post" name="form1" id="form1"  onsubmit="return checksearch(this);" >
+    <table width="100%" cellspacing="0" cellpadding="0" id="topsearch">
+      <tr>
+        <td style="padding-left:10px;">
+<select id="ctype" name="ctype" class="inpt">
+<option value="" >请选择搜索类型</option>
+<option value="f">分类信息</option>
+<option value="hy">商家黄页</option>
+<option value="shop">商家产品</option>
+<option value="do">文章资讯</option>
+</select>
+<input name="keyword" type="text" id="keyword"   value="$keyword" size="38"  class="inpt"/>
+<script language="JavaScript" type="text/javascript">
+function checksearch(myform){
+	if(myform.ctype.value==''){
+		alert("请选择搜索类型");
+		return false;
+	}
+	if(myform.keyword.value==''){
+		alert("请输入你要搜索的关键字");
+		return false;
+	}
+	myform.action = "$webdb[www_url]/"+myform.ctype.value+"/search.php?action=search";
+}
+</script>
+        </td>
+        <td><input type="submit" name="button" id="button" value=" " class="sbt" /></td>
+      </tr>
+    </table>
+  </form>
+ </td>
+</tr>
+</table>
+<div id="hpgguite">
+<table width="990" border="0" cellspacing="0" cellpadding="0"    align="center">
+<tr>
+<td width="440">
+     <a href="$Mdomain/">首页</a>   &gt; <a href="?uid=$uid">$rsdb[title]</a>
+</td>
+<td width="550" class="right">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($Hname,$Hurl,$Hblank,$Hcolor,$Hlid)=explode("|",$value);
+if(ereg("^\/",$Hurl)){$Hurl="$webdb[www_url]$Hurl";}elseif(!ereg("://",$Hurl)){$Hurl="$webdb[www_url]$webdb[path]/$Hurl";}
+print <<<EOT
+-->
+          | <a href="$Hurl" target="_blank">{$Hname}</a>  
+<!--
+EOT;
+}print <<<EOT
+-->
+</td>
+</tr>
+</table>
+</div>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--//目的是为了做风格方便
+document.write('<div class="wrap">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

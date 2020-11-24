@@ -1,0 +1,55 @@
+<!--
+<?php
+print <<<EOT
+-->
+<form action="?&uid=$uid" method="post" name="a">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="PicTable">
+  <tr>
+  	  <td width="100">
+      	<div class="listPic" style="height:95px;">
+        	<div class="img"><img src="$rsdb[faceurl].gif" width="90" height="90" onerror="this.src='$webdb[www_url]/images/default/nopic.jpg';"/></div>
+        </div>
+      </td>
+      <td class="RightTd">
+      	  <div>$rsdb[name]</div>
+          <div>$rsdb[remarks] </div>
+          <div><a href="?atn=pic_upload&uid=$uid&psid=$psid"><img src="$Murl/images/default/userpicupload.gif"/></a></div>
+          <div>
+          	<input type="submit" name="button16" id="button16" value="编辑选中项" onclick="document.getElementById('myaction').value='pic_edit';" />
+            <input type="submit" name="button17" id="button17" value="删除选中项" onclick="if(confirm('确定删除选中项目吗？')){document.getElementById('myaction').value='pic_del';}else{return false;}"/>
+            <input type="submit" name="button16" id="button16" value="设为图集封面" onclick="document.getElementById('myaction').value='pic_fm';" />
+            <input type="button" name="button16" id="button16" value="返回图库" onclick="window.location='?atn=pic&uid=$uid';" />
+            <input name="atn" type="hidden" id="myaction" value="pic_del" />
+            <input name="psid" type="hidden" id="psid" value="$psid" />
+          </div>
+      </td>
+  </tr>
+  <tr>
+      <td colspan="2" align="left" valign="top" height="330"><div>
+<!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+          <div class="listPic"> 
+          	<div class="img">
+            <a href="$Mdomain/homepage.php?uid=$rs[uid]&m=pics&psid=$rs[psid]&pid=$rs[pid]" target="_blank"><img src="$rs[url].gif" width="90" height="90"  onerror="this.src='$Murl/images/default/userpicdefault.gif';" /></a>
+            </div>
+            <div class="t">
+               <div><input type="checkbox" name="pids[]" value="$rs[pid]" /> $rs[title]</div>
+             </div>
+           </div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+         </td>
+    </tr>
+</table>
+<div class="Showpage">$showpage</div>
+</form>
+<!--
+EOT;
+?>
+-->

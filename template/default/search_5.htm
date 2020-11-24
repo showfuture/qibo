@@ -1,0 +1,153 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+-->
+<script language="JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+'window.location.href=?mid='+this.options[this.selectedIndex].value);
+  if (restore) selObj.selectedIndex=0;
+}
+ 
+function ck_searchpage(){
+	form=document.form_searchpage; 
+	if(form.fid.value=='0'){
+		//alert("请选择一个栏目!!");
+		//return false;		
+	}
+	if(form.keyword.value==''){
+		alert("关键字不能为空!!");
+		return false;		
+	}
+	
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="100%" height="393" valign="top" class="Main"> 
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG"><a >搜索</a></span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle">  
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable">
+              <form name="form_searchpage" method="post" action="" onsubmit="return ck_searchpage();">
+                <tr align="center"> 
+                  <td colspan="2">高级搜索</td>
+                </tr>
+                <tr> 
+                  <td width="21%">搜索模型:</td>
+                  <td width="79%"> $module_select</td>
+                </tr>
+                <tr> 
+                  <td width="21%">搜索栏目:</td>
+                  <td width="79%">$fid_select 
+                    <input type="checkbox" name="postdb[city_id]" value="$city_id" $city_check> 
+                    只搜索当前城市的信息 </td>
+                </tr>
+                <tr> 
+                  <td width="21%">关键字:</td>
+                  <td width="79%"> 
+                    <input type="text" name="keyword" value="$keyword">
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="21%" height="23">搜索类型:</td>
+                  <td width="79%" height="23"> 
+                    <input type="radio" name="type" value="title" $typedb[title]>
+                    标题
+                    <input type="radio" name="type" value="mobphone" $typedb[mobphone]>
+                    手机号码 
+                    <input type="radio" name="type" value="username" $typedb[username] >
+                    发布者 <!----></td>
+                </tr>
+                <tr><td>条件要求</td><td><select name='postdb[sortid]' id='atc_sortid'><option value=''>不限</option><option value='1' {$rsdb[sortid]['1']}>漂亮</option><option value='2' {$rsdb[sortid]['2']}>贤慧</option><option value='3' {$rsdb[sortid]['3']}>英俊</option><option value='4' {$rsdb[sortid]['4']}>上进</option><option value='5' {$rsdb[sortid]['5']}>老实</option></select>  </td></tr><tr><td>学历</td><td><select name='postdb[schoo_age]' id='atc_schoo_age'><option value=''>不限</option><option value='1' {$rsdb[schoo_age]['1']}>小学</option><option value='2' {$rsdb[schoo_age]['2']}>初中</option><option value='3' {$rsdb[schoo_age]['3']}>高中</option><option value='4' {$rsdb[schoo_age]['4']}>中专</option><option value='5' {$rsdb[schoo_age]['5']}>大专</option><option value='6' {$rsdb[schoo_age]['6']}>本科</option><option value='7' {$rsdb[schoo_age]['7']}>研究生</option><option value='8' {$rsdb[schoo_age]['8']}>博士以上</option></select>  </td></tr><!----> 
+                <tr> 
+                  <td width="21%">&nbsp;</td>
+                  <td width="79%"> 
+                    <input type="button" name="Submit2" value="重新搜索" onclick="window.location.href='?mid=$mid'">
+                    　　 
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="action" value="search">
+                  </td>
+                </tr>
+              </form>
+            </table>
+            <br>
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" id="bigtable" style="display:$style_list;">
+              <tr align="center" bgcolor="#F0F0F0"> 
+                <td width="5%">ID</td>
+                <td  >标题</td>
+				 <td>条件要求</td> <td>学历</td><!---->
+                <td width="6%">发布者</td>
+                <td width="10%">所在栏目</td>
+                <td width="12%">所属地区</td>
+                <td width="13%">发布日期</td>
+              </tr>
+              <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+              <tr> 
+                <td   align="center" style="border-bottom:1px dotted #ccc;">$rs[id]</td>
+                <td   style="border-bottom:1px dotted #ccc;"><a href="$rs[url]" target="_blank">$rs[title]</a></td>
+				 <td align="center" style="border-bottom:1px dotted #ccc;">{$rs[sortid]} </td> <td align="center" style="border-bottom:1px dotted #ccc;">{$rs[schoo_age]} </td><!---->
+                <td   align="center" style="border-bottom:1px dotted #ccc;">$rs[username]</td>
+                <td   align="center" style="border-bottom:1px dotted #ccc;"><a href="$rs[Lurl]" target="_blank">$rs[fname]</a></td>
+                <td   align="center" style="border-bottom:1px dotted #ccc;">{$city_DB[name][$rs[city_id]]}/{$zone_DB[name][$rs[zone_id]]}</td>
+                <td   align="center" style="border-bottom:1px dotted #ccc;">$rs[posttime]</td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table>
+<!--
+EOT;
+if($action=="search"&&!$listdb){
+print <<<EOT
+-->
+<div id="searchNO">
+很抱歉,没有找到你要查询的内容!!
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			
+            <table width="100%" border="0" cellspacing="0" cellpadding="7">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+ 
+    </td>
+     
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

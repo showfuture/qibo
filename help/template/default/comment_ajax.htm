@@ -1,0 +1,33 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+$delword = $rs[ifadmin] ? "<A HREF=\"javascript:getcomment('{$Mdomain}/comment_ajax.php?action=del&id=$id&cid=$rs[cid]')\">删除</A>" : "";
+print <<<EOT
+-->
+<div class="ListComment">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="img"><div><A HREF="$webdb[www_url]/member/userinfo.php?uid=$rs[uid]" target="_blank"><img src='$rs[icon]' onerror="this.src='$webdb[www_url]/images/default/nobody.gif'" width="60" /></A></div></td>
+    <td class="word">
+    	$rs[content] 
+<div class="info">
+    ID:{$rs[cid]} 称呼:{$rs[username]} 日期:{$rs[posttime]} 
+    <A HREF="javascript:getcomment('{$Mdomain}/comment_ajax.php?action=vote&id=$id&cid=$rs[cid]&posttype=ajax&job=agree')">支持:<font color="#FF0000">{$rs[agree]}</font>票</A> 
+	<A HREF="javascript:getcomment('{$Mdomain}/comment_ajax.php?action=vote&id=$id&cid=$rs[cid]&posttype=ajax&job=disagree')">反对:<font color="#0000FF">{$rs[disagree]}</font>票</A> 
+    <A HREF="javascript:quotecomment('[quote]引用ID编号为{$rs[cid]},称呼为{$rs[username]}于{$rs[posttime]}发表的  :\\r\\n{$rs[title]}[/quote]\\r\\n')">引用回复</A> $delword
+</div>   	        
+    </td>
+  </tr>
+</table>	
+</div>
+<!--
+EOT;
+}
+$showpage = $showpage ? "<div class=\"showpage\">$showpage</div>" : "";
+print <<<EOT
+-->
+$showpage
+<!--
+EOT;
+?>
+-->

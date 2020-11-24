@@ -1,0 +1,144 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	form1.img.value=url;
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form id="form1" name="form8" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=$inc&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&">
+    <tr class="head" align="center"> 
+      <td colspan="2"> 
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF" width="18%">消息内容<br>
+        (可加html代码) </td>
+      <td bgcolor="#FFFFFF" width="82%"> 
+        <textarea name="code" cols="80" rows="5" id="code">$rsdb[code]</textarea>
+        <br>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF" width="18%">滚动方向</td>
+      <td bgcolor="#FFFFFF" width="82%"> 
+        <input type="radio" name="c_rolltype" value="left" $c_rolltypedb[left]>
+        向左 
+        <input type="radio" name="c_rolltype" value="right" $c_rolltypedb[right]>
+        向右 
+        <input type="radio" name="c_rolltype" value="up" $c_rolltypedb[up]>
+        向上 
+        <input type="radio" name="c_rolltype" value="down" $c_rolltypedb[down]>
+        向下 </td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" width="18%">高度</td>
+      <td bgcolor="#FFFFFF" width="82%">
+        <input type="text" name="c_height" value="$c_height" size="5">
+        像素 </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF" width="18%">滚动速度</td>
+      <td bgcolor="#FFFFFF" width="82%"> 
+        <input type="text" name="c_rollspeed" size="3" value="$c_rollspeed">
+        推荐1 </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF">更新内容时上方遮蔽层设置: </td>
+      <td bgcolor="#FFFFFF">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+  function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF">是否隐藏,暂时不显示:</td>
+      <td bgcolor="#FFFFFF"> 
+        <input type="radio" name="hide" value="0"  $hide_0>
+        显示 
+        <input type="radio" name="hide" value="1" $hide_1 />
+        隐藏</td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#FFFFFF" colspan="2"><label> 
+        <script language="JavaScript">
+<!--
+function chooseAD(type){
+	if(type=='1'){
+		document.getElementById('ifad1').checked=true;
+		document.getElementById('ifad0').checked=false;
+		document.getElementById('isadconfig').style.display='';
+	}else{
+		document.getElementById('ifad1').checked=false;
+		document.getElementById('ifad0').checked=true;
+		document.getElementById('isadconfig').style.display='none';
+	}
+}
+//chooseAD('$ifad');
+//-->
+</script>
+        <input type="submit" name="Submit" value="提 交" onClick=sub() />
+        </label> 
+        <script language="javascript">
+function cutimg() 
+{
+	var img=document.form8.img.value
+	var cw=document.form8.cw.value
+	var ch=document.form8.ch.value
+	if(cw==''){
+		document.form1.cw.focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.form1.cw.focus();
+		alert("请设置好图片高度");return false;
+	}
+if(img!=''){
+	window.open("cutimg.php?job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+	
+}else{
+	document.form1.img.focus();
+	alert('图片地址不存在');
+}
+}
+function tool(){
+	if(toolid.style.display==''){
+	toolid.style.display='none'
+	}else{
+	toolid.style.display=''
+	}
+}
+function setcodetxt(){
+	eWebEditor1.setMode('CODE');
+}
+</script>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

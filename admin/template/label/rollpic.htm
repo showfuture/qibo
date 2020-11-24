@@ -1,0 +1,206 @@
+<!--
+<?php
+print <<<EOT
+--><meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,id){
+	document.getElementById(id).value=url;
+}
+function CT_jumpMenu(selObj){
+  window.location.href=window.location.href+"&pic_city_id="+selObj.options[selObj.selectedIndex].value
+}
+//-->
+</SCRIPT>
+  <form id="form1" name="form8" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=rollpic&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&">
+
+  <table width="98%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" bordercolor="#CCCCCC">
+    <tr   class="head" align="center"> 
+      <td colspan="2" height="25"> 
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr><!--
+EOT;
+if($select_city){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF">
+      <td width="17%">显示范围:</td>
+      <td>$select_city</td>
+    </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%">显示大小设置：</td>
+      <td> 宽 
+        <input type="text" name="width" id="atc_width" size="10" value="$width">
+        高 
+        <input type="text" name="height" id="atc_height" size="10" value="$height">
+      </td>
+    </tr>
+
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%">默认是显示两张图片。你可以设置更多。。</td>
+      <td> 再增加几项 
+        <input type="text" size="3" name=nums value="2">
+        <input type="button" name="Submit2" value="增加" onClick=showinput()>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%"><font color="#FF0000">注意:<b><font color="#0000FF">不填文字介绍也可以</font></b></font><br>
+        要删除某项的话,请把图片地址清空即可 </td>
+      <td width="83%"> 
+        <!--
+EOT;
+foreach($picurl AS $key=>$value){
+print <<<EOT
+-->
+        图片地址({$key}):　　　 
+        <input type="text" name="picurl[{$key}]" size="40" id="pic$key" value="{$picurl[$key]}">
+        [<a href='javascript:' onclick='window.open("upfile.php?lfj=$lfj&ch_module=$ch_module&label=pic$key&dir=label","","width=350,height=50,top=200,left=400")'>上传图片</a>] 
+        [<a href="javascript:" class="style30"  onClick="javascript:cutimg('pic$key');">剪裁图片</a>]<br>
+        图片链接网址:　　 
+        <input type="text" name="piclink[{$key}]" size="40" value="{$piclink[$key]}">
+        <br>
+        图片文字介绍:　　 
+        <input type="text" name="picalt[{$key}]" size="40" value="{$picalt[$key]}">
+        <br>
+        <hr size='1'>
+        <!--
+EOT;
+}print <<<EOT
+-->
+        <br>
+        <div id="input$key"></div>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%">幻灯片类型:<span help=1><br>
+        (如果不填文字介绍的话,选择FLASH方式会无效,如果选择FLASH方式就不能是站外图片并且只能调用jpg图片,如果你的图片格式为gif的话,请转换为jpg格式再上传,否则没法使用)</span></td>
+      <td width="83%"> 
+        <input type="radio" name="rolltype" value="0" onclick="choose_phpcode()" $_rolltype[0]/>
+        JS方式(推荐) 
+        <input type="radio" name="rolltype" value="1" onclick="choose_phpcode()" $_rolltype[1]/>
+        FLASH方式(不推荐) 
+        <input type="radio" name="rolltype" value="2" id="choosephpcode" onclick="choose_phpcode()" $_rolltype[2]/>
+        自定义(要写程序,不懂程序请别选择) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="phpcode"> 
+      <td width="17%">模板代码:<br>
+        (<a href="http://bbs.qibosoft.com/read-forum-tid-370595.htm" target="_blank">查看教程</a>) 
+      </td>
+      <td width="83%"> 
+        <textarea name="tplpart_1code" cols="100" rows="8">$tplpart_1code</textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%">更新内容时上方遮蔽层设置:</td>
+      <td width="83%">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+  function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%">是否隐藏,暂时不显示:</td>
+      <td width="83%"> 
+        <input type="radio" name="hide" value="1" $hidedb[1]/>
+        是 
+        <input type="radio" name="hide" value="0" $hidedb[0]/>
+        否 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="17%" height="28">&nbsp;</td>
+      <td width="83%" height="28"> 
+        <input type="submit" name="Submit" value="提交" onClick=sub() />
+        <script>
+function showinput(){
+	
+	var num=2;
+	var N=0;
+	num=document.form8.nums.value;
+	oo=document.body.getElementsByTagName("input");
+	
+	for(var j=0;j<oo.length;j++){
+		if(oo[j].getAttribute("name").indexOf('picurl')==0){
+			N++;
+		}
+	}
+	thd=N
+	var str='';
+	//var str=document.getElementById('input'+thd).innerHTML;
+	
+	for(var i=0;i<num;i++){
+		N++;
+		str+='图片地址:('+N+')　　 <input type=text name=picurl['+N+'] size=40 id=pic'+N+'> [<a href=\'javascript:\' onClick=\'window.open("upfile.php?lfj=$lfj&ch_module=$ch_module&dir=label&label=pic'+N+'","","width=350,height=50,top=200,left=400")\'>上传图片</a>]  [<a href="javascript:" class="style30"  onClick="javascript:cutimg(\'pic'+N+'\');">[剪裁图片]</a>]<br>';
+		str+='图片链接网址:　　<input type=text name=piclink['+N+'] size=40><br>';
+		str+='图片文字介绍:　　<input type=text name=picalt['+N+'] size=40><br><hr size=1>';
+	}
+	document.getElementById('input'+thd).innerHTML=str+"<div id='input"+N+"'></div>";
+}
+</script>
+        <script language="javascript">
+function cutimg(pic) 
+{
+	var img=document.getElementById(pic).value;
+	var cw=document.getElementById('atc_width').value;
+	var ch=document.getElementById('atc_height').value;
+	if(cw==''){
+		document.getElementById('atc_width').focus();
+		alert("请设置好图片宽度");return false;
+	}
+	if(ch==''){
+		document.getElementById('atc_height').focus();
+		alert("请设置好图片高度");return false;
+	}
+	if(img!=''){
+		if(img.indexOf("http://")==-1){
+			img="$webdb[www_url]/$webdb[updir]/"+img;
+		}
+		window.open("cutimg.php?lfj=$lfj&ch_module=$ch_module&job=cutimg&width="+cw+"&height="+ch+"&srcimg="+img,'',"width=480,height=430")
+	}else{
+		document.getElementById(pic).focus();
+		alert('图片地址不存在');
+	}
+}
+</script>
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_phpcode(){
+	if(document.getElementById('choosephpcode').checked==true){
+		document.getElementById('phpcode').style.display='';
+	}else{
+		document.getElementById('phpcode').style.display='none';
+	}
+}
+choose_phpcode();
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+  </table>
+</form>
+<!--
+EOT;
+?>
+-->

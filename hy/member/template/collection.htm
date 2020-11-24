@@ -1,0 +1,42 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div class="MainCont">
+	<div class="head"><div class="tag">我收藏的信息</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="50%">标 题</th>
+            <th width="15%">栏 目</th>
+            <th width="15%">收藏日期</th>
+            <th width="10%">状态</th>
+            <th width="10%">删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+          <tr>
+            <td class="tL">{$rs[id]}、<a href="$rs[url]" target="_blank" title="$rs[full_title]">$rs[title]</a></td>
+            <td><a href="$rs[Lurl]" target="_blank">$rs[fname]</a></td>
+            <td>$rs[ctime]</td>
+            <td>$rs[state]/$rs[levels]</td>
+            <td><a href="?do=del&cid=$rs[cid]">删除</a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

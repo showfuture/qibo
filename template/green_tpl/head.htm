@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$bodyondblclick = (function_exists('label_array')&&$web_admin&&!$MakeIndex) ?"dblclick_label();":"";
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/default.css">
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/style.css">
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/cms.css">
+<link rel="shortcut icon" type="image/ico" href="$webdb[www_url]/images/green/favicon.ico">
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+<!--
+EOT;
+if($webdb[cookieDomain]){print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+//解决不同域名的框架跨域问题
+document.domain = "$webdb[cookieDomain]";
+</SCRIPT>
+<!--
+EOT;
+}print <<<EOT
+-->
+<body ondblclick="$bodyondblclick">
+<div class="TopContainer">
+	<div id="showtime"></div> 
+	<SCRIPT src="$webdb[www_url]/images/green/clock.js"></SCRIPT>
+    <div class="siter"> <A HREF="$webdb[www_url]/3g/" target="_blank">3G访问</A> |  <A HREF="$webdb[www_url]/do/sitemap.php">网站地图</A> | <A HREF="$webdb[www_url]/help/">帮助中心</A> |
+    	<a onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('$webdb[www_url]/');" href="javascript:;">设为首页</a> |
+		<a href="javascript:window.external.AddFavorite('$WEBURL','$webdb[Info_webname]')">加入收藏</a>
+    </div>
+</div>
+<div class="Header">
+	<div class="logo"><a href="$city_url/"><img src="$webdb[www_url]/images/green/logo.gif"/></a></div>
+    <div class="cityname">
+    	<div class="title">{$city_DB[name][$city_id]}</div> 
+<!--
+EOT;
+$changeword = count($city_DB[name])>1 ? "<a href=\"$webdb[www_url]/allcity.php\">[切换城市]</a>" : "当前城市";
+print <<<EOT
+-->  	
+		<div class="chage">$changeword</div>      
+	</div>
+    <div class="login">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<div id="head_loginer">$Load_Msg</div>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/hack.php?hack=login&iframeID=head_loginer&styletype=green" width=0 height=0></iframe></div>');
+//-->
+</SCRIPT>
+    </div>
+</div>
+<ul class="Mainmenu">
+<!--
+EOT;
+if(!$webdb[Info_guide_word]){
+$fup=$Fid_db[$fid]?$fid:$fidDB[fup];
+$ck_class=$fup?"t":"w";
+$i=0;
+foreach($Fid_db[0] AS $key=>$name){
+$i++;if($i>6)break;
+$new_array[]=$key;
+}
+if($fup&&!in_array($fup,$new_array))$ck_class='w';
+if($choose_class['hy']){$ck_class='t';$choose_class['_hy']="w";}else{$choose_class['_hy']="t";}
+
+if($choose_class['hy']){
+$ck_class='t';
+$choose_class['_hy']="w";
+$_array=@include(ROOT_PATH.'data/all_fid.php');
+$array=$_array[0];
+}else $array=$Fid_db[0];
+
+print <<<EOT
+-->
+      <li class="$ck_class"><div><a href="$webdb[www_url]/">网站主页</a></div></li>
+	  <li class="{$choose_class['_hy']}"><div><a href="$webdb[www_url]/hy/">黄页</a></div></li>
+
+<!--
+EOT;
+$i=0;
+foreach($array AS $key=>$name){
+$i++;
+if($i>6)break;
+$url=get_info_url('',$key,$city_id);
+$ck_class=$key==$fup?"w":"t";
+if($choose_class['hy']){$ck_class='t';}
+print <<<EOT
+-->
+ 		<li class="$ck_class"><div><a href="$url">$name</a></div></li>
+<!--
+EOT;
+}}else{
+$detail=explode("\r\n",$webdb[Info_guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(ereg("^list\.php",$url)){
+	$_detail=explode("fid=",$url);
+	$url=get_info_url('',$_detail[1],$city_id);
+}elseif($url=='index.php'){
+	$url="$city_url/";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]/$url";
+}
+$blank=$blank?"_blank":'';
+$color=$color?"$color":'';
+$ck_class=$key==0?'w':'t';
+print <<<EOT
+-->
+		<li class="$ck_class"><div><a href="$url" target="$blank" style="color:$color;">$name</a></div></li>
+<!--
+EOT;
+}}print <<<EOT
+-->
+	<li class="m"><div><a href="$webdb[www_url]/do/reg.php">会员注册</a></div></li>
+	<li class="m"><div><a href="$city_url/post.php">免费发布</a></div></li>        
+</ul>
+<dl class="HeadSearch">
+	<dt>
+        <div class="search">
+        <form name="form1search" method="post" action="search.php?action=search" id="form1search">
+            <div class="keyword"><input type="text" id="skeyword" name="keyword"></div>
+            <div class="sub"><a href="javascript:;" onclick="postsearch()"><img src="$webdb[www_url]/images/green/search.gif" /></a></div>
+            <input type="hidden" name="postdb[city_id]" value="$city_id">
+        </form>
+        </div>
+    </dt>
+    <dd><div class="hotline">{$label[green_hotline]}</div></dd>
+</dl>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postsearch(){
+	if($('#skeyword')[0].value==''){
+		alert('关键字不能为空!');return false;
+	}
+	$('#form1search')[0].submit();
+}
+document.write('<div class="wrap">');
+//-->
+</SCRIPT>
+<!--
+EOT;
+if($GuideFid[$_GET[fid]]){
+print <<<EOT
+-->   
+<div class="nav_guide"><div>当前位置：<a href="$city_url/">首页</a> {$GuideFid[$_GET[fid]]}</div></div>
+<!--
+EOT;
+}else{
+print <<<EOT
+--> 
+<div class="Spacingdiv"><div></div></div>
+<!--
+EOT;
+}
+?>
+-->

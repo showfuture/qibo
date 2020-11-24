@@ -1,0 +1,49 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=copy">
+    <tr class="head"> 
+      <td colspan="2" align="center"> 请认真填写以下新模块的信息</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center" style="width:25%;">你当前要复制的系统是:</td>
+      <td width="86%" style="width:80%;"> $rsdb[name] </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center" style="width:25%;">新的数据表前缀:(只能是英文或数字)</td>
+      <td width="86%" style="width:80%;"> 
+        <input type="text" name="postdb[pre]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center" style="width:25%;">新的目录文件夹名</td>
+      <td width="86%" style="width:80%;"> 
+        <input type="text" name="postdb[dir]">
+      </td>
+    </tr>
+	<tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center" style="width:25%;">新模块的名称</td>
+      <td width="86%" style="width:80%;"> 
+        <input type="text" name="postdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center">&nbsp;</td>
+      <td width="86%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="left"> 
+      <td colspan="2">注意:模块复制后需要做适当的调整,特别是图片与链接</td>
+    </tr>
+  </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

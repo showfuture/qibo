@@ -1,0 +1,49 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+     <tr class="head"> 
+      <td> 
+        <div align='center'><b><font color="#FFFFFF">请选择要调用的内容</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td height="200" bgcolor='#FFFFFF' colspan="2" align="center">
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="jump('home')">
+        商家店铺
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="jump('news')">
+        商家新闻
+        <input type="radio" name="radiobutton" value="radiobutton" onclick="jump('photo')">
+        商家图片
+        
+		<SCRIPT LANGUAGE="JavaScript">
+<!--
+function jump(t){
+	window.location.href="index.php?lfj=$lfj&&job=$job&ch=$ch&chtype=$chtype&tag=$tag&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&inc=$inc&cms_type="+t;
+}
+//-->
+</SCRIPT>
+
+<div style="margin-top:90px;">
+&nbsp; 
+        <!--
+EOT;
+if(!$ch_ifjs){
+print <<<EOT
+-->
+<input type="button" name="Submit22" value="重新选择其它频道内容" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</div>
+</td>
+    </tr>
+ 
+</table>
+<!--
+EOT;
+?>
+-->

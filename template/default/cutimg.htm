@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<!--
+<?php
+$showimg = "$srcimg?$timestamp";
+$sheight = $height/$width*100;
+print <<<EOT
+-->
+<TITLE>$titleDB[title]</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="$webdb[www_url]/images/default/cutimg/imgareaselect-animated.css" type=text/css rel=stylesheet>
+</HEAD>
+
+<SCRIPT src="$webdb[www_url]/images/default/jquery-1.2.6.min.js" type=text/javascript></SCRIPT>
+<SCRIPT src="$webdb[www_url]/images/default/cutimg/jquery.imgareaselect.pack.js" type=text/javascript></SCRIPT>
+<SCRIPT type=text/javascript>
+imgwidth = 480;
+imgHeight = 480;
+zoom = 100;
+function preview2(img, selection) {
+    if (!selection.width || !selection.height)
+        return;
+    
+    var scaleX = 100 / selection.width;
+    var scaleY = $sheight / selection.height;
+
+    $('#preview img').css({
+        width: Math.round(scaleX * imgwidth),
+        height: Math.round(scaleY * imgHeight),
+        marginLeft: -Math.round(scaleX * selection.x1),
+        marginTop: -Math.round(scaleY * selection.y1)
+    });
+
+	//$('#test').val(imgHeight);
+
+    $('#x1').val(selection.x1);
+    $('#y1').val(selection.y1);
+    $('#x2').val(selection.x2);
+    $('#y2').val(selection.y2);
+    $('#w').val(selection.width);
+    $('#h').val(selection.height);
+	
+}
+/*
+$(function () {
+    $('#photo').imgAreaSelect({ aspectRatio: '1:1', handles: true,
+        fadeSpeed: 200, onSelectChange: preview2 });
+});
+*/
+
+$(document).ready(function () {
+    $('#photo').imgAreaSelect({ aspectRatio: '$width:$height', handles: true,
+	x1: 0, y1: 0, x2: $width/2, y2: $height/2,
+        fadeSpeed: 200, onSelectChange: preview2,onSelectEnd: preview2 });
+});
+
+
+function loadImg(obj){	
+	if(obj.width>obj.height){
+		if(obj.width>480){
+			zoom=Math.round((480/obj.width)*100);
+			obj.width=480;
+		}else{
+			imgwidth=obj.width;
+		}
+		imgHeight=obj.height;
+	}else if(obj.width<obj.height){
+		if(obj.height>480){
+			zoom=Math.round((480/obj.height)*100);
+			obj.height=480;			
+		}else{
+			imgHeight=obj.height;
+		}
+		imgwidth=obj.width;
+	}	
+	$('#z').val(zoom);
+}
+ 
+</SCRIPT>
+<BODY >
+<form name="form1" method="post" action="$post">
+<div style="FLOAT: left; WIDTH: 480">
+	<IMG id=photo src="$showimg" onload="loadImg(this)">
+</div>
+
+<div style="FLOAT: left; WIDTH:100px;background:#eee;display:;margin-left:3px;"> 
+   图片预览  
+    <div id=preview style="OVERFLOW: hidden; WIDTH: 100px; HEIGHT: {$sheight}px;">
+		<IMG style="WIDTH: 100px; HEIGHT: {$sheight}px" src="$showimg"> 
+    </div>
+  
+<table style="display:none;">
+    <TR> 
+      <TD style="WIDTH: 10%">
+	  Zoom: 
+        <INPUT id=z name="scale">
+        <br>
+	  Width: 
+        <INPUT id=w name="w">
+        <br>
+        Height: 
+        <input id=h name="h">
+        <br>
+        X1: 
+        <input id=x1 name="x">
+        <br>
+        Y1: 
+        <INPUT id=y1 name="y">
+        <br>
+        X2: 
+        <INPUT id=x2>
+        <br>
+        Y2: 
+        <INPUT id=y2>
+        <br>
+         test: 
+		 <textarea name="textfield" id=test style="WIDTH: 500px;height:100px; "></textarea>
+         
+        <input type="hidden" name="rw" value="$width">
+        <input type="hidden" name="rh" value="$height">
+		<input type="hidden" name="action" value="cutimg">
+		<input type="hidden" name="uploadfile" value="$srcimg">		
+      
+      </TD>
+    </TR>
+  </TABLE>
+</div>
+<div style="clear:both;width:480px;text-align:center;"><input type="submit" name="Submit" value="提交"></div>
+</form>
+</BODY>
+</HTML>
+<!--
+EOT;
+?>
+-->

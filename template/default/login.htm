@@ -1,0 +1,82 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"><h3 class="L"></h3>
+           <span class="TAG"> 欢迎回来 </span>
+            <h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">   <form name="form1" method="post" action="?f">
+              <tr>
+                <td height="25">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="6">
+                      <tr> 
+                        <td colspan="2" style="border-bottom:1px solid #ccc;background:#eee;">登录入口</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" height="25" style="height:30px">帐号:</td>
+                        <td width="72%" height="25"> 
+                          <input type="text" name="username" style="width:130px;height:16px;">
+                          <a href="reg.php">注册新帐号</a> </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" style="height:30px">密码:</td>
+                        <td width="72%"> 
+                          <input type="password" name="password" style="width:130px;height:16px;">
+                          <a href="$webdb[www_url]/do/sendpwd.php">忘记密码,马上取回</a> </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" style="height:30px"><span class="bold">Cookie 保存有效期:</span></td>
+                        <td width="72%"><span class="smalltxt"> 
+                          <input class="radio" type="radio" name="cookietime" value="315360000" >
+                          一年&nbsp; 
+                          <input class="radio" type="radio" name="cookietime" value="2592000" checked>
+                          一个月 &nbsp; 
+                          <input class="radio" type="radio" name="cookietime" value="86400" >
+                          一天 &nbsp; 
+                          <input class="radio" type="radio" name="cookietime" value="3600" >
+                          一小时 &nbsp; 
+                          <input class="radio" type="radio" name="cookietime" value="0" >
+                          浏览器进程</span>(在网吧请选择)</td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td align="center" style="height:30px">
+                          <input type="submit" name="Submit3" value=" 登 录 "  class="button">
+                          <input type="hidden" name="step" value="2">
+                          <input type="hidden" name="fromurl" value="$FROMURL">
+<!--
+EOT;
+if($webdb[QQ_login]){print <<<EOT
+-->
+<A HREF="$webdb[www_url]/do/qq_login.php"><img border=0 src="$webdb[www_url]/images/default/qq_login_big.png"></A>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+                          提示:如果你还没注册,请点击<a href="reg.php" style="color:red;">注册</a> </td>
+                      </tr>
+                    </table>
+                  </td>
+              </tr> </form>
+            </table>
+         
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

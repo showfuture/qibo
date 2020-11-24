@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body style="margin: 0px" scroll="no">
+<div style="position: absolute;top: 0px;left: 0px; z-index: 2;height: 65px;width: 100%">
+<iframe frameborder="0" id="header" name="header" src="./index.php?iframe=head" scrolling="no" style="height: 60px; visibility: inherit; width: 100%; z-index: 1;"></iframe>
+</div>
+<table border="0" cellPadding="0" cellSpacing="0" height="100%" width="100%" style="table-layout: fixed;">
+<tr><td width="183" height="60"></td><td></td></tr>
+<tr>
+<td><iframe frameborder="0" id="menu" name="menu" src="./index.php?iframe=left&Smenu=<?php echo $Smenu;?>" scrolling="yes" style="height: 100%; visibility: inherit; width: 100%; z-index: 1;overflow: auto;"></iframe></td>
+<td><iframe frameborder="0" id="main" name="main" src="./index.php?lfj=center&job=map" scrolling="yes" style="height: 100%; visibility: inherit; width: 100%; z-index: 1;overflow: auto;"></iframe></td>
+</tr></table>
+</body>
+</html>

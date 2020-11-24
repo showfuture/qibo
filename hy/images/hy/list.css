@@ -1,0 +1,191 @@
+.Clear{
+	clear:both;
+}
+.Main{
+	width:740px;
+	float:left;
+	padding-right:10px;
+	background:url(head3.gif) repeat-x;
+}
+.Side{
+	width:240px;
+	float:right;
+}
+/*
+**
+*/
+.ShowSort{
+	margin-bottom:10px;
+}
+.ShowSort .head{
+	height:31px;
+	overflow:hidden;
+	background:url(head2.gif) repeat-x;
+}
+.ShowSort .head .tag{
+	display:block;
+	width:100px;
+	padding-top:6px;
+	line-height:25px;
+	text-align:center;
+	background:url(tag1.gif) center bottom no-repeat;
+}
+.ShowSort .cont{
+	border:#E6E6E6 solid 1px;
+	border-top:0;
+	padding:10px 15px 10px 15px;
+	word-spacing:10px;
+	line-height:25px;
+}
+.ShowSort .cont a{
+	color:#0045CB;
+}
+/*
+**
+*/
+.ShowList .head{
+	height:30px;
+	overflow:hidden;
+	line-height:33px;
+	padding-left:10px;
+}
+.ShowList .head .tag{
+	float:left;
+	padding-left:15px;
+	background:url(tag2.gif) left top no-repeat;
+	height:30px;
+}
+.ShowList .head .tag span{
+	display:block;
+	padding-right:15px;
+	background:url(tag2.gif) right top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFF;
+}
+.ShowList .head .more{
+	float:right;
+	padding-right:5px;
+	word-spacing:10px;
+}
+.ShowList .head .more .ch{
+	color:red;
+}
+.ShowList .cont .h,.ShowList .cont dl{
+	border-bottom:#CBCBCB solid 1px;
+}
+.ShowList .cont .h{
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+	padding-top:10px;
+}
+.ShowList .cont dl{
+	height:105px;
+	overflow:hidden;
+	padding-top:12px;
+}
+.ShowList .cont dl.ck{
+	background:#FAFCFF;
+}
+.ShowList .cont .img{
+	width:150px;
+	padding-left:10px;
+	float:left;
+}
+.ShowList .cont .word{
+	width:370px;
+	float:left;
+}
+.ShowList .cont .date{
+	width:100px;
+	float:left;
+	text-align:center;
+}
+.ShowList .cont .yz{
+	width:105px;
+	float:left;
+	text-align:center;
+}
+
+.ShowList .cont dl .img{
+	height:105px;
+}
+.ShowList .cont dl .img span{
+	display:block;
+	float:left;
+	border:#DDD solid 1px;
+	padding:1px;
+}
+.ShowList .cont dl .img span a{
+	display:block;
+	width:120px;
+	height:90px;
+	overflow:hidden;
+}
+.ShowList .cont dl .word{
+	line-height:20px;	
+}
+.ShowList .cont dl .word .t,.ShowList .cont dl .word .m{
+	height:20px;
+	overflow:hidden;
+	margin-bottom:3px;
+}
+.ShowList .cont dl .word .t a{
+	font-size:14px;
+	font-weight:bold;
+	color:#0045CB;
+}
+.ShowList .cont dl .word .c{
+	height:40px;
+	overflow:hidden;
+}
+.ShowList .cont dl .word .c span{
+	color:#888;
+	padding-right:5px;
+}
+.ShowList .cont dl .date{
+	padding-top:15px;
+	line-height:30px;
+	font-weight:bold;
+	color:red;
+}
+.ShowList .cont dl .yz{
+	padding-top:15px;
+}
+/*
+**
+*/
+.sidecont{
+	border:#CACACA solid 1px;
+}
+.sidecont .head{
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+	padding:10px 0 0 15px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+.sidecont .cont{
+	padding:0 10px 10px 10px;
+	line-height:23px;
+}
+.sidecont .cont .list{
+	height:23px;
+	overflow:hidden;
+	padding-left:5px;
+}
+.sidecont .cont .list a{
+	color:#666;
+}
+/*
+**
+*/
+.MainBanner{
+	width:990px;
+	text-align:center;
+	margin-top:10px;
+	overflow:hidden;
+}

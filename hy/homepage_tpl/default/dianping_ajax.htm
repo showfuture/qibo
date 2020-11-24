@@ -1,0 +1,54 @@
+<!--
+<?php
+foreach($listdb AS $key=>$rs){
+$fen6=$rs[fen6]?"<div class=\"m\">$rs[fen6]</div>":"";
+$price=$rs[price]?"<div class=\"m\">人均消费：{$rs[price]}元/人 </div>":"";
+$keywords2=$rs[keywords2]?"<div class=\"m\">推荐菜：$rs[keywords2]</div>":"";
+$keywords=$rs[keywords]?"<div class=\"m\">标签：$rs[keywords]</div>":"";
+$dels=($web_admin||($lfjuid&&$rs[uid]==$lfjuid))?"<A HREF=\"javascript:getdianpings('$Mdomain/job.php?job=dianping_ajax&action=del&id=$id&cid=$rs[cid]&page=$page')\">删除</A>":"";
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Murl/images/homepage_style/dianping/dianping.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListDp">
+  <tr>
+    <td class="img">
+    	<a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" class="p" target="_blank"> 
+            <span><img onerror="this.src='$webdb[www_url]/images/default/noface.gif'" src='$rs[icon]' height="100"/></span>
+        </a> 
+        <a href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" class="t" target="_blank">$rs[username]</a>
+    </td>
+    <td class="word">
+    	<div class="fen">$rs[fen]</div>
+        <div class="c">$rs[content]</div>
+        $fen6
+        $price
+        $keywords2
+        $keywords
+    </td>
+  </tr>
+  <tr>
+    <td class="msg"><a href="$webdb[www_url]/member/?main=pm.php?job=send&username=$rs[username]" target="_blank"><img src="$Murl/images/homepage_style/dianping/msg.gif"/></a></td>
+    <td class="act">
+    	日期:$rs[posttime] 
+        $dels
+        <a HREF="javascript:getdianpings('$Mdomain/job.php?job=dianping_ajax&action=flowers&id=$id&cid=$rs[cid]&page=$page')">鲜花</a>(<span>{$rs[flowers]}</span>) 
+        <a HREF="javascript:getdianpings('$Mdomain/job.php?job=dianping_ajax&action=egg&id=$id&cid=$rs[cid]&page=$page')">鸡蛋</a>(<em>{$rs[egg]}</em>)
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+}if(!$listdb){
+print <<<EOT
+--> 
+<div style="padding:30px 0 20px 0;text-align:center;font-size:18px;color:#888;">店铺暂无点评!</div>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+<div class="dianpingpage">$showpage</div>
+<!--
+EOT;
+?>
+-->

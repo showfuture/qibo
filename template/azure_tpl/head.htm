@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+$changecityword = count($city_DB[name])>1 ? "[<a href=\"$webdb[www_url]/allcity.php\">切换城市</a>]" : "";
+$bodyondblclick = (function_exists('label_array')&&$web_admin&&!$MakeIndex) ?"dblclick_label();":"";
+print <<<EOT
+-->
+<head>
+<title>$titleDB[title]  </title>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/azure/default.css">
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/cms.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]"> 
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/jquery-1.2.6.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/default.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="$webdb[www_url]/images/default/swfobject.js"></SCRIPT>
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+</SCRIPT>
+<!--
+EOT;
+if($webdb[cookieDomain]){print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+//解决不同域名的框架跨域问题
+document.domain = "$webdb[cookieDomain]";
+</SCRIPT>
+<!--
+EOT;
+}print <<<EOT
+-->
+<body ondblclick="$bodyondblclick">
+<div class="TopContainer">
+	<div class="changecity"><span>{$city_DB[name][$city_id]}</span>{$changecityword}</div>
+    <ul class="menu">
+<!--
+EOT;
+if(!$webdb[Info_guide_word]){
+$fup=$Fid_db[$fid]?$fid:$fidDB[fup];
+$ck_class=$fup?"":"class=\"ck\"";
+if($choose_class['hy']){
+unset($ck_class);
+$choose_class['hy']="class=\"ck\"";
+$_array=@include(ROOT_PATH.'data/all_fid.php');
+$array=$_array[0];
+}else $array=$Fid_db[0];
+print <<<EOT
+-->
+		<li {$ck_class}><a href="$webdb[www_url]/">网站主页</a></li>
+		<li {$choose_class[hy]}><a href="$webdb[www_url]/hy/">黄页</a></li>
+<!--
+EOT;
+$i=0;
+foreach($array AS $key=>$name){
+$i++;if($i>7)break;
+$url=get_info_url('',$key,$city_id);
+$ck_class=$key==$fup?"class=\"ck\"":"";
+if($choose_class['hy']){unset($ck_class);$choose_class['hy']="class=\"ck\"";}
+print <<<EOT
+-->
+    	<li {$ck_class}><a href="$url">$name</a></li>	  
+<!--
+EOT;
+}}else{
+$detail=explode("\r\n",$webdb[Info_guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(ereg("^list\.php",$url)){
+	$_detail=explode("fid=",$url);
+	$url=get_info_url('',$_detail[1],$city_id);
+}elseif($url=='index.php'){
+	$url="$city_url/";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]/$url";
+}
+$blank=$blank?"_blank":'';
+$color=$color?"$color":'';
+$ck_class=$key==0?"class=\"ck\"":"";
+print <<<EOT
+-->
+	<li {$ck_class}><a href="$url" target="$blank" style="color:$color;">$name</a></li>
+<!--
+EOT;
+}}
+$useractword = $lfjid ? "<a href=\"$webdb[www_url]/member/\" target=\"_blank\">管理</a> <a href=\"$webdb[www_url]/do/login.php?action=quit\">退出</a>" : "<a href=\"$webdb[www_url]/do/reg.php\">注册</a> <a href=\"$webdb[www_url]/do/login.php\">登录</a>" ;
+print <<<EOT
+-->
+    </ul>
+    <div class="useract">
+    	$useractword
+    </div>
+</div>
+<div class="HeadContainer">
+	<div class="logo"><a href="$city_url/"><img src="$webdb[www_url]/images/azure/logo.gif"/></a></div>
+    <dl class="search">
+    <form name="form1search" method="post" action="search.php?action=search" id="form1search">
+        <dt>
+            <span><input type="text" id="skeyword" name="keyword"></span>
+            <span><a href="#" onclick="postsearch()">信息搜索</a></span>
+            <input type="hidden" name="postdb[city_id]" value="$city_id">
+        </dt>
+    </form>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postsearch(){
+	if($('#skeyword')[0].value==''){
+		alert('关键字不能为空!');return false;
+	}
+	$('#form1search')[0].submit();
+}
+//-->
+</SCRIPT>
+  		<dd>
+        	{$label[searchhotword]}
+        </dd>
+    </dl>
+    <dl class="moreact">
+    	<dt><a href="$city_url/post.php"><img src="$webdb[www_url]/images/azure/postinfo.gif" /></a></dt>
+        <dd>
+<!--
+EOT;
+if($lfjid){
+print <<<EOT
+-->
+        	<a onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('$webdb[www_url]/');" href="javascript:;">设为首页</a>
+            <a href="javascript:window.external.AddFavorite('$WEBURL','$webdb[Info_webname]')">加入收藏</a>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+			<a href="$webdb[www_url]/do/qq_login.php"><img src="$webdb[www_url]/images/azure/qqlogin.gif"/></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        </dd>
+    </dl>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+document.write('<div class="wrap">');
+</SCRIPT>
+<!--
+EOT;
+if($GuideFid[$_GET[fid]]){
+print <<<EOT
+-->   
+<div class="nav_guide">
+  当前位置：<a href="$city_url/">首页</a> {$GuideFid[$_GET[fid]]}  
+</div>
+<!--
+EOT;
+}
+?>
+-->

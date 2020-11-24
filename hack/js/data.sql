@@ -1,0 +1,1 @@
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('js_list', 'JS内容调用', 0, '', '', '', '', '', 'index.php?lfj=js&job=list', '', 'other', '其它功能', 9, '', 0);

@@ -1,0 +1,59 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+ 
+  <tr> 
+    <td align="left"> [<a href="$admin_path&job=listad">广告位管理</a>] [<a href="$admin_path&job=addplace">添加广告位</a>] 
+      [<a href="../member/index.php?main=../$dirname/member/compete.php?job=list" target="_blank">购买广告</a>] 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td width="22%">广告位名称</td>
+    <td width="10%">购买者</td>
+    <td width="14%">有效日期</td>
+    <td width="39%">广告内容</td>
+    <td width="6%"> 出价</td>
+    <td width="9%">管理</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td width="22%" align="center">{$rs[name]}</td>
+    <td width="10%" align="center">$rs[username] </td>
+    <td width="14%" align="center">开始:$rs[begintime]<br>
+      结束:$rs[endtime]</td>
+    <td width="39%" align="center"><a href="{$rs[adlink]}">{$rs[adword]}</a></td>
+    <td width="6%" align="center">$rs[money]</td>
+    <td width="9%" align="center"><a href="$admin_path&ad_id=$rs[ad_id]&action=deleteusr" onclick="return confirm('你确认要删除这个广告吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td colspan="6" align="center">$showpage<a href="$admin_path&id=$rs[id]&action=deleteadplace" onclick="return confirm('你确认要删除这个广告吗?')"></a></td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td align="left">说明</td>
+  </tr>
+   
+  <tr bgcolor="#FFFFFF"> 
+    <td>&nbsp;</td>
+  </tr>
+   
+</table>
+<!--
+EOT;
+?>
+-->

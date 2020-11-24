@@ -1,0 +1,39 @@
+<!--
+<?php
+print <<<EOT
+-->
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">查看短消息</div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <td width="60">来自:</td>
+            <td class="tL">$rsdb[username]</td>
+          </tr>
+          <tr>
+            <td>标题:</td>
+            <td class="tL">$rsdb[title]</td>
+          </tr>
+          <tr>
+            <td>时间:</td>
+            <td class="tL">$rsdb[mdate]</td>
+          </tr>
+          <tr>
+            <td >内容:</td>
+            <td class="tL" style="padding:5px 0 5px 0;line-height:20px;">$rsdb[content]</td>
+          </tr>
+          <tr>
+            <td>选项:</td>
+            <td class="tL">
+            	[<a href="?job=send&username=$rsdb[username]">回复</a>] 
+                [<a href="?job=del&mid=$rsdb[mid]">删除</a>] 
+                [<a href="?job=list">返回</a>] 
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

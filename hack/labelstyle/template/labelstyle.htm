@@ -1,0 +1,120 @@
+<style>
+.styletable{
+	border:#1A5DB0 solid 1px;
+	width:99%;
+	margin:auto;
+}
+.styletable .head{
+	border:#EFEFEF solid 1px;
+	background:#6799B8;
+	height:25px;
+	text-align:center;
+	vertical-align:middle;
+	color:#FFF;
+}
+.styletable .cont{
+	padding:5px;
+}
+.styletable .cont .liststyles{
+	height:25px;
+	border-bottom:#DDD dotted 1px;
+	overflow:hidden;
+}
+.styletable .cont .liststyles span{
+	float:left;
+	padding:6px 0 0 15px;
+}
+.styletable .cont .liststyles span em{
+	font-style:normal;
+	color:#f00;
+}
+.styletable .cont .liststyles a{
+	float:right;
+	padding:6px 10px 0 0;
+	color:#00f;
+}
+.styletable .cont .note{
+	line-height:30px;
+	text-align:center;
+	color:#888;
+}
+.styletable .cont .info{
+	line-height:25px;
+	padding-left:10px;
+	color:#666;
+}
+.styletable .cont .info span{
+	color:#f00;
+}
+.styletable .cont dl{
+	height:30px;
+	padding:0;
+	margin:0;
+}
+.styletable .cont dl dt{
+	width:40%;
+	float:left;
+	text-align:right;
+	padding:7px 5px 0 0;
+	margin:0;
+}
+.styletable .cont dl dd{
+	width:40%;
+	float:left;
+	padding:5px 5px 0 0;
+	margin:0;
+}
+</style>
+<!--
+<?php
+if($job == "out"){
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="styletable">
+    <tr>
+      <td class="head">选择所要导出的风格标签</td>
+    </tr>
+    <tr>
+      <td class="cont">
+      <div style="margin:8px;"><b><font color="#FF0000">注意:</font></b> 你共享一套风格给别人的时候,务必把标签数据也同时导出来给别人.</div>
+      	$show
+      </td>
+    </tr>
+</table>
+<!--
+EOT;
+}if($job == "in" || $job == "label"){
+print <<<EOT
+--> 
+<script>
+function upfile(url,name,size,b){
+	document.form1.upsql.value=url;
+}
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="styletable">
+    <tr>
+      <td class="head">导入标签数据</td>
+    </tr>
+    <tr>
+      <td class="cont">
+      	
+      <div class="note">如果你安装了他人提供的风格,还需要把相应的标签数据导入到数据库,但不能重复导入!</div>
+        <form name="form1" method="post" action="?lfj=$lfj&action=sql">
+        <div class="info">请上传要导入的标签文件,如果<span>.sql</span>后缀文件不允许上传，则请改后缀名为<span>.txt</span></div>
+        <dl>
+        	<dt><input type='text' name='upsql' size='30' value='' id=upsql></dt>
+            <dd><IFRAME name='mainFrame2' frameBorder=0 height=23 scrolling=no src='upfile.php?postid=upsql' width=310></IFRAME></dd>
+        </dl>
+        <dl>
+        	<dt>上传成功后，请再点击右面的(导入标签文件)</dt>
+            <dd><input type='submit' name='Submit' value='导入标签文件'></dd>
+        </dl>
+        </form>
+      </td>
+    </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

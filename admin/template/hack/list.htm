@@ -1,0 +1,69 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  
+  <tr> 
+    <td align="center"> 　　 
+      <input type="button" name="Submit2" value="插件管理" onClick="window.location=('index.php?lfj=$lfj&job=list')">
+      　　 
+      <input type="button" name="Submit22" value="手工添加新插件" onClick="window.location=('index.php?lfj=$lfj&job=add')">
+      　　 
+      <input type="button" name="Submit222" value="自动安装新插件" onClick="window.location=('index.php?lfj=$lfj&job=autoadd')">
+    </td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td width="15%" align="center"><font color="#FFFFFF">插件名称</font></td>
+      <td width="12%" align="center"><font color="#FFFFFF">插件关键字</font></td>
+      <td width="17%" align="center">顶级分类</td>
+      <td width="16%" align="center">父级分类</td>
+      <td width="13%" align="center"><font color="#FFFFFF">排序值</font></td>
+      <td width="12%" align="center"><font color="#FFFFFF">管理</font></td>
+      <td width="15%" align="center"><font color="#FFFFFF">卸载 更改</font></td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="15%">$rs[name]</td>
+      <td width="12%" align="center">$rs[keywords]</td>
+      <td width="17%" align="center"><a href="index.php?lfj=hack&job=list&class1=$rs[class1]">{$base_menuName[$rs[class1]]}</a></td>
+      <td width="16%" align="center"><a href="index.php?lfj=hack&job=list&class2=$rs[class2]">$rs[class2]</a></td>
+      <td width="13%" align="center"> 
+        <input type="text" name="orderdb[{$rs[keywords]}]" size="5" value="$rs[list]">
+      </td>
+      <td width="12%" align="center"><a href="$rs[adminurl]" title="管理设置"><img src="../member/images/icon_manage2.gif" border="0"></a></td>
+      <td width="15%" align="center"><a href="index.php?lfj=$lfj&action=delete&keywords=$rs[keywords]"  onclick="return confirm('卸载后不可恢复,你确实要卸载吗?')" title="卸载此插件"><img src="../member/images/del_icon2.gif" border="0"></a> 
+        &nbsp;&nbsp;<a href="index.php?lfj=$lfj&job=edit&keywords=$rs[keywords]" title="更改配置"><img src="../member/images/button_edit.png" border="0"></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+  
+  <tr > 
+    <td colspan="7" align="center">
+<input type="submit" name="Submit" value="更改排序">
+      
+    </td>
+  </tr></form>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+<tr class="head"> 
+    <td>说明:</td>
+  </tr>
+  <tr>
+    <td>1.如果误删除的话,你只能在本机新安装一份,然后进入新站的后台对比看看需要哪项插件就手工添加,并且补充对应的文件</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

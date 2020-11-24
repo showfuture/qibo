@@ -1,0 +1,198 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" >
+        <tr> 
+          <td class="head"><h3 class="L"></h3>
+            <span class="TAG"><a href="?">友情链接</a></span> 
+            <h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+		  
+            <table width="99%" border="0" cellspacing="0" cellpadding="0" style="border:1px dotted #ccc;margin-bottom:15px;">
+              <tr> 
+                <td bgcolor="#F9F9F9" align="center">&nbsp;&gt;<a href="?job=apply">申请友情链接</a>&lt;</td>
+              </tr>
+   <!--
+EOT;
+if(!$job){
+print <<<EOT
+-->
+              <tr>
+                <td style="border-top:1px dotted #ccc;">&nbsp;[<a href="?fid=$rs[fid]" style="color:$colordb[0]">全部分类</a>]&nbsp;&nbsp;&nbsp;
+				
+  <!--
+EOT;
+foreach($sortdb AS $key=>$rs){
+print <<<EOT
+-->
+				[<a href="?fid=$rs[fid]" style="color:{$colordb[$rs[fid]]}">$rs[name]</a>]&nbsp;&nbsp;&nbsp;
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+				</td>
+              </tr>
+   <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table>
+   
+   <!--
+EOT;
+if($job=='apply'){
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <form name="form1" method="post" action="?f" enctype="multipart/form-data">
+                <tr> 
+                  <td height="10" width="17%">网站名称:</td>
+                  <td height="-10" width="83%"> 
+                    <input type="text" name="postdb[name]" size="15" value="$rsdb[name]">
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="10" width="17%">所属类别:</td>
+                  <td height="-5" width="83%">$select_fid</td>
+                </tr>
+                <tr> 
+                  <td height="25" width="17%">网站地址:</td>
+                  <td height="-5" width="83%"> 
+                    <input type="text" name="postdb[url]" value="$rsdb[url]" size="50">
+                  </td>
+                </tr>
+                <tr>
+                  <td height="-5" width="17%">网站介绍:</td>
+                  <td height="-5" width="83%">
+                    <input type="text" name="postdb[descrip]" value="$rsdb[descrip]" size="50" maxlength="100">
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="11" width="17%">网站LOGO: 
+                    <SCRIPT LANGUAGE="JavaScript">
+<!--
+function choosef(i,t){
+	if(t=='out'){
+		document.getElementById("out_url"+i).style.display='';
+		document.getElementById("in_url"+i).style.display='none';
+	}else{
+		document.getElementById("out_url"+i).style.display='none';
+		document.getElementById("in_url"+i).style.display='';
+	}
+}
+-->
+</SCRIPT>
+                  </td>
+                  <td height="-6" width="83%"> 
+                    <input type="text" name="postdb[logo]" size="40" id="out_url1" value="$rsdb[logo]">
+                    <input type="file" name="local_file1" id="in_url1" style="display:none;">
+                    <input type="radio" name="ftype[1]" value="out" checked onclick="choosef(1,'out')">
+                    网络文件 
+                    <input type="radio" name="ftype[1]" value="in" onclick="choosef(1,'in')">
+                    本地文件 </td>
+                </tr>
+                <!--
+EOT;
+if($lfjuid==$rsdb[uid]){
+print <<<EOT
+-->
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+                <tr> 
+                  <td height="-5" width="17%">验 证 码:</td>
+                  <td height="-5" width="83%"> 
+                    <input type="text" name="yzimg" size="8">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img border="0" name="imageField" src="$webdb[www_url]/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+                     
+                  </td>
+                </tr>
+                <tr align="center"> 
+                  <td height="55" colspan="2"> 
+                    <input type="submit" name="Submit3" value="提 交">
+                    <input type="hidden" name="action" value="reg">
+                  </td>
+                </tr>
+                <!--
+EOT;
+if(!$lfjid){
+print <<<EOT
+-->
+                <!--
+EOT;
+}
+print <<<EOT
+-->
+              </form>
+            </table>
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+
+            <table width="99%" border="0" cellspacing="1" cellpadding="3" bgcolor="#F0F0F0">
+  <!--
+EOT;
+foreach($listdb AS $key1=>$array){
+print <<<EOT
+-->
+			  <tr bgcolor="#FFFFFF">
+ <!--
+EOT;
+foreach($array AS $key=>$rs){
+print <<<EOT
+-->
+                <td width="20%" align="center" style="padding:5px;">
+<div style="display:$rs[display]"><a href="$rs[url]" title="$rs[descrip]" target="_blank">
+				<img onerror="this.style.display='none'" src="$rs[logo]" width="88" height="31" border="0"></a><br>
+                    <a href="$rs[url]" title="$rs[descrip]" target="_blank"><b>$rs[name]</b></a></div>
+
+				  </td> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+              </tr>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            </table><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+                <td align="center">$showpage</td>
+  </tr>
+</table>
+      <!--
+EOT;
+}
+print <<<EOT
+-->	
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+  
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,1 @@
+INSERT INTO `qb_hack` (`keywords`, `name`, `isclose`, `author`, `config`, `htmlcode`, `hackfile`, `hacksqltable`, `adminurl`, `about`, `class1`, `class2`, `list`, `linkname`, `isbiz`) VALUES ('upgrade_ol', '系统在线升级', 0, '', '', '', '', '', 'index.php?lfj=upgrade&job=get', '', 'other', '其它功能', 4, '', 0);

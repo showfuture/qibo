@@ -1,0 +1,149 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+<script language="JavaScript">
+<!--
+$(function(){
+	$(".moretr").hide();
+	$("#in_url1").hide();
+	$(".pictype").click(function(){
+		var type=$(this).val();
+		if(type=="out"){
+			$("#in_url1").hide();
+			$("#out_url1").show();
+		}else{
+			$("#in_url1").show();
+			$("#out_url1").hide();
+		}
+	});
+	chooseiframe('$chooseiframe');
+	$(":checkbox[name='checkbox2']").click(function(){
+     if($(this).attr("checked")){
+         $(".moretr").show();
+      }else{
+	  	$(".moretr").hide();
+	  }
+    });
+});
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+function chooseiframe(t){
+	$("#iframeurl_div").hide();
+	$("#jumpurl_div").hide();
+	$("#content_div").hide();
+	if(t=='1'){
+		$("#iframeurl_div").show();
+	}else if(t=='2'){
+		$("#jumpurl_div").show();
+	}else{
+		$("#content_div").show();
+	}
+}
+-->
+</script>
+<div class="MainCont">
+	<div class="head"><div class="tag"><a target="_blank" href='../bencandy.php?fid=$fid&id=$id&rid=$rid'>$rsdb[title]</a></div></div>
+    <div class="cont">
+    	<form name="FORM" method="post" action="?action=$atc" enctype="multipart/form-data">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <th colspan="2" class="blue"><input name="checkbox2" type="checkbox" value="checkbox"/>
+            点击输入更多详细内容</th>
+          </tr>
+          <tr>
+            <td class="tdL">标题:<span class="red">(必填)</span></td>
+            <td class="tdR"><input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]"></td>
+          </tr>
+<!--
+EOT;
+if(!$web_admin){
+print <<<EOT
+-->
+          <tr>
+            <td class="tdL">验证码:<span class="red">(必填)</span></td>
+            <td class="tdR">
+            	<span class="FL input"><input id="yzImgNum" type="text" name="yzimg" size="8"></span>
+                <span class="FL"><img id="yz_Img" name="imageField" src="$webdb[www_url]/do/yzimg.php"></span>            </td>
+          </tr>
+<!--
+EOT;
+}if(count($city_DB[name])>1){
+$listcitys="<select name=\"postdb[city_id]\"><option value='0'>全国</option>\n";
+foreach($city_DB[name] AS $key=>$value){
+if($job=='edit')$city_id=$rsdb[city_id];
+$ckk=($city_id==$key)?'selected':'';
+$listcitys.="<option value=\"$key\" $ckk>$value</option>\n";
+}
+$listcitys.="</select>";
+print <<<EOT
+-->
+		  <tr>
+            <td class="tdL">归属城市:</td>
+            <td class="tdR">$listcitys</td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+          <tr class="moretr">
+            <td class="tdL">关键字:</td>
+            <td class="tdR"><input type="text" name="postdb[keywords]" value="$rsdb[keywords]" size="40"> 多个关键词,用空格分开</td>
+          </tr>
+          <tr class="moretr">
+            <td class="tdL">版权信息:</td>
+            <td class="tdR">
+            	<div>文章作者: <input type="text" name="postdb[author]"  size="10" value="$rsdb[author]"></div>
+                <div>来源网站: <input type="text" name="postdb[copyfrom]" size="15" value="$rsdb[copyfrom]"></div>
+                <div>来源网址: <input type="text" name="postdb[copyfromurl]" size="40" value="$rsdb[copyfromurl]"></div>            </td>
+          </tr>
+          <tr>
+            <td class="tdL">缩略图片:</td>
+            <td class="tdR">
+            	<input type="text" name="postdb[picurl]" size="40" id="out_url1" value="$rsdb[picurl]">
+                <input type="file" name="local_file1" id="in_url1"/>
+                <input name="ftype[1]" type="radio" value="out" checked="checked" class="pictype" />网络文件 
+                <input type="radio" name="ftype[1]" value="in" class="pictype"/>本地文件            
+            </td>
+          </tr>
+          <tr class="moretr">
+            <td class="tdL">内容类型:</td>
+            <td class="tdR" style="padding-bottom:8px;">
+            	<input type="radio" name="isiframe" value="0" onclick="chooseiframe('0');" $isiframe[0]>站内信息
+                <!--<input type="radio" name="isiframe" value="1" onclick="chooseiframe('1');" $isiframe[1]>框架外部网页-->
+                <input type="radio" name="isiframe" value="2" onclick="chooseiframe('2');" $isiframe[2]>跳转到外部网站
+                <div id="iframeurl_div">框架地址:<input type="text" name="postdb[iframeurl]" size="60" value="$rsdb[iframeurl]">http://开头 </div>
+                <div id="jumpurl_div">跳转网址:<input type="text" name="postdb[jumpurl]" size="60" value="$rsdb[jumpurl]">http://开头 </div>            </td>
+          </tr>
+           <tr id="content_div">
+            <td class="tdL">内容:</td>
+            <td class="tdR">
+            	<textarea name="postdb[content]" id="myEditor" style="width:650px;">$rsdb[content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:300});
+editor_a.render( 'myEditor' );
+</script>
+			</td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+            	<input type="submit" name="Submit" value="提 交" class='submit'/>
+                <input type="hidden" name="fid" value="$fid"/>
+                <input type="hidden" name="id" value="$id"/>
+                <input type="hidden" name="fid_bak1" value="$rsdb[fid_bak1]"/>
+                <input type="hidden" name="fid_bak2" value="$rsdb[fid_bak2]"/>
+                <input type="hidden" name="fid_bak3" value="$rsdb[fid_bak3]"/>
+                <input type="hidden" name="rid" value="$rid"/>            </td>
+          </tr>
+         </table>
+         </form>         
+  </div>
+</div>
+<!--
+EOT;
+?>
+-->

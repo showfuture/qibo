@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="2" align="center">&nbsp;</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="12%" align="center">网页调用代码:</td>
+      <td width="88%">
+         
+        <textarea name="postdb[about]" cols="60" rows="5" id="js_1"><script src="$webdb[www_url]/do/js.php?id=$id"></script></textarea>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="12%" align="center">示范:</td>
+      <td width="88%">
+        <script src="$webdb[www_url]/do/js.php?id=$id"></script>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="12%" align="center">&nbsp;</td>
+      <td width="88%"> 
+         <input type="button" name="Submit" value="复制以上代码"  onClick="JM_cc('js_1');alert('复制成功，你可以粘贴在网页代码里！')">
+        <input type="hidden" name="lid" value="$lid">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

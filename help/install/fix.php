@@ -1,0 +1,9 @@
+<?php
+
+return array(
+	'name'=>'ÎÄÕÂÄ£¿é',
+	'pre'=>'help_',
+	'setup'=>1,
+);
+
+?>

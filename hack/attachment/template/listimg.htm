@@ -1,0 +1,90 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <tr class="head"> 
+    <td>&nbsp;</td>
+  </tr>
+ 
+  <tr>
+    <td>
+      <form name="form1" method="post" action="">
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,b){
+	get_obj('fi').innerHTML="调用地址是:<font color=red>$webdb[www_url]/$webdb[updir]/"+url+"</font>";
+}
+//-->
+</SCRIPT>上传一个文件 
+              
+         <iframe name='mainFrame2' frameborder=0 height=23 scrolling=no src='upfile.php?dir=other&label=fi' width=310></iframe>
+            <br><div id=fi></div>
+      </form>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=delete">
+    <tr class="head"> 
+      <td align="center">共有图片{$total}张</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="left"> 
+      <td> [<a href="?lfj=$lfj&job=list&down_path=$up_path"><font color="#0000FF"><b>显示所有</b></font></a>] 
+        [<b><a href="index.php?lfj=attachment&job=listimg">只显示图片</a></b>] </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="center"> 
+        <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+        <div style="float:left;width:19%;margin-top:10px;"><a href="$webdb[www_url]/$rs[path]" target="_blank"><img src="$webdb[www_url]/$rs[path]" border="0" width="150" height="150"></a> 
+          <br>
+          <input type="checkbox" name="iddb[]" value="$rs[path]">
+          上传日期:$rs[time] </div>
+        <!--
+EOT;
+}
+print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF" align="center"> $showpage </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF"></td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF" align="center"> <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> 
+        <input type="submit" name="Submit" value="删 除">
+        <br>
+        <font color="#FF0000">请小心谨慎，不可恢复，会把目录下的所有文件一起删除 </font></td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,42 @@
+<!--
+<?php
+if($listdb){
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+<dl class="listcomment">
+	<dt><a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank"><img onerror="this.src='$webdb[www_url]/images/default/nohead.gif'" src='$rs[icon]' height="50"/></a></dt>
+    <dd>
+    	<p>$rs[content]</p>
+        <div>
+称呼：<a onclick="if('0'=='$rs[uid]')return false;" href="$webdb[www_url]/member/homepage.php?uid=$rs[uid]" target="_blank">$rs[username]</a>
+    $rs[posttime]发表
+<!--
+EOT;
+if($web_admin||($lfjuid&&$rs[uid]==$lfjuid)){
+print <<<EOT
+-->
+      <A HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=del&fid=$fid&id=$id&cid=$rs[cid]')">删除</A> 
+<!--
+EOT;
+}print <<<EOT
+-->
+      <a HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=flowers&fid=$fid&id=$id&cid=$rs[cid]')">鲜花</a>(<span>{$rs[flowers]}</span>) 
+      <a HREF="javascript:getcomment('$city_url/job.php?job=comment_ajax&action=egg&fid=$fid&id=$id&cid=$rs[cid]')">鸡蛋</a>(<em>{$rs[egg]}</em>)
+        </div>
+    </dd>
+</dl>
+<!--
+EOT;
+}}else{print <<<EOT
+-->
+<div class="nocomment">还没有相关评论！</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+<div class="showpages">$showpage</div>
+<!--
+EOT;
+?>
+-->

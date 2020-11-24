@@ -1,0 +1,136 @@
+<!--
+<?php
+$rsdb[iframeurl]?$isiframe[1]=" checked ":$isiframe[0]=" checked ";
+if(!$nextdb[id]){$nextdb[links]=" onclick='return false;' ";$nextdb[subject]="没有了";}
+if(!$backdb[id]){$backdb[links]=" onclick='return false;' ";$backdb[subject]="没有了";}
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/yellow/news/common.css">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="comment_title">
+  <tr>
+    <td align="center"><a href="bencandy.php?fid=$fid&id=$id" target="_blank"><u><b><font size="3">$rsdb[title]</font></b></u></a><br>
+<br>
+本评论只代表{$webdb[webname]}网友个人观点，不代表{$webdb[webname]}观点</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable" id="commentTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">网友评论</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <div id="comment"></div>
+            <table width="99%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="16%"><span class="L">称　　呼:</span><span class="R"></span></td>
+                <td width="84%"><span class="R"> 
+                  <input type="text" name="textfield2" id="comment_username" value="$lfjid">
+                  </span></td>
+              </tr>
+              <!--
+EOT;
+if(!$web_admin){
+print <<<EOT
+-->
+              <tr> 
+                <td width="16%"><span class="L">验 证 码:</span></td>
+                <td width="84%"> 
+                  <input id="yzImgNum" type="text" name="yzimg" size="8">
+                  <img border="0" id="yz_Img" name="imageField" src="$webdb[www_url]/do/yzimg.php"> 
+                </td>
+              </tr>
+              <!--
+EOT;
+}
+print <<<EOT
+-->
+              <tr> 
+                <td width="16%"><span class="L">内　　容:</span></td>
+                <td width="84%"><span class="R"> 
+                  <textarea name="textfield" cols="50" rows="5" id="comment_content" onKeyDown="quickpost(event)"></textarea>
+                  </span></td>
+              </tr>
+              <tr> 
+                <td width="16%"> 
+                  <script language="JavaScript">
+<!--
+
+getcomment("{$Mdomain}/comment_ajax.php?fid=$fid&id=$id");
+cnt = 0;
+function quickpost(event)
+{
+	if((event.ctrlKey && event.keyCode == 13)||(event.altKey && event.keyCode == 83))
+	{
+		cnt++;
+		if (cnt==1){
+			postcomment('{$Mdomain}/comment_ajax.php?action=post&fid=$fid&id=$id')
+		}else{
+			alert('内容正在提交...');
+		}
+	}	
+}
+//-->
+</script>
+                </td>
+                <td width="84%"><span class="R"> 
+                  <input type="button" id="comment_submit" name="Submit" value="提交" onClick="postcomment('{$Mdomain}/comment_ajax.php?action=post&fid=$fid&id=$id','$webdb[yzImgComment]')">
+                  </span></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="30%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">热门评论</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left"> 
+            <!--
+EOT;
+$listdb=Get_Info($type='comment',$webdb[InfoJsListRows]>0?$webdb[InfoJsListRows]:8,$webdb[InfoJsListLeng]>0?$webdb[InfoJsListLeng]:28,$fid,$mid=0);
+foreach($listdb AS $rs){
+print <<<EOT
+-->
+            ·<A HREF="comment.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a><br>
+            <!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

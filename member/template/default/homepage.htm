@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+<?php
+print <<<EOT
+-->
+<head>
+<title>{$rsdb[username]}的个人主页                     $titleDB[title]</title>
+<link rel="stylesheet" type="text/css" href="images/default/homepage.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="$titleDB[keywords]">
+<meta name="description" content="$titleDB[description]">
+</head>
+<SCRIPT LANGUAGE="JavaScript" src="../images/default/default.js"></SCRIPT>
+<body>
+<div id="TopDiv">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="toptable">
+  <tr>
+    <td class="left">
+<!--
+EOT;
+$detail=explode("\r\n",$webdb[guide_word]);
+foreach($detail AS $key=>$value){
+if(!$value)continue;
+list($name,$url,$blank,$color,$lid)=explode("|",$value);
+if(ereg("^\/",$url)){
+	$url="$webdb[www_url]$url";
+}elseif(!ereg("://",$url)){
+	$url="$webdb[www_url]$webdb[path]/$url";
+}
+print <<<EOT
+-->
+	<div><a href="$url" target="_blank">$name</a></div> 
+<!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+    <td class="right">
+<!--
+EOT;
+if($lfjuid){print <<<EOT
+-->
+	 		<a href="./homepage.php?uid=$lfjuid">我的主页</a> 
+        	|  <a href="./" target="_blank">控制面板</a> 
+        	| <a href="$webdb[www_url]/do/login.php?action=quit" target="_blank">退出</a>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+	  		<a href="$webdb[www_url]/do/login.php" target="_blank">登录</a> 
+        	| <a href="$webdb[www_url]/do/reg.php" target="_blank">注册</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+</div>
+<div id="headDiv">
+	<span>{$rsdb[username]}的个人主页</span>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="container">
+  <tr>
+    <td class="main">
+    	<div id="comarticle">网站公告：<a>$webdb[memberNotice]</a></div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="userinfo mt15">
+          <tr>
+            <td class="head"><span class="FL">会员信息</span><span class="FR"><a href="index.php?main=pm.php?job=send&username=$rsdb[username]" target="_blank">发站内短消息</a></span></td>
+          </tr>
+          <tr>
+            <td class="cont">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="imgword">
+                  <tr>
+                    <td class="img">
+                    	<a href="#"><img onerror="this.src='$webdb[www_url]/images/default/noface.gif'" onload="this.width=150" src="{$rsdb[icon]}?$timestamp" /></a>
+         			</td>
+                    <td class="word">
+<!--
+EOT;
+$grouptype = $rsdb[grouptype] == 1 ? "<img src=\"$webdb[www_url]/member/images/company_icon.gif\" alt=\"企业会员\">":"";
+$idcard_yz = $rsdb[idcard_yz] == 1 ? "<img src=\"$webdb[www_url]/images/default/yz/idcard_1.gif\" alt=\"身份认证会员\">":"<img src=\"$webdb[www_url]/images/default/yz/idcard_0.gif\" alt=\"身份还未认证\">";
+$email_yz = $rsdb[email_yz] == 1 ? "<img src=\"$webdb[www_url]/images/default/yz/email_1.gif\" alt=\"邮箱认证会员\">" : "<img src=\"$webdb[www_url]/images/default/yz/email_0.gif\" alt=\"邮箱还未认证\">";
+$mob_yz = $rsdb[mob_yz] == 1 ? "<img src=\"$webdb[www_url]/images/default/yz/mob_1.gif\" alt=\"手机认证会员\">" : "<img src=\"$webdb[www_url]/images/default/yz/mob_0.gif\" alt=\"手机还未认证\">";
+print <<<EOT
+-->
+                    	<div>帐号：<span>$rsdb[username]</span> $grouptype $idcard_yz $email_yz $mob_yz</div>
+                        <div>级别：<span>$group_db[grouptitle]</span></div>
+                        <div>{$webdb[MoneyName]}：<img src="images/moneycard.gif"> <span>$rsdb[money]</span> <span>$group_db[MoneyDW]</span> (<a href="../do/jf.php" target="_blank">查看如何获取积分?</a>)</div>
+                        <div>已用空间：<span> $rsdb[usespace]</span> M(兆)</div>
+                        <div>可用空间大小： $space_system + $space_group + $space_user - $rsdb[usespace] = $rsdb[totalspace] M(兆)</div>
+                        <div>空间计算方式： 系统默认容量 + 用户组默认容量 + 自身容量 - 已用空间 = 可用空间大小</div>
+                    </td>
+                  </tr>
+                </table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="moreinfo">
+                  <tr>
+                    <td class="left">
+                        <div class="h">个人基本信息</div>
+                        <div>性别：<span>$rsdb[sex]</span> &nbsp;&nbsp;&nbsp;&nbsp; 生日：<span>$rsdb[bday]</span></div>
+                        <div>所在城市：<span>{$city_DB[name][$rsdb[cityid]]}</span> &nbsp;&nbsp;&nbsp;&nbsp; QQ：<span>$rsdb[oicq]</span></div>
+                        <div>联系MSN：<span>$rsdb[msn]</span></div>
+                        <div>个人网站：<a href="$rsdb[homepage]" target="_blank">$rsdb[homepage]</a></div>
+                        <div>注册日期：<span>$rsdb[regdate]</span></div>
+                        <div>自我介绍：<span>$rsdb[introduce]</span></div>
+                    </td>
+                    <td class="right">
+                        <div class="h">个人动态信息</div>
+                        <div>最后登录时间：<span>$rsdb[lastvist]</span></div>
+                        <div>最后登录IP所在地：<span>$rsdb[lastip]</span></div>
+                        <div>主页被访问数：<span>$rsdb[hits]</span></div>
+                        <div>主页最近被访问日期：<span>$rsdb[lastview]</span></div>
+                    </td>
+                  </tr>
+                </table>
+            </td>
+          </tr>
+        </table>               
+<!--
+EOT;
+if($web_admin||$lfjuid==$uid){print <<<EOT
+-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="sidetable mt15">
+        <tr> 
+          <td class="head"><span class="FL">我的私密资料</span></td>
+        </tr>
+        <tr> 
+          <td class="cont"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="myinfo">
+              <tr> 
+                <td width="30%">注册IP：$rsdb[regip]</td>
+                <td width="40%">最后登录IP：$rsdb[lastip]</td>
+                <td width="30%">邮政编码：$rsdb[postalcode]</td>
+              </tr>
+              <tr> 
+                <td>真实姓名：$rsdb[truename]</td>
+                <td>身份证号码：$rsdb[idcard]</td>
+                <td>联系手机：$rsdb[mobphone]</td>
+              </tr>
+              <tr> 
+                <td>联系电话：$rsdb[telephone]</td>
+                <td>联系地址：$rsdb[address]</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td colspan="3"><span>说明：以上私密资料只有本人与管理员才可查看,其它人无法查看!</span></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+<!--
+EOT;
+}print <<<EOT
+--> 
+	   
+       
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="sidetable mt15">
+        <tr> 
+          <td class="head"><span class="FL">系统自定义个人信息字段</span></td>
+        </tr>
+        <tr> 
+          <td class="cont cont1">                
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<div id="showRegDiv"></div>');
+AJAX.get("showRegDiv","../do/regfield.php?job=show&uid=$uid");
+//-->
+</SCRIPT>
+          </td>
+        </tr>
+      </table> 
+    </td>    
+    <td class="side">
+       
+       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="drag">
+        <tr> 
+          <td class="head">我的最新信息</td>
+        </tr>
+        <tr> 
+          <td class="cont"> 
+<!--
+EOT;
+foreach($myarticleDB AS $rs){
+$rs[title]=get_word($rs[title],40,0);
+print <<<EOT
+-->
+           <div class="list"><a href="../bencandy.php?city_id=$rs[city_id]&fid=$rs[fid]&id=$rs[id]" target="_blank">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<div id="FootDiv">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="foottable">
+  <tr>
+    <td class="logo"><a href="../index.php"><img src="images/default/flogo.gif"></a></td>
+    <td class="copyright">
+  
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

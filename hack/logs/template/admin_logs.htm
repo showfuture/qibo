@@ -1,0 +1,67 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=delete_admin_logs">
+    <tr class="head"> 
+      <td width="5%" align="center">序号</td>
+      <td width="51%" align="center">操作</td>
+      <td width="12%" align="center">用户</td>
+      <td width="13%" align="center">IP</td>
+      <td width="12%" align="center">时间</td>
+      <td width="7%" align="center">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="51%"> 
+        <input type="checkbox" name="iddb[{$rs[id]}]" value="1">
+        $rs[weburl] </td>
+      <td width="12%" align="center">$rs[username]</td>
+      <td width="13%" align="center">$rs[ip]</td>
+      <td width="12%" align="center">$rs[posttime]</td>
+      <td width="7%" align="center"><a href="index.php?lfj=$lfj&action=delete_admin_logs&iddb[{$rs[id]}]=1"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}
+print <<<EOT
+--><tr bgcolor="#FFFFFF"> 
+      <td colspan="6" align="center"> 
+       $showpage
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="6" align="center"> 
+         <a href="#" onClick="CheckAll('all')">全选</a>/<a href="#" onClick='CheckAll()'>反选</a> <input type="submit" name="Submit" value="删 除">
+        [<a href="index.php?lfj=$lfj&action=delalldo">全部清除</a>] </td>
+    </tr>
+  </form>
+</table><SCRIPT LANGUAGE="JavaScript">
+<!--
+function postdo(va){
+	document.form_work.jobs.value=va
+	document.form_work.submit();
+}
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

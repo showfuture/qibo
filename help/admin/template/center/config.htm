@@ -1,0 +1,147 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color='#FFFFFF'>核心设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>频道名称:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="text" name="webdbs[Info_webname]" value="$webdb[Info_webname]" size="30">
+      </td>
+    </tr>
+	<tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">SEO优化标题title:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[SEO_title]' size='50' value='$webdb[SEO_title]'>
+      </td>
+    </tr>
+	
+	<tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">SEO优化关键字keywords:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[SEO_keywords]' size='50' value='$webdb[SEO_keywords]'>
+      </td>
+    </tr>
+	
+	<tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">SEO优化描述description:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[SEO_description]' size='50' value='$webdb[SEO_description]'>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width='22%'> 
+        <div align="left">网站打开还是关闭:</div>
+      </td>
+      <td width="78%"> 
+        <input type="radio" name="webdbs[module_close]" value="1" $module_close[1]>
+        关闭 
+        <input type="radio" name="webdbs[module_close]" value="0" $module_close[0]>
+        开放</td>
+    </tr>
+    <!--
+
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>网站风格:</td>
+      <td bgcolor='#FFFFFF' width="78%">$select_style</td>
+    </tr>
+
+
+-->
+    <!--
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>信息内容静态处理:<br>
+      </td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="radio" name="webdbs[Info_NewsMakeHtml]" value="0" $Info_NewsMakeHtml[0]>
+        不启用静态 
+        <input type="radio" name="webdbs[Info_NewsMakeHtml]" value="1" $Info_NewsMakeHtml[1]>
+        真静态 
+        <input type="radio" name="webdbs[Info_NewsMakeHtml]" value="2" $Info_NewsMakeHtml[2]>
+        伪静态 <br>
+        <font color="#666666">(注意:当启用真静态后,你需要手工把所有列表页与内容页都生成静态,否则网站不能正常浏览) </font></td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>首页自动生成静态的时间间隔,留空或设置为0的话,将不自动生成首页静态:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type='text' name='webdbs[Info_MakeIndexHtmlTime]' size='4' value='$webdb[Info_MakeIndexHtmlTime]'>
+        分钟 </td>
+    </tr>-->
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>允许发表文章的用户组:<br>
+        <font color="#999999">栏目那里设置的话,会以栏目设置为标准.</font></td>
+      <td bgcolor='#FFFFFF' width="78%"> $allowGroupPost</td>
+    </tr>
+	
+	<tr> 
+      <td width='22%' bgcolor='#FFFFFF'>发表文章自动通过审核的用户组: 
+        </td>
+      <td bgcolor='#FFFFFF' width="78%"> $Info_GroupPostYZ</td>
+    </tr>
+	
+    
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>数据表区分符前缀:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type='text' name='webdbs[module_pre]' size='15' value='$webdb[module_pre]' readonly>
+        仅供查看.不能修改 </td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>模块ID号:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type='text' name='webdbs[module_id]' size='4' value='$webdb[module_id]' readonly>
+        仅供查看.不能修改 </td>
+    </tr>
+	
+	<tr> 
+      <td width='22%' bgcolor='#FFFFFF'>评论开关设置:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="radio" name="webdbs[Info_PostCommentType]" value="0" $Info_PostCommentType[0]>
+        所有人可发表评论(包含游客) 
+        <input type="radio" name="webdbs[Info_PostCommentType]" value="1" $Info_PostCommentType[1]>
+        只有会员才可发表评论(游客不能) 
+        <input type="radio" name="webdbs[Info_PostCommentType]" value="2" $Info_PostCommentType[2]>
+        禁止所有人发表评论(只有管理员才可以)</td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>评论审核设置:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="radio" name="webdbs[Info_PassCommentType]" value="0" $Info_PassCommentType[0]>
+        所有人发表评论自动通过审核(包含游客) 
+        <input type="radio" name="webdbs[Info_PassCommentType]" value="1" $Info_PassCommentType[1]>
+        只有会员发表评论自动通过审核(游客不能) 
+        <input type="radio" name="webdbs[Info_PassCommentType]" value="2" $Info_PassCommentType[2]>
+        全部评论需要手工审核(管理员例外)</td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>每页显示几条评论:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="text" name="webdbs[Info_ShowCommentRows]" size="5" value="$webdb[Info_ShowCommentRows]">
+        条,留空或为0,则默认8条</td>
+    </tr>
+	
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

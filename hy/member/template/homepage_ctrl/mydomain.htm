@@ -1,0 +1,77 @@
+<!--
+<?php
+if(!$webdb[vipselfdomain]){	
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="PicTable">
+  <tr>
+  	  <td>
+      	<div class="Showpage"><img src="$webdb[www_url]/member/images/novip.jpg"/></div>
+        <div class="Showpage b">抱歉，系统已经关闭个性域名服务！</div>
+      </td>
+  </tr>
+</table>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="PicTable">
+  <tr>
+  	  <td width="50"><img src="$Murl/images/default/vip.jpg"/></td>
+      <td class="RightTd">
+      	<div class="b">二级独立域名，VIP用户专享服务，尽现VIP的特殊身份；客户更容易记住，提高客户访问量.</div>
+<!--
+EOT;
+if($web_admin||$groupdb['use2domain']){
+print <<<EOT
+-->
+		<div>您享有独立二级域名特权；请在下面设置您的二级域名;</div>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+		<div>您的级别不够，想要有自己独立的二级域名，赶快成为VIP吧，<a href="$webdb[www_url]/member/buygroup.php?job=list">[点此成为VIP]</a></div>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+      </td>
+  </tr>
+  <tr>
+     <td colspan="2" style="text-align:center;">
+<!--
+EOT;
+if($groupdb['use2domain']){
+print <<<EOT
+-->
+	
+	<form id="form3" name="form3" method="post" action="?atn=$atn">
+        请输入二级域名： 
+        <input type="text" name="host"  value="$companydb[host]"/>
+        .$webdb[vipselfdomain]
+        <input type="submit" name="Submit2" value="保 存" /> <input name="uid" type="hidden" id="uid" value="$uid" />
+		<input type="hidden" name="step" value="2" />
+	</form>
+	
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+	<a href="$webdb[www_url]/member/buygroup.php?job=list" ><img src="$Murl/images/default/addvip.jpg"/></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+     </td>
+  </tr>
+</table>
+<!--
+EOT;
+}
+?>
+-->

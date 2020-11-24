@@ -1,0 +1,115 @@
+<!--
+<?php
+print<<<EOT
+--><table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold>创建新模型</span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF> 
+      <form action="$admin_path&lfj=$lfj&action=addsort" method=POST>
+        <span class=bold>模型</span>名称 
+        <input type=text name="name" size=10>
+        <input type="radio" name="ifdp" value="0" checked>
+        分类模型 
+        <input type="radio" name="ifdp" value="1">
+        点评模型 
+        <input type=submit value="创 建" name="submit">
+        
+      </form>
+    </td>
+  <tr>
+ 
+</table>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+    <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑模型</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">数值大的排在前面</font></li>
+          <li><font color="#FF0000">所有操作,必须手工点击生成模板后,前台才能生效</font></li>
+          <li><font color="#FF0000"> 如果自定义添加了风格与模板,需要手工再修改模板</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18" class="head"> 
+            <td width="5%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="40%">模型名称</td>
+            <td  style="border-right:1px solid #fff;" width="10%">点评设置</td>
+            <td width="6%" style="border-right:1px solid #fff;">排序</td>
+            <td width="9%" style="border-right:1px solid #fff;">字段设置</td>
+            <td width="9%" style="border-right:1px solid #fff;">模型设置</td>
+            <td width="8%" style="border-right:1px solid #fff;">生成模板</td>
+            <td width="8%" style="border-right:1px solid #fff;">应用栏目</td>
+            <td width="5%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="5%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[id]</font></b></td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;"> 【<a href='$admin_path&job=editsort&id=$rs[id]' target="_self">{$rs[name]}</a>】</td>
+            <td bgcolor="#FFFFFF" style="border-bottom:1px dotted #ccc;" align="center">&nbsp;
+<!--
+EOT;
+if($rs[ifdp]){
+print <<<EOT
+-->
+			<a href="$admin_path&job=setcomment&id=$rs[id]">设置</a>
+<!--
+EOT;
+}print <<<EOT
+-->
+			</td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="9%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href='$admin_path&job=editsort&id=$rs[id]'><font color="red">字段修改</font></a>]</td>
+            <td width="9%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&job=editmodule&id=$rs[id]">设置</a></td>
+            <td width="8%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$admin_path&job=tpl&id=$rs[id]">生成模板</a></td>
+            <td width="8%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">{$rs[NUM]}个</td>
+            <td width="5%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href="$admin_path&action=delete&id=$rs[id]" onclick="return confirm('你确实要删除吗?不可恢复');">删除</a>]</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center">$showpage<br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a><a href="javascript:" onClick='CheckAll()'></a> 
+          <input type="button" name="Submit2" value="修改以上排序" onclick="postlist('list')">
+          <input type="button" name="Submit22" value="批量生成模板" onClick="postlist('automaketpl')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="$admin_path&action=editlist";
+	}else if(t=='automaketpl'){
+		document.formlist.action="$admin_path&job=tpl&automaketpl=1";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+		  </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

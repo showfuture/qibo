@@ -1,0 +1,64 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" align="center">
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit222" value="添加广告位" onClick="window.location=('$admin_path&job=addplace')">
+      　　　 
+      <input type="button" name="Submit23" value="广告位管理" onClick="window.location=('$admin_path&job=listad')">
+      　　
+      <input type="button" name="Submit23" value="购买广告" onClick="window.open('../member/index.php?main=../$dirname/member/norm.php?job=list')">
+      　　 　 </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td width="17%">广告位</td>
+    <td width="12%">用户名</td>
+    <td width="11%">审核与否</td>
+    <td width="14%">申请购买日期</td>
+    <td width="27%">投放日期</td>
+    <td width="6%">点击</td>
+    <td width="13%">广告管理</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF"> 
+    <td width="17%">$rs[name]</td>
+    <td width="12%" align="center">$rs[u_username]</td>
+    <td width="11%" align="center">{$rs[u_yz]}</td>
+    <td width="14%" align="center">$rs[u_posttime]</td>
+    <td width="27%" align="center">$rs[u_begintime] / $rs[u_endtime]</td>
+    <td width="6%" align="center">$rs[hits]</td>
+    <td width="13%" align="center"><a href="$admin_path&job=edituserad&u_id=$rs[u_id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+      &nbsp; <a href="$admin_path&u_id=$rs[u_id]&action=delete_u_ad" onclick="return confirm('你确认要删除这个广告吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" align="center"> 
+    <td colspan="7">$showpage<a href="$admin_path&id=$rs[id]&action=deleteadplace" onclick="return confirm('你确认要删除这个广告吗?')"></a></td>
+  </tr>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td align="left">说明</td>
+  </tr>
+   
+  <tr bgcolor="#FFFFFF"> 
+    <td>注:仅能统计文字跟图片的点击率</td>
+  </tr>
+   
+</table>
+<!--
+EOT;
+?>
+-->

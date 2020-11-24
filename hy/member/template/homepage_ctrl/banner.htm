@@ -1,0 +1,52 @@
+<!--
+<?php
+print <<<EOT
+-->
+<style type="text/css">
+.FormTable td.tdL{
+	width:150px;
+}
+</style>
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable mtop10">
+    <tr> 
+      <td class="tdL">头部横幅图片/FLASH:</td>
+      <td class="tdR"> 
+        <div> 
+          <input name="postfile" type="file" id="postfile" size="30" />
+        </div>
+        <div><img src="$banner_show" onload="this.style.height='50px'"  class="logo" onerror="this.style.display='none'"/></div>
+        <div><strong>注意</strong>：此处设置后，头部将不再显示公司名称,推荐您在制作横幅图片/FLASH的时候加入公司名称。另外要注意的是，有的风格设置无效!</div>
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="tdL">尺寸(单位为像素):</td>
+      <td class="tdR">宽:
+        <input type="text" name="atc_width" size="5" value="$width">
+        高:
+        <input type="text" name="atc_height" size="5" value="$height">
+        (注:宽要大于800,高要大于30) </td>
+    </tr>
+    <tr> 
+      <td class="tdL">删除横幅图片/FLASH:</td>
+      <td class="tdR"> 
+        <input name="del_banner" type="checkbox" value="1" onclick="if(this.checked){return confirm('确定要删除吗?');}" />
+        如果您不再想使用横幅图片/FLASH，选中此项再提交一下,即可删除； </td>
+    </tr>
+    <tr> 
+      <td class="tdL"><br/>
+      </td>
+      <td class="tdR"> 
+        <input type="submit" name="button7" id="button11" value="提交" onclick="setindex_left_right()" />
+        <input name="atn" type="hidden" id="atn3" value="$atn" />
+        <input name="step" type="hidden" id="step3" value="1" />
+        <input name="uid" type="hidden" id="uid3" value="$uid" />
+      </td>
+    </tr>
+  </table>
+</form>
+<!--
+EOT;
+?>
+-->

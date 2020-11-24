@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<!--
+<?php
+print <<<EOT
+-->
+<title>{$webdb[webname]}后台管理</title>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<link rel="stylesheet" type="text/css" href="./images/logins/style.css">
+</HEAD>
+<BODY>
+<div class="container">
+	<div class="head"></div>
+    <div class="cont">
+    <form name="form1" method="post" action="">
+    	<dl>
+        	<dt>帐号：</dt>
+            <dd><input type="text" name="loginname" class="input" /></dd>
+        </dl>
+        <dl>
+        	<dt>密码：</dt>
+            <dd><input type="password" name="loginpwd" class="input"/></dd>
+        </dl>
+<!--
+EOT;
+if($webdb[web_open]&&$webdb[yzImgAdminLogin]){
+$path=$Murl?$webdb[www_url]:'..';
+print <<<EOT
+-->
+        <dl>
+        	<dt>验证码：</dt>
+            <dd>
+            	<span><input type="text" name="yzimg" class="yz"/></span>
+                <span class="img">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img id="yz_Img" name="imageField" onclick="this.src=this.src+Math.random();" src="$path/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+				</span>
+            </dd>
+        </dl>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+        <dl>
+        	<dt><br/></dt>
+            <dd><span><input type="image" src="$webdb[admin_url]/images/logins/submit.gif" name="Submit"></span><span><input type="reset" class="reset" value="">
+            </span></dd>
+        </dl>
+    </form>    
+    </div>
+    <div class="key"></div>	
+</div>
+</BODY>
+</HTML>
+<!--
+EOT;
+?>
+-->

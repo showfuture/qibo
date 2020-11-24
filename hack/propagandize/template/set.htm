@@ -1,0 +1,56 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=set">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">推广赚取积分功能设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>是否启用推广赚取积分功能:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        
+       <input type="radio" name="webdbs[propagandize_close]" value="0" $propagandize_close[0]>
+        启用 
+        <input type="radio" name="webdbs[propagandize_close]" value="1" $propagandize_close[1]>
+        禁用</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>相同来源IP多天内不重复累计:<span help=1>至少要设置一天以上,不然的话用户反复点击或注册就造成了恶意刷积分</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[propagandize_LogDay]" value="$webdb[propagandize_LogDay]" size="3">
+        天</td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>每个IP访问一次奖励积分:<span help=1>上面指定的天数内,同一个IP重复访问的不统计</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[propagandize_Money]" value="$webdb[propagandize_Money]" size="5">
+        个 </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>推荐用户成功注册后可奖励积分:<span help=1>上面指定的天数内,同一个IP重复注册的不统计,另外为了起到更好的鼓励用户介绍新用户注册,这里使用倒金字塔方式的奖励制度,比如A是B推荐注册的,而B又是C推荐注册的,那么不仅B可以得到奖励,他的上级C也同时得到奖励,如果C有上级D的话,他的上级D也可以得到奖励,以此类推</span></td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[propagandize_Reg_Money]" value="$webdb[propagandize_Reg_Money]" size="5">
+        个 </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>推广链接跳转网址:</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input type="text" name="webdbs[propagandize_jumpto]" value="$webdb[propagandize_jumpto]" size="50">
+      </td>
+    </tr>
+    <tr> 
+      <td width='28%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF'> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

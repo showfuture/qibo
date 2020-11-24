@@ -1,0 +1,154 @@
+/***************************产品供应排序页*******************************/
+.listalltable .main{
+	padding-right:10px;
+}
+.listalltable .side{
+	width:25%;
+}
+/*
+*商品列表
+*/
+.dragTable .head{
+	height:30px;
+	background:url(head1.gif) right top no-repeat;
+}
+.dragTable .head span{
+	display:block;
+	padding:5px 10px 0 10px;
+	float:left;
+	line-height:25px;
+}
+.dragTable .head span.FL{
+	width:120px;
+	background:url(head1.gif) left top no-repeat;
+	padding-left:15px;
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+}
+.dragTable .head span.FR{
+	float:right;
+}
+.dragTable .head span.FR a{
+	display:block;
+	float:left;
+	width:95px;
+	background:url(butter0.gif) center 1px no-repeat;
+	text-align:center;
+	font-weight:bold;
+	color:#888;
+}
+.dragTable .head span.FR a.ch{
+	background:url(buttercha.gif) center 1px no-repeat;
+	color:#F00;
+}
+.dragTable .cont{
+	border:#FDDCB7 solid 1px;
+	border-top:0;
+	padding:5px;
+}
+.dragTable .cont .img{
+	width:140px;
+	text-align:center;
+}
+.dragTable .cont .info{
+	width:480px;
+}
+.dragTable .cont .renzheng{
+	text-align:center;
+}
+.dragTable .cont .listhead{
+	border-bottom:#FFBC5B dotted 1px;
+	line-height:25px;
+	margin:5px auto 0 auto;
+}
+.dragTable .cont .listhead td{
+	color:#B75200;
+	font-weight:bold;
+}
+.dragTable .cont .listshop{
+	border-bottom:#ddd dotted 1px;
+}
+.dragTable .cont .listshop td{
+	vertical-align:middle;
+}
+.dragTable .cont .listshop .img{
+	padding:5px 0 5px 0;
+}
+.dragTable .cont .listshop .img a{
+	display:block;
+	width:120px;
+	height:90px;
+	border:#ddd solid 1px;
+	padding:1px;
+	margin:auto;
+}
+.dragTable .cont .listshop .info{
+	vertical-align:top;
+	line-height:22px;
+}
+.dragTable .cont .listshop .info .title{
+	margin-top:3px;
+	height:22px;
+	overflow:hidden;
+}
+.dragTable .cont .listshop .info .title a{
+	font-size:14px;
+	font-weight:bold;
+	color:#00349A;
+}
+.dragTable .cont .page{
+	line-height:30px;
+	text-align:center;
+	margin-top:5px;
+}
+.dragTable .cont .page a{
+	border:#DDD solid 1px;
+	padding:5px 5px 3px 5px;
+}
+/*
+*黄页分类
+*/
+.shopsort .head{
+	height:35px;
+	line-height:35px;
+	background:url(shop_sorthead.gif) right bottom no-repeat;
+	padding-right:10px;
+}
+.shopsort .head span{
+	display:block;
+	background:url(shop_sorthead.gif) left bottom no-repeat;
+	padding-left:10px;
+	text-align:center;
+	color:#B75200;
+	font-size:14px;
+	font-weight:bold;
+}
+.shopsort .cont{
+	border:#DAAD42 solid 1px;
+	border-top:0;
+	padding-bottom:5px;
+}
+.shopsort .cont .bigsort{
+	padding:4px 0 0 15px;
+	line-height:26px;
+	background:url(point.gif) left top repeat-x;
+}
+.shopsort .cont .list1{
+	background:none;
+}
+.shopsort .cont .bigsort a{
+	display:block;
+	background:url(tuangou_array.gif) 200px 7px no-repeat;
+	font-size:14px;
+	text-decoration:none;
+}
+.shopsort .cont .sort{
+	padding:5px 10px 5px 10px;
+	line-height:20px;
+	background:url(point.gif) left top repeat-x;
+	color:#aaa;
+}
+.shopsort .cont .sort a{
+	color:#666;	
+}

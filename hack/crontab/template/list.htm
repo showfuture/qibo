@@ -1,0 +1,177 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script src="../images/default/setday.js"></script>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth"  id="top_menu">
+  <tr>
+    <td>
+    	[<a href="index.php?lfj=crontab&job=list">定时任务列表</a>] [<a href="index.php?lfj=crontab&act=post">添加定时任务</a>] 
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+if($job == "list"){
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr align="center" class="head"> 
+    <td width="22%">功能名称</td>
+    <td width="10%">间隔运行时间</td>
+    <td width="9%">每天运行时间</td>
+    <td width="14%">将来运行时间</td>
+    <td width="12%">最后运行时间</td>
+    <td width="10%">删除</td>
+    <td width="7%">修改</td>
+    <td width="9%">开启</td>
+    <td width="7%">强制</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[minutetime] = $rs[minutetime] ? "$rs[minutetime]分钟" : "<span style='color:#999'></span>";
+print <<<EOT
+-->
+  <tr align="center" bgcolor="#FFFFFF" class="trA" onMouseOver="this.className='trB'" onMouseOut="this.className='trA'"> 
+    <td width="22%" align="left">$rs[title]</td>
+    <td width="10%">$rs[minutetime]</td>
+    <td width="9%">$rs[daytime]</td>
+    <td width="14%">$rs[whiletime]</td>
+    <td width="12%"> $rs[lasttime]</td>
+    <td align="center" width="10%"><a href="?lfj=$lfj&job=delete&id=$rs[id]" onclick="return confirm('你确认要删除吗?');">删除</a></td>
+    <td width="7%"><a href="index.php?lfj=crontab&act=edit&id=$rs[id]">修改</a></td>
+    <td width="9%">$rs[ifstop]</td>
+    <td width="7%"><a href="?lfj=$lfj&job=docrontab&id=$rs[id]" target="dophp" onClick="this.outerHTML='已执行'">执行</a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <tr align="center" class="head"> 
+    <td align="left">说明</td>
+  </tr>
+  <tr align="center" bgcolor="#FFFFFF" class="trA" onMouseOver="this.className='trB'" onMouseOut="this.className='trA'"> 
+    <td align="left"> <b><font color="#FF0000">注意:</font></b> 
+      <!--
+EOT;
+if(!@set_time_limit(0)){print <<<EOT
+-->
+      <font color="#0000FF"><b>你的空间不支持set_time_limit函数，容易超时，所以不支持“备份数据”与“文章静态”这种比较耗时的功能，请禁用它，否则会影响到其它定时任务功能!!!</b></font> 
+      <!--
+EOT;
+}print <<<EOT
+-->
+      <br>
+      备份数据与文章静态比较耗时，有的空间不一定支持。<br>
+      如果空间不支持set_time_limit函数的话,需要有人访问网站登录的时候,才能触发运行.否则会一直不运行.<br>
+      第一次设置的话,只要大于指定时间,就会运行. </td>
+  </tr>
+</table>
+
+
+<!--
+EOT;
+}elseif($act == "edit" || $act == "post"){
+if($rsdb[minutetime])
+$selnum = 1;
+elseif($rsdb[daytime])
+$selnum = 2;
+elseif($rsdb[whiletime])
+$selnum = 3;
+else
+$selnum = 1;
+$checked[$selnum] = "checked";
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&$act=yes">
+    <tr class="head"> 
+      <td colspan="2"><font color="#FFFFFF">{$action}定时任务</font>$selnum</td>
+    </tr>
+    <tr> 
+      <td width="120">功能名称</td>
+      <td> 
+        <input type="text" name="title" size="30" value="$rsdb[title]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="120">定时执行类型</td>
+      <td> 
+        <input name="sel" type="radio" onclick="selecttype(1)" value="1" $checked[1] />
+        间隔时间 
+        <input name="sel" type="radio" value="2" onclick="selecttype(2)" $checked[2] />
+        每天定时 
+        <input name="sel" type="radio" value="3" onclick="selecttype(3)" $checked[3] />
+        将来时间 </td>
+    </tr>
+    <tr id="seltr1" style="display:none;"> 
+      <td>间隔执行时间</td>
+      <td> 
+        <input type="text" name="minutetime" size="5" value="$rsdb[minutetime]">
+        分钟</td>
+    </tr>
+    <tr id="seltr2" style="display:none;"> 
+      <td>每天执行时间</td>
+      <td> 
+        <input type="text" name="daytime" size="15" value="$rsdb[daytime]">
+        时间格式必须为 <font color="red">01:01 (小时:分钟)</font> 否则系统执行错误</td>
+    </tr>
+    <tr id="seltr3" style="display:none;"> 
+      <td>指定执行时间</td>
+      <td> 
+        <input type="text" name="whiletime" size="30" value="$rsdb[whiletime]" onClick="setday(this)">
+        必须是将来的时间,格式必须为 <font color="red">2010-10-10 10:10:10 (年-月-日 小时:分钟:秒)<br>
+        </font><font color="#0000FF">如果日期没到,被强制执行过的话,也将不会再执行,这一点务必要注意</font></td>
+    </tr>
+    <tr  >
+      <td>最后执行日期</td>
+      <td>
+        <input type="text" name="lasttime" size="30" value="$rsdb[lasttime]" onClick="setday(this)">
+      </td>
+    </tr>
+    <tr> 
+      <td>运行地址</td>
+      <td> 
+        <input type="text" name="filepath" size="50" value="$rsdb[filepath]">
+      </td>
+    </tr>
+    <tr> 
+      <td>介绍</td>
+      <td> 
+        <textarea name="about" cols="50" rows="8">$rsdb[about]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td><br/>
+      </td>
+      <td> 
+        <input type="submit" name="Submit" value="修改">
+        <input type="hidden" name="id" value="$id">
+        系统先判断<font color="red">间隔执行时间</font>然后判断<font color="red">每天执行时间</font>最后判断<font color="red">指定执行时间</font></td>
+    </tr>
+  </form>
+</table>
+<script language="javascript">
+function selecttype(t){
+	document.getElementById('seltr1').style.display='none';
+	document.getElementById('seltr2').style.display='none';
+	document.getElementById('seltr3').style.display='none';
+	document.getElementById('seltr'+t).style.display='';
+}
+selecttype($selnum);
+</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<!--
+EOT;
+?>
+-->
+<div style="display:none;"><iframe src="../do/crontab.php" width=0 height=0 name="dophp" id="dophp"></iframe></div>

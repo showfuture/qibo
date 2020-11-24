@@ -1,0 +1,98 @@
+<!--
+<?php
+print<<<EOT
+-->
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <tr class="head"> 
+    <td> <span class=bold><font color="#FFFFFF">添加分类</font></span></td>
+  </tr>
+  <tr> 
+    <td bgcolor=#FFFFFF>  
+      <form action="index.php?lfj=$lfj&action=addsort" method=POST> 
+        <span class=bold>添加新分类-</span>&nbsp;名称 
+        <input type=text name="name" size=10>
+        <input type=submit value="提 交" name="submit"> 
+      </form>
+    </td>
+</table>
+ 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="index.php?lfj=$lfj&action=sortorder">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">编辑分类</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>注意:<font color="#FF0000">分类排序的规则是,数值大的排在前面,只能是同一级的进行排序</font> </li>
+        </ul>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id='list_sort'>
+          <tr align="center" class="head"> 
+            <td width="4%" style="border-right:1px solid #fff;">FID</td>
+            <td  style="border-right:1px solid #fff;" width="50%"><span class=bold>分类</span>名称</td>
+            <td width="6%" style="border-right:1px solid #fff;">排序</td>
+            <td width="6%" style="border-right:1px solid #fff;">设置</td>
+            <td width="6%" style="border-right:1px solid #fff;">内容</td>
+            <td width="6%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="4%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" width="50%" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="fiddb[{$rs[fid]}]" value="$rs[name]" style="border:0px;">
+              【{$rs[name]}】<span class='sort_span'></span></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"> 
+              <input type='text' name='order[{$rs[fid]}]' value='$rs[list]' size='5'>
+            </td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href='?lfj=$lfj&job=editsort&fid=$rs[fid]'><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href='index.php?lfj=jfadmin&job=listjf&fid=$rs[fid]'><img alt='' src='../member/images/art_icon.gif' border=0></a></td>
+            <td width="6%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="?lfj=$lfj&action=delsort&fid=$rs[fid]" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+           
+          <a href="javascript:" onClick="CheckAll('all')">全选</a>/<a href="javascript:" onClick='CheckAll()'>反选</a> <input type="button" name="Submit2" value="修改栏目排序" onclick="postlist('list')">
+          <SCRIPT LANGUAGE="JavaScript">
+<!--
+function postlist(t){
+	if(t=='list'){
+		document.formlist.action="index.php?lfj=$lfj&action=sortorder";
+	}else{
+		document.formlist.action="index.php?lfj=$lfj&job=batch_edit";
+	}
+	document.formlist.submit();
+}
+function CheckAll(va){
+	form=document.formlist
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+//-->
+</SCRIPT>
+          <script language="JavaScript" src="images/sort.js"></script>
+          <script language="JavaScript">
+<!--
+load_sort_td($webdb[article_show_step]);
+//-->
+</script>
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,238 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">栏目修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"><font color="#0000FF">打开详细选项设置&gt;&gt;&gt;</font><font color="#FF0000"> 
+        <input type="checkbox" name="showmore" value="checkbox" id="showmore" onClick="show_more(0);" checked>
+        [<a href="$webdb[www_url]/list.php?fid=$fid" target="_blank">浏览前台</a>] [<a href="$admin_path&job=list&fid=$fid">管理内容</a>] 
+        [<a href="$admin_path&job=addfield&fid=$fid">增加字段</a>] [<a href="$admin_path&job=listfield&fid=$fid">字段管理</a>]</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">栏目名称:</td>
+      <td width="60%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[mid]" value="1">
+        所属模型: </td>
+      <td width="60%"> $_module</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">当前栏目FID值:</td>
+      <td width="60%"> $rsdb[fid] </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[fup]" value="1">
+        父栏目FID: (不选择,将作为顶级栏目) </td>
+      <td width="60%"> 
+        <select name="postdb[fup]">
+          <option value="0">请选择</option>{$fup_select}
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="dis play:$moresons"> 
+      <td width="40%">大分类/栏目: (大分类不能发表内容,栏目才可以)</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]  >
+        大分类 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]  >
+        栏目</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$smallsort"> 
+      <td width="40%">是否在首页显示本栏目内容(不包括子栏目内容):</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[index_show]" value="1" $index_show[1]>
+        显示 
+        <input type="radio" name="postdb[index_show]" value="0" $index_show[0]>
+        不显示 </td>
+    </tr>
+    <!--
+    <tr bgcolor="#FFFFFF" class="hidetr" style="display:$smallsort"> 
+      <td width="40%">允许发表内容的用户组,（不设置，则所有用户组有权限.然而超级管理员与栏目管理员默认有权限）: 
+        <input type="checkbox" name="Together[allowpost]" value="1">
+      </td>
+      <td width="60%"> $group_post</td>
+    </tr>
+
+    <tr bgcolor="#FFFFFF" class="hidetr" style="display:$smallsort"> 
+      <td width="40%">允许浏览内容的用户组,（不设置，则所有用户组有权限.然而超级管理员与栏目管理员默认有权限）: 
+        <input type="checkbox" name="Together[allowviewcontent]" value="1">
+      </td>
+      <td width="60%"> $group_viewcontent </td>
+    </tr>
+-->
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[forbidshow]" value="1">
+        是否禁止在父栏目显示本栏目: <br>
+        (当父栏目下有很多子栏目的时候,就没必要全部显示出来)</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[forbidshow]" value="0" $forbidshow[0]>
+        显示 
+        <input type="radio" name="postdb[forbidshow]" value="1" $forbidshow[1]>
+        不显示 </td>
+    </tr> <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[ifcolor]" value="1">
+        是否在首页分类列表那红色字体显示: <br>
+        (有的风格不一定生效)</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[ifcolor]" value="0" $ifcolor[0]>
+        默认
+<input type="radio" name="postdb[ifcolor]" value="1" $ifcolor[1]>
+        加红字体</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[style]" value="1">
+        栏目风格: <br>
+        (一般留空,即以默认为标准) </td>
+      <td width="60%"> $select_style </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[template]" value="1">
+        栏目模板: (一般留空,即以默认为标准) <br>
+      </td>
+      <td width="60%"> 头部模板: 
+        <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+        <a href="#" onclick="document.getElementById('tpl_head').value='template/default/none.htm'"><font color="#FF0000">白板</font></a> 
+        (即禁用头部的意思)<br>
+        底部模板: 
+        <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+        <a href="#" onClick="document.getElementById('tpl_foot').value='template/default/none.htm'"><font color="#FF0000">白板</font></a> 
+        (即禁用底部的意思)<br>
+        列表模板: 
+        <input type="text" name="postdb[tpl][list]" value="{$tpl['list']}" id="tpl_list" size="40">
+        <span style="display:$smallsort"><br>
+        内容模板: 
+        <input type="text" name="postdb[tpl][bencandy]" value="$tpl[bencandy]" id="tpl_bencandy" size="40">
+        </span> </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[listorder]" value="1">
+        列表页内容排序方式: </td>
+      <td width="60%"> 
+        <select name="postdb[listorder]">
+          <option value="0" $listorder[0]>默认</option>
+          <option value="1" $listorder[1]>发表时间降序</option>
+          <option value="2" $listorder[2]>发表时间升序</option>
+          <option value="3" $listorder[3]>点击率降序</option>
+          <option value="4" $listorder[4]>点击率升序</option>
+          <option value="5" $listorder[5]>最近浏览</option>
+        </select>
+        (建议选择默认,否则很影响速度) </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$bigsort"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[sortnum]" value="1">
+        大分类下每页显示多少个栏目: </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[sortnum]" size="5" value="$rsdb[sortnum]">
+        个 (留空或为0则以默认为标准)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[maxperpage]" value="1">
+        列表页每页显示多少条内容: </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[maxperpage]" size="5" value="$rsdb[maxperpage]">
+        行 (留空或为0则以默认为标准)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[jumpurl]" value="1">
+        跳转到外部地址: (输入其它地址后,将不会显示本栏目)<br>
+      </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[jumpurl]" value="$rsdb[jumpurl]" size="60">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[admin]" value="1">
+        版主: (多个用,号隔开) <br>
+      </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[admin]" value="$rsdb[admin]" size="60">
+      </td>
+    </tr>
+   
+   
+
+	
+	
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%"> 
+        <input type="checkbox" name="Together[allowpost]" value="1">
+        禁止在本栏目发布信息的用户组:</td>
+      <td width="60%">$group_post</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr">
+      <td width="40%">伪静态目录名称:</td>
+      <td width="60%">
+        <input type="text" name="postdb[dir_name]" size="15" value="$rsdb[dir_name]">
+      </td>
+    </tr> <tr bgcolor="#FFFFFF"  class="hidetr">
+      <td width="40%">SEO优化:</td>
+      <td width="60%"> 标题(title): 
+        <input type="text" name="postdb[metatitle]" size="35" value="$rsdb[metatitle]">
+        <br>关键字(metakeywords):
+        <input type="text" name="postdb[metakeywords]" size="35" value="$rsdb[metakeywords]">
+        <br>
+        描述(metadescription): 
+        <input type="text" name="postdb[metadescription]" size="35" value="$rsdb[metadescription]">
+        <br>
+        <br>
+        部分变量如下:<br>
+        {city_name} 代表当前城市名称<br>
+        {sort_name} 代表栏目名称<br>
+        {zoon_name} 代表当前城市区域名称<br>
+        {street_name} 代表当前城市街道地段名称</td>
+    </tr>
+     
+    $TempLate 
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="2" bgcolor="#FFFFFF">注意:每个属性左边有个多选框,点击选择后,将可以把他的下一个子栏目的属性也一起修改</td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

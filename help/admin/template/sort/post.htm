@@ -1,0 +1,46 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="$admin_path&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">发表内容</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li><font color="#FF0000">请点击选择在哪个栏目发布内容.大分类不能发布</font></li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" height="18"> 
+            <td width="10%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">FID</td>
+            <td  style="background:#449AE8;color:#fff;border-right:1px solid #fff;" width="54%">栏目名称</td>
+            <td width="18%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">发布内容</td>
+            <td width="18%" style="background:#449AE8;color:#fff;border-right:1px solid #fff;">查看前台内容</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><b><font color="#FF0000">$rs[fid]</font></b></td>
+            <td bgcolor="#FFFFFF" width="54%" style="border-bottom:1px dotted #ccc;"> 
+              <input type="checkbox" name="fiddb[{$rs[fid]}]" value="$rs[name]" style="border:0px;">
+              {$rs[icon]}【<a href='$Murl/list.php?fid=$rs[fid]' target="_blank" style="color:$rs[color]">{$rs[name]}</a>】</td>
+            <td width="18%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;"><a href="$webdb[www_url]/member/?main=$Murl/member/post.php?fid=$rs[fid]" target="_blank" $rs[_ifcontent]>我要发布</a></td>
+            <td width="18%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;">[<a href='$Murl/list.php?fid=$rs[fid]' target="_blank">查看前台内容</a>]</td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"></div>
+      </td>
+  </tr> </form>
+</table>
+<!--
+EOT;
+?>
+-->

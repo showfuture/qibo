@@ -1,0 +1,12 @@
+<?php
+//É¾³ý·ÖÀà
+
+if(!$psid) showerr("²Ù×÷Ê§°Ü");
+	
+$mypics=$db->get_one("SELECT count(*) AS num FROM {$_pre}pic WHERE psid='$psid'");
+if($mypics[num]>0) showerr("Í¼¼¯Àï±ßÓÐÍ¼Æ¬£¬ÇëÏÈÉ¾³ýÍ¼Æ¬,ÔÙÉ¾³ýÍ¼¼¯");
+	
+$db->query("DELETE FROM {$_pre}picsort WHERE psid='$psid' AND uid='$uid' LIMIT 1");
+refreshto("?uid=$uid&atn=pic","É¾³ý³É¹¦");
+
+?>

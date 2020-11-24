@@ -1,0 +1,81 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head"> 
+    <td align="center" width="29%"><font color="#FFFFFF">登录框样式</font></td>
+    <td align="center" width="37%">异步加载代码</td>
+    <td align="center" width="20%">同步加载代码</td>
+    <td align="center" width="14%">查看效果</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="29%"  ><br>
+      横条登录框<br>
+      <br>
+    </td>
+    <td  align="center" width="37%"> 
+      <textarea id="ja_0" name="textfield" style="display:none;">
+<SCRIPT LANGUAGE="JavaScript">
+document.write('<span id="head_loginer"><img alt="内容加载中,请稍候..." src="$webdb[www_url]/images/default/ico_loading3.gif"></span>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/hack.php?hack=login&iframeID=head_loginer&styletype=0" width=0 height=0></iframe></div>');
+</SCRIPT>
+</textarea>
+      <input type="button" name="Submit2" value="获取调用代码" onClick="JM_cc('ja_0');alert('代码复制成功，你可以粘贴在网页源代码里需要显示的地方,或者放在标签里即可')">
+    </td>
+    <td  align="center" width="20%"> 
+      <textarea id="ja_01" name="textarea2" style="display:none;">
+<script language="JavaScript" src="$webdb[www_url]/do/hack.php?hack=login&job=js&styletype=0"></script>
+</textarea>
+      <input type="button" name="Submit23" value="获取调用代码" onClick="JM_cc('ja_01');alert('代码复制成功，你可以粘贴在网页源代码里需要显示的地方,或者放在标签里即可')">
+    </td>
+    <td  align="center" width="14%"><a href="?lfj=$lfj&hack=$hack&job=show&styletype=0">查看</a></td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td width="29%"  ><br>
+      方型登录框<br>
+      <br>
+    </td>
+    <td  align="center" width="37%"> 
+      <textarea id="ja_1" name="textarea" style="display:none;">
+<script language="JavaScript">
+document.write('<span id="head_loginer1"><img alt="内容加载中,请稍候..." src="$webdb[www_url]/images/default/ico_loading3.gif"></span>');
+document.write('<div style="display:none;"><iframe src="$webdb[www_url]/do/hack.php?hack=login&iframeID=head_loginer1&styletype=1" width=0 height=0></iframe></div>');
+</script>
+</textarea>
+      <input type="button" name="Submit22" value="获取调用代码" onClick="JM_cc('ja_1');alert('代码复制成功，你可以粘贴在网页源代码里需要显示的地方,或者放在标签里即可')">
+    </td>
+    <td  align="center" width="20%"> 
+      <textarea id="ja_11" name="textarea3" style="display:none;">
+<script language="JavaScript" src="$webdb[www_url]/do/hack.php?hack=login&job=js&styletype=1"></script>
+</textarea>
+      <input type="button" name="Submit222" value="获取调用代码" onClick="JM_cc('ja_11');alert('代码复制成功，你可以粘贴在网页源代码里需要显示的地方,或者放在标签里即可')">
+    </td>
+    <td  align="center" width="14%"><a href="?lfj=$lfj&hack=$hack&job=show&styletype=1">查看</a></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&hack=$hack&action=$job">
+    <tr class="head"> 
+      <td align="left"><font color="#FFFFFF">提示</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td >1.你在上面点击获取调用代码,然后把它粘贴到网页源代码里即可.放在标签里也可以<br>
+        2.异步加载与同步加载的区别:<br>
+        异步加载不影响整体网页打开速度,不足之处是不能跨域,即不能用其它二级域名其它一级域名调用,只能在本站调用,如果本站使用的话,推荐这个.<br>
+        然而同步加载可以给任何域名调用,不足之处就是加载会影响网页速度</td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>

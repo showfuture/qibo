@@ -1,0 +1,200 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--//屏蔽出错代码
+function killErr(){
+	return true;
+}
+window.onerror=killErr;
+//-->
+</SCRIPT>
+
+
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr align="center"> 
+      <td colspan="2" class="head">栏目修改</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td colspan="2"><font color="#FF0000"> [<a href="$Murl/list.php?fid=$fid" target="_blank">浏览前台</a>] 
+        [<a href="$admin_path&file=list&job=list&fid=$fid">管理内容</a>] </font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">栏目名称:</td>
+      <td width="60%"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="40%">父栏目: </td>
+      <td width="60%"> $select_fid </td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="display:$moresons"> 
+      <td width="40%">分类/栏目/单篇文章: </td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[type]" value="1" $typedb[1]  >
+        分类 
+        <input type="radio" name="postdb[type]" value="0" $typedb[0]  >
+        栏目 
+        <input type="radio" name="postdb[type]" value="2" $typedb[2]  >
+        单篇文章</td>
+    </tr>
+    <!--
+    <tr bgcolor="#FFFFFF" style="display:$smallsort"> 
+      <td width="40%">是否在首页显示本栏目内容(不包括子栏目内容):</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[index_show]" value="1" $index_show[1]>
+        显示 
+        <input type="radio" name="postdb[index_show]" value="0" $index_show[0]>
+        不显示 </td>
+    </tr>
+-->
+    <tr bgcolor="#FFFFFF" class="hidetr" style="display:$smallsort"> 
+      <td width="40%">允许发表内容的用户组,（不设置，则所有用户组有权限.然而超级管理员与栏目管理员默认有权限）: </td>
+      <td width="60%"> $group_post</td>
+    </tr>
+    <tr bgcolor="#FFFFFF" class="hidetr" style="display:$smallsort"> 
+      <td width="40%">允许浏览内容的用户组,（不设置，则所有用户组有权限.然而超级管理员与栏目管理员默认有权限）: </td>
+      <td width="60%"> $group_viewcontent </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%">是否禁止在父栏目显示本栏目: <br>
+        (当父栏目下有很多子栏目的时候,就没必要全部显示出来)</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[forbidshow]" value="0" $forbidshow[0]>
+        显示 
+        <input type="radio" name="postdb[forbidshow]" value="1" $forbidshow[1]>
+        不显示 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%">栏目模板: <br>
+        (一般留空,即以默认为标准) </td>
+      <td width="60%"> 头部模板: 
+        <input type="text" name="postdb[tpl][head]" value="$tpl[head]" id="tpl_head" size="40">
+        <a href="#" onclick="document.getElementById('tpl_head').value='template/default/none.htm'"><font color="#FF0000">白板</font></a> 
+        (即禁用头部的意思)<br>
+        底部模板: 
+        <input type="text" name="postdb[tpl][foot]" value="$tpl[foot]" id="tpl_foot" size="40">
+        <a href="#" onClick="document.getElementById('tpl_foot').value='template/default/none.htm'"><font color="#FF0000">白板</font></a> 
+        (即禁用底部的意思)<br>
+        列表模板: 
+        <input type="text" name="postdb[tpl][list]" value="{$tpl['list']}" id="tpl_list" size="40">
+        <span style="display:$smallsort"><br>
+        内容模板: 
+        <input type="text" name="postdb[tpl][bencandy]" value="$tpl[bencandy]" id="tpl_bencandy" size="40">
+        </span> </td>
+    </tr>
+    <!--
+EOT;
+if($rsdb[type]==0){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%">列表页内容排序方式: </td>
+      <td width="60%"> 
+        <select name="postdb[listorder]">
+          <option value="0" $listorder[0]>默认</option>
+          <option value="1" $listorder[1]>发表时间降序</option>
+          <option value="2" $listorder[2]>发表时间升序</option>
+          <option value="3" $listorder[3]>点击率降序</option>
+          <option value="4" $listorder[4]>点击率升序</option>
+        </select>
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:$smallsort"> 
+      <td width="40%">本栏目是否启用评论(有的风格不支持):</td>
+      <td width="60%"> 
+        <input type="radio" name="postdb[allowcomment]" value="1" $allowcomment[1]>
+        启用评论 
+        <input type="radio" name="postdb[allowcomment]" value="0" $allowcomment[0]>
+        禁用评论 </td>
+    </tr>
+    <!--
+EOT;
+}
+if($rsdb[type]==1){print <<<EOT
+-->
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <!--
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:none;"> 
+      <td width="40%">大分类下每页显示多少个栏目: 
+        <input type="checkbox" name="Together[sortnum]" value="1">
+      </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[sortnum]" size="5" value="$rsdb[sortnum]">
+        个 (留空或为0则以默认为标准)</td>
+    </tr>
+-->
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%">跳转到外部地址: <br>
+        (输入其它地址后,将不会显示本栏目) </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[jumpurl]" value="$rsdb[jumpurl]" size="60">
+      </td>
+    </tr>
+    <!--
+EOT;
+if($rsdb[type]<2){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td width="40%">栏目描述(支持HTML): </td>
+      <td width="60%"> 
+        <textarea name="postdb[descrip]" cols="50" rows="7">$rsdb[descrip]</textarea>
+      </td>
+    </tr>
+    <!--
+EOT;
+}elseif($rsdb[type]==2){print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"  class="hidetr"> 
+      <td colspan="2"><b><font color="#FF0000">单篇文章内容:</font></b><br>
+        <input type="hidden" name="postdb[descrip]" id="content" size="50" value='$rsdb[descrip]'>
+        <iframe id="eWebEditor1" src="../../ewebeditor/ewebeditor.php?id=content&style=standard" frameborder="0" scrolling="no" width="100%" height="450"></iframe> 
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <!--
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:none;"> 
+      <td width="40%">内容中的图片专题对应整站中的栏目: 
+        <input type="checkbox" name="Together[photo_fid]" value="1">
+        <br>
+        (一般留空)</td>
+      <td width="60%"> $photo_fid </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:none;"> 
+      <td width="40%">内容中的文章专题对应整站中的栏目: 
+        <input type="checkbox" name="Together[article_fid]" value="1">
+        <br>
+        (一般留空,如设置栏目的话,不能与上面的雷同) </td>
+      <td width="60%"> $article_fid</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"  class="hidetr" style="display:none;"> 
+      <td width="40%">内容中的贴子专题对应论坛中的栏目: 
+        <input type="checkbox" name="Together[bbs_fid]" value="1">
+      </td>
+      <td width="60%"> 
+        <input type="text" name="postdb[bbs_fid]" value="$rsdb[bbs_fid]" size="7">
+        注意:必须先整合PW或DZ论坛</td>
+    </tr>
+	-->
+    $TempLate 
+    <tr align="center"> 
+      <td colspan="2" bgcolor="#FFFFFF"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="postdb[fid]" value="$fid">
+      </td>
+    </tr>
+  </form>
+</table>
+
+<!--
+EOT;
+?>
+-->

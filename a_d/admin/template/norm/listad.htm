@@ -1,0 +1,75 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table id="top_menu" width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" align="center">
+  <tr> 
+    <td align="center"> 
+      <input type="button" name="Submit222" value="添加广告位" onClick="window.location=('$admin_path&job=addplace')">
+      　　　 
+      <input type="button" name="Submit23" value="广告位管理" onClick="window.location=('$admin_path&job=listad')">
+      　　
+      <input type="button" name="Submit23" value="购买广告" onClick="window.open('../member/index.php?main=../$dirname/member/norm.php?job=list')">
+      　　 　 </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td width="44%">广告位名称</td>
+    <td width="16%">广告类型</td>
+    <td width="13%">申请购买</td>
+    <td width="6%">点击</td>
+    <td width="8%">调用代码</td>
+    <td width="13%">预览 修改 删除</td>
+  </tr>
+  <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+  <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+    <td width="44%">$rs[name]</td>
+    <td width="16%" align="center">{$array_adtype[$rs[type]]}</td>
+    <td width="13%" align="center">$rs[_ifsale]</td>
+    <td width="6%" align="center">$rs[hits]</td>
+    <td width="8%" align="center"> 
+     <a href="#" onClick="$('#ja_$rs[id]').show();JM_cc('ja_$rs[id]');alert('代码复制成功，你可以粘贴在网页里需要显示的地方,即可显示广告！');"> 
+      <img alt='' src='../member/images/art_icon.gif' border=0></a>
+	  
+	  <INPUT TYPE="text" style="display:none;width:100px;" value="<SCRIPT LANGUAGE='JavaScript' src='$webdb[www_url]/$dirname/a_d_s.php?job=js&ad_id={$rs[keywords]}'></SCRIPT>" id="ja_$rs[id]"></td>
+    <td width="13%" align="center"><a href="$rs[demourl]" target="_blank" onclick="if('$rs[demourl]'==''){alert('本广告位没有设置预览网址');return false;}" alt='点击预览'><img src="../member/images/icon_view.gif" border="0"></a>&nbsp; 
+      <a href="$admin_path&job=editadplace&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+      &nbsp; <a href="$admin_path&id=$rs[id]&action=deleteadplace" onclick="return confirm('你确认要删除这个广告吗?')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr class="head" align="center"> 
+    <td align="left">说明</td>
+  </tr>
+   
+  <tr bgcolor="#FFFFFF"> 
+    <td style="line-height:24px;">1.本广告系统支持跨系统(ASP，PHP，JSP等等网站系统)、跨网站(任何域名的网站)。即除了在本系统使用外，还允许你把广告<font color="#FF0000"></font>插入到其它任何网站的网页里边。<br>
+      2.使用方法，点击上面的调用代码<img src="../member/images/art_icon.gif">图标，就会自动复制一段代码，然后把这段代码贴到网页里边即可。当然也可以贴到标签里边去。<br>
+      3.另外有一点大家值得注意的是,广告也是网页的元素之一,换个思路分析问题,当某些页面无法使用标签的情况下,可以用广告的方式调用显示图片等元素.<br>
+      4.特别说明，点击率，仅能统计文字跟图片的点击，FLASH与其它JS无法统计.<br>
+      5.代码广告最好不要给用户购买,防止用户提交恶意代码.当然如果你想给用户购买的话，最好设置成管理员审核后才可以显示。</td>
+  </tr>
+   
+</table><SCRIPT LANGUAGE="JavaScript">
+<!--
+function JM_cc(ob){
+var obj=document.getElementById(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

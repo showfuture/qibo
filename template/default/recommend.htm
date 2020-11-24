@@ -1,0 +1,68 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic">
+        <form name="form1" method="post" action="?job=$job&step=2">
+          <tr> 
+            <td class="head"> 
+              <h3 class="L"></h3>
+              <span class="TAG">推荐文章</span> 
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+          <tr> 
+            <td class="middle" align="center"> 
+              <table width="100%" border="0" cellspacing="9" cellpadding="0">
+                <tr> 
+                  <td align="left" height="42" colspan="2">文章标题:<b>$rsdb[title]</b></td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">你好友的Email：</td>
+                  <td align="left" width="82%">
+                    <input type="text" name="email" size="30">
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">你的称呼：</td>
+                  <td align="left" width="82%">
+                    <input type="text" name="myname" size="30" value="$lfjid">
+                  </td>
+                </tr>
+                <tr> 
+                  <td align="left" width="18%">你的留言：</td>
+                  <td align="left" width="82%">
+                    <textarea name="content" cols="70" rows="8">你好，我在 “{$webdb[webname]}” 发现了一篇很精彩的文章，现在与你分享一下，
+你不妨去看看吧！
+文章的标题是：{$rsdb[title]}
+网址是：$webdb[www_url]/bencandy.php?fid=$fid&id=$id</textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" width="18%">&nbsp;</td>
+                  <td align="left" width="82%">
+                    <input type="submit" name="Submit" value="提交">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"> 
+              <h3 class="L"></h3>
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+        </form>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

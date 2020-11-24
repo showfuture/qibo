@@ -1,0 +1,46 @@
+<!--
+<?php
+print <<<EOT
+--> <table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=artic&job=work">
+    <tr align="center" class="head"> 
+      <td width="5%">ID</td>
+      <td width="45%">标 题</td>
+      <td width="24%">所在分类</td>
+      <td width="26%">修改/删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="45%"> $rs[title]</td>
+      <td width="24%" align="center"><a href="index.php?lfj=jfadmin&job=listjf&fid=$rs[fid]">$rs[fname]</a></td>
+      <td width="26%" align="center"><a href="index.php?lfj=$lfj&job=editjf&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a> 
+        &nbsp;<a href="index.php?lfj=$lfj&action=deljf&idb[]=$rs[id]" onclick="return confirm('你确认要删除它吗?不可恢复')"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="4"> $showpage</td>
+    </tr> 
+  </form>
+</table>
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  
+    <tr align="center" class="head"> 
+    <td align="left">说明:</td>
+  </tr>
+  <tr>
+    <td>1.这里添加积分的介绍,是方便你展示给会员了解,让他们知道如何赚取积分与如何消费积分.</td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

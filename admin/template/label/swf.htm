@@ -1,0 +1,93 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size){
+	form1.flashurl.value=url;
+}
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form id="form1" name="form8" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=$inc&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&">
+    <tr class="head" align="center"> 
+      <td colspan="2"> 
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">FLASH地址</td>
+      <td width="78%"> 
+        <input type="text" name="flashurl" value="$flashurl" id="flashurl" size="50">
+        <a href='javascript:' onClick='window.open("upfile.php?lfj=$lfj&ch_module=$ch_module&dir=label","","width=350,height=50,top=200,left=400")'>点击上传FLASH 
+        </a></td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">&nbsp;</td>
+      <td width="78%"> FLASH宽 
+        <input type="text" name="width" value="$width" />
+        FLASH高 
+        <input type="text" name="height" value="$height" />
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">是否隐藏,暂时不显示:</td>
+      <td width="78%"> 
+        <input type="radio" name="hide" value="1" $hidedb[1]/>
+        隐藏, 
+        <input type="radio" name="hide" value="0" $hidedb[0]/>
+        显示</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="22%">更新内容时上方遮蔽层设置:</td>
+      <td width="78%">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12" onclick="foreColor_font(this);" />
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+  function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+//-->
+</SCRIPT>
+      </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF"> 
+      <td colspan="2"> <label> 
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function chooseAD(type){
+	if(type=='1'){
+		document.getElementById('ifad1').checked=true;
+		document.getElementById('ifad0').checked=false;
+		document.getElementById('isadconfig').style.display='';
+	}else{
+		document.getElementById('ifad1').checked=false;
+		document.getElementById('ifad0').checked=true;
+		document.getElementById('isadconfig').style.display='none';
+	}
+}
+//chooseAD('$ifad');
+//-->
+</SCRIPT>
+        <input type="submit" name="Submit" value="提 交" onClick=sub() />
+        </label></td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

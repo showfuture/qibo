@@ -1,0 +1,98 @@
+.MoneyCard{
+	width:990px;
+	margin:10px auto;
+	background:url(border.gif) left top repeat-x;
+}
+.MoneyCard .Heads{
+	height:75px;
+	background:url(heads.gif) right top no-repeat;
+}
+.MoneyCard .Heads .tag{
+	float:left;
+	height:75px;
+	background:url(heads.gif) left top no-repeat;
+}
+.MoneyCard .Heads .tag span{
+	display:block;
+	padding:10px 0 0 100px;
+	line-height:50px;
+	font-size:24px;
+	font-weight:bold;
+	color:#333;
+	background:url(tag.gif) 15px 10px no-repeat;
+}
+.MoneyCard .Conts{
+	width:988px;
+	margin:auto;
+	padding-bottom:10px;
+	background:#FFF url(bg6.gif) center bottom no-repeat;
+}
+.MoneyCard .Conts .head{
+	background:url(bg6.gif) center top no-repeat;
+	height:10px;
+}
+.MoneyCard .Conts .cont{
+	background:url(bg7.gif) center top repeat-y;
+}
+.MoneyCard .Conts .cont .cont1{
+	padding:60px 0 80px 0;
+	background:url(bg1.gif) center bottom no-repeat;
+}
+.MoneyCard .Conts .cont .cont1 dl{
+	width:420px;
+	height:270px;
+	margin:auto;
+	background:url(bg2.gif) center top no-repeat;
+}
+.MoneyCard .Conts .cont .cont1 dl dt{
+	height:170px;
+	background:url(bg3.gif) center 25px no-repeat;
+}
+.MoneyCard .Conts .cont .cont1 dl dd{
+	height:60px;
+	padding-left:25px;
+}
+.MoneyCard .Conts .cont .cont1 dl dd div{
+	float:left;
+}
+.MoneyCard .Conts .cont .cont1 dl dd div.word{
+	font-size:14px;
+	font-weight:bold;
+	padding-right:15px;
+	line-height:50px;
+}
+.MoneyCard .Conts .cont .cont1 dl dd div.input{
+	width:230px;
+	padding:9px 0 0 10px;
+	height:50px;
+	background:url(bg4.gif) no-repeat;
+}
+.MoneyCard .Conts .cont .cont1 dl dd div.input input{
+	width:145px;
+	height:30px;
+	border:#F5851F solid 1px;
+	background:none;
+	line-height:30px;
+	font-size:14px;
+	color:#666;	
+}
+.MoneyCard .Conts .cont .cont2{
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	margin:auto;
+}
+.MoneyCard .Conts .cont .cont2 span.num{
+	font-size:24px;
+	font-weight:bold;
+	color:red;
+	padding:0 5px 0 20px;
+	background:url(money.gif) 5px 10px no-repeat;
+}
+.MoneyCard .Conts .cont .cont3{
+	text-align:center;
+	padding:10px 0 50px 0;
+}
+.MoneyCard .Conts .cont .cont3 input{
+	border:0;
+}

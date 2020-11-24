@@ -1,0 +1,62 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" style="display:$hide_listpic">
+        <form name="form1" method="post" action="?">
+          <tr> 
+            <td class="head"> 
+              <h3 class="L"></h3>
+              <span class="TAG">请选择一种支付方式</span> 
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+          <tr> 
+            <td class="middle" align="center">
+              <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                <tr align="left"> 
+                  <td height="22" colspan="4"><br>
+                    你可以选择以下任何一种支付方式! </td>
+                </tr>
+                <tr align="center"> 
+                  <td height="10" width="25%"><img src="$webdb[www_url]/images/default/yeepay_logo.gif" width="96" height="37"> 
+                    <input type="radio" name="banktype" value="yeepay" checked style="border:0px;"  >
+                  </td>
+                  <td height="10" width="25%"><img src="$webdb[www_url]/images/default/tenpay_logo.gif" width="96" height="37"> 
+                    <input type="radio" name="banktype" value="tenpay" style="border:0px;" >
+                  </td>
+                  <td height="10" width="25%"><img src="$webdb[www_url]/images/default/alipay_logo.gif" width="96" height="37"> 
+                    <input type="radio" name="banktype" value="alipay" style="border:0px;" >
+                  </td>
+                   <td height="10" width="25%"><img src="$webdb[www_url]/images/default/chinabank_logo.gif" width="96" height="37"> 
+                    <input type="radio" name="banktype" value="chinabank" style="border:0px;" >
+                  </td>
+                </tr>
+                <tr align="center"> 
+                  <td height="74" colspan="4"> 
+                    <input type="submit" name="Submit" value="立即支付">
+                    <input type="hidden" name="pay_code" value="$pay_code">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr> 
+            <td class="foot"> 
+              <h3 class="L"></h3>
+              <h3 class="R"></h3>
+            </td>
+          </tr>
+        </form>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

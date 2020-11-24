@@ -1,0 +1,101 @@
+<!--
+<?php
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=mod">
+    <tr class="head"> 
+      <td colspan="2" align="center"> 修改设置</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="left" style="width:25%;">系统名称:</td>
+      <td width="86%" style="width:80%;"> 
+        <input type="text" name="postdb[name]" value="$rsdb[name]">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td  align="left" style="width:25%;" width="14%">系统存放目录:</td>
+      <td width="86%"> 
+        <input type="text" name="postdb[dirname]" value="$rsdb[dirname]">
+      </td>
+    </tr>
+	
+<!--
+EOT;
+if($rsdb[type]!=2){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="left">系统后台目录:</td>
+      <td width="86%"> 
+        <input type="text" name="postdb[admindir]" value="$rsdb[admindir]">
+        如果没修改过后台目录请留空,即是admin</td>
+    </tr>
+	    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="left">有权限管理此系统的会员:<br>
+        (<font color="#FF0000">注:</font>超级管理员默认有权限) </td>
+      <td width="86%"> 
+        <textarea name="postdb[adminmember]" cols="50" rows="8">$rsdb[adminmember]</textarea>
+        每个用户名回车换一行 </td>
+    </tr> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="left">二级域名:</td>
+      <td width="86%"> 
+        <input type="text" name="postdb[domain]" size="50" value="$rsdb[domain]">
+        <br>
+        一般留空即可, 以<font color="#FF0000">http://</font>开头,结尾不能加斜杠<font color="#FF0000">/</font> 
+        ,如 http://news.qibosoft.com<br>
+        启用二级域名.需要做两件事,其一在域名管理商那里把域名指向过来,其二,在服务器绑定此域名到此系统所在目录</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="left">排序值:</td>
+      <td width="86%"> 
+        <input type="text" name="postdb[list]" value="$rsdb[list]" size="10">
+        (注:数值大的排在前面)</td>
+    </tr>
+	
+	
+
+	
+	
+    <tr bgcolor="#FFFFFF">
+      <td width="14%" align="left">是否关闭此系统:<br>
+      </td>
+      <td width="86%">
+        <input type="radio" name="postdb[ifclose]" value="1" $ifclose[1]>
+        关闭 
+        <input type="radio" name="postdb[ifclose]" value="0" $ifclose[0]>
+        启用 </td>
+    </tr> 
+	
+	<tr bgcolor="#FFFFFF">
+      <td width="14%" align="left">是否后台独立顶部菜单:<span help=1>即在后台导航菜单中不想从属于模块中心下面的菜单,而要独立出来</span><br>
+      </td>
+      <td width="86%">
+        <input type="radio" name="postdb[ifsys]" value="1" $ifsys[1]>
+        独立 
+        <input type="radio" name="postdb[ifsys]" value="0" $ifsys[0]>
+        不独立 </td>
+    </tr>
+	
+    <tr bgcolor="#FFFFFF"> 
+      <td width="14%" align="center">&nbsp;</td>
+      <td width="86%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

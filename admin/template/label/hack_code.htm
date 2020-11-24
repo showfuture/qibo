@@ -1,0 +1,78 @@
+<!--
+<?php
+print <<<EOT
+-->
+ 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form id="form1" name="form8" method="post" action="index.php?lfj=$lfj&action=$job&inc=$inc&lid=$rsdb[lid]&ch=$ch&chtype=$chtype&tag=$tag&type=$inc&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&">
+    <tr class="head" align="center"> 
+      <td colspan="2"> 
+        <input type="button" name="Submit22" value="更换选择显示其他设置" onClick="window.location=('index.php?lfj=$lfj&inc=&job=list&id=$id&tag=$tag&ch=$ch&chtype=$chtype&ch_fid=$ch_fid&ch_pagetype=$ch_pagetype&ch_module=$ch_module&ch_ifjs=$ch_ifjs&mystyle=$mystyle&')">
+        
+        <input type="button" name="Submit222" value="查看效果" onClick="window.open('$viewurl')">
+        <input type="button" name="Submit2222" value="返回频道/专题" onClick="window.location=('$viewurl&jobs=show')">
+      </td>
+    </tr>
+<!--
+EOT;
+if($inc=="hack_loginform"){print <<<EOT
+-->
+    <tr> 
+      <td bgcolor="#FFFFFF" width="18%">类型:</td>
+      <td bgcolor="#FFFFFF" width="82%"> 
+        <input type="radio" name="logintype" value="0" onclick="set_code('0');" $logintypedb[0]>
+        横条登录框 
+        <input type="radio" name="logintype" value="1" onclick="set_code('1');" $logintypedb[1]>
+        方形登录框</td>
+    </tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+
+    <tr> 
+      <td bgcolor="#FFFFFF" width="18%">调用代码:</td>
+      <td bgcolor="#FFFFFF" width="82%">
+        <textarea name="code" cols="80" rows="5" id="jscode">$rsdb[code]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF">更新内容时上方遮蔽层设置: </td>
+      <td bgcolor="#FFFFFF">层宽 
+        <input name="div_w" type="text" id="div_w" value="$div_w" size="4" />
+        层高 
+        <input name="div_h" type="text" id="div_h" value="$div_h" size="4" />
+        层的颜色 
+        <input name="div_bgcolor" type="text" id="div_bgcolor" value="$div_bgcolor" size="12"  onclick="foreColor_font(this);" />
+ 
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor="#FFFFFF">是否隐藏,暂时不显示:</td>
+      <td bgcolor="#FFFFFF"> 
+        <input type="radio" name="hide" value="0"  $hide_0>
+        显示 
+        <input type="radio" name="hide" value="1" $hide_1 />
+        隐藏</td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#FFFFFF" colspan="2"><label> 
+ 
+        <input type="submit" name="Submit" value="提 交" onClick=sub() />
+        </label> 
+        
+      </td>
+    </tr>
+  </form>
+</table> 
+<SCRIPT LANGUAGE="JavaScript">
+ 
+function set_code(t){
+	get_obj('jscode').value='<script language="JavaScript" src="$webdb[www_url]/do/hack.php?hack=login&job=js&styletype='+t+'"><\/script>';
+}
+ 
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,155 @@
+.BaseInfos{
+	background:url(print.gif) left bottom repeat-x;
+}
+.MemberInfo{
+	background:url(print.gif) left top repeat-y;
+}
+.MemberInfo .head{
+	height:40px;
+	background:url(head1.gif) left top repeat-x;
+}
+.MemberInfo .head .tag{
+	float:left;
+	padding:5px 90px 0 65px;
+	line-height:35px;
+	background:url(headl.gif) no-repeat;
+	font-size:14px;
+	font-weight:bold;
+	color:#1C4E86;
+}
+.MemberInfo .head .more{
+	float:right;
+	padding:5px 10px 0 20px;
+	line-height:35px;
+	background:url(icon_msg.gif) left 13px no-repeat;
+}
+.MemberInfo .cont{
+	padding:10px;
+}
+.MemberInfo .cont dt{
+	height:80px;
+	overflow:hidden;
+	border-bottom:#C9E0FE dotted 1px;
+}
+.MemberInfo .cont dt div{
+	width:40%;
+	height:25px;
+	line-height:25px;
+	padding-left:10px;
+	float:left;
+	overflow:hidden;
+}
+.MemberInfo .cont dd{
+	padding:5px 0 0 10px;
+	line-height:25px;
+}
+.MemberInfo .cont dd div{
+	height:25px;
+	overflow:hidden;
+}
+.MemberInfo .cont dd p{
+	height:25px;
+	padding:5px 0 5px 25px;
+	background:url(icon_favitorie.gif) left 10px no-repeat;
+}
+.MemberInfo .cont dd p a{
+	color:red;
+}
+.MyInfos{
+	width:280px;
+	background:url(tdright.gif) center bottom no-repeat;
+	text-align:center;
+}
+.MyInfos .head{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	background:url(righthead.gif) center top no-repeat;
+	font-size:14px;
+	font-weight:bold;
+}
+.picword .pic{
+	width:80px;
+	padding:10px 10px 10px 15px;
+}
+.picword .pic div{
+	width:80px;
+	height:80px;
+	overflow:hidden;
+	background:#EFEFEF;
+}
+.picword .word{
+	padding-top:5px;
+}
+.picword .word div{
+	padding:5px 10px 0 0;
+	line-height:18px;
+}
+.picword .word div span{
+	color:#0066CC;
+}
+.MyInfos .otherinfo{
+	width:260px;
+	margin:auto;
+	border-top:#DDD dotted 1px;
+	padding-top:5px;
+	line-height:25px;
+}
+.MyInfos .otherinfo div{
+	padding-left:5px;
+	text-align:left;
+}
+.MyInfos .otherinfo div span{
+	color:#777;
+}
+.MyInfos .otherinfo div em{
+	color:#0066CC;
+}
+/*
+*
+*/
+.ListDls dl{
+	width:25%;
+	height:180px;
+	overflow:hidden;
+	float:left;
+	background:url(sortbg.gif) center 10px no-repeat;
+}
+.ListDls dl dt,.ListDls dl dd{
+	width:140px;
+	margin:auto;
+	line-height:20px;	
+}
+.ListDls dl dt{
+	padding-top:90px;
+}
+.ListDls dl.dl1 dt{
+	background:url(icons1.gif) center 15px no-repeat;
+}
+.ListDls dl.dl2 dt{
+	background:url(icons2.gif) center 15px no-repeat;
+}
+.ListDls dl.dl3 dt{
+	background:url(icons3.gif) center 15px no-repeat;
+}
+.ListDls dl.dl4 dt{
+	background:url(icons4.gif) center 15px no-repeat;
+}
+.ListDls dl.dl5 dt{
+	background:url(icons5.gif) center 15px no-repeat;
+}
+.ListDls dl.dl6 dt{
+	background:url(icons6.gif) center 15px no-repeat;
+}
+.ListDls dl.dl7 dt{
+	background:url(icons7.gif) center 15px no-repeat;
+}
+.ListDls dl.dl8 dt{
+	background:url(icons8.gif) center 15px no-repeat;
+}
+
+.listinfo .list{
+	width:48%;
+	float:left;
+	line-height:25px;
+}

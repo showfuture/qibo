@@ -1,0 +1,45 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&dirname=$dirname&file=$file&action=$job">
+    <tr class="head"> 
+      <td colspan='2'> 
+        <div align='center'><b><font color="#FFFFFF">模块核心设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'> 
+        <div align="left">模块名称:</div>
+      </td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='text' name='webdbs[Info_webname]' size='30' value='$webdb[Info_webname]'>
+      </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>本系统开放与否:</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input type="radio" name="webdbs[module_close]" value="1" $module_close[1]>
+         关闭
+        <input type="radio" name="webdbs[module_close]" value="0" $module_close[0]>
+        开放</td>
+    </tr>
+    <tr> 
+      <td width='22%' bgcolor='#FFFFFF'>当前使用的数据表前缀:</td>
+      <td bgcolor='#FFFFFF' width="78%"> 
+        <input type="text" name="webdbs[module_pre]" value="$webdb[module_pre]" readonly size="8">
+        (不可修改,仅供查看) </td>
+    </tr>
+    <tr> 
+      <td width='26%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td bgcolor='#FFFFFF' width="74%"> 
+        <input    type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

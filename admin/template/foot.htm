@@ -1,0 +1,112 @@
+</div>
+<br>
+
+<table width="100%" border="0" class="tablewidth" cellspacing="1" cellpadding="3" align="center">
+  <tr class="head">
+    <td width="33%"><CENTER>
+        <A HREF="http://bbs.qibosoft.com/thread-forum-fid-10312.htm" target="_blank">
+</A> 
+      </CENTER></td>
+    <td width="34%"><CENTER></CENTER></td>
+    <td width="33%"><CENTER></CENTER></td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_help(di){
+	if(document.getElementById(di).style.display==''){
+		document.getElementById(di).style.display='none';
+	}else{
+		document.getElementById(di).style.display='';
+	}
+}
+function get_help(){
+	obj=document.body.getElementsByTagName("span");
+	for(var i=0;i< obj.length;i++ ){
+		if(obj[i].getAttribute("help")=='1'){
+			obj[i].className='Help';
+			obj[i].style.display='none';
+			var vid=Math.random()*1000000000000000000;
+			obj[i].id='a'+vid;
+
+			obj2=document.createElement("font");
+			obj2.innerHTML="<A href=\"javascript:show_help('a'+"+vid+");\" style='margin-left:5px;' title='点击查看更多帮助信息'><img src='images/help_icon.gif' border=0></A>";
+			obj[i].parentNode.insertBefore(obj2, obj[i]);
+		}
+	}
+}
+get_help();
+
+function set_class(){
+	obj=document.body.getElementsByTagName("input");
+	for(var i=0;i< obj.length;i++ ){
+		if(obj[i].type=='submit'||obj[i].type=='button'){
+			obj[i].className='submit';
+		}else if (obj[i].type=='radio'||obj[i].type=='checkbox'){
+			obj[i].style.border='0px;';
+		}else if(obj[i].type=='text'){
+			obj[i].className='input_text';
+		}
+	}
+	obj=document.body.getElementsByTagName("textarea");
+	for(var i=0;i< obj.length;i++ ){
+		obj[i].className='input_textarea';
+	}
+	if(document.getElementById("top_menu")!=null)
+	{
+		obj2=get_obj('top_menu').getElementsByTagName("td");
+	
+		for(var i=0;i< obj2.length;i++ ){
+			s=obj2[i].innerHTML;
+			s=s.replace(/\[</g, "<");
+			s=s.replace(/>\]/g, ">");
+			obj2[0].innerHTML=s;	
+		}
+	}
+	
+}
+set_class();
+
+
+
+clickEdit.init();
+
+$("td").each(function(i){
+	this.style.textAlign='left';
+});
+$("td[align='center']").each(function(i){
+	this.style.textAlign='center';
+});
+$("table tr[align='center'] td").each(function(i){
+	this.style.textAlign='center';
+});
+/*
+$("table table td[align='center']").each(function(i){
+	this.style.textAlign='center';
+});
+$("table table tr[align='center'] td").each(function(i){
+	this.style.textAlign='center';
+});
+*/
+
+function loadJS(url,callback,charset){
+	var script = document.createElement('script');
+	script.onload = script.onreadystatechange = function (){	
+		if (script && script.readyState && /^(?!(?:loaded|complete)$)/.test(script.readyState)) return;
+		script.onload = script.onreadystatechange = null;
+		script.src = '';
+		script.parentNode.removeChild(script);
+		script = null;
+		if(callback)callback();
+	};
+	script.charset=charset || document.charset || document.characterSet;
+	script.src = url;
+	try {document.getElementsByTagName("head")[0].appendChild(script);} catch (e) {}
+}
+function initEditor(gid,w,h){
+	loadJS('../ewebeditor/xheditor/xheditor-1.1.13-zh-cn.js',function(){$('#'+gid).xheditor({tools:'simple',width:w,height:h});});
+}
+//-->
+</SCRIPT>
+</body>
+</html>

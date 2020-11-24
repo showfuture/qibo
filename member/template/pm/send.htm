@@ -1,0 +1,43 @@
+<!--
+<?php
+print <<<EOT
+-->
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+<div class="MainCont mtop10">
+	<div class="head"><div class="tag">发短消息</div></div>
+    <div class="cont">
+    	<form name="form1" method="post" action="">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+          <tr>
+            <td class="tdL">接收者:</td>
+            <td class="tdR"><input type="text" value="$username" name="touser"></td>
+          </tr>
+          <tr>
+            <td class="tdL">标题:</td>
+            <td class="tdR"><input type="text" name="title" size="70"></td>
+          </tr>
+          <tr>
+            <td class="tdL">内容:</td>
+            <td class="tdR"> <script type='text/javascript'>loadBaiduEditorJs();</script>
+<textarea name="postdb[content]" id="myEditor" style="width:650px;">$rsdb[content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:190});
+editor_a.render( 'myEditor' );
+</script>
+            </td>
+          </tr>
+          <tr>
+            <td class="tdL"><br/></td>
+            <td class="tdR">
+            	<input type="submit" name="Submit" value="提交">
+                <input type="hidden" name="step" value="2">
+            </td>
+          </tr>
+         </table>
+         </form>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

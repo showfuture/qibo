@@ -1,0 +1,74 @@
+<!--
+<?php
+print<<<EOT
+--> 
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+     <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">请选择一个用户组</font></td>
+    </tr>
+    <tr> 
+      
+    <td bgcolor=#FFFFFF align="center"> 
+      <!--
+EOT;
+foreach($group_db AS $key=>$rs){
+print <<<EOT
+-->
+      [<a href="index.php?lfj=adminguidemenu&job=list&gid=$rs[gid]" style="color:{$colordb[$key]};">{$rs[grouptitle]}</a>] 
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+    </tr>
+ </table>
+<br>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth"><form name="formlist" method="post" action="index.php?lfj=$lfj&action=editlist">
+  <tr> 
+      <td class="head" bgcolor="#EAEAEA"><font color="#FFFFFF">菜单管理</font></td>
+  </tr>
+  <tr> 
+      <td bgcolor=#FFFFFF align="left"> 
+        <ul>
+          <li>以下是用户组“<font color="#FF0000"><b>{$grouptitle_db[$gid]}</b></font>”的自定义菜单</li>
+          <li>排序的规则是,数值大的排在前面</li>
+        </ul> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center" class="head"> 
+            <td  style="border-right:1px solid #fff;" width="50%">菜单名称</td>
+            <td width="10%" style="border-right:1px solid #fff;">排序</td>
+            <td width="17%" style="border-right:1px solid #fff;">修改</td>
+            <td width="13%" style="border-right:1px solid #fff;">删除</td>
+          </tr>
+          <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+          <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+            <td bgcolor="#FFFFFF" width="50%" style="border-bottom:1px dotted #ccc;color:$rs[color];" height="33"> 
+              $rs[icon]【<a href="$rs[linkurl]">{$rs[name]}</a>】</td>
+            <td width="10%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;" height="33"> 
+              <input type='text' name='order[{$rs[id]}]' value='$rs[list]' size='5' maxlength="4">
+            </td>
+            <td width="17%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;" height="33"><a href="index.php?lfj=$lfj&job=edit&id=$rs[id]"><img alt='点击修改' src='../member/images/button_edit.png' border=0></a></td>
+            <td width="13%" bgcolor="#FFFFFF" align="center" style="border-bottom:1px dotted #ccc;" height="33"><a href="?lfj=$lfj&action=delete&id=$rs[id]&gid=$gid" onclick="return confirm('你确实要删除吗?不可恢复');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a></td>
+          </tr>
+          <!--
+EOT;
+}print <<<EOT
+-->
+        </table>
+        <div align="center"><br>
+          <a href="javascript:" onClick="CheckAll('all')"> </a>
+          <input type="submit" name="Submit2" value="修改排序"  >
+          <input type="hidden" name="gid" value="$gid">
+        </div>
+      </td>
+  </tr> </form>
+</table>
+<br>
+<!--
+EOT;
+?>
+-->

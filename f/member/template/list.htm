@@ -1,0 +1,103 @@
+<!--
+<?php
+$groupdb[refurbish_auto_fenlei_num] = intval($groupdb[refurbish_auto_fenlei_num]);
+print <<<EOT
+--> 
+<div class="MainCont">
+	<div class="head"><div class="tag">我发布的免费信息 <a href="$city_url/post.php" target="_blank">发布免费信息</a></div></div>
+    <div class="cont">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="54%">信息内容</th>
+            <th width="20%">日期</th>
+            <th width="8%">模型</th>
+            <th width="8%">操作</th>
+            <th width="10%">修改/删除</th>
+          </tr>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+$rs[title]=get_word($rs[title],40);
+$rs[fname]=get_word($rs[fname],16);
+print <<<EOT
+-->
+          <tr>
+            <td class="tL">
+            	<a href="$rs[url]" target="_blank">$rs[title]</a>
+                <a href="$rs[Lurl]" target="_blank"><span class="red">[{$rs[fname]}]</span></a>
+                <span style="color:#999;">({$city_DB[name][$rs[city_id]]})</span>
+            </td>
+            <td>$rs[posttime]</td>
+            <td>{$module_db[$rs[mid]]}</td>
+            <td><a href="javascript:;" click=1 editcode="">操作</a><div style="display:none;">{$rs[update]}{$rs[autoupdate]}<br/>{$rs[dotop]}<br/>{$rs[pop1]}<br/>{$rs[pop2]}<br/>{$rs[pop3]}</div></td>
+            <td><a href="../post.php?job=edit&fid=$rs[fid]&id=$rs[id]" target="_blank">修改</a>/<a href="?action=del&fid=$rs[fid]&id=$rs[id]&rid=$rs[rid]">删除</a></td>
+          </tr>
+<!--
+EOT;
+}
+$showpage=$showpage?"<div class=\"Showpage\">$showpage</div>":"";
+print <<<EOT
+-->
+        </table>
+        $showpage
+    </div>
+</div>
+<div class="MainCont mtop10">
+	<div class="head">
+    	<div class="tag">帮助说明 (你目前的{$webdb[MoneyName]}有:<span class="red">{$lfjdb[money]}</span>{$webdb[MoneyDW]})</div>
+    </div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1、刷新，即代表更新信息的发布日期为当前日期，刷新后会排在当前栏目的前面。有两种方式进行刷新：一种是手工点击立即刷新，另一种是系统定时自动刷新。其中手工刷新每条信息的刷新时间间隔为<span class="red b">{$webdb[UpdatePostTime]}</span>小时。系统定时自动刷新分类信息的时间可以自由设置刷新时刻，每天就会在这个时刻之后自动进行刷新一次。</li>
+            <li>2、置顶,即把某条信息在所在栏目固定在前面显示.置顶有效日期最多为<span class="red b">{$webdb[Info_TopDay]}</span>天,每天收费为<span class="red b">{$webdb[Info_TopMoney]}</span>{$webdb[MoneyName]}</li>
+            <li>3、焦点,分为栏目焦点(每天收费<span class="blue b">{$webdb[AdInfoSortShow]}</span>{$webdb[MoneyName]}),分类焦点(每天收费<span class="blue b">{$webdb[AdInfoBigsortShow]}</span>积分),首页焦点(每天收费<span class="blue b">{$webdb[AdInfoIndexShow]}</span>积分).显示有效日期最多为<span class="red b">{$webdb[AdInfoShowTime]}</span>天.</li>
+        </ul>
+    </div>
+</div>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_num(obj,max){
+	max = parseInt(max);
+	if(isNaN(parseInt(max)))max=10;
+	if(/^[1-9][0-9]*$/.test(obj.value)==false){
+		alert('请输入正整数');
+		obj.value=1;
+	}
+	if(obj.value>max){
+		alert('最大不能超过'+max+'天');
+		obj.value=max;
+	}
+}
+function set_refurbish(url){
+	var msg = '<form name="form1" method="post" action="'+url+'" style="margin:5px;line-height:180%;">刷新时间：<select name="postdb[h1]">   <option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option> </select>时 <select name="postdb[i1]"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option></select>分 <br>注：你所在用户组可以设置<span class="STYLE1"> $groupdb[refurbish_auto_fenlei_num] </span>条信息每天自动刷新 1 次。<br> <input type="button" onclick="close_layer_msg()" name="Submit2" value="取消"> <input type="submit" name="Submit" value="提交"></form>';
+	$("#body_msg_table").html(msg);
+	show_layer_msg("body_msg_layer");
+}
+function set_top(url){
+	var msg = '<form name="form1" method="post" action="'+url+'" style="margin:5px;line-height:180%;">置顶：<input type="text" name="TopDay" value="1" onBlur="check_num(this,\'$webdb[Info_TopDay]\')" style="width:30px"> 天<br>注：栏目内置顶每天需要消费{$webdb[MoneyName]}：<b><font color="#FF0000">{$webdb[Info_TopMoney]}</font></b>{$webdb[MoneyDW]}，不可大于<font color="#0000FF">{$webdb[Info_TopDay]}</font>天。<br><input type="button" onclick="close_layer_msg()" name="Submit2" value="取消"> <input type="submit" name="Submit" value="提交"></form>';
+	$("#body_msg_table").html(msg);
+	show_layer_msg("body_msg_layer");
+}
+function set_buy(url,type){
+	if(type==1){
+		title='首页';
+		content='首页焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoIndexShow]}</font>';
+	}else if(type==2){
+		title='父分类';
+		content='分类焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoBigsortShow]}</font>';
+	}else if(type==3){
+		title='子栏目';
+		content='栏目焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoSortShow]}</font>';
+	}
+	var msg = '<form name="form1" method="post" action="'+url+'" style="margin:5px;line-height:180%;">'+title+'焦点显示：<input type="text" name="ShowDay" value="1" onBlur="check_num(this,\'$webdb[Info_TopDay]\')" style="width:30px"> 天<br>注意：系统规定'+content+'{$webdb[MoneyDW]}，不可大于<font color="#0000FF">{$webdb[AdInfoShowTime]}</font>天。<br><input type="button" onclick="close_layer_msg()" name="Submit2" value="取消"> <input type="submit" name="Submit" value="提交"></form>';
+	$("#body_msg_table").html(msg);
+	show_layer_msg("body_msg_layer");
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,100 @@
+<!--
+<?php
+print<<<EOT
+-->  
+<SCRIPT>
+function foreColor_font(obj)
+{
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null) { obj.value=arr;obj.style.color=arr;}
+  else  obj.focus();
+  
+}
+</SCRIPT>
+<table width=100% cellspacing=1 cellpadding=3  class="tablewidth">
+  <form name="formlist" method="post" action="index.php?lfj=$lfj&action=$atc">
+    <tr> 
+      <td class="head" bgcolor="#EAEAEA" colspan="2"><font color="#FFFFFF">菜单管理</font></td>
+    </tr>
+    <!--
+EOT;
+if($rsdb[fid]||(!$rsdb&&!$addsort)){print <<<EOT
+-->
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">所属分类</td>
+      <td bgcolor=#FFFFFF align="left" width="78%">$selected</td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">名称 </td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <textarea name="postdb[name]" cols="90" id="Mname" rows="5">$rsdb[name]</textarea>
+      </td>
+    </tr>
+    <!--
+EOT;
+if($rsdb[fid]||(!$rsdb&&!$addsort)){print <<<EOT
+-->
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">链接地址</td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <input type="text" name="postdb[linkurl]" value="$rsdb[linkurl]" size="50" id="Mlinkurl">
+        (<a href="#" onclick="window.open('index.php?lfj=adminguidemenu&job=sysmenu&gid=$gid','','width=650,height=500,scrollbars=yes')"><font color="#FF0000">选择系统功能</font></a>) 
+      </td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">字体颜色</td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <input style="color:$rsdb[color];" type="text" name="postdb[color]" value="$rsdb[color]" onclick="foreColor_font(this);">
+      </td>
+    </tr>    <!--
+EOT;
+if($rsdb[fid]){print <<<EOT
+-->
+    <tr>
+      <td bgcolor=#FFFFFF align="left" width="22%">排板样式 </td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <input type="radio" name="postdb[iftier]" value="0" $iftier[0]>
+        独立一行 
+        <input type="radio" name="postdb[iftier]" value="1" $iftier[1]>
+        与前一链接菜单同一行 </td>
+    </tr>    <!--
+EOT;
+}print <<<EOT
+-->
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">排序值</td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <input type="text" name="postdb[list]" value="$rsdb[list]" maxlength="4" size="5">
+        (数字) </td>
+    </tr>
+    <tr> 
+      <td bgcolor=#FFFFFF align="left" width="22%">&nbsp;</td>
+      <td bgcolor=#FFFFFF align="left" width="78%"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+        <input type="hidden" name="gid" value="$gid">
+        <input type="hidden" name="addsort" value="$addsort">
+      </td>
+    </tr>
+  </form>
+</table> 
+<!--
+EOT;
+?>
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function putmenu(link,name){
+	get_obj('Mlinkurl').value=link;
+	get_obj('Mname').value=name;
+}
+//-->
+</SCRIPT>

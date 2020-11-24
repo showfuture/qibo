@@ -1,0 +1,88 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/list.css">
+<div class="MainContainers">
+	<div class="Mains">
+    	<div class="MoreConts">
+        	<div class="head"><div class="tag">$fidDB[name]</div></div>
+            <div class="cont">
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$target=$rs[target]?'_blank':'_self';
+print <<<EOT
+-->
+              <div class="lists">
+              	<a href="bencandy.php?fid=$rs[fid]&id=$rs[id]" target="$target" title='$rs[full_title]' style="color:$rs[titlecolor]">$rs[title]</a>
+                <span >({$rs[posttime]})</span> 
+              </div>
+<!--
+EOT;
+}print <<<EOT
+-->
+				<div class="showpage">$showpage</div>
+            </div>
+        </div>    
+    </div>
+    <div class="Sides">
+    	<div class="MoreSorts">
+        	<div class="head"><div class="tag">相关栏目</div></div>
+            <table width="100%">
+            <tr>
+            <td class="cont">
+<!--
+EOT;
+$array=$listdb_moresort?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+print <<<EOT
+-->
+            	<div class="sortname"><a href="list.php?fid=$key">$value</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            </tr>
+            </table>
+        </div>
+        <div class="MoreConts">
+        	<div class="head"><div class="tag">最新信息</div></div>
+            <div class="cont">
+<!--
+EOT;
+$array=Get_Info('new',10,40,$fid,$city_id);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            	<div class="list"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+        <div class="MoreConts">
+        	<div class="head"><div class="tag">热门信息</div></div>
+            <div class="cont">
+<!--
+EOT;
+$array=Get_Info('hot',10,40,$fid,$city_id);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            	<div class="list"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+    </div>
+    <div class="ClearDiv"></div>
+</div>
+<!--
+EOT;
+?>
+-->

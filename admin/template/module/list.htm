@@ -1,0 +1,82 @@
+<!--
+<?php
+$msgdb=array(1=>" onclick=\"alert('当前模型不可复制！');return false;\" ");
+print <<<EOT
+-->
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=order">
+    <tr align="center" class="head"> 
+      <td width="4%">ID</td>
+      <td width="13%">系统名称</td>
+      <td >数据表前缀</td>
+      <td width="10%">存放目录</td>
+      <td width="9%">系统类型</td>
+      <td width="7%">后台目录</td>
+      <td width="12%">管理员</td>
+      <td width="10%">排序值</td>
+      <td width="7%">状态</td>
+      <td width="15%">修改 复制 卸载</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA " onmouseover="this.className='trB '" onmouseout="this.className='trA '"> 
+      <td align="center">$rs[id]</td>
+      <td  align="center"> <a href="$rs[url]"  style="color:$rs[titlecolor];" target="_blank">$rs[name]</a></td>
+      <td  align="center">$rs[pre]</td>
+      <td align="center">$rs[dirname]</td>
+      <td  align="center">$rs[type]</td>
+      <td align="center">$rs[admindir]</td>
+      <td align="center">$rs[adminmember]</td>
+      <td align="center"> 
+        <input type="text" name="postdb[$rs[id]]" size="5" value="$rs[list]">
+      </td>
+      <td align="center"> 
+        <!--
+EOT;
+if($rs[ifclose]){
+print <<<EOT
+-->
+        <img src="../images/default/check_error.gif" alt="当前系统已被停用"> 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+      <td align="center"><a href="index.php?lfj=$lfj&job=mod&id=$rs[id]"><img alt='修改设置' src='../member/images/icon_manage2.gif' border=0></a> 
+        &nbsp; <a href="index.php?lfj=$lfj&job=copy&id=$rs[id]" {$msgdb[$rs[id]]}><img src="../member/images/icon_add.gif" border="0"></a> 
+        &nbsp;<a href="index.php?lfj=$lfj&action=del&id=$rs[id]" onclick="return confirm('严重警告!你确认要删除本模块吗?本模块的所有数据与涉及的所有程序文件都会被清空。请点击取消,即可放弃本次操作!');"><img alt='点击删除' src='../member/images/del_icon2.gif' border=0></a> 
+      </td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" class="trA " onmouseover="this.className='trB '" onmouseout="this.className='trA '"> 
+      <td colspan="10" align="center">
+        <input type="submit" name="Submit" value="修改排序">
+      </td>
+    </tr>
+  </form>
+</table>
+<br>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth" style="TABLE-LAYOUT: fixed;WORD-WRAP: break-word;">
+  <form name="form_work" method="post" action="index.php?lfj=artic&job=work">
+    <tr align="left" class="head"> 
+      <td>注意事项</td>
+    </tr>
+ 
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left">1.请确认以上每一项都正确.如果某个系统修改目录后或后台目录后,请必须修改以上设置,否则会造成不可意料的不能正常访问的问题存在<br>
+        2.二级域名的设置,需要同时修改域名供应商那里的指向,同时还要在服务器单独的绑定模块系统目录,才能正常使用用.否则必须留空</td>
+    </tr>
+  
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

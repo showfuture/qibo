@@ -1,0 +1,200 @@
+/*reset*/
+header, hgroup, menu, nav, section, menu,footer,article,figure,figcaption,commend,aside{
+	display:block;
+	margin:0;
+	padding:0;
+}
+body,p,input,h1,h2,h3,h4,ul,li,dl,dt,dd,form,textarea{
+	margin:0;
+	padding:0;
+	list-style:none;
+	vertical-align:middle;
+}
+body{ 
+	font-family:"\5FAE\8F6F\96C5\9ED1", Helvetica;
+	font-size:12px; 
+}
+img {
+	border:0; 
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.ClearDiv{
+	clear:both;
+}
+a{
+	text-decoration:none;
+}
+a:link,a:visited,a:hover{
+	color:#2145DE
+}
+/*
+*页头
+*/
+.header{
+	margin:0 auto;
+	width:320px;
+	height:35px;
+	overflow:hidden;
+	line-height:35px;
+}
+.header div{
+	float:left;
+}
+.header div.logo{
+	padding:2px 5px 0 2px;
+}
+.header div.city{	
+	font-weight:bold;
+	font-size:14px;
+	padding-right:5px;
+}
+/*
+*首页
+*/
+.IndexCont,.AllCityCont,.ListSortCont{
+	margin:0 auto;
+	width:320px;
+}
+.IndexCont h3,.AllCityCont h3,.ListSortCont h3{
+	border-top:#D6E3F7 solid 1px;
+	border-bottom:#D6E3F7 solid 1px;
+	height:28px;
+	overflow:hidden;
+	line-height:30px;
+	padding-left:5px;
+	background:url(bg.gif);
+	margin-bottom:5px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+.IndexCont dl{
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+}
+.IndexCont dl dt{
+	float:left;
+	padding:0 5px 0 2px;
+	font-weight:bold;
+}
+.IndexCont dl dd{
+	padding-left:8px;
+	word-spacing:5px;
+	background:url(spc.gif) left 8px no-repeat;
+	float:left;
+}
+.IndexCont dl dd .more{
+	font-size:11px;
+	color:red;
+}
+.IndexCont ul li{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	padding-left:2px;
+}
+.IndexCont ul li a.f{
+	color:#666;
+	padding-right:5px;
+}
+/*
+*页脚
+*/
+.foot{
+	border-top:#D6E3F7 solid 1px;
+	margin:5px auto 0 auto;
+	width:315px;
+	background:#EBF0F8;
+	padding:5px 0 5px 5px;
+	line-height:20px;
+	color:#666;
+}
+/*
+切换城市
+*/
+.AllCityCont p{
+	padding:3px 2px 3px 2px;
+	line-height:22px;
+	word-spacing:3px;
+	color:#666;
+}
+.AllCityCont .return{
+	padding:10px 0 2px 5px;
+}
+.AllCityCont .searchcity{
+	height:40px;
+	overflow:hidden;
+}
+.AllCityCont .searchcity dt,.AllCityCont .searchcity dd{
+	float:left;
+	padding:5px 10px 0 2px;
+}
+.AllCityCont .searchcity dt input{
+	width:100px;
+}
+/*
+列表页
+*/
+.ListSortCont h3{
+	font-weight:normal;
+}
+.ListSortCont p{
+	padding:3px 2px 3px 2px;
+	line-height:22px;
+	word-spacing:3px;
+	color:#666;
+}
+.ListSortCont ul{
+	padding-bottom:5px;
+}
+.ListSortCont ul li{
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	padding-left:2px;
+}
+.ListSortCont ul li a.f{
+	color:#666;
+	padding-right:5px;
+}
+.ListSortCont ul li span{
+	color:#888;
+	padding-left:3px;
+}
+.ListSortCont h4{
+	padding:5px 2px 5px 2px;
+	font-size:14px;
+	border-bottom:#D6E3F7 solid 1px;
+	line-height:20px;
+}
+.ListSortCont .BenInfo{
+	padding:5px;
+	line-height:20px;
+	text-align:center;
+	color:#666;
+}
+.ListSortCont .BenContent{
+	padding-left:2px;
+	line-height:20px;
+}
+.ListSortCont .lists{
+	padding-bottom:5px;
+	color:#555;
+}
+.ListSortCont .lists span{
+	font-weight:bold;
+}
+/*
+分页
+*/
+.showpage{
+	text-align:center;
+	padding:5px 0 5px 0;
+}
+

@@ -1,0 +1,342 @@
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="">
+    <tr class="head" > 
+      <td>请选择</td>
+    </tr>
+    <tr> 
+      <td> 
+        <input type="radio" name="type" value="title" checked onclick="choose('title');">
+        标题 
+        <input type="radio" name="type" value="tc" onclick="choose('t_c');">
+        标题+内容 
+        <input type="radio" name="type" value="pic" onclick="choose('img');">
+        图片 </td>
+    </tr>
+    <tr style="display:;" id="title_more"> 
+      <td> 你可以同时显示多项内容: 
+        <input type="checkbox" name="checkbox" value="checkbox" checked>
+        标题 
+        <input type="checkbox" name="isfname" value="1">
+        栏目 
+        <input type="checkbox" name="isauthor" value="1">
+        作者 
+        <input type="checkbox" name="istime" value="1" id="istime" onclick="gettime();">
+        日期 <br>
+        <br><span id="timesdiv" style="display:none;">
+        日期的格式
+        <input type="text" name="timeformat" value="{$time_Y}-{$time_m}-{$time_d} {$time_H}:{$time_i}:{$time_s}" size="40">
+        <br>
+        (日期格式:<font color="#FF0000">{$time_Y}</font>四位年,<font color="#FF0000">{$time_y}</font>两位年,<font color="#FF0000">{$time_m}</font>月,<font color="#FF0000">{$time_d}</font>日,<font color="#FF0000">{$time_H}</font>时,<font color="#FF0000">{$time_i}</font>分,{<font color="#FF0000">$time_s}</font>分) 
+        <br></span>
+        字体颜色 
+        <input type="text" size="8" id="Tfontcolor" value="#333" name="Tfontcolor" onclick="foreColor_font(this);">
+        (点击左边表单可以选择颜色)<br>
+        字体样式 
+        <input type="radio" name="Tfontweight" value="normal" checked id="Tfontweight0">
+        普通 
+        <input type="radio" name="Tfontweight" value="bold" id="Tfontweight1">
+        粗体<br>
+        字号大小 
+        <input type="text" name="Tfontsize" size="4" id="Tfontsize" value="12">
+        像素,推荐12号字<br>
+        字体装饰 
+        <input type="radio" name="Tfontline" value="underline" id="Tfontline1">
+        有下画线 
+        <input type="radio" name="Tfontline" value="none" id="Tfontline0" checked>
+        没下画线 <br>
+        字体行高 
+        <input type="text" name="Tdivheight" size="5" id="Tdivheight" value="18">
+        像素,一般填18<br>
+        字体左缩进 
+        <input type="text" name="Tdivmarginleft" size="4" id="Tdivmarginleft" value="5">
+        像素,字体右缩进 
+        <input type="text" name="Tdivmarginright" size="4" id="Tdivmarginright" value="2">
+        像素<br>
+        字体前面的小图标 
+        <input type="text" name="Ticourl" id="Ticourl" value="<?=$webdb[www_url]?>/images/default/arrow.gif" size="50">
+        [<a href="#" onclick="window.open('index.php?lfj=label&ch_module=<?=$ch_module?>&job=make&step=getpic','','width=600,height=500,scrollbars=yes,top=100,left=200');">点击选择</a>] [<a href="#" onClick='window.open("upfile.php?lfj=label&ch_module=<?=$ch_module?>&postid=flash&","","width=350,height=50,top=200,left=400")'>点击上传</a>]<br>
+        小图标横坐标 
+        <input type="text" name="Ticopx" size="8" value="0%" id="Ticopx">
+        小图标纵坐标 
+        <input type="text" name="Ticopy" size="8" value="40%" id="Ticopy">
+        <br>
+        小图标距离字体 
+        <input type="text" name="Ticoright" size="5" id="Ticoright" value="9">
+        像素<br>
+        字体背景颜色 
+        <input type="text" name="Tdivbgcolor" size="8" id="Tdivbgcolor"  onclick="foreColor_font(this);">
+        (点击左边表单可以选择颜色)<br>
+        字体背景下画线 
+        <input type="radio" name="Tdivbgline" value="0px" id="Tdivbgline0" checked>
+        无下画线 
+        <input type="radio" name="Tdivbgline" value="1px solid" id="Tdivbgline1">
+        实线 
+        <input type="radio" name="Tdivbgline" value="1px dotted" id="Tdivbgline2">
+        虚线,字体背景下画线颜色 
+        <input type="text" name="Tdivbglinecolor" size="8" id="Tdivbglinecolor" value="#cccccc"  onclick="foreColor_font(this);">
+        <br>
+        <br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:400px;height:60px;border:1px solid #333;">
+          <tr> 
+            <td valign="top"> 
+              <div id="show_div"> <span id="show_span"><A HREF="#" id="show_word">这只是演示文字而已,方便你修改时看到即时效果</A></span> 
+              </div>
+              <!--  <div id="show_div2" style="margin-left:1px;widht:100%;height:25px;display:block;border-bottom:#ccc 1px dotted;background:#eff;"> 
+        <span style="width:100%;background:url(http://www.qibosoft.com/images/default/arrow.gif) no-repeat;background-position: 0px 35%;padding-left:12px;" id="show_span2"><A HREF="" style="text-decoration: underline;color:red;font-weight:bold;font-size:18px;" id="show_word2">这只是演示文字而已</A></span> 
+      </div>-->
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr style="display:none;" id="t_c">
+      <td> 标题颜色 
+        <input type="text" size="8" id="TCfontcolor" value="#C40000" name="TCfontcolor" onClick="foreColor_font(this);">
+        (点击左边表单可以选择颜色)<br>
+        标题字体样式 
+        <input type="radio" name="TCfontweight" value="normal" checked id="TCfontweight0">
+        普通 
+        <input type="radio" name="TCfontweight" value="bold" id="TCfontweight1" checked>
+        粗体<br>
+        标题字号大小 
+        <input type="text" name="TCfontsize" size="4" id="TCfontsize" value="13">
+        仅写数字,推荐12号字<br>
+        标题字体装饰 
+        <input type="radio" name="TCfontline" value="underline" id="TCfontline1">
+        有下画线 
+        <input type="radio" name="TCfontline" value="none" id="TCfontline0" checked>
+        没下画线 <br>
+        内容文字颜色 
+        <input type="text" size="8" id="TCCfontcolor" value="#333" name="TCCfontcolor" onClick="foreColor_font(this);">
+        (点击左边表单可以选择颜色) <br>
+        内容文字大小 
+        <input type="text" name="TCCfontsize" size="4" id="TCCfontsize" value="12">
+        仅写数字,推荐12号字 <br>
+        整体的上边距 
+        <input type="text" name="TCtop" size="4" id="TCtop" value="4">
+        像素<br>
+        整体的左边距 
+        <input type="text" name="TCleft" size="4" id="TCleft" value="4">
+        像素<br>
+        整体的右边距 
+        <input type="text" name="TCright" size="4" id="TCright" value="2">
+        像素<br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:400px;height:60px;border:1px solid #333;">
+          <tr> 
+            <td valign="top"> 
+              <div id="c_div"> 
+                <div><a href="#" id="c_title">这标题部分,方便你修改时看到即时效果</a></div> 
+             
+			  <div id="c_content">&nbsp;&nbsp;&nbsp;&nbsp;这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,这是内容,</div>
+			  </div>
+              
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr style="display:none;" id="pic_more"> 
+      <td> 你可以同时显示多项内容: 
+        <input type="checkbox" name="checkbox5" value="checkbox" checked>
+        图片 
+        <input type="checkbox" name="istitle" value="1" checked>
+        标题 <br>标题颜色 
+        <input type="text" size="8" id="Pfontcolor" value="#333" name="Pfontcolor" onClick="foreColor_font(this);">
+        (点击左边表单可以选择颜色)<br>
+        标题字体样式 
+        <input type="radio" name="Pfontweight" value="normal" checked id="Pfontweight0">
+        普通 
+        <input type="radio" name="Pfontweight" value="bold" id="Pfontweight1" checked>
+        粗体<br>
+        标题字号大小 
+        <input type="text" name="Pfontsize" size="4" id="Pfontsize" value="12">
+        仅写数字,推荐12号字<br>
+        标题字体装饰 
+        <input type="radio" name="Pfontline" value="underline" id="Pfontline1">
+        有下画线 
+        <input type="radio" name="Pfontline" value="none" id="Pfontline0" checked>
+        没下画线 <br>
+        图片宽
+        <input type="text" name="Pwidth" size="4" id="Pwidth" value="120">
+        像素,图片高 
+        <input type="text" name="Pheight" size="4" id="Pheight" value="90">
+        像素 <br> 图片内边框大小 
+        <input type="text" name="Pimgborder" size="4" id="Pimgborder" value="1">
+        像素,推荐1个像素<br>
+        图片内边框颜色 
+        <input type="text" size="8" id="Pimgbordercolor" value="#fff" name="Pimgbordercolor" onClick="foreColor_font(this);">
+        (点击左边表单可以选择颜色) <br>
+        图片外边框大小 
+        <input type="text" name="Pborder" size="4" id="Pborder" value="1">
+        像素,推荐1个像素<br>
+        图片外边框颜色 
+        <input type="text" size="8" id="Pbordercolor" value="#333" name="Pbordercolor" onClick="foreColor_font(this);">
+        (点击左边表单可以选择颜色) <br>
+        <br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:400px;height:60px;border:1px solid #333;">
+          <tr> 
+            <td valign="top" style="padding:12px;"> 
+              <div id="p_div"> 
+			    <div id="p_imgdiv"><img id="p_img" border=0 src="<?=$webdb[www_url]?>/images/default/nopic.jpg" width="100" height="80"></div>
+                <div ><a href="#" id="p_title" style="">这标题部分</a> </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td align="center"> 
+        <input type="submit" name="Submit" value=" 提 交 ">
+        <input type="hidden" name="step" value="2">
+        <input type="hidden" name="tpl_id" value="<?=$tpl_id?>">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.body.onmouseover=chang_Title;
+document.body.onclick=chang_Title;
+function choose(t){
+	get_obj('title_more').style.display='none';
+	get_obj('pic_more').style.display='none';
+	get_obj('t_c').style.display='none';
+	if(t=='title'){
+		get_obj('title_more').style.display='';
+		document.body.onmouseover=chang_Title;
+		document.body.onclick=chang_Title;
+	}
+	if(t=='img'){
+		get_obj('pic_more').style.display='';
+		document.body.onmouseover=chang_pic;
+		document.body.onclick=chang_pic;
+	}
+	if(t=='t_c'){
+		get_obj('t_c').style.display='';
+		document.body.onmouseover=chang_TC;
+		document.body.onclick=chang_TC;
+	}
+}
+function foreColor_font(obj)
+{
+  
+  var arr = showModalDialog('images/selcolor.htm', '', 'dialogWidth:18.5em; dialogHeight:17.5em; status:0');
+  if (arr != null)  obj.value=arr;
+  else  obj.focus();
+  obj.style.background=arr;
+}
+function chang_Title(){
+	word=get_obj("show_word");
+	div=get_obj("show_div");
+	span=get_obj("show_span");
+	word.style.color=get_obj("Tfontcolor").value;
+	if(get_obj("Tfontweight0").checked==true){
+		word.style.fontWeight="normal";
+	}else{
+		word.style.fontWeight="bold";
+	}
+	
+	word.style.fontSize=get_obj("Tfontsize").value;
+
+	if(get_obj("Tfontline1").checked==true){
+		word.style.textDecoration="underline";
+	}else{
+		word.style.textDecoration="none";
+	}
+
+	div.style.height=get_obj("Tdivheight").value;
+	div.style.marginLeft=get_obj("Tdivmarginleft").value;
+	div.style.marginRight=get_obj("Tdivmarginright").value;
+	div.style.background=get_obj("Tdivbgcolor").value;
+	if(get_obj("Tdivbgline0").checked==true){
+		borderb=" 0px";
+	}else if(get_obj("Tdivbgline1").checked==true){
+		borderb=" 1px solid";
+	}else{
+		borderb=" 1px dotted";
+	}
+	div.style.borderBottom=get_obj("Tdivbglinecolor").value+borderb;
+	div.style.marginLeft=get_obj("Tdivmarginleft").value
+	div.style.marginRight=get_obj("Tdivmarginright").value
+	span.style.background='url('+get_obj("Ticourl").value+') no-repeat';
+	span.style.backgroundPosition=get_obj("Ticopx").value+' '+get_obj("Ticopy").value;
+	span.style.paddingLeft=get_obj("Ticoright").value;
+}
+
+
+function chang_TC(){
+	title=get_obj("c_title");
+	content=get_obj("c_content");
+	div=get_obj("c_div");
+
+	title.style.color=get_obj("TCfontcolor").value;
+	if(get_obj("TCfontweight0").checked==true){
+		title.style.fontWeight="normal";
+	}else{
+		title.style.fontWeight="bold";
+	}
+	
+	title.style.fontSize=get_obj("TCfontsize").value;
+
+	if(get_obj("TCfontline1").checked==true){
+		title.style.textDecoration="underline";
+	}else{
+		title.style.textDecoration="none";
+	}
+	
+	content.style.color=get_obj("TCCfontcolor").value;
+	content.style.fontSize=get_obj("TCCfontsize").value;
+	div.style.marginTop=get_obj("TCtop").value;
+	div.style.marginLeft=get_obj("TCleft").value;
+	div.style.marginRight=get_obj("TCright").value;
+}
+
+function chang_pic(){
+	title=get_obj("p_title");
+	img=get_obj("p_img");
+	imgdiv=get_obj("p_imgdiv");
+
+	title.style.color=get_obj("Pfontcolor").value;
+	if(get_obj("Pfontweight").checked==true){
+		title.style.fontWeight="normal";
+	}else{
+		title.style.fontWeight="bold";
+	}
+	
+	title.style.fontSize=get_obj("Pfontsize").value;
+
+	if(get_obj("Pfontline1").checked==true){
+		title.style.textDecoration="underline";
+	}else{
+		title.style.textDecoration="none";
+	}
+	
+	img.style.width=get_obj("Pwidth").value;
+	img.style.height=get_obj("Pheight").value;
+	imgdiv.style.width=get_obj("Pwidth").value;
+	imgdiv.style.height=get_obj("Pheight").value;
+	imgdiv.style.border=' solid '+get_obj("Pborder").value+'px '+get_obj("Pbordercolor").value;
+	//alert(' solid '+get_obj("Pborder").value+'px solid '+get_obj("Pbordercolor").value);
+	img.style.border=' solid '+get_obj("Pimgborder").value+'px '+get_obj("Pimgbordercolor").value;
+ 
+}
+
+function gettime(){
+	if(get_obj("istime").checked==true){
+		get_obj("timesdiv").style.display='';
+	}else{
+		get_obj("timesdiv").style.display='none';
+	}
+}
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,p){
+	document.getElementById("Ticourl").value="<?=$webdb[www_url]?>/<?=$webdb[updir]?>/"+url;
+}
+//-->
+</SCRIPT>

@@ -1,0 +1,70 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form_work" method="post" action="?lfj=$lfj&">
+    <tr align="center" class="head"> 
+      <td width="5%">ID</td>
+      <td width="18%">充值卡密码</td>
+      <td width="14%">面值(元)</td>
+      <td width="19%">可充值{$webdb[MoneyName]}数({$webdb[MoneyDW]})</td>
+      <td width="12%">使用与否</td>
+      <td width="13%">使用日期</td>
+      <td width="11%">使用者</td>
+      <td width="8%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF"> 
+      <td width="5%" align="center">$rs[id]</td>
+      <td width="18%"> 
+        <input type="checkbox" name="listdb[{$rs[id]}]" value="{$rs[id]}">
+        $rs[passwd]</td>
+      <td align="center" width="14%">$rs[moneyrmb]</td>
+      <td align="center" width="19%">$rs[moneycard]</td>
+      <td align="center" width="12%">$rs[ifsell]</td>
+      <td width="13%" align="center">$rs[posttime]</td>
+      <td align="center" width="11%">$rs[username]</td>
+      <td align="center" width="8%"><a href="?lfj=$lfj&action=delete&id=$rs[id]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr bgcolor="#FFFFFF" align="center"> 
+      <td colspan="8"> <a href="#" onClick="CheckAll('all')">全选</a> / <a href="#" onClick='CheckAll()'>反选</a> 
+        {$showpage} 
+        <input type="button" name="Submit" value="删除" onclick="postdo('delete')">
+        <input type="button" name="Submit2" value="打印出售" onclick="postdo('print')">
+        <SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckAll(va){
+	form=document.form_work
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		if(va=='all'){
+			e.checked = true;
+		}else{
+			e.checked == true ? e.checked = false : e.checked = true;
+		}
+	}
+}
+function postdo(d){
+	document.form_work.action.value=d;
+	document.form_work.submit();
+}
+//-->
+</SCRIPT>
+        <input type="hidden" name="action">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,8 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:5px;">
+  <tr>
+    <td align="left"><a href="$url" target="_blank" style="font-weight:bold;color:#666;" title="$full_title">$title</a></td>
+  </tr>
+  <tr>
+    <td align="left" height="18" valign="middle" style="border-bottom:1px dotted #ccc;text-indent:2em;margin-bottom:3px;">$content</td>
+  </tr>
+</table>

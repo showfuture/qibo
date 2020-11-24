@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+-->
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/member/images/hy/pic.css">
+<form action="?" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable">
+  <tr>
+    <td class="tdL">单位名称:</td>
+    <td class="tdR">$address[title]</td>
+    <td class="tdL">工作职位:</td>
+    <td class="tdR"><input name="qy_contact_zhiwei" type="text" id="qy_contact_zhiwei" value="$address[qy_contact_zhiwei]"></td>
+  </tr>
+  <tr>
+    <td class="tdL">联 系 人:</td>
+    <td class="tdR"><input name="qy_contact" type="text" id="qy_contact" value="$address[qy_contact]"></td>
+    <td class="tdL">电话号码:</td>
+    <td class="tdR"><input name="qy_contact_tel" type="text" id="qy_contact_tel" value="$address[qy_contact_tel]"></td>
+  </tr>
+  <tr>
+    <td class="tdL">传真号码:</td>
+    <td class="tdR"><input name="qy_contact_fax" type="text" id="qy_contact_fax" value="$address[qy_contact_fax]"></td>
+    <td class="tdL">移动号码:</td>
+    <td class="tdR"><input name="qy_contact_mobile" type="text" id="qy_contact_mobile" value="$address[qy_contact_mobile]"></td>
+  </tr>
+  <tr>
+    <td class="tdL">单位主页:</td>
+    <td class="tdR"><input name="qy_website" type="text" id="qy_website" value="$address[qy_website]" size="30"></td>
+    <td class="tdL">邮箱地址:</td>
+    <td class="tdR"><input name="qy_contact_email" type="text" id="qy_contact_email" value="$address[qy_contact_email]"></td>
+  </tr>
+  <tr>
+    <td class="tdL">详细地址:</td>
+    <td class="tdR"><input name="qy_address" type="text" id="qy_address" value="$address[qy_address]" size="30"></td>
+    <td class="tdL">邮政编码:</td>
+    <td class="tdR"><input name="qy_postnum" type="text" id="qy_postnum" value="$address[qy_postnum]"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="FormTable mtop10">
+  <tr>
+    <td class="tdL">在线交流:</td>
+    <td class="tdR">
+    	<div>Q Q号 <input name="qq" type="text"  value="{$address[qq]}" size="40"> 多个号码以‘,’隔开</div>
+        <div>M S N <input name="msn" type="text"  value="{$address[msn]}" size="40"> 多个号码以‘,’隔开</div>
+        <div>阿里旺旺 <input name="ww" type="text"  value="{$address[ww]}" size="40"> 多个号码以‘,’隔开</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL">地图位置:</td>
+    <td class="tdR">
+    	<input type="text" name="gg_maps" id="mapid" size="35" value="$address[gg_maps]" readonly  onclick="window.open('$Mdomain/job.php?job=ggmap_position&position=$address[gg_maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);">
+(<img src="$webdb[www_url]/images/default/icon_qi.gif"><a onclick="window.open('$Mdomain/job.php?job=ggmap_position&position=$address[gg_maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);" href="#" >点击标注地图位置</a> 
+<font color="#999999">标注后，店铺将定位到电子地图上</font>) (<A onclick="document.getElementById('mapid').value='';" HREF="#">清除</A>) 
+<input type="hidden" name="hiddenField" id="mapid_v" value="$city_id">
+    </td>
+  </tr>
+  <tr>
+    <td class="tdL"><br/></td>
+    <td class="tdR">
+    	<input type="submit" name="button9" id="button13" value="提 交" />
+        <input name="atn" type="hidden" id="atn" value="$atn" />
+        <input name="step" type="hidden" id="step" value="1" />
+        <input name="uid" type="hidden" id="uid" value="$uid" />
+    </td>
+  </tr>
+</table>
+</form>
+<!--
+EOT;
+?>
+-->

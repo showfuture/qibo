@@ -1,0 +1,196 @@
+/*
+*初始化样式
+*/
+body, form, ul, li, p, dl, dd, dt ,h,td,th,h3{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size:12px;
+	background:url(citybg.gif) left 175px repeat-x;
+}
+li,ul{
+	list-style: none;
+} 
+TD {
+	color: #333333;
+	VERTICAL-ALIGN: top;
+} 
+input,textarea{
+	border:1px solid #ccc;
+}
+a {
+	color:#333;
+}
+a:link {
+	color:#333333;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active {
+	text-decoration: none;
+}
+img{
+	border:0;
+}
+/*
+*头部
+*/
+.HeadContainer{
+	height:175px;
+	width:990px;
+	overflow:hidden;
+	margin:auto;
+	background:url(hbg.gif) right top no-repeat;
+}
+.HeadContainer .logo{
+	width:250px;
+	float:left;
+	padding-top:40px;
+}
+.HeadContainer .note{
+	width:340px;
+	height:80px;
+	float:left;
+	padding:55px 30px 0 40px;
+	background:url(note.gif) left 40px no-repeat;
+	line-height:30px;
+	font-size:14px;
+	color:#666;
+}
+/*
+*综合
+*/
+.ActionContainer{
+	width:990px;
+	height:70px;
+	line-height:80px;
+	border-bottom:#CCC solid 1px;
+	margin:auto;
+}
+.ActionContainer .tagword{
+	width:150px;
+	height:70px;
+	overflow:hidden;
+	float:left;
+	padding-left:30px;
+	font-size:16px;
+	font-weight:bold;
+	color:#00c;
+}
+.ActionContainer .tagword a{
+	color:#00c;
+	font-size:16px;
+	text-decoration:underline;
+}
+.ActionContainer .hotcity{
+	width:700px;
+	height:70px;
+	overflow:hidden;
+	float:left;
+	font-size:14px;
+	color:#888;
+}
+.ActionContainer .hotcity a{
+	font-weight:bold;
+	color:#00c;
+	text-decoration:underline;
+	padding-right:5px;
+}
+/*
+*快速查找
+*/
+.showpinyin{
+	height:50px;
+	width:975px;
+	padding-left:15px;
+	line-height:50px;
+	margin:auto;
+	font-size:16px;
+	color:#666;
+	word-spacing:10px;
+}
+.showpinyin a:link,.showpinyin a:visited{
+	font-weight:bold;
+	color:#0000CC;
+}
+.showpinyin a:hover{
+	color:red;
+}
+/*
+*
+*/
+.showarea{
+	height:25px;
+	width:975px;
+	line-height:25px;
+	padding:0 0 10px 15px;
+	overflow:hidden;
+	margin:auto;
+	font-size:16px;
+	color:#666;
+}
+.showarea div{
+	float:left;
+}
+.showarea div.select{
+	padding:3px 5px 0 0;
+}
+.showarea div.button{
+	padding:2px 0 0 10px;
+}
+/*
+*显示城市
+*/
+.showcity{
+	width:990px;
+	margin:auto;
+}
+.showcity dl{
+	clear:both;
+	line-height:25px;
+}
+.showcity dl dt{
+	width:50px;
+	padding-top:5px;
+	text-align:center;
+	float:left;
+}
+.showcity dl dt a{
+	font-size:16px;
+	font-weight:bold;
+}
+.showcity dl dd{
+	width:930px;
+	padding-top:8px;
+	float:left;
+	word-spacing:8px;
+}
+.showcity dl dd a:link,.showcity dl dd a:visited,.showcity dl dd a:hover{
+	font-size:14px;
+	color:#00c;
+}
+/*
+*CopyRight
+*/
+.CopyRight{
+	clear:both;
+	width:990px;
+	margin:15px auto 0 auto;
+	border-top:#CCC solid 1px;
+	padding:8px 0 10px 0;
+	text-align:center;
+	line-height:25px;
+	color:#888;
+}
+
+.showheight{
+	height:500px;
+}

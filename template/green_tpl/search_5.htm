@@ -1,0 +1,140 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+-->
+<script language="JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+'window.location.href=?mid='+this.options[this.selectedIndex].value);
+  if (restore) selObj.selectedIndex=0;
+}
+ 
+function ck_searchpage(){
+	form=document.form_searchpage; 
+	if(form.fid.value=='0'){
+		//alert("请选择一个栏目!!");
+		//return false;		
+	}
+	if(form.keyword.value==''){
+		alert("关键字不能为空!!");
+		return false;		
+	}
+	
+}
+//-->
+</SCRIPT>
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/search.css"> 
+<div class="Container">
+	<div class="head"><div class="tag">搜索</div></div>
+    <div class="cont">
+    	<div class="formsearch">
+        <form name="form_searchpage" method="post" action="" onsubmit="return ck_searchpage();">
+        	<div class="h">高级搜索</div>
+            <dl>
+            	<dt>搜索模型：</dt>
+                <dd>$module_select</dd>
+            </dl>
+            <dl>
+            	<dt>搜索栏目：</dt>
+                <dd>$fid_select <input type="checkbox" name="postdb[city_id]" value="$city_id" $city_check> 只搜索当前城市的信息</dd>
+            </dl>
+            <dl>
+            	<dt>关键字：</dt>
+                <dd><input type="text" name="keyword" value="$keyword"></dd>
+            </dl>
+            <dl>
+            	<dt>搜索类型：</dt>
+                <dd>
+                	<input type="radio" name="type" value="title" $typedb[title]>标题
+                    <input type="radio" name="type" value="mobphone" $typedb[mobphone]>手机号码 
+                    <input type="radio" name="type" value="username" $typedb[username] >发布者
+                    <!---->
+                </dd>
+            </dl>
+
+<dl>
+    <dt>条件要求：</dt>
+    <dd><select name='postdb[sortid]' id='atc_sortid'><option value=''>不限</option><option value='1' {$rsdb[sortid]['1']}>漂亮</option><option value='2' {$rsdb[sortid]['2']}>贤慧</option><option value='3' {$rsdb[sortid]['3']}>英俊</option><option value='4' {$rsdb[sortid]['4']}>上进</option><option value='5' {$rsdb[sortid]['5']}>老实</option></select>  </dd>
+</dl>
+
+<dl>
+    <dt>学历：</dt>
+    <dd><select name='postdb[schoo_age]' id='atc_schoo_age'><option value=''>不限</option><option value='1' {$rsdb[schoo_age]['1']}>小学</option><option value='2' {$rsdb[schoo_age]['2']}>初中</option><option value='3' {$rsdb[schoo_age]['3']}>高中</option><option value='4' {$rsdb[schoo_age]['4']}>中专</option><option value='5' {$rsdb[schoo_age]['5']}>大专</option><option value='6' {$rsdb[schoo_age]['6']}>本科</option><option value='7' {$rsdb[schoo_age]['7']}>研究生</option><option value='8' {$rsdb[schoo_age]['8']}>博士以上</option></select>  </dd>
+</dl>
+<!---->
+            
+            <dl>
+            	<dt><br/></dt>
+                <dd>
+                	<input type="button" name="Submit2" value="重新搜索" onclick="window.location.href='?mid=$mid'">                    　　 
+                    <input type="submit" name="Submit" value="提交">
+                    <input type="hidden" name="mid" value="$mid">
+                    <input type="hidden" name="action" value="search">
+                </dd>
+            </dl>
+        </form>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+          <tr class="h"> 
+            <td width="5%">ID</td>
+            <td width="30%">标题</td>
+ 
+<td>条件要求</td>
+ 
+<td>学历</td>
+<!---->
+            <td width="6%">发布者</td>
+            <td width="10%">所在栏目</td>
+            <td width="10%">所属地区</td>
+            <td width="12%">发布日期</td>
+          </tr>
+<!--
+EOT;
+$i=0;
+foreach($listdb AS $key=>$rs){
+$i++;
+$listcss = $i%2==0 ? "listb" : "lista";
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+$rs[Lurl]=get_info_url('',$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+          <tr class="list $listcss"> 
+            <td>$rs[id]</td>
+            <td><a href="$rs[url]" target="_blank">$rs[title]</a></td>
+ 
+<td>{$rs[sortid]} </td>
+ 
+<td>{$rs[schoo_age]} </td>
+<!---->
+            <td>$rs[username]</td>
+            <td><a href="$rs[Lurl]" target="_blank">$rs[fname]</a></td>
+            <td>{$city_DB[name][$rs[city_id]]}/{$zone_DB[name][$rs[zone_id]]}</td>
+            <td>$rs[posttime]</td>
+          </tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+       </table>
+<!--
+EOT;
+if($action=="search"&&!$listdb){
+print <<<EOT
+-->
+<div id="searchNO">
+很抱歉,没有找到你要查询的内容!!
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		<div class="showpages">$showpage</div>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

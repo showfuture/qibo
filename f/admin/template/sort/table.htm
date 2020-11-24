@@ -1,0 +1,45 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head"> 
+      <td colspan="2">数据分表存放</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='31%'><font color="#000000">新表名:</font></td>
+      <td width='69%'><font color="#000000">{$_pre}content 
+        <input style="border-left:0px;" type="text" name="tableid" size="10" value="$tableid">
+        (只能是英文或数字) 
+        <input type="hidden" name="tableid0" value="$rsdb[tableid]">
+        <input type="hidden" name="fid" value="$fid">
+        </font></td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='31%' height='34'><font color='#000000'></font></td>
+      <td width='69%' height='34'><font color='#000000'> 
+        <input type='submit' name='Submit' value='提交'>
+        </font></td>
+    </tr>
+  </form>
+</table>
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+ 
+    <tr class="head"> 
+    <td>说明:</td>
+  </tr>
+  <tr>
+    <td> 
+      <p>1.当数据量太大的时候,建议你每个栏目都使用独立的表.这样可以非常有效的减轻服务器的CPU使用率.<br>
+        2.数据量少的时候,就完全没有必要分表.<br>
+        2.多个栏目可以共用一个表. <br>
+        3.点击提交后,如果新表不存在的话,就会自动创建一个新表,并且把原有数据转移到新表.<br>
+        4.栏目分表后,还可以合并回来的.</p>
+      </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

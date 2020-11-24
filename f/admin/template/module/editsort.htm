@@ -1,0 +1,83 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <tr>
+    <td class="head">模块编辑</td>
+  </tr>
+  <tr><form name="form2" method="post" action="$admin_path&action=editsort">
+    <td>模块名称:
+      
+        <input type="text" name="name" value="$rsdb[name]">
+         
+        <input type="submit" name="Submit2" value="修改当前模块设置">
+        <input type="hidden" name="id" value="$id">
+        [<a href="$admin_path&job=addfield&id=$id"><font color="#FF0000"><b>添加字段</b></font></a>] 
+        <br>
+        注意:栏目的风格会优先于此模块的风格,此模块风格会优先于系统风格</td>
+    </form>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=editorder&id=$id">
+    <tr class="head" align="center"> 
+      <td width="40%">字段名称</td>
+      <td width="29%">字段ID</td>
+      <td width="17%">排序</td>
+      <td width="7%">修改</td>
+      <td width="7%">删除</td>
+    </tr>
+    <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+    <tr class="trA" onmouseover="this.className='trB'" onmouseout="this.className='trA'"> 
+      <td width="40%">$rs[title]</td>
+      <td width="29%">$rs[field_name]</td>
+      <td width="17%" align="center"> 
+        <input type="text" name="postdb[{$rs[field_name]}]" size="6" value="$rs[orderlist]">
+      </td>
+      <td width="7%" align="center"> 
+        <p><a href='$admin_path&job=editfield&id=$id&field_name=$rs[field_name]'>管理</a></p>
+      </td>
+      <td width="7%" align="center"><a href="$admin_path&action=delfield&id=$id&field_name=$rs[field_name]">删除</a></td>
+    </tr>
+    <!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="5"> 
+        <input type="submit" name="Submit" value="修改排序">
+      </td>
+    </tr>
+    <tr align="left"> 
+      <td colspan="5">注意:<font color="#FF0000">数值大的排在前面</font></td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function show_more(va){
+	var s=document.getElementsByTagName("tr");
+	for(var i=0;i<s.length;i++){
+		if( document.form1.showmore.checked==true ||va==1 ){
+			if(s[i].className=='hidetr'){
+				s[i].style.display="";
+			}	
+		}else{
+			if(s[i].className=='hidetr'){
+				s[i].style.display="none";
+			}	
+		}
+	}
+}
+//show_more(1);
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

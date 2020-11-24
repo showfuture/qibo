@@ -1,0 +1,269 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="70%" height="200" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG">积分规则</span>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle">
+<!--
+EOT;
+foreach($jfDB AS $key=>$array){print <<<EOT
+-->
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jfsort">
+  <tr>
+    <td class="jfname">{$fnameDB[$key]}</td>
+  </tr>
+  <tr>
+    <td>
+<!--
+EOT;
+foreach($array AS $key2=>$rs){print <<<EOT
+-->
+<div class="title">$rs[title]</div>
+<div class="about">$rs[content]</div>
+<!--
+EOT;
+}print <<<EOT
+-->
+	
+	</td>
+  </tr>
+ </table>
+<!--
+EOT;
+}print <<<EOT
+-->
+		  </td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+	  
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">在线充值</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"><table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr align="left"> 
+                <td height="22" colspan="4">你当前具有{$webdb[MoneyName]}<img src="$webdb[www_url]/member/images/moneycard.gif"><b><font color="#FF0000"> 
+                  {$lfjdb[money]}</font></b>{$webdb[MoneyDW]}</td>
+                 
+              </tr>
+              <tr align="center">  
+                <td height="10" width="25%"><img src="../images/default/yeepay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="yeepay" checked style="border:0px;" id="pay_yee">
+                </td>
+                <td height="10" width="25%"><img src="$webdb[www_url]/images/default/tenpay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="ten" style="border:0px;" id="pay_ten">
+                </td>
+                <td height="10" width="25%"><img src="$webdb[www_url]/images/default/alipay_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="ali" style="border:0px;" id="pay_ali">
+                </td>
+                 
+                <td height="10" width="25%"><img src="$webdb[www_url]/images/default/card_logo.gif" width="96" height="37"> 
+                  <input type="radio" name="paytype" value="card" style="border:0px;" id="pay_card">
+                </td>
+                 
+              </tr>
+              <tr align="center"> 
+                <td height="74" colspan="4"><a href="javascript:paytype();"><img src="$webdb[www_url]/member/images/button_cz.gif" border="0"></a>
+                  <SCRIPT LANGUAGE="JavaScript">
+<!--
+function paytype(){
+	var url='';
+	if(document.getElementById("pay_ten").checked==true){
+		url='tenpay';
+	}
+	else if(document.getElementById("pay_ali").checked==true){
+		url='alipay';
+	}
+	else if(document.getElementById("pay_99bi").checked==true){
+		url='99pay';
+	}
+	else if(document.getElementById("pay_yee").checked==true){
+		url='yeepay';
+	}
+	else {
+		window.open("../do/moneycard.php");
+		return ;
+	}
+	window.open("../do/buymoneycard.php?paytype="+url);
+}
+//-->
+</SCRIPT></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" height="200" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">会员中心</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" align="left">
+<!--
+EOT;
+if(!$lfjid){print <<<EOT
+-->
+                        <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr>
+                            <td align="left"><b>请输入您的通行证和密码登录!</b></td>
+                          </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:260px;">
+                          <tr> 
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg1.gif);height:8px;"></td>
+                          </tr>
+                          <tr>
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg2.gif);height:70px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0"><form name="formLogin" method="post" action="$webdb[www_url]/do/login.php">
+                                <tr> 
+                                  <td width="70%" style="padding-left:5px;">帐号: 
+                                      <input style="border:1px solid #7F9DB9;width:110px;height:16px;" type="text" name="username" size="12">
+                                  </td>
+                                    <td rowspan="2" width="30%" align="left"><a href="#" onclick="sublogin()"><img src="$webdb[www_url]/images/default/dl.gif" width="58" height="53" border="0"></a></td>
+                                </tr>
+                                <tr> 
+                                  <td width="70%" style="padding-left:5px;">密码: 
+                                      <input style="border:1px solid #7F9DB9;width:110px;height:16px;" type="password" name="password" size="12">
+                                  </td>
+                                </tr>
+                                <tr> 
+                                  <td colspan="2">
+                                    <table width="77%" border="0" cellspacing="5" cellpadding="0" align="center">
+                                      <tr align="left"> 
+                                          <td width="49%" style="background:url($webdb[www_url]/images/4.0sp/pic01.gif) no-repeat;text-indent:14px;"><a href="$webdb[www_url]/do/sendpwd.php" target="_blank">忘记密码</a></td>
+                                          
+                              <td width="51%" style="background:url($webdb[www_url]/images/4.0sp/pic02.gif) no-repeat;text-indent:17px;"><a href="$webdb[www_url]/do/reg.php" target="_blank">注册帐号</a></td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr><input type="hidden" name="step" value="2"><input class="radio" type="hidden" name="cookietime" value="86400" >
+</form><SCRIPT LANGUAGE="JavaScript">
+<!--
+function sublogin(){
+	if(document.formLogin.username.value==''){
+		alert('帐号不能为空');
+		return ;
+	}
+	if(document.formLogin.password.value==''){
+		alert('密码不能为空');
+		return ;
+	}
+	document.formLogin.submit();
+}
+//-->
+</SCRIPT>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg3.gif);height:8px;"></td>
+                          </tr>
+                        </table>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+                        <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr>
+                            <td align="left"><b>$lfjid,欢迎你回来!</b></td>
+                          </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:260px;">
+                          <tr> 
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg1.gif);height:8px;"></td>
+                          </tr>
+                          <tr>
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg2.gif);height:80px;">
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr> 
+                                  <td style="padding-left:8px;" width="13%" align="left"><a href="../member/homepage.php?uid=$lfjuid" style="border:1px #E7E7E7 solid;display:block;width:80px;height:80px;" target="_blank"><img style="border:2px #fff solid;" onerror="this.src='$webdb[www_url]/images/default/noface.gif'" src="$lfjdb[icon]" width="80" height="80" border="0"></a></td>
+                                  
+                      <td style="padding-left:10px;" width="87%" valign="top" align="left">积分: 
+                        <font color="#FF0000">{$lfjdb[money]}</font> 点<br>
+									访问量:<font color="#FF0000">{$lfjdb[hits]}</font> 
+                                    次<br>
+                        <a href="../member/homepage.php?uid=$lfjuid" target="_blank">个人信息</a> 
+                        <a href="../member/index.php?main=userinfo.php?job=edit" target="_blank">修改资料</a> 
+                        <a href="login.php?action=quit">安全退出</a> <br>
+                        <!--
+EOT;
+if(!$lfjdb[newpm]){print <<<EOT
+-->
+                        <A HREF="../member/?main=pm.php?job=send" target='_blank'>发送短消息</A> 
+                        <!--
+EOT;
+}else{
+print <<<EOT
+-->
+                        <A HREF="../member/?main=pm.php?job=list" target='_blank'><font color="#FF0000">你有新的消息,请注意查收!</font></A> 
+                        <!--
+EOT;
+}print <<<EOT
+-->
+                      </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="background:url($webdb[www_url]/images/4.0sp/lg_dlbg3.gif);height:8px;"></td>
+                          </tr>
+                        </table>				
+<!--
+EOT;
+}print <<<EOT
+-->	
+		  </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+ 
+ 
+<!--
+EOT;
+?>
+-->

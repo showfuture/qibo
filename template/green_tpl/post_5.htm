@@ -1,0 +1,427 @@
+<!--
+<?php
+$detail=explode(",",$webdb[Post_group_UpPhoto].',3,4');
+if($webdb[Post_group_UpPhoto]&&!in_array($groupdb['gid'],$detail))$none='none;';
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/post.css"> 
+<div style="display:none;"> <iframe width=1 height=1 src='' id="iframe_zone" name="iframe_zone"></iframe> 
+  <iframe width=1 height=1 src='' id="iframe_street" name="iframe_street"></iframe> 
+  <form name="form1" method="post" action="" target="iframe_zone" id="form_zone">
+  </form>
+</div>
+<script src="images/default/setday.js"></script>
+<div class="Container">
+	<div class="head">{$city_DB[name][$city_id]}$fidDB[name]</div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="cont">
+        <form name="FORM" id="FORM" method="post" action="?action=$atc"  enctype="multipart/form-data" onsubmit="return post();">
+<script>
+function upfile(url,name,size,ty){
+	document.getElementById(ty).value=url;
+}
+</script>
+		<div class="h">基本资料</div>
+        <dl>
+        	<dt><span>*</span>所在区域：</dt>
+            <dd>
+            	$city_fid <span id="showzone"></span> <span id="showstreet"></span> 
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choose_where(t,fup,fid,delstreet,typeid){
+	if(t=='getzone'){
+		url="$city_url/job.php?job=getzone&typeid="+typeid+"&fup="+fup+"&fid="+fid+"&delstreet="+delstreet;
+		target='iframe_zone';
+	}else{
+		url="$city_url/job.php?job=getstreet&typeid="+typeid+"&fup="+fup+"&fid="+fid;
+		target='iframe_street';
+	}
+	document.getElementById("form_zone").action=url;
+	document.getElementById("form_zone").target=target;
+	document.getElementById("form_zone").submit();
+}
+choose_where("getzone","$city_id","$zone_id",'','');
+choose_where("getstreet","$zone_id","$street_id",'','');
+//-->
+</SCRIPT>
+            </dd>
+        </dl>
+        <dl>
+        	<dt><span>*</span>信息标题：</dt>
+            <dd><input type="text" name="postdb[title]" id="atc_title" size="50" value="$rsdb[title]"></dd>
+        </dl>
+<!--
+EOT;
+if($job!="edit"&&$webdb[Info_GroupPostYzImg]&&!$web_admin&&in_array($groupdb['gid'],explode(",",$webdb[Info_GroupPostYzImg]))){
+print <<<EOT
+-->
+		<dl>
+        	<dt><span>*</span>验证码：</dt>
+            <dd>
+            	<input id="yzImgNum" type="text" name="yzimg" size="8">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write('<img border="0" name="imageField" onclick="this.src=this.src+Math.random();" src="$webdb[www_url]/do/yzimg.php?'+Math.random()+'">');
+//-->
+</SCRIPT>
+            </dd>
+        </dl>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		
+        <dl>
+        	<dt>介绍图片<a href="javascript:;" title="点击增加1项" onClick="showinput()"><img border='0' src='$webdb[www_url]/images/default/menu_add.gif'></a></dt>
+            <dd>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function choosef(i,t){
+	if(t=='out'){
+		document.getElementById("out_url"+i).style.display='';
+		document.getElementById("in_url"+i).style.display='none';
+	}else{
+		document.getElementById("out_url"+i).style.display='none';
+		document.getElementById("in_url"+i).style.display='';
+	}
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+if($AllowPicNum<1)unset($listdb);
+$detail=explode(",",$webdb[group_UpPhoto].',3,4');
+if($webdb[group_UpPhoto]&&!in_array($groupdb['gid'],$detail))$none='none;';
+$i=0;
+foreach($listdb AS $key=>$rs){
+$i++;
+print <<<EOT
+-->
+                    图片标题：<input type="text" name="titledb[$i]" size="10" value="$rs[name]">
+                    图片地址：<input type="text" name="photodb[$i]" size="30" id="out_url$i" value="$rs[imgurl]">
+                    <input type="file" name="local_file$i" id="in_url$i" style="display:none;">
+                    <input type="radio" name="ftype[$i]" value="out" checked onclick="choosef($i,'out')">
+                    网络文件 <span style="display:$none;"> 
+                    <input type="radio" name="ftype[$i]" value="in" onclick="choosef($i,'in')">
+                    本地文件 </span> 
+                    <input type="hidden" name="piddb[$i]" value="$key">
+                    <br>
+<!--
+EOT;
+}print <<<EOT
+-->
+                    <div id='input$i'></div>
+<script>
+totalnum=$i;
+limitnum=$AllowPicNum;
+function showinput(){
+	if(totalnum>(limitnum-1)){
+		alert("你最多只能上"+limitnum+"传张图片!");
+		return ;
+	}
+	var str='';
+	var divid='input'+totalnum;
+	var num=2;
+	num=document.FORM.nums.value;
+	for(var i=1;i<=num;i++){
+		totalnum=totalnum+i;
+		str+='图片标题：<input type="text" name="titledb['+totalnum+']" size="10"> 图片地址：<input type="text" name=photodb['+totalnum+'] size="30" id="out_url'+totalnum+'"> <input type="file" name="local_file'+totalnum+'" id="in_url'+totalnum+'" style="display:none;"> <input type="radio" name="ftype['+totalnum+']" value="out" checked onclick="choosef('+totalnum+',\'out\')"> 网络文件 <span style="display:$none;"><input type="radio" name="ftype['+totalnum+']" value="in" onclick="choosef('+totalnum+',\'in\')"> 本地文件</span><br>';
+	}
+	document.getElementById(divid).innerHTML=str+"<div id='input"+totalnum+"'></div>";
+} 
+</script><input type="hidden" size="3" name="nums" value="1">
+            </dd>
+        </dl>
+<!--
+EOT;
+if($m_config[moduleSet][useMap]){
+if($webdb[if_GGmap]){
+print <<<EOT
+-->
+        <dl>
+        	<dt>地图位置：</dt>
+            <dd>
+            	<input type="text" name="postdb[maps]" id="mapid" size="40" value="$rsdb[maps]" readonly  onclick="window.open('$webdb[www_url]/job.php?job=ggmap_position&position=$rsdb[maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);">
+(<img src="$webdb[www_url]/images/default/icon_qi.gif"><a onclick="window.open('$webdb[www_url]/job.php?job=ggmap_position&position=$rsdb[maps]&mapid=mapid&cityid='+document.getElementById('mapid_v').value);" href="#" >点击标注地图位置</a> 
+<font color="#999999">标注后，店铺将定位到电子地图上</font>) (<A onclick="document.getElementById('mapid').value='';" HREF="#">清除</A>) 
+<input type="hidden" name="hiddenField" id="mapid_v" value="$city_id">
+            </dd>
+        </dl>
+<!--
+EOT;
+}else{
+print <<<EOT
+--> 
+        <dl>
+        	<dt>地图位置：</dt>
+            <dd>
+            	<input type="text" name="postdb[maps]" id="mapid" size="15" value="$rsdb[maps]" readonly  onclick="window.open('$city_url/job.php?job=map_position&mapid=mapid&cityid='+document.getElementById('mapid_v').value);">
+                    (<img src="$webdb[www_url]/images/default/icon_qi.gif"><a onclick="window.open('$city_url/job.php?job=map_position&mapid=mapid&cityid='+document.getElementById('mapid_v').value);" href="#" >点击标注地图位置</a> 
+                    <font color="#999999">标注后，店铺将定位到电子地图上</font>) (<A onclick="document.getElementById('mapid').value='';" HREF="#">清除</A>) 
+                    <input type="hidden" name="hiddenField" id="mapid_v" value="$city_id">
+            </dd>
+        </dl>
+<!--
+EOT;
+}}print <<<EOT
+-->
+        <dl>
+        	<dt>有效日期：</dt>
+            <dd>
+<!--
+EOT;
+$showday[$rsdb[showday]]=' selected ';
+print <<<EOT
+-->
+                    <select name="postdb[showday]">
+<!--
+EOT;
+if(!$webdb[Info_UseEndTime]){
+print <<<EOT
+-->
+                      <option value="0">不限</option>
+<!--
+EOT;
+}
+$showday[$rsdb[showday]]=' selected ';
+$webdb[Info_showday] || $webdb[Info_showday]="90/60/30";
+$array=explode("/",$webdb[Info_showday]);
+foreach($array AS $key=>$value){
+print <<<EOT
+-->
+					  
+                      <option value="$value" {$showday[$value]}>{$value}天</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+                    </select>
+            </dd>
+        </dl>
+        <dl>
+        	<dt>联系方式：</dt>
+            <dd>
+<!--
+EOT;
+$holdtelephone = $webdb[Info_Musttelephone] ? "(<font color=\"#FF0000\">*</font>) " : "";
+$holdmobphone = $webdb[Info_Mustmobphone] ? "(<font color=\"#FF0000\">*</font>) " : "";
+$holdEmail = $webdb[Info_MustEmail] ? "(<font color=\"#FF0000\">*</font>) " : "";
+$holdMustQQ = $webdb[Info_MustQQ] ? "(<font color=\"#FF0000\">*</font>) " : "";
+print <<<EOT
+-->	
+				<div style="height:25px;">
+            	联系人：<input type="text" name="postdb[linkman]" id="atc_linkman" size="15" value="$rsdb[linkman]">
+                电话：$holdtelephone <input type="text" name="postdb[telephone]" id="atc_title" size="15" value="$rsdb[telephone]">
+                手机：$holdmobphone <input type="text" name="postdb[mobphone]" id="atc_title" size="15" value="$rsdb[mobphone]">
+                </div>
+                <div style="height:25px;">
+                邮箱：$holdEmail <input type="text" name="postdb[email]" id="atc_title" size="25" value="$rsdb[email]">
+                QQ：$holdMustQQ <input type="text" name="postdb[oicq]" id="atc_title" size="15" value="$rsdb[oicq]">
+                MSN：<input type="text" name="postdb[msn]" id="atc_title" size="15" value="$rsdb[msn]">
+                </div>
+            </dd>
+        </dl>
+        <dl>
+        	<dt>标　　签：</dt>
+            <dd><input type="text" name="postdb[keywords]" id="atc_title" size="50" value="$rsdb[keywords]">(多个用空格隔开)</dd>
+        </dl>
+<!--
+EOT;
+if(!$lfjid){print <<<EOT
+-->
+        <dl>
+        	<dt>管理密码：</dt>
+            <dd>
+            	<input type="password" name="postdb[editpwd]" id="atc_title" size="10" value="$rsdb[editpwd]">
+                    <input type="hidden" name="editpwd2" value="$rsdb[editpwd]">
+                    (设置密码后,将可以凭借密码删除信息)
+            </dd>
+        </dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+<!--
+EOT;
+if($lfjid&&$job!=edit){print <<<EOT
+-->
+
+		<div class="h">增值服务</div>
+        <dl>
+        	<dt>是否置顶：</dt>
+            <dd>
+            	<input type="radio" name="iftop" value="0" onclick="choose_iftop()" $ifTop[0]>不置顶 
+                <input type="radio" name="iftop" value="1" onclick="choose_iftop()" $ifTop[1]>置顶 
+
+				<span id="STop" style="display:none;"><input type="text" name="TopDay" value="1"
+				onBlur="check_num(this,'$webdb[Info_TopDay]')" style="width:30px">天</span>
+
+                (注：栏目内置顶每天需要消费{$webdb[MoneyName]}：<b><font color="#FF0000">{$webdb[Info_TopMoney]}</font></b>{$webdb[MoneyDW]}，不可大于<font color="#0000FF">{$webdb[Info_TopDay]}</font>天。 <a href="$webdb[www_url]/do/jf.php" target="_blank"><font color="#0000FF">点击查上看如何获取积分？</font></a>)
+            </dd>
+        </dl>
+        <dl>
+        	<dt>头条显示：</dt>
+            <dd>
+            	<input type="checkbox" name="buyfid[]" value="Index" onclick="choose_buyfid()" {$buyfid['Index']}> 首页焦点显示
+				<span id="SIndex" style="display:none;"><input type="text" name="IndexDay" value="1"
+				onBlur="check_num(this,'$webdb[AdInfoShowTime]')" style="width:30px">天</span>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="buyfid[]" value="Sort" onclick="choose_buyfid()" {$buyfid['Sort']}> 栏目焦点显示
+				<span id="SSort" style="display:none;"><input type="text" name="SortDay" value="1"
+				onBlur="check_num(this,'$webdb[AdInfoShowTime]')" style="width:30px">天</span>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="buyfid[]" value="BigSort" onclick="choose_buyfid()" {$buyfid['BigSort']}> 分类焦点显示
+				<span id="SBigSort" style="display:none;"><input type="text" name="BigSortDay" value="1"
+				onBlur="check_num(this,'$webdb[AdInfoShowTime]')" style="width:30px">天</span>
+				<br>
+                注意：系统规定首页焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoIndexShow]}</font>{$webdb[MoneyDW]}，栏目焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoSortShow]}</font>{$webdb[MoneyDW]}，分类焦点显示每天收费{$webdb[MoneyName]}<font color="#FF0000">{$webdb[AdInfoBigsortShow]}</font>{$webdb[MoneyDW]}，不可大于<font color="#0000FF">{$webdb[AdInfoShowTime]}</font>天。你目前有{$webdb[MoneyName]}<font color="#FF0000">{$lfjdb[money]}</font>{$webdb[MoneyDW]}。 
+                     
+                    <a href="$webdb[www_url]/do/jf.php" target="_blank"><font color="#0000FF">点击查看如何获取积分？</font></a> 
+            </dd>
+        </dl>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_num(obj,max){
+	max = parseInt(max);
+	if(isNaN(parseInt(max)))max=10;
+	if(/^[1-9][0-9]*$/.test(obj.value)==false){
+		alert('请输入正整数');
+		obj.value=1;
+	}
+	if(obj.value>max){
+		alert('最大不能超过'+max+'天');
+		obj.value=max;
+	}
+}
+
+function choose_iftop(){
+	$("input[name='iftop']").each(function(i){
+		if(this.value=='1'&&this.checked==true){
+			$("#STop").show();
+		}else{
+			$("#STop").hide();
+		}
+	});
+}
+
+function choose_buyfid(){
+	$("input[name='buyfid[]']").each(function(i){
+		if(this.checked==true){
+			$("#S"+this.value).show();
+		}else{
+			$("#S"+this.value).hide();
+		}
+	});
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+}print <<<EOT
+-->
+		<div class="h">补充资料</div>
+
+		<dl>
+        	<dt>性别:<br></dt>
+            <dd> <input type='radio' name='postdb[my_sex]' value='男' {$rsdb[my_sex]['男']}>男  <input type='radio' name='postdb[my_sex]' value='女' {$rsdb[my_sex]['女']}>女  <input type='radio' name='postdb[my_sex]' value='保密' {$rsdb[my_sex]['保密']}>保密  </dd>
+        </dl>
+
+		<dl>
+        	<dt>年龄:<br></dt>
+            <dd> <input   type='text' name='postdb[my_age]' id='atc_my_age' style='width:100px;' value='$rsdb[my_age]'> 岁</dd>
+        </dl>
+
+		<dl>
+        	<dt>身高:<br></dt>
+            <dd> <input   type='text' name='postdb[my_height]' id='atc_my_height' style='width:100px;' value='$rsdb[my_height]'> CM</dd>
+        </dl>
+
+		<dl>
+        	<dt>体重:<br></dt>
+            <dd> <input   type='text' name='postdb[my_weight]' id='atc_my_weight' style='width:100px;' value='$rsdb[my_weight]'> 公斤</dd>
+        </dl>
+
+		<dl>
+        	<dt>从事职业:<br></dt>
+            <dd> <input   type='text' name='postdb[my_job]' id='atc_my_job' style='width:30px;' value='$rsdb[my_job]'> </dd>
+        </dl>
+
+		<dl>
+        	<dt>兴趣爱好:<br></dt>
+            <dd> <input   type='text' name='postdb[my_interest]' id='atc_my_interest' style='width:50px;' value='$rsdb[my_interest]'> </dd>
+        </dl>
+
+		<dl>
+        	<dt>条件要求:<font color=red>*</font><br></dt>
+            <dd> <input type='radio' name='postdb[sortid]' value='1' {$rsdb[sortid]['1']}>漂亮  <input type='radio' name='postdb[sortid]' value='2' {$rsdb[sortid]['2']}>贤慧  <input type='radio' name='postdb[sortid]' value='3' {$rsdb[sortid]['3']}>英俊  <input type='radio' name='postdb[sortid]' value='4' {$rsdb[sortid]['4']}>上进  <input type='radio' name='postdb[sortid]' value='5' {$rsdb[sortid]['5']}>老实  </dd>
+        </dl>
+
+		<dl>
+        	<dt>学历:<br></dt>
+            <dd><select name='postdb[schoo_age]' id='atc_schoo_age'><option value='1' {$rsdb[schoo_age]['1']}>小学</option><option value='2' {$rsdb[schoo_age]['2']}>初中</option><option value='3' {$rsdb[schoo_age]['3']}>高中</option><option value='4' {$rsdb[schoo_age]['4']}>中专</option><option value='5' {$rsdb[schoo_age]['5']}>大专</option><option value='6' {$rsdb[schoo_age]['6']}>本科</option><option value='7' {$rsdb[schoo_age]['7']}>研究生</option><option value='8' {$rsdb[schoo_age]['8']}>博士以上</option></select></dd>
+        </dl>
+
+		<dl>
+        	<dt>自我介绍:<br></dt>
+            <dd><textarea  name='postdb[content]' id='atc_content' style='width:400px;height:100px;'>$rsdb[content]</textarea></dd>
+        </dl>
+<!----> 
+        <dl>
+        	<dt><br/></dt>
+            <dd>
+            	<input type="submit" name="Submit" value="提 交">
+                    <input type="hidden" name="fid" value="$fid">
+                    <input type="hidden" name="id" value="$id">
+                    <input type="hidden" name="fid_bak1" value="$rsdb[fid_bak1]">
+                    <input type="hidden" name="fid_bak2" value="$rsdb[fid_bak2]">
+                    <input type="hidden" name="fid_bak3" value="$rsdb[fid_bak3]">
+                    <input type="hidden" name="$webdb[rand_num_inputname]" value="$webdb[rand_num]">
+            </dd>
+        </dl>
+    </form>
+        </td>
+      </tr>
+    </table>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function post(){
+	t="$webdb[Force_Choose_City]";
+	obj_city=document.getElementById("{$_pre}city");
+	if(t=='1'&&obj_city!=null){
+		city_value=obj_city.options[obj_city.selectedIndex].value;
+		if(obj_city.options.length>1&&city_value==''){
+			alert("你必须要选择一个城市");
+			obj_city.focus();
+			return false;
+		}
+	}
+	obj_city=document.getElementById("{$_pre}zone");
+	if(t=='1'&&obj_city!=null){
+		city_value=obj_city.options[obj_city.selectedIndex].value;
+		if(obj_city.options.length>1&&city_value==''){
+			alert("你必须要选择一个辖区");
+			obj_city.focus();
+			return false;
+		}
+	}
+	obj_city=document.getElementById("{$_pre}street");
+	if(t=='1'&&obj_city!=null){
+		city_value=obj_city.options[obj_city.selectedIndex].value;
+		if(obj_city.options.length>1&&city_value==''){
+			alert("你必须要选择一个地段");
+			obj_city.focus();
+			return false;
+		}
+	}
+	document.getElementById("FORM").submit();
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

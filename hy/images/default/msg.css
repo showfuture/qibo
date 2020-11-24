@@ -1,0 +1,72 @@
+/********/
+.List_Msg,.List_Msg td{
+	border:#DDD solid 1px;
+	border-collapse:collapse;
+	margin-bottom:5px;
+}
+.List_Msg td.img{
+	width:60px;
+	padding:10px;
+}
+.List_Msg td.img div{
+	text-align:center;
+}
+.List_Msg td.img div.pic{
+	border:#DDD solid 1px;
+	padding:1px;
+	margin-bottom:8px;
+}
+.List_Msg td.img div.pic a{
+	display:block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+	background:#EFEFEF;
+}
+.List_Msg td.word div{
+	border-bottom:#DDD dotted 1px;
+	height:25px;
+	padding:0 10px 0 10px;
+	line-height:25px;
+}
+.List_Msg td.word p{
+	padding:10px;
+	line-height:18px;
+	color:#666;
+	text-indent:20px;
+}
+div.showpage{
+	text-align:center;
+	padding:8px 0 5px 0;
+}
+div.showpage a{
+	border:#DDD solid 1px;
+	padding:3px 5px 2px 5px;
+	color:#888;
+}
+.Post_Msg,.Post_Msg td,.Post_Msg th{
+	border:#DDD solid 1px;
+	border-collapse:collapse;
+}
+.Post_Msg th{
+	text-align:center;
+	line-height:25px;
+	background:#EFEFEF;
+}
+.Post_Msg td.tdL{
+	width:100px;
+	line-height:20px;
+	text-align:right;
+	padding:5px 10px 0 0;
+}
+.Post_Msg td.tdR{
+	padding:5px 0 5px 10px;
+}
+.Post_Msg td.tdR p{
+	padding-top:5px;
+	line-height:20px;
+}
+.Post_Msg td.tdR div{
+	float:left;
+	padding-right:5px;
+}

@@ -1,0 +1,215 @@
+/*
+*样式初始化
+*/
+*{ 
+	padding: 0; 
+	margin: 0; 
+} 
+body{
+	font-size:12px;
+	background:url(topbg.gif) repeat-x;
+}
+table{ 
+	/*border-collapse: collapse; */
+	border-spacing: 0; 
+}
+td{
+	VERTICAL-ALIGN: top;
+}
+fieldset,img { 
+	border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+	font-weight: normal; 
+	font-style: normal; 
+} 
+ol,ul,li{ 
+	list-style: none; 
+} 
+caption,th { 
+	text-align: left; 
+} 
+q:before,q:after { 
+	content:”; 
+} 
+abbr,acronym { 
+	border: 0; 
+}
+a{
+	font-size: 12px;
+}
+a:link{
+	color: #333333;
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+	color: #333333;
+}
+a:hover{
+	text-decoration: underline;
+	color: #4E667B;
+}
+a:active{
+	text-decoration: none;
+}
+/*
+*container
+*/
+.container{
+	width:850px;
+	height:620px;
+	margin:auto;
+}
+.container .head{
+	height:70px;
+}
+.container .head .logo{
+	float:left;
+}
+.container .head .more{
+	float:right;
+	padding-top:40px;
+	color:#bbb;
+}
+.container .head .more a{
+	text-decoration:underline;
+}
+.container .cont{
+	height:450px;
+	background:url(contbg.gif) no-repeat;
+	position:relative;
+}
+.showerrMsg{
+	width:370px;
+	height:200px;
+	overflow:hidden;
+	position:absolute;
+	left:160px;
+	top:40px;
+	line-height:20px;
+	padding-top:70px;
+	font-size:15px;
+}
+.butters{
+	width:570px;
+	height:50px;
+	position:absolute;
+	left:0px;
+	bottom:20px;
+	text-align:center;
+	word-spacing:15px;
+}
+.butters input{
+	width:120px;
+	height:32px;
+	background:url(return.gif) no-repeat;
+	border:0;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+.butters input.buta{
+	background:url(close.gif) no-repeat;
+}
+.userinfo{
+	width:215px;
+	height:335px;
+	position:absolute;
+	top:5px;
+	right:20px;
+}
+.userinfo .h,.userinfo .note{
+	padding-top:5px;
+	height:30px;
+	overflow:hidden;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+}
+.userinfo .note{
+	padding-top:0;
+	color:#f00;
+}
+.logincont{
+	height:150px;
+	overflow:hidden;
+}
+.logincont dl{
+	height:35px;
+	overflow:hidden;
+}
+.logincont dl dt{
+	width:40px;
+	float:left;
+	line-height:25px;
+}
+.logincont dl dd{
+	float:left;
+	padding-top:3px;
+	height:30px;
+}
+.logincont dl dd span{
+	float:left;
+	padding-right:5px;
+	line-height:25px;
+}
+.logincont dl dd .input{
+	width:170px;
+	height:18px;
+	border:#DDD solid 1px;
+}
+.userinfo .noreg{
+	border-top:#EEE solid 1px;
+	padding-top:5px;
+	line-height:35px;
+	font-size:14px;
+}
+.userinfo .other{
+	padding-top:10px;
+	text-align:center;
+	color:#888;
+}
+.userinfo .icon{
+	height:200px;
+	overflow:hidden;
+}
+.userinfo .icon a{
+	display:block;
+	width:160px;
+	margin:auto;
+	text-align:center;
+	color:#000099;
+	text-decoration:underline;
+}
+.userinfo .icon a.img{
+	width:160px;
+	height:160px;
+	overflow:hidden;
+	padding-top:10px;
+	margin-bottom:5px;
+}
+.userinfo .text{
+	border-top:#EEE solid 1px;
+	padding-top:10px;
+	padding-left:10px;
+}
+.userinfo .text div{
+	height:23px;
+	line-height:23px;
+	overflow:hidden;
+}
+.userinfo .text div span{
+	color:#003300;
+}
+.userinfo .text div em{
+	color:#f60;
+}
+.container .foot{
+	border-top:#EEE solid 1px;
+	text-align:center;
+	padding-top:8px;
+	line-height:20px;
+	color:#aaa;
+}

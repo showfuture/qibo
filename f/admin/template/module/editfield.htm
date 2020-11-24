@@ -1,0 +1,321 @@
+<!--
+<?php
+print <<<EOT
+--> 
+ 
+
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+  <form name="form1" method="post" action="$admin_path&action=$job">
+    <tr class="head" align="left"> 
+      <td colspan="2">字段管理</td>
+    </tr>
+    <tr> 
+      <td width="37%">当前模块名称:</td>
+      <td width="63%"> $rsdb[name] </td>
+    </tr>
+    <tr> 
+      <td width="37%">字段名称:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[title]" value="$_rs[title]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段ID:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_name]" value="$_rs[field_name]" $readonly>
+        (必须为2个字母以上,字母后面可以跟数字) </td>
+    </tr>
+    <tr> 
+      <td width="37%">数据库字段存放数据类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select name="postdb[field_type]"  id="field_typeid" onChange="field_choose(this.options[this.selectedIndex].value)">
+          <option value="varchar" {$field_type[varchar]}>255个字符串以内</option>
+          <option value="int" {$field_type[int]}>10位以内纯数字</option>
+          <option value="mediumtext" {$field_type[mediumtext]}>文本文档</option>
+        </select>
+      </td>
+    </tr>
+    <tr id="field_leng_tr"> 
+      <td width="37%">数据库字段长度:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_leng]" value="$_rs[field_leng]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">用户填写的表单类型:<font color="#FF0000">(*)</font></td>
+      <td width="63%"> 
+        <select name="postdb[form_type]"  id="form_typeid" onChange="form_choose(this.options[this.selectedIndex].value)">
+          <option value="text" {$form_type[text]}>单行文本框</option>
+          <option value="textarea" {$form_type[textarea]}>多行文本框</option>
+          <option value="select" {$form_type[select]}>下拉菜单</option>
+          <option value="radio" {$form_type[radio]}>单选框</option>
+          <option value="checkbox" {$form_type[checkbox]}>复选框</option>
+		  <option value="time" {$form_type[time]}>日期选择框</option>
+          
+          <option value="ieeditsimp" {$form_type[ieeditsimp]}>简单型可视化编辑器</option>
+
+
+<!--
+EOT;
+if(in_array('fenlei',$BIZ_MODULEDB)){print <<<EOT
+-->
+<option value="ieedit" {$form_type[ieedit]}>全功能可视化编辑器</option>
+<option value="upmorepic" {$form_type[upmorepic]}>多张图片</option>
+<!--
+EOT;
+}print <<<EOT
+-->
+		<option value="onepic" {$form_type[onepic]}>单张图片</option>
+		 
+
+		  <option value="upfile" {$form_type[upfile]}>单个附件上传</option>
+          <!--<option value="upmorefile" {$form_type[upmorefile]}>多个附件上传</option>-->
+		  <option value="classdb" {$form_type[classdb]}>联级字段</option>
+           
+        </select>
+      </td>
+    </tr><tr id="field_inputleng_tr"> 
+      <td width="37%">表单输入框宽度:</td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_inputwidth]" value="$_rs[field_inputwidth]" size="5">
+        px(像素)</td>
+    </tr><tr id="field_inputheight_tr"> 
+      <td width="37%">表单输入框高度:</td>
+      <td width="63%"> 
+        <input type="text" name="postdb[field_inputheight]" value="$_rs[field_inputheight]" size="5">
+        px(像素)</td>
+    </tr>
+	<tr id="field_db_tr"> 
+      <td width="37%">联级字段类别:</td>
+      <td width="63%"> $select_db </td>
+    </tr>
+    <tr id="form_set_tr"> 
+      <td width="37%">表单参数选项:<br>
+        (适用下拉菜单/单选框/复选框,每个值换一行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_set]" cols="50" rows="5">$_rs[form_set]</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单默认值:<br>
+        (一般为空,如果是多选框多个的话,用<b><font color="#FF0000">/</font></b>线隔开,不能换行) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_value]" cols="50" rows="3">$_rs[form_value]</textarea>
+      </td>
+    </tr>
+    <tr id="form_units_tr"> 
+      <td width="37%">表单字段单位名称：<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <input type="text" name="postdb[form_units]" size="5" value="$_rs[form_units]">
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%">表单附注文字:<br>
+        (一般为空) </td>
+      <td width="63%"> 
+        <textarea name="postdb[form_title]" cols="50" rows="4">$_rs[form_title]</textarea>
+      </td>
+    </tr><tr id="trjsReg">
+      <td width="37%">数据校验正则:<br>
+        (系统将通过此正则校验表单提交的数据合法性，如果不想校验数据请留空)</td>
+      <td width="63%">
+        <input type="text" name="postdb[js_check]" id="jsReg" size="50" value="$_rs[js_check]">
+        <select name="select" onchange="document.getElementById('jsReg').value=this.options[this.selectedIndex].value">
+<option value="">常用正则</option>
+<option value="/^[0-9.-]+$/">数字</option>
+<option value="/^[0-9-]+$/">整数</option>
+<option value="/^[a-z]+$/i">字母</option>
+<option value="/^[0-9a-z]+$/i">数字+字母</option>
+<option value="/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/">E-mail</option>
+<option value="/^[0-9]{5,20}$/">QQ</option>
+<option value="/^http:\/\//">超级链接</option>
+<option value="/^(13|15|18)[0-9]{9}$/">仅手机号码</option>
+<option value="/^[0-9-]{6,13}$/">电话号码(包含手机号码)</option>
+<option value="/^[0-9]{6}$/">邮政编码</option>
+<option value="/^[\u4e00-\u9fa5]+$/">纯汉字</option>
+
+</select>
+      </td>
+    </tr>
+    <tr id="trjsRegmsg">
+      <td width="37%">数据校验未通过的提示信息:<br>
+        (当表单数据不满足正在校验时的系统提示信息)</td>
+      <td width="63%">
+        <input type="text" name="postdb[js_checkmsg]" size="50" value="$_rs[js_checkmsg]">
+      </td>
+    </tr>
+    <tr id="trmustfill"> 
+      <td width="37%">是否为必填选项:<br>
+      </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[mustfill]" value="0" $mustfill[0]>
+        不限制 
+        <input type="radio" name="postdb[mustfill]" value="1" $mustfill[1]>
+        必填 <!--
+        <input type="radio" name="postdb[mustfill]" value="2" $mustfill[2]>
+        隐藏(不提供给用户填写，可作为二次开发使用) --></td>
+    </tr> <tr id="SortSearch_tr" style="display:none;"> 
+      <td width="37%" style="display:none;">是否启用此字段在列表页的搜索功能:<br>
+        (一般为不启用) </td>
+      <td width="63%" style="display:none;"> 
+        <input type="radio" name="postdb[SortSearch]" value="0" $SortSearch[0]>
+        不启用搜索
+        <input type="radio" name="postdb[SortSearch]" value="1" $SortSearch[1]>
+        普通搜索<span id="SortSearch2id">
+		<input type="radio" name="postdb[SortSearch]" value="2" $SortSearch[2]>
+        范围搜索(仅限于数字)</span></td>
+    </tr><tr id="IfListShow_tr"> 
+      <td width="37%">是否在列表显示: </td>
+      <td width="63%"><input type="radio" name="postdb[listshow]" value="1" $listshow[1]>
+        列表显示 
+        <input type="radio" name="postdb[listshow]" value="0" $listshow[0]>
+        不显示 </td>
+    </tr>
+
+     <tr id="search_tr"> 
+      <td width="37%">是否启用此字段的搜索功能:<br>
+        (一般为不启用) </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[search]" value="0" $search[0]>
+        不启用 
+        <input type="radio" name="postdb[search]" value="1" $search[1]>
+        启用<span id="search2id">
+		<input type="radio" name="postdb[search]" value="2" $search[2]>
+        范围搜索(仅限于数字) </span></td>
+    </tr>
+<tr id="IfListSearch_tr"> 
+      <td width="37%">是否启用此字段的在列表页筛选:<br>
+        (一般为不启用) </td>
+      <td width="63%"> 
+        <input type="radio" name="postdb[listfilter]" value="0" $listfilter[0]>
+        不启用 
+        <input type="radio" name="postdb[listfilter]" value="1" $listfilter[1]>
+        启用</td>
+    </tr>
+<!--
+EOT;
+if(in_array('fenlei',$BIZ_MODULEDB)){print <<<EOT
+-->
+	<tr> 
+      <td width="21%">允许浏览此字段内容的用户组:<br>
+        (留空的话.不限制) </td>
+      <td width="79%">$group_view</td>
+    </tr>
+
+<!--
+EOT;
+}print <<<EOT
+-->
+    <tr align="center"> 
+      <td colspan="2"> 
+        <input type="submit" name="Submit" value="提交">
+        <input type="hidden" name="id" value="$id">
+        <input type="hidden" name="field_name" value="$field_name">
+        <input type="hidden" name="list" value="$_rs[list]">
+        <input type="hidden" name="postdb[orderlist]" value="$_rs[orderlist]">
+      </td>
+    </tr>
+  </form>
+</table> 
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth">
+     <tr class="head" align="left"> 
+      
+    <td colspan="2">帮助说明:</td>
+    </tr>
+  <tr>
+    <td>1.与用户表字段关联功能,用户填写表单时,要想默认有用户相关资料的话,字段必须设置如下:oicq(QQ帐号),msn(MSN帐号),homepage(用户网站),email(邮箱),address(用户地址),postalcode(邮政编码),mobphone(手机号码),telephone(电话号码),idcard(身份证号码),truename(真实姓名),introduce(自我介绍),bday(生日),sex(性别,1代表男,2代表女),username(用户名)<br>
+      2.同一个模型,只能使用一次多张图片,否则不支持FLASH批量上传.</td>
+  </tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function field_choose(t){
+	if(t=='mediumtext'){
+		document.getElementById('field_leng_tr').style.display='none';
+	}else{
+		document.getElementById('field_leng_tr').style.display='';
+	}
+}
+field_choose('$_rs[field_type]');
+
+
+
+function form_choose(t){
+	if(t=='select'||t=='radio'||t=='checkbox'||t=='select'){
+		$('#form_set_tr').show();
+		$('#IfListSearch_tr').show();
+	}else{
+		$('#form_set_tr').hide();
+		$('#IfListSearch_tr').hide();
+	}
+	if(t=='text'||t==''){
+		$('#trjsReg').show();
+		$('#trjsRegmsg').show();
+		$('#search2id').show();
+		$('#SortSearch2id').show();
+	}else{
+		$('#trjsReg').hide();
+		$('#trjsRegmsg').hide();
+		$('#search2id').hide();
+		$('#SortSearch2id').hide();
+	}
+	if(t=='text'||t==''||t=='textarea'||t=='ieedit'||t=='ieeditsimp'){
+		$('#field_inputleng_tr').show();		
+	}else{
+		$('#field_inputleng_tr').hide();		
+	}
+	if(t=='textarea'){
+		$('#field_inputheight_tr').show();
+	}else{
+		$('#field_inputheight_tr').hide();
+	}
+	if(t=='ieedit'||t=='ieeditsimp'){
+		$('#field_inputheight_tr').show();
+		$('#field_inputleng_tr').show();
+		
+	}
+	if(t=='textarea'||t=='ieedit'||t=='radio'||t=='checkbox'||t=='time'||t=='upfile'||t=='upmorefile'||t=='onepic'||t=='upmorepic'||t=='classdb'){
+		$('#form_units_tr').hide();
+	}else{
+		$('#form_units_tr').show();
+	}
+	if(t=='classdb'){
+		$('#field_db_tr').show();
+	}else{
+		$('#field_db_tr').hide();
+	}
+	if(t=='upfile'||t=='upmorefile'||t=='ieedit'||t=='onepic'||t=='upmorepic'){
+		$('#IfListShow_tr').hide();
+		$('#SortSearch_tr').show();
+		if(t!='ieedit'){
+			$('#search_tr').hide();
+		}		
+	}else {
+		$('#IfListShow_tr').show();
+		$('#SortSearch_tr').hide();
+		$('#search_tr').show();
+	}
+
+
+
+
+	if(t=='upmorepic'||t=='upmorefile'||t=='ieedit'||t=='textarea'||t=='ieeditsimp'){
+		if(document.getElementById('field_typeid').value!='mediumtext'){
+			document.getElementById('field_typeid').focus();		
+			alert("数据库类型,必须选择文本文档!");
+			$('#field_leng_tr').hide();
+			document.getElementById('field_typeid').options[2].selected=true;		
+		}
+	}else if(document.getElementById('field_typeid').value=='mediumtext'){
+		$('#field_leng_tr').show();
+		document.getElementById('field_typeid').options[0].selected=true;
+	}
+}
+form_choose('$_rs[form_type]');
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->

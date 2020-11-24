@@ -1,0 +1,45 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width='100%' cellspacing='1' cellpadding='3' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=config">
+    <tr  class="head"> 
+      <td colspan='3'> 
+        <div align='center'><b><font color="#FFFFFF">防御CC频繁刷新网页恶意攻击设置</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>是否启用防CC攻击:<span help=1><br>CC主要是用来攻击页面的。每个人都有这样的体验：当一个网页访问的人数特别多的时候，打开网页就慢了，CC就是模拟多个用户(多少线程就是多少用户)不停的进行访问那些需要大量数据操作——就是需要大量CPU时间的页面，造成服务器资源的浪费，CPU长时间处于100%，永远都有处理不完的连接，到了超级繁忙的状态，就把网络给阻断了！正常的访问就无法进行了！
+</span></td>
+      <td colspan='2' bgcolor='#FFFFFF' width="71%"> 
+        <input type="radio" name="webdbs[cc_attack]" value="1" $cc_attack[1]>
+        启用 
+        <input type="radio" name="webdbs[cc_attack]" value="0" $cc_attack[0]>
+        不启用 (一般情况,如果你的网站没有受到攻击,就不要启用)</td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>同一IP每3秒钟超过多少次访问视为CC攻击:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[cc_attack_num]" value="$webdb[cc_attack_num]" size="5">
+        次,推荐20次,小于10次的话,设置无效,因为会把正常用户屏蔽</td>
+    </tr>
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>针对攻击IP,隔多久才允许访问:</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="71%"> 
+        <input type="text" name="webdbs[Forbid_cc_visttime]" value="$webdb[Forbid_cc_visttime]" size="3">
+        分钟</td>
+    </tr>
+     
+    <tr> 
+      <td width='29%' bgcolor='#FFFFFF'>&nbsp;</td>
+      <td colspan='2' bgcolor='#FFFFFF' width="71%"> 
+        <input  class=mmcinb  type='submit' name='w' value='保存设置'>
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

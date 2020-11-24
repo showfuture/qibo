@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--
+<?php
+
+print <<<EOT
+--> 
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #f9f9f9; 
+}
+body,td,th {
+	font-size: 12px;
+	color: #343434;
+	line-height:150%;
+}
+a:link {
+	color:blue;
+	text-decoration: none;
+}
+a:visited {
+	color: blue;
+	text-decoration: none;
+}
+a:hover {
+	color: #CC0000;
+	text-decoration: underline;
+}
+a:active {
+	color: blue;
+	text-decoration: none;
+}
+a {
+	font-size: 12px;
+}
+-->
+</style>
+<script>
+function checkpost(form){
+	if(Number(form.psid.options[form.psid.selectedIndex].value)==0){
+		alert("请选择一个图库存放您上传的图片");
+		return false;
+	}
+}
+
+</script>
+</head>
+<body>
+<form action="?" name="uploadpic" enctype="multipart/form-data"  method="post"
+onsubmit="return checkpost(this);" style="border-bottom:1px #999999 dashed; margin-bottom:5px; padding-bottom:5px;">
+&nbsp;<strong>本地上传</strong>：
+<input name="postfile" type="file"  size="15"  id="postfile"/><select name="psid" size="1" id="psid" >
+<!--
+EOT;
+foreach($sortlistdb as $rs){
+$ck=$rs[psid]==$psid?" selected":"";
+print <<<EOT
+-->
+	<option value="$rs[psid]" $ck>$rs[name]</option>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+</select><input name="action" type="hidden" value="upload" /><input name="ss" type="submit" value="点击上传" /> 最大:$webdb[company_uploadsize_max]K,格式:gif,jpg
+</form>
+&nbsp;<strong style="color:red;">选择图库</strong>：
+<a href="?"><strong>全部图库</strong></a>
+<!--
+EOT;
+foreach($sortlistdb as $rs){
+$rs[name]=$rs[psid]==$psid?"<font color=red>$rs[name]</font>":$rs[name];
+print <<<EOT
+-->
+	<a href="?psid=$rs[psid]"><strong>$rs[name]</strong></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<br />&nbsp;<font color="green">温馨提示</font>:如下图片为图库图片，双击即可快选，如无合适，您可点击“本地上传”或进入“<a href="$Murl/member/homepage_ctrl.php?atn=pic" target="_parent"><font color="green">图库管理</font></a>”；
+
+<div style="height:220px; overflow-Y:hidden; overflow-X:hidden;">
+<!--
+EOT;
+foreach($listdb as $rs){
+print <<<EOT
+-->
+	<li style="float:left; width:100px; height:100px; word-wrap: break-word; word-break: normal; text-align:center; margin:5px 10px 0px 5px;">
+   <a href="javascript:"><img src="$rs[url_show].gif"  style="border:1px #CCCCCC solid;" width="90" height="90"    alt="$rs[title]" title="$rs[title]"  onclick="parent.set_choooooooooooosed('$rs[pid]','$rs[url_show].gif','$rs[title]');" /></a>
+    </li>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+
+</div>
+<div style="text-align:center">$showpage</div>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

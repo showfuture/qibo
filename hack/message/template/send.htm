@@ -1,0 +1,56 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<script type="text/javascript" src="$webdb[www_url]/ewebeditor/ckeditor/ckeditor.js"></script>
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="tablewidth"  style='TABLE-LAYOUT: fixed;WORD-WRAP: break-word'>
+  <form name="form_work" method="post" action="index.php?lfj=$lfj&action=send">
+    <tr class="head"> 
+      <td width="13%" align="center">&nbsp;</td>
+      <td width="87%" align="center">群发短消息</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="13%" style="width:20%;">接收短消息的用户组:</td>
+      <td align="left" width="87%"> <a href="index.php?lfj=$lfj&action=delete_admin_logs&iddb[{$rs[id]}]=1"></a> 
+        $group_send </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="13%">每批发送几个:</td>
+      <td align="left" width="87%"> 
+        <input type="text" name="Num" size="5" value="50">
+        (10~500)</td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="13%">短消息标题: </td>
+      <td align="left" width="87%"> 
+        <input type="text" name="Title" size="90">
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="13%">短消息内容:</td>
+      <td align="left" width="87%"> 
+        <!--<iframe id="eWebEditor1" name="eWebEditor1"  src="../ewebeditor/ewebeditor.php?id=content&style=standard&etype={$m_config[moduleSet][etype]}" frameborder="0" scrolling="no" width="{$m_config[moduleSet][edit_w]}" height="{$m_config[moduleSet][edit_h]}"></iframe> 
+              <input name="postdb[content]" type="hidden" id="content" value='$rsdb[content]'>-->
+<script type='text/javascript'>loadBaiduEditorJs();</script>
+<textarea name="postdb[content]" id="myEditor" style="width:650px;">$rsdb[content]</textarea>
+<script type="text/javascript">
+var editor_a = new baidu.editor.ui.Editor({minFrameHeight:190});
+editor_a.render( 'myEditor' );
+</script>
+ 
+ 
+ 
+      </td>
+    </tr>
+    <tr bgcolor="#FFFFFF"> 
+      <td align="left" width="13%">&nbsp;</td>
+      <td align="left" width="87%"> 
+        <input type="submit" name="Submit" value="提交">
+      </td>
+    </tr>
+  </form>
+</table>
+<!--
+EOT;
+?>
+-->

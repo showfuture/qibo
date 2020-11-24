@@ -1,0 +1,103 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <tr align="center"> 
+    <td class="head">批量操作</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td align="center"> 
+      <form name="form1" method="post" action="$admin_path&action=batch&type=zone_dir" style="border:1px dotted #ccc;margin-bottom:10px;">
+        <p> 拼音第一个字母是否大写: 
+          <input type="radio" name="big_letter" value="1" checked>
+          大写(推荐) 
+          <input type="radio" name="big_letter" value="0">
+          全小写 <br>
+          是否覆盖原来的目录拼音: 
+          <input type="radio" name="replaceold" value="1" checked>
+          覆盖(推荐) 
+          <input type="radio" name="replaceold" value="0">
+          不覆盖 <br>
+          <input type="submit" name="Submit" value="批量生成辖区目录名" >
+        </p>
+      </form>
+	  
+	  
+      <form name="form2" method="post" action="$admin_path&action=batch&type=street_dir" style="border:1px dotted #ccc;margin-bottom:10px;">
+        <p>拼音第一个字母是否大写: 
+          <input type="radio" name="big_letter" value="1" checked>
+          大写(推荐) 
+          <input type="radio" name="big_letter" value="0">
+          全小写 <br>
+          是否覆盖原来的目录拼音: 
+          <input type="radio" name="replaceold" value="1" checked>
+          覆盖(推荐) 
+          <input type="radio" name="replaceold" value="0">
+          不覆盖 <br>
+          <input type="submit" name="Submit2" value="批量生成地段目录名">
+        </p>
+      </form>
+	  
+	  
+      <form name="form3" method="post" action="$admin_path&action=batch&type=city_dir" style="border:1px dotted #ccc;margin-bottom:10px;line-height:30px;">
+        <p><br>
+          <!--
+EOT;
+if(count($city_DB[name])>1){print <<<EOT
+-->
+          泛域名 
+          <input type="text" name="domain2" id="domain2">
+          (如:abc.com) <br>
+          注意:这里设置了域名之后,需要在核心设置&quot;COOKIE有效域名:&quot;添加同样的域名,比如abc.com否则网站会不正常,比如不能登录之类的<br>
+          城市所在目录: 
+          <select name="citydir" id="citydir">
+            <option value="3">city目录</option>
+            <option value="2">根目录</option>
+          </select>
+          <br>
+          <input type="checkbox" name="replaceold" value="1" checked>
+          改写城市原来的二级域名 <br>
+          <input type="submit" name="Submit22" value="批量生成城市目录文件" >
+        </p>
+      </form>
+	  
+	  
+      <p><br>
+      </p>
+      <hr size="1">
+      <p align="left">1.以上三步操作,操作顺序不限,但每一步都要操作,可以重复操作,每增加一个城市的时候,都需要再次操作.<br>
+        2.如果你想实现 http://benjing.abc.com这样城市域名,那必须要在域名管理商那里设置一个泛域名 *.abc.com 指向到当前服务器的IP,然后上面输入abc.com即可.<br>
+      </p>
+      <!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="1" cellpadding="3" width="100%" class="tablewidth">
+  <tr > 
+    <td class="head">重要说明!!</td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td> 
+      <p>1.要使用伪静态的话,必须要执行以上每一个步骤.<br>
+        2.如果网站使用的是购买的虚拟空间,没权修改服务器apache配置文件,就无法使用城市二级域名,此时&quot;泛域名&quot;就必须留空.<br>
+        3.如果要使用城市二级域名,请先在域名控制台那里A记录把域名泛解释到本网站服务器所在IP.比如如 *.qibosoft.com A记录到 111.111.111.111 
+        泛域名是*号开头的. <br>
+        设置域名泛解释后,需要等待一段时间才能生效,如何测试是否生效?请ping一下即可,如 ping 任意字母.qibosoft.com 能看到服务器的IP就代表生效了.<br>
+        4.使用城市二级域名,泛域名生效后,就在上面表单输入泛域名,此时必须把*.去掉,如 qibosoft.com 这里是不需要*.号的．只是域名控制台那里需要．再点击生成城市目录文件<br>
+        5.每个城市生成目录文件以后,就需要在服务器绑定每一个城市.具体如何操作,请参考&quot;<a href="index.php?lfj=module_admin&dirname=f&file=center&job=html"><font color="#FF0000">伪静态设置</font></a>&quot;<br>
+        6.泛域名留空,就代表不使用城市二级域名,只使用多级目录而已.<br>
+        7.执行第三步的话,会强制修改原来的城市目录名.<br>
+        8.如果使用了城市二级域名,就建议选择&quot;city目录&quot;生成在city目录,有利于目录整洁,方便今后网站维护.<br>
+        9.如果不想更换城市的二级域名,请把泛域名这一项留空.<br>
+        <font color="#0000FF">10.要想取消城市二级域名,请在泛域名这一项输入0</font></p>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,121 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$Murl/images/default/list.css">
+<div class="MainContainers">
+	<div class="Mains">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="BigSortTable">
+<!--
+EOT;
+$trnum=0;
+foreach($listdb_moresort AS $key=>$rs){
+if($trnum==0){
+print <<<EOT
+-->
+		<tr>
+<!--
+EOT;
+}$trnum++;print <<<EOT
+-->
+		<td class="td$trnum">
+		<dl>
+        	<dt><a href="list.php?fid=$rs[fid]" class="t">$rs[name]</a><a href="list.php?fid=$rs[fid]" class="m">更多&gt;&gt;</a></dt>
+        	<dd>
+<!--
+EOT;
+foreach($rs[article] AS $keys=>$rss){
+print <<<EOT
+-->
+				<div><a href="bencandy.php?fid=$rss[fid]&id=$rss[id]">$rss[title]</a><span>{$rss[posttime]}</span></div>			
+<!--
+EOT;
+}
+print <<<EOT
+-->
+            </dd>
+        </dl>
+        </td>
+<!--
+EOT;
+if($trnum==2){
+$trnum=0;print <<<EOT
+-->
+        </tr>
+<!--
+EOT;
+}}if($trnum && $trnum<2){
+for($i=$trnum;$i<2;$i++){print <<<EOT
+-->
+		<td class="td$i"><br/></td>
+<!--
+EOT;
+}print <<<EOT
+-->
+		</tr>
+<!--
+EOT;
+}print <<<EOT
+-->
+       </table>
+    </div>
+    <div class="Sides">
+    	<div class="MoreSorts">
+        	<div class="head"><div class="tag">相关栏目</div></div>
+            <table width="100%">
+            <tr>
+            <td class="cont">
+<!--
+EOT;
+$array=$listdb_moresort?$Fid_db[$fid]:$Fid_db[$fidDB[fup]];
+foreach($array AS $key=>$value){
+print <<<EOT
+-->
+            	<div class="sortname"><a href="list.php?fid=$key">$value</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </td>
+            </tr>
+            </table>
+        </div>
+        <div class="MoreConts">
+        	<div class="head"><div class="tag">最新信息</div></div>
+            <div class="cont">
+<!--
+EOT;
+$array=Get_Info('new',10,40,$fid,$city_id);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            	<div class="list"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+        <div class="MoreConts">
+        	<div class="head"><div class="tag">热门信息</div></div>
+            <div class="cont">
+<!--
+EOT;
+$array=Get_Info('hot',10,40,$fid,$city_id);
+foreach($array AS $rs){
+print <<<EOT
+-->
+            	<div class="list"><a href="bencandy.php?fid=$rs[fid]&id=$rs[id]">$rs[title]</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+            </div>
+        </div>
+    </div>
+    <div class="ClearDiv"></div>
+</div>
+<!--
+EOT;
+?>
+-->

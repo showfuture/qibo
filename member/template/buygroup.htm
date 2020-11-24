@@ -1,0 +1,316 @@
+<!--
+<?php
+$width=floor(80/count($listdb)).'%';
+print <<<EOT
+--> 
+<div class="MainCont">
+	<div class="head">
+    	
+    <div class="tag"> 使用{$webdb[MoneyName]}购买会员等级,最短要购买<span class="b red">{$webdb[groupTime]}</span>天,不同的等级每天收费不一样,你现在的级别是“<span class="b blue">{$ltitle[$lfjdb[groupid]]}</span>”{$lfjdb[C][endtime]} 
+    </div>
+    </div>
+    <div class="cont">
+<!--
+EOT;
+if($job=='buy'){print <<<EOT
+-->
+		<form name="form2" method="post" action="?action=buy">
+        <ul class="aboutnote">
+            <li>你目前的{$webdb[MoneyName]}有<img src="images/money.gif"/><span class="b blue">{$lfjdb[money]}</span>{$webdb[MoneyDW]}</li>
+            <li>你现在的级别是“<span class="b blue">{$ltitle[$lfjdb[groupid]]}</span>”{$lfjdb[C][endtime]}，你要购买的级别是“{$rsdb[grouptitle]}”,需要{$webdb[MoneyName]}“{$rsdb[levelnum]}{$webdb[MoneyDW]}/天”</li>
+        </ul>
+        
+      <div class="Showpage"> 购买
+        <input type="text" name="buyday" size="3" value="$webdb[groupTime]">
+        天 <br>
+        <br>
+        <input type="button" name="Submit32" value="点击返回" onclick="history.back(-1)">      
+            <input type="submit" name="Submit3" value="立即购买">
+            <input type="hidden" name="action" value="buy">
+            <input type="hidden" name="gid" value="$gid">
+        </div>
+<!--
+EOT;
+if($lfjdb[money]<$rsdb[levelnum]){print <<<EOT
+-->			  
+        <div>
+        	<img src="$webdb[www_url]/images/default/notice.jpg"> 
+            <span class="red b">注意: </span>你目前的{$webdb[MoneyName]}仅有{$lfjdb[money]}{$webdb[MoneyDW]},不足{$rsdb[levelnum]}{$webdb[MoneyDW]},无法购买当前这个级别:{$rsdb[grouptitle]},请先<a href="money.php?job=list"><span class="blue">充值</span></a>
+         </div>                  
+<!--
+EOT;
+}print <<<EOT
+-->
+        </form>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ListTable">
+          <tr>
+            <th width="20%">权限说明</th>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+              <th width="$width">$rs[grouptitle]</th>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+          <tr>
+            <td>所需{$webdb[MoneyName]}</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){print <<<EOT
+-->
+           <td><span class="b red">{$rs[levelnum]}</span>{$webdb[MoneyDW]}/天</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+          <tr>
+            <td>会员空间容量</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$SpaceSize=number_format($webdb[totalSpace]+$rs[g][totalspace],2);
+print <<<EOT
+-->
+           <td>{$SpaceSize} M</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		   <tr> 
+            <td>是否允许申请商铺</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$showpics=$rs[g][allow_get_homepage]?"<img src=\"images/bigtrue.gif\"/>":"";
+print <<<EOT
+-->
+            <td>$showpics</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+          <tr> 
+            <td>商铺二级域名</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$showpics1=$rs[g][use2domain]?"<img src=\"images/bigtrue.gif\"/>":"";
+print <<<EOT
+-->
+            <td>$showpics1</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+          <tr> 
+            <td>商铺VIP风格使用权限</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$showpics2=$rs[g][useHomepageStyle]?"<img src=\"images/bigtrue.gif\"/>":"";
+print <<<EOT
+-->
+            <td>$showpics2</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		  <tr> 
+            <td>商铺钻石风格使用权限</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$showpics2=$rs[g][useHomepage2Style]?"<img src=\"images/bigtrue.gif\"/>":"";
+print <<<EOT
+-->
+            <td>$showpics2</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		   <tr> 
+            <td>商铺允许发布共多少条新闻</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <td>{$rs[g][post_news_num]} 条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+          <tr> 
+            <td>商铺允许发布共多少张图</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <td>{$rs[g][post_photo_num]} 张  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		  <tr> 
+            <td>收藏夹最多可收藏信息</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+            <td>{$rs[g][post_info_collection_num]} 条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+
+		  <tr> 
+            <td>一天内,发布免费信息上限</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[g][Info_MemberDayPostNum]=='' && $rs[g][Info_MemberDayPostNum]=10;
+print <<<EOT
+-->
+            <td>{$rs[g][Info_MemberDayPostNum]} 条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+<tr> 
+            <td>发布免费信息超过上限收费</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[g][Info_MemberPostMoney]=='' && $rs[g][Info_MemberPostMoney]=2;
+print <<<EOT
+-->
+            <td>{$rs[g][Info_MemberPostMoney]} $webdb[MoneyDW]/条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		  <tr> 
+            <td>每条信息最多可发几张图片</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[g][Info_MemberPostPicNum]=='' && $rs[g][Info_MemberPostPicNum]=5;
+print <<<EOT
+-->
+            <td>{$rs[g][Info_MemberPostPicNum]} 张  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr><tr> 
+            <td>24小时内,是否允许发雷同标题的信息</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$showpics2=$rs[g][Info_MemberPostRepeat]?"<img src=\"images/bigtrue.gif\"/>":"";
+print <<<EOT
+-->
+            <td>$showpics2</td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+		  <tr> 
+            <td>24小时内允许手工立即刷新分类信息的条数</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[g][refurbish_fenlei_num]=='' && $rs[g][refurbish_fenlei_num]=$rs[g][Info_MemberDayPostNum];
+$rs[g][refurbish_fenlei_num]=='' && $rs[g][refurbish_fenlei_num]=5;
+print <<<EOT
+-->
+            <td>{$rs[g][refurbish_fenlei_num]} 条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+
+		  <tr> 
+            <td>允许设置定时自动刷新分类信息的条数</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[g][refurbish_auto_fenlei_num]=intval($rs[g][refurbish_auto_fenlei_num]);
+print <<<EOT
+-->
+            <td>{$rs[g][refurbish_auto_fenlei_num]} 条  </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+
+          <tr>
+            <td>&nbsp;</td>
+<!--
+EOT;
+foreach($listdb AS $key=>$rs){
+print <<<EOT
+-->
+           <td>
+<!--
+EOT;
+if($rs[levelnum]){print <<<EOT
+-->
+                <a href="?job=buy&gid=$rs[gid]#buy"><img src="images/buybutton.gif" alt="购买"/></a> 
+<!--
+EOT;
+}print <<<EOT
+-->
+           </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+          </tr>
+        </table>
+
+<!--
+EOT;
+}print <<<EOT
+-->
+    </div>
+</div>
+<div class="MainCont mtop10">
+	<div class="head">
+    	<div class="tag">相关信息</div>
+    </div>
+    <div class="cont">
+    	<ul class="aboutnote">
+        	<li>1.购买用户级别,需要{$webdb[MoneyName]}购买,你当前拥有的{$webdb[MoneyName]}数是<span class="red b">{$lfjdb[money]}</span> {$webdb[MoneyDW]}</li>
+            <li> 2.重复购买相同等级的话,有效期会自动直接累积,重复购买不同等级的话,系统会重新核算积分日期比例再累积有效期.</li>
+			<li> 3.如果你的{$webdb[MoneyName]}不足,你可以先在线充值.<a href="money.php?job=list"><span class="b red">在线充值</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--
+EOT;
+?>
+-->

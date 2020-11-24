@@ -1,0 +1,4 @@
+<?php	
+		$styledb['name']='ÂÌÉ«·ç¸ñ';
+		$styledb['keywords']='green_tpl';
+?>

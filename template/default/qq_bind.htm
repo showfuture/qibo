@@ -1,0 +1,76 @@
+<!--
+<?php
+print <<<EOT
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td height="100" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head"><h3 class="L"></h3>
+           <span class="TAG"> 绑定帐号 </span>
+            <h3 class="R"></h3></td>
+        </tr>
+        <tr> 
+          <td class="middle"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">   <form name="form1" method="post" action="?f">
+              <tr>
+                <td height="25">
+<!--
+EOT;
+if($step==1){print <<<EOT
+-->
+                    <table width="100%" border="0" cellspacing="1" cellpadding="6">
+                      <tr> 
+                        <td colspan="2" style="border-bottom:1px solid #ccc;background:#eee;">绑定帐号</td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" height="25" style="height:30px">原有帐号:</td>
+                        <td width="72%" height="25"> 
+                          <input type="text" name="username" style="width:130px;height:16px;">
+                          <a href="reg.php">注册新帐号</a> </td>
+                      </tr>
+                      <tr> 
+                        <td width="28%" style="height:30px">原有密码:</td>
+                        <td width="72%"> 
+                          <input type="password" name="password" style="width:130px;height:16px;">
+                          <a href="$webdb[www_url]/do/sendpwd.php">忘记密码,马上取回</a></td>
+                      </tr>
+                    </table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td align="center" style="height:30px">
+                          <input type="submit" name="Submit3" value=" 绑 定 "  class="button">
+                          <input type="hidden" name="step" value="2">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+              </tr> </form>
+            </table>
+<!--
+EOT;
+}else{print <<<EOT
+-->
+			
+你现在可以选择当前QQ捆绑原有帐号,也可以重新注册一个帐号进行捆绑.如果没有旧帐号的话,只能选择新注册一个帐号进行捆绑
+				<br>
+				<input type="radio" name="radiobutton" value="radiobutton" onclick="window.location.href='?step=1'">捆绑旧帐号
+				<input type="radio" name="radiobutton" value="radiobutton" onclick="window.location.href='reg.php?step=1&'">新注册帐号进行捆绑
+				
+				<br><br>
+                    <font color="#FF0000">提示:捆绑成功之后,下次QQ方式登录即可直接登录到捆绑后的帐号.</font> 
+<!--
+EOT;
+}print <<<EOT
+-->
+          </td>
+        </tr><tr><td class="foot"><h3 class="L"></h3><h3 class="R"></h3></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

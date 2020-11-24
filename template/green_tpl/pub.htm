@@ -1,0 +1,71 @@
+<!--
+<?php
+print <<<EOT
+--> 
+<link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/green/allsort.css">
+<div style="clear:both;height:30px;line-height:30px;font-size:14px;font-weight:bold;color:#3B8200;text-align:center;">请选择一个分类</div>
+<!--
+EOT;
+$layout1=array();
+$detail1=explode("#",$webdb[sort_layout1]);
+foreach($detail1 AS $key=>$value){
+	$detail2=explode(",",$value);
+    foreach($detail2 AS $fup){
+    	if(!$Fid_db['name'][$fup]) continue;
+        $layout1[$key][$fup]['name']=$Fid_db['name'][$fup];
+        $layout1[$key][$fup]['son']=$Fid_db[$fup];
+        $ckfup1[$fup]=1;
+    }
+}
+foreach($Fid_db[0] AS $fup=>$name){
+	if(!$ckfup1[$fup]){
+		$layout1[0][$fup]['name']=$Fid_db['name'][$fup];
+		$layout1[0][$fup]['son']=$Fid_db[$fup];
+	}
+}	
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ShowMainSort">
+  <tr>
+<!--
+EOT;
+foreach($layout1 AS $key=>$array){
+if($key>4)break;
+print <<<EOT
+-->
+    <td class="showtd td{$key}">
+<!--
+EOT;
+foreach($array AS $fup=>$rs){
+print <<<EOT
+-->
+		<dl>
+        	<dt>{$rs[name]}&gt;&gt;</dt>
+            <dd>
+<!--
+EOT;
+foreach($rs['son'] AS $fid=>$name ){
+print <<<EOT
+-->
+                  <div><a href="$city_url/post.php?city_id=$city_id&zone_id=$zone_id&street_id=$street_id&fid=$fid">$name</a></div>
+<!--
+EOT;
+}print <<<EOT
+-->
+			</dd>
+		</dl>
+<!--
+EOT;
+}print <<<EOT
+-->
+    </td>
+<!--
+EOT;
+}print <<<EOT
+-->
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

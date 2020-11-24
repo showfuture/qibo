@@ -1,0 +1,143 @@
+<!--
+<?php
+$listdb || $style_list="none;";
+print <<<EOT
+--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="MainTable">
+  <tr> 
+    <td width="45%" height="393" valign="top" class="Main"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="dragTable" id="viewarticle">
+        <tr> 
+          <td class="head">
+            <h3 class="L"></h3>
+            <span class="TAG">个人信息</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle"> 用户ID:$rsdb[username] <!--
+EOT;
+if($rsdb[grouptype]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/member/images/company_icon.gif" alt="企业会员"> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <!--
+EOT;
+if($rsdb[idcard_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/idcard_1.gif" alt="身份认证会员"> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/idcard_0.gif" alt="身份还未认证"> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <!--
+EOT;
+if($rsdb[email_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_1.gif" alt="邮箱认证会员"> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/email_0.gif" alt="邮箱还未认证"> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <!--
+EOT;
+if($rsdb[mob_yz]==1){
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/mob_1.gif" alt="手机认证会员"> 
+            <!--
+EOT;
+}else{
+print <<<EOT
+-->
+            <img src="$webdb[www_url]/images/default/yz/mob_0.gif" alt="手机还未认证"> 
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+<br>
+            等级： <font color="#FF0000">{$ltitle[$rsdb[groupid]]}</font><br>
+            性别:$rsdb[sex]<br>
+            注册日期:$rsdb[regdate]<br>
+            用户积分:<font color="#FF0000">$rsdb[money]</font> 点<br>
+            最后在线时间:$rsdb[lastvist]<br>
+            联系邮箱:$rsdb[email]<br>
+            个人介绍:$rsdb[introduce]</td>
+        </tr>
+        <tr>
+          <td class="foot">
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+ 
+    </td>
+    <td width="55%" height="393" valign="top" class="Side" align="right"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dragTable">
+        <tr> 
+          <td class="head"> 
+            <h3 class="L"></h3>
+            <span class="TAG">用户发布的信息</span> 
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+        <tr> 
+          <td class="middle" valign="top" align="left"> 
+            <!--
+EOT;
+foreach($listdb AS $key=>$rs){
+$rs[url]=get_info_url($rs[id],$rs[fid],$rs[city_id]);
+print <<<EOT
+-->
+            · <a href="$rs[url]" target="_blank">$rs[title]</a> 
+            ({$rs[posttime]})[<a href="$city_url/job.php?job=update&fid=$rs[fid]&id=$rs[id]">刷新</a>]<br>
+            <!--
+EOT;
+}
+print <<<EOT
+-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">$showpage</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td class="foot"> 
+            <h3 class="L"></h3>
+            <h3 class="R"></h3>
+          </td>
+        </tr>
+      </table>
+    
+    </td>
+  </tr>
+</table>
+<!--
+EOT;
+?>
+-->

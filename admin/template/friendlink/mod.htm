@@ -1,0 +1,129 @@
+<!--
+<?php
+print <<<EOT
+-->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function upfile(url,name,size,v){
+	form1.pic.value+="[MMCBBS]"+url;
+}
+//-->
+</SCRIPT>
+<script src="images/setday.js"></script>
+<table width='100%' cellspacing='1' cellpadding='3' bgcolor='#CCCCCC' class="tablewidth">
+  <form name="form1" method="post" action="index.php?lfj=$lfj&action=$job">
+    <tr class="head"> 
+      <td colspan="3"> 
+        <!--
+EOT;
+if($job=='mod'){
+print <<<EOT
+-->
+        修改友情链接 
+        <!--
+EOT;
+}
+elseif($job=="add"){
+print <<<EOT
+-->
+        添加友情链接 
+        <!--
+EOT;
+}print <<<EOT
+-->
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">链接名称：</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input class=mmcinb type='text' name='postdb[name]' value='$rsdb[name]'>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'>所属类别:</td>
+      <td bgcolor='#FFFFFF' colspan="2">$select_fid</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">网址：</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input class=mmcinb type='text' name='postdb[url]' value='$rsdb[url]' size='50'>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">LOGO图片：(可为空)</div>
+      </td>
+      <td bgcolor='#FFFFFF' width='28%'> 
+        <input class=mmcinb type='text' name='postdb[logo]' value='$rsdb[logo]' id="pic" size="50">
+      </td>
+      <td bgcolor='#FFFFFF' width='53%'><iframe frameborder=0 height=23 scrolling=no src='upfile.php?fn=uppic&dir=friendlink' width=310></iframe> 
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">描述介绍(可不填)：</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input class=mmcinb type='text' name='postdb[descrip]' value='$rsdb[descrip]' size='60'>
+      </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align="left">是否在首页显示:</div>
+      </td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input type="radio" name="postdb[ifhide]" value="0" $ifhide[0]>
+        显示 
+        <input type="radio" name="postdb[ifhide]" value="1" $ifhide[1]>
+        不显示 </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'>验证与否</td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input type="radio" name="postdb[yz]" value="1" $yz[1]>
+        已验证 
+        <input type="radio" name="postdb[yz]" value="0" $yz[0]>
+        未验证</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'>是否强制为文字链接:</td>
+      <td bgcolor='#FFFFFF' colspan="2"> 
+        <input type="radio" name="postdb[iswordlink]" value="1" $iswordlink[1]>
+        强制 
+        <input type="radio" name="postdb[iswordlink]" value="0" $iswordlink[0]>
+        不强制</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'>
+      <td width='19%'>截止显示日期:</td>
+      <td bgcolor='#FFFFFF' colspan="2">
+        <input type="text" name="postdb[endtime]" value="$rsdb[endtime]" onClick="setday(this)">
+        (留空则长久有效)</td>
+    </tr>
+    <tr bgcolor='#FFFFFF'> 
+      <td width='19%'> 
+        <div align='right'></div>
+      </td>
+      <td colspan="2"> 
+        <input class=mmcinb type='submit' name='Submit' value='提交数据'>
+        <input type="hidden" name="id" value="$id">
+      </td>
+    </tr>
+  </form>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function uppic(url,name,size,b){
+	get_obj('pic').value=url;
+}
+//-->
+</SCRIPT>
+<!--
+EOT;
+?>
+-->
+
+
