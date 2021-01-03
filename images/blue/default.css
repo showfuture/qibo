@@ -296,6 +296,7 @@ a:active {
 #indexMain .R .tablepost .top{
 	border-bottom:0px;
 	padding:8px 0 0 12px;
+	background:url(head_bg.gif);
 }
 #indexMain .R .tablepost .m{
 	border-top:0px;
@@ -317,7 +318,7 @@ a:active {
 #indexMain .R .tablepost .c div{
 	height:18px;
 	padding-top:3px;
-	background:url(qq.gif) no-repeat 0px 0px;
+	background: no-repeat 0px 0px;
 	text-indent:23px;
 }
 

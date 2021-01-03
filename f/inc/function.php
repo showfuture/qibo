@@ -364,6 +364,8 @@ function highlight_keyword($content){
 	return $content;
 }
 
+
+
 /**
 *获取用户的来源城市
 **/

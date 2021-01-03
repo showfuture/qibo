@@ -68,12 +68,14 @@ if(!defined('IS_ADMIN'))unset($listdb,$array,$rs);
 unset($webdb,$Html_Type,$erp,$ltitle,$memberlevel,$showHtml_Type,$chdb,$fidDB,$rsdb,$ModuleDB,$city_DB,$Mdomain,$Murl,$choose_class,$foot_tpl,$head_tpl);
 require(ROOT_PATH.'data/config.php');
 //$webdb[SystemType] && @include(ROOT_PATH."$webdb[SystemType]/data/config.php");
+#var_dump($webdb[www_url]);
 require_once(ROOT_PATH.'inc/function.inc.php');
 
 
 $PHP_SELF_TEMP=$_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
 $_SERVER['QUERY_STRING'] && $PHP_SELF_TEMP .= "?".$_SERVER['QUERY_STRING'];
 $PHP_SELF=$_SERVER['REQUEST_URI']?$_SERVER['REQUEST_URI']:$PHP_SELF_TEMP;
+#$HTTP_HOST=$_SERVER['HTTP_X_FORWARDED_FOR']?$_SERVER['HTTP_X_FORWARDED_FOR']:$HTTP_SERVER_VARS['HTTP_X_FORWARDED_FOR'];
 $HTTP_HOST=$_SERVER['HTTP_HOST']?$_SERVER['HTTP_HOST']:$HTTP_SERVER_VARS['HTTP_HOST'];
 $WEBURL='http://'.$HTTP_HOST.$PHP_SELF;
 $FROMURL=$_SERVER["HTTP_REFERER"]?$_SERVER["HTTP_REFERER"]:$HTTP_SERVER_VARS["HTTP_REFERER"];

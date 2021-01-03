@@ -6,6 +6,7 @@ print <<<EOT
 -->
 <head>
 <title>$titleDB[title]                           </title>
+<link rel="icon" href="$webdb[www_url]/images/blue/icon.png" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/blue/default.css">
 <link rel="stylesheet" type="text/css" href="$webdb[www_url]/images/default/cms.css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
@@ -37,11 +38,9 @@ EOT;
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="headtop" align="center">
   <tr>
     <td class="t">
-	
-	<div class="login">
+<div class="login">
         <SCRIPT src="$webdb[www_url]/do/hack.php?hack=login&job=js"></SCRIPT>
       </div>
-	  
 	  <div class="Time">
 <script language="JavaScript"> 
 <!---
@@ -91,7 +90,11 @@ EOT;
 	</td><input type="hidden" name="postdb[city_id]" value="$city_id"></form>
   </tr>
   <tr>
+
+<!--
           <td class="f">热门搜索:$label[searchhotword]</td>
+-->
+
   </tr>
 </table>
 <SCRIPT LANGUAGE="JavaScript">
@@ -134,8 +137,9 @@ $array=$_array[0];
 print <<<EOT
 -->
       <div class="$ck_class"><div class="a"><a href="$webdb[www_url]/">网站主页</a></div><div class="b"></div></div>
+	  <!--
 	   <div class="{$choose_class['_hy']}"><div class="a"><a href="$webdb[www_url]/hy/">黄页</a></div><div class="b"></div></div>
-
+	 -->	
 <!--
 EOT;
 $i=0;
@@ -147,7 +151,14 @@ $ck_class=$key==$fup?"w":"t";
 if($choose_class['hy']){$ck_class='t';}
 print <<<EOT
 -->
+
+
+	  <!--
  <div class="$ck_class"><div class="a"><a href="$url">$name</a></div><div class="b"></div></div>
+
+-->
+
+
 <!--
 EOT;
 }}else{

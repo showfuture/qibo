@@ -2,9 +2,7 @@
 if(is_file('install.php')){
 	header("location:install.php");exit;
 }
-
 require(dirname(__FILE__)."/f/global.php");
-
 mob_goto_url("3g/index.php?choose_cityID=$city_id");	//手机访问自动跳转
 
 

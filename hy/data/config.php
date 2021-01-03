@@ -11,6 +11,6 @@ $webdb['vipselfdomain']='';
 $webdb['creat_home_money']='0';
 $webdb['module_pre']='hy_';
 $webdb['Index_listsortnum']='3';
-$webdb['module_close']='0';
+$webdb['module_close']='1';
 $webdb['Info_webname']='ª∆“≥…Ã∆Ã';
 $webdb['HyRewrite']='0';

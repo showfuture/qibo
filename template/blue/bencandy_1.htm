@@ -450,8 +450,6 @@ print <<<EOT
         </tr>
         <tr>
           <td class="m"><div class="title"> 租售房子、求职招聘、找朋友、二手买卖就在本分类信息网！ </div>
-            <div class="post"> <a href="$city_url/post.php?fid=$fid&city_id=$city_id&zone_id=$zone_id&street_id=$street_id"><img src="$webdb[www_url]/images/blue/freepost.gif" width="171" height="29" border="0"></a> 
-            </div>
           </td>
         </tr>
       </table>
@@ -486,23 +484,16 @@ document.write('<div style="display:none;"><iframe src="$city_url/job.php?job=co
         </tr>
       </table>
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablepost">
-        <tr> 
-          <td class="top">联系我们</td>
-        </tr>
-        <tr> 
-          <td class="m c">
-            <!--
-EOT;
-$detail=explode("\r\n",$webdb[Info_contact]);
-print <<<EOT
--->
-            <div class="tel">电话:$detail[0]</div>
-			<div class="email">邮箱:$detail[1]</div>
-			<div class="msn">msn:$detail[2]</div>
-			<div class="qq">QQ:$detail[3]</div>
-             
-          </td>
-        </tr>
+		 <tr>
+  <td class="top">网站公告</td>
+</tr>
+<tr>
+  <td class="m c">
+    <div><a href="$webdb[www_url]/about.php" target="_blank">内容机制管理</a></div>
+    <div><a href="$webdb[www_url]/about1.php" target="_blank">信息发布通知</a></div>
+
+  </td>
+</tr>
       </table>
     </td>
   </tr>
